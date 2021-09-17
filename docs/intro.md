@@ -1,36 +1,34 @@
 ---
 sidebar_position: 1
 slug: /
+title: Getting Started
 ---
 
-# Getting Started
+# Overview
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Zuri Chat is an open source slack clone. However, it offers a lot more functionality via a plugin system where each room can be provided by a different plugin provider.
+
+This document will introduce you to all the basic information you need to better understand our technologies
+
+[E-mail: developer@zuri.chat](mailto:developer@zuri.chat)
 
 ## Getting Started
 
-Get started by **creating a new site**.
+Our API is organised around using HTTP verbs and REST. Our API accepts and returns JSON formatted payload.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+## API Endpoint
 
-## Generate a new site
+`BASE URL`:
 
-Generate a new Docusaurus site using the **classic template**:
-
-```shell
-npx @docusaurus/init@latest init my-website classic
+```bash
+https://api.zuri.chat/
 ```
 
-## Start your site
+## Dive in
 
-Run the development server:
+Create an account with zurichat:
 
 ```shell
-cd my-website
-
-npx docusaurus start
+https://zuri.chat/signup
 ```
 
-Your site starts at `http://localhost:3000`.
-
-Open `docs/intro.md` and edit some lines: the site **reloads automatically** and display your changes.
