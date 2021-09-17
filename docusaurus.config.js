@@ -9,7 +9,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/palenight");
 		tagline: "Developer docs and guides",
 		url: "https://your-docusaurus-test-site.com",
 		baseUrl: "/",
-		onBrokenLinks: "throw",
+		onBrokenLinks: "ignore",
 		onBrokenMarkdownLinks: "warn",
 		favicon: "img/zurichatlogo.svg",
 		organizationName: "zurichat/", // Usually your GitHub org/user name.
