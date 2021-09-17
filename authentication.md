@@ -4,7 +4,7 @@
 Download OPenApi specification: [Download](auth.4cf62435.yaml)
 
 Connect With Us: `developer@zuri.chat` <br>
-Zuri Chat is an open source slack clone. However, it offers a lot more functionality via a plugin system where each room can be provided by a different plugin provider.
+Zuri Chat is an open source website, it offers a lot of functionality via a plugin system where each room can be provided by a different plugin provider.
 
 
 
