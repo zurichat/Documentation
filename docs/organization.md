@@ -1,7 +1,40 @@
 # Zuri Chat Core API
 Zuri Chat is an open source website, it offers a lot of functionality via a plugin system where each room can be provided by a different plugin provider.
 
-
+# Authentication
+## Authentication request to access protected resources
+To authenticate request to access protected resources send a **POST** request to this route
+`https://api.zuri.chat/auth/login` and in the payload provide the email and password in json format.
+e.g.
+```sh
+{
+  "email": "user@example.com",
+  "password": "pa$$word"
+}
+```
+When it shows:
+- 200 login successful
+```sh
+{
+  "code": 200,
+  "message": "string",
+  "data": {
+    "session_id": "string",
+    "user": {
+      "id": "613590fd0366b6816a0b75ee",
+      "first_name": "Johnson",
+      "last_name": "Ajayi",
+      "display_name": "samsoft",
+      "email": "hng.user01@gmail.com",
+      "phone": "09067324567",
+      "status": 0,
+      "time_zone": "string",
+      "created_at": "2021-09-06T03:54:37.387Z",
+      "update_at": "1901-01-01T00:00:00.000Z"
+    }
+  }
+}
+```
 ## Using the Organisation Resource
 
 The organization resource has various endpoints listed below:
