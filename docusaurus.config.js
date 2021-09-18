@@ -7,13 +7,13 @@ const darkCodeTheme = require("prism-react-renderer/themes/palenight");
 	module.exports = {
 		title: "Zuri Chat",
 		tagline: "Developer docs and guides",
-		url: "https://your-docusaurus-test-site.com",
+		url: "https://docs.zuri.chat",
 		baseUrl: "/",
 		onBrokenLinks: "ignore",
 		onBrokenMarkdownLinks: "warn",
 		favicon: "img/zurichatlogo.svg",
 		organizationName: "zurichat/", // Usually your GitHub org/user name.
-		projectName: "documentation", // Usually your repo name.
+		projectName: "documention", // Usually your repo name.
 
 		presets: [
 			[
@@ -55,7 +55,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/palenight");
 							position: "left",
 							label: "Docs",
 						},
-						{ to: "/blog", label: "Blog", position: "left" },
+						{ to: "/blog", label: "Help", position: "left" },
 						{
 							href: "https://github.com/zurichat/documention",
 							label: "GitHub",
