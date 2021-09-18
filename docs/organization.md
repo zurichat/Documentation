@@ -1,6 +1,3 @@
-# Zuri Chat Core API
-Zuri Chat is an open source website, it offers a lot of functionality via a plugin system where each room can be provided by a different plugin provider.
-
 # Authentication
 ## Authentication request to access protected resources
 To authenticate request to access protected resources send a **POST** request to this route
