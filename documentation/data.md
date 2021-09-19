@@ -2,8 +2,26 @@
 ​
 Getting started with the write endpoint is easy, all you need to do is to get parameters and arrange them in proper order as shown below. You then make a POST request to the endpoint and you should receive a status code of 200 showing your write request was successful. <br>
 ​
-Contact Support: Email: developer@zuri.chat
+
+### Request Body Schema 
+|  |  |
+| ---------- | --------- |
+| **Plugin:**   |  **README** |
+| Plugin_ID* | String: The Plugin ID |
+| Organization_ID* | String: The ID of the organization the plugin belongs to |
+| Collection_name* | String: The name of the collection plugin wants to add data to or remove data from|
+| Bulk_write | Boolean: The value indicates whether many documents are to be written or not |
+| Bulk_delete | Boolean: The value indicates wether many documents are to be deleted or not |
+| Object_id | String: The ID of previously inserted data at the server side |
+| Filter | Query to be matched |
+| Payload* | Actual data the plugin wants to add to the database |
 ​
+### Things to note:
+- There are no parameters in the url, everything required is going to be part of the payload.
+- The required values are starred in the schema.
+- Only valid id's, collection name and payloads will be accepted. If not provided 400 status errors will be raised.
+
+
 ​
 ## **Write** 
 ### POST /data/write
@@ -12,6 +30,8 @@ Contact Support: Email: developer@zuri.chat
 https://api.zuri.chat/v1/data/write
 ```
 Let's the plugin make a write request to the data endpoint.
+
+
 ​
 ## Request Headers
 **Content-Type:** application/json
@@ -30,10 +50,9 @@ Format type : raw(json)
 }
 ```
 ## Examples
+​ For a successful write request
 ​
-### For a successful write request
-​
-##### Request:
+### Request:
 ```sh
 curl --location --request POST 'https://api.zuri.chat/v1/data/write' \
 --header 'Content-Type: application/json' \
@@ -48,7 +67,7 @@ curl --location --request POST 'https://api.zuri.chat/v1/data/write' \
 }'
 ```
 ​
-##### Response:
+### Response:
 ```sh
 {
  "status": "204",
@@ -61,7 +80,7 @@ curl --location --request POST 'https://api.zuri.chat/v1/data/write' \
 ​
 ### For an unexpected error
 ​
-##### Request:
+### Request:
 ```sh
 curl --location --request POST 'https://api.zuri.chat/v1/data/write' \
 --header 'Content-Type: application/json' \
@@ -76,32 +95,15 @@ curl --location --request POST 'https://api.zuri.chat/v1/data/write' \
 }'
 ```
 ​
-##### Response:
+### Response:
 ```sh
 {
  "status": "400",
  "message": "there was an unexpected error",
 }
 ```
-##### Request Body Schema 
-​
-| Plugin | README |
-| ------ | ------ |
-| Plugin_ID* | String: The Plugin ID |
-| Organization_ID* | String: The ID of the organization the plugin belongs to |
-| Collection_name* | String: The name of the collection plugin wants to add data to |
-| Bulk_write | Boolean: The value indicates whether many documents are to be written or not |
-| Object_id | String: The ID of previously inserted data at the server side |
-| Filter | Query to be matched |
-| Payload* | Actual data the plugin wants to add to the database |
-​
-##### Things to note:
-- There are no parameters in the url, everything required is going to be part of the payload.
-- The required values are starred in the schema.
-- Only valid id's, collection name and payloads will be accepted. If not provided 400 status errors will be raised
 
-
-# **READ ENDPOINT**
+# **READ**
 
 ## **How it Works:**
 
@@ -154,7 +156,7 @@ Below are the expected responses after making the `get` request. You can either 
   > "message": "string" <br>
   > }
 
-# **Delete Endpoint**
+# **Delete**
 
 Getting started with the delete endpoint is easy, all you need to do is to get the required values for your payload and arrange them in proper order as shown below. 
 
@@ -166,18 +168,12 @@ Getting started with the delete endpoint is easy, all you need to do is to get t
 https://api.zuri.chat/v1/data/delete
 ```
  This endpoint lets the plugin make a delete request to the data endpoint.
- 
- ##### Things to note:
-- There are no parameters in the url, everything required is going to part of the payload.
-- The required values are starred in the schema.
-- Only valid id's, collection name and payload's will be accepted. If not provided 4xx status errors will be raised.
-- If a 5xx error is raised then the problem is from the server
 
 ## Request Headers
-Content-Type: application/json
+**Content-Type:** application/json
 
 ## Body of the initial request
-Format type : raw(json)
+**Format type:** raw(json)
 ```sh
 {
     "plugin_id": "string",
@@ -189,11 +185,9 @@ Format type : raw(json)
     "filter": {}
 }
 ```
-## Examples of Requests
-
+##  Request
 ### For a successful delete request
 
-##### Request:
 ```sh
 curl --location --request POST 'https://api.zuri.chat/v1/data/delete' \
 --header 'Content-Type: application/json' \
@@ -208,7 +202,7 @@ curl --location --request POST 'https://api.zuri.chat/v1/data/delete' \
 }'
 ```
 
-##### Response:
+### Response:
 ```sh
 {
  "status": "204",
@@ -221,7 +215,7 @@ curl --location --request POST 'https://api.zuri.chat/v1/data/delete' \
 
 ### For an unexpected error
 
-##### Request:
+### Request:
 ```sh
 curl --location --request POST 'https://api.zuri.chat/v1/data/delete' \
 --header 'Content-Type: application/json' \
@@ -236,35 +230,25 @@ curl --location --request POST 'https://api.zuri.chat/v1/data/delete' \
 }'
 ```
 
-##### Response:
+### Response:
 ```sh
 {
  "status": "400",
  "message": "there was an unexpected error",
 }
 ```
-##### Request Body Schema 
 
-| Plugin | Value |
-| ------ | ------ |
-| Plugin_ID* | String: The Plugin ID |
-| Organization_ID* | String: The ID of the organization the plugin belongs to |
-| Collection_name* | String: The name of the collection plugin wants to remove data from |
-| Bulk_delete | Boolean: The value indicates wether many documents are to be deleted or not |
-| Object_id | String: The ID of previously inserted data at the server side |
-| Filter | Query to be matched |
-| Payload* | Actual data the plugin wants to remove from the database |
-| | |
+### List of Most Likely `4xx` Errors
+- **400** Bad Request
+- **401** Unauthorized
+- **403** Forbidden
+- **404** Not Found
 
-### List of Most Likely 4xx Errors
-- 400 Bad Request
-- 401 Unauthorized
-- 403 Forbidden
-- 404 Not Found
-#### List of Most Likely 5xx Errors
-- 500 Internal Server Error
-- 502 Bad Gateway
-- 503 Service Unavailable
+
+### List of Most Likely `5xx` Errors
+- **500** Internal Server Error
+- **502** Bad Gateway
+- **503** Service Unavailable
 
 
 
