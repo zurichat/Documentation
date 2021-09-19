@@ -1,34 +1,89 @@
----
-sidebar_position: 1
-slug: /
-title: Getting Started
----
 
-# Overview
+# List Organizations Endpoint
 
-Zuri Chat is an open source slack clone. However, it offers a lot more functionality via a plugin system where each room can be provided by a different plugin provider.
+## Enpoint path
+```/organizations```
+## Request Type
+```GET```
 
-This document will introduce you to all the basic information you need to better understand our technologies
+**curl**
 
-[E-mail: developer@zuri.chat](mailto:developer@zuri.chat)
+```
+curl -X 'GET' \
+  'https://api.zuri.chat/v1/organizations/6137d69b21d3c78fc9a84bdf/members' \
+  -H 'accept: application/json'
+ ```
 
-## Getting Started
+ 
+ 
+ ## Responses with Code Description Examples
+**Response for a successful returned list of members in this format**
+```sh
+{
+code*	integer($int32)
+example: 200
+message*	string
+data	[...
+}
+ ```
 
-Our API is organised around using HTTP verbs and REST. Our API accepts and returns JSON formatted payload.
+**Example**
 
-## API Endpoint
-
-`BASE URL`:
-
-```bash
-https://api.zuri.chat/
+```sh
+200
+Successfully returned list of members in an organization, including an empty array if there are no members
+{
+  "code": 200,
+  "message": "string",
+  "data": [
+    {
+      "_id": "6137d69b21d3c78fc9a84bdf",
+      "orgId": "6137d69b21d3c78fc9a84bdf",
+      "files": {},
+      "image_url": "https://image.location/image.png",
+      "name": "string",
+      "email": "user@example.com",
+      "display_name": "string",
+      "bio": "string",
+      "pronouns": "string",
+      "phone": "string",
+      "time_zone": "string",
+      "joined_at": "2021-09-14"
+    }
+  ]
+}
+```
+**Response when access token is missing or invalid**
+```sh
+{
+code*	integer($int32)
+example: 401
+message*	string
+}
+ ```
+**Example**
+```sh
+401
+Access token is missing or invalid
+{
+  "code": 401,
+  "message": "string"
+}
+```
+**Response when internal server error occurs during operation**
+```sh
+{
+code*	integer($int32)
+example: 500
+message*	string
+}
+ ```
+**Example**
+```sh
+{
+  "code": 500,
+  "message": "string"
+}
 ```
 
-## Dive in
-
-Create an account with zurichat:
-
-```shell
-https://zuri.chat/signup
-```
 
