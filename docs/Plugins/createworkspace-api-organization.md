@@ -20,4 +20,5 @@ https://zuri.chat/documentation/organisation#tag/Organization
 - Click next
 
 ## Tutorial on how to create workspace
-![picture 1](../images/d29e11cbfe39e8c322e0b1e676f13d105922bcfd15ce09c7b8c2fe22bf3d98ac.gif)  
+ 
+[![Example](https://user-images.githubusercontent.com/58702861/133843675-91da686e-63d9-4b00-a5fe-5237f634e05a.gif)]
