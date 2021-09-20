@@ -145,19 +145,19 @@ Expected responses after making the `get` request. You can either get a successf
 
 - 200: Data Retrieved Successfully
 
-> { <br>
-> "status": "string", <br>
-> "message": "string", <br>
+> { 
+> "status": "string", 
+> "message": "string", 
 > "data": [
 >  {}
-> ] <br>
+> ] 
 > }
 
 - default: Unexpected Error
 
-  > { <br>
-  > "status": "string", <br>
-  > "message": "string" <br>
+  > { 
+  > "status": "string", 
+  > "message": "string" 
   > }
 
 # **Delete**
