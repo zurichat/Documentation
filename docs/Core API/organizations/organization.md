@@ -5,7 +5,7 @@ title: Organization
 ---
 The Organization API gives access and control for Zuri workspace management.
 
-## Using the Organization Resource
+## Using the organization resource
 
 The organization API has various endpoints listed below:
 
@@ -36,7 +36,7 @@ HTTP VERB | RESOURCE ENDPOINT
  [Refer to the Authentication Guide](https://docs.zuri.chat/authorization)
 
 ---
-## Retrieve Organization
+## Retrieve organization
 
 This endpoint is used to fetch an organization using the Organization Id.
 
@@ -80,9 +80,9 @@ Param | Required | Description
 ```
 ---
 
-## Create Organization
+## Create organization
 
-This is a request endpoint that creates an organizaion or workspace. It requires the creators email which will need to be a valid email.
+This is a request endpoint that creates an organization or workspace. It requires the creators email which will need to be a valid email.
 
 Endpoint : `/organizations`
 
@@ -159,7 +159,7 @@ import TabItem from '@theme/TabItem';
 </Tabs>
 
 ---
-## Delete Organization
+## Delete organization
 
 This endpoint allows you to delete an existing organization.
 
@@ -192,7 +192,7 @@ Param | Required | Description
 ```
 ---
 
-## Update Organization Url
+## Update organization url
 Enables an authenticated organization owner to update the organization's url.
 
 Endpoint : `{organization_id}/url`
@@ -230,7 +230,7 @@ Param | Required | Description
 ```
 
 ---
-## Retrieve Organization by URL
+## Retrieve organization by url
 
 This endpoint is used to retrieve an organization with the given `full` URL.
 
@@ -274,7 +274,7 @@ Param | Required | Description
 ```
 ---
 
-## Fetch Organization Plugins
+## Fetch organization plugins
 
 This endpoint returns a list of plugins from an organization including an empty array if there are no plugins.
 
@@ -305,7 +305,7 @@ Param | Required | Description
     }
 ```
 ---
-## Add Plugin to Organization
+## Add plugin to organization
 
 Installs (add) a plugin to an organization's workspace.
 
@@ -349,7 +349,7 @@ Param | Required | Description
 }
 ```
 ---
-## Update Organization Name
+## Update organization name
 This endpoint enables you to add or change a verified organization's name.
 
 Endpoint : `organizations/{organization_id}/name`
@@ -386,7 +386,7 @@ Param | Required | Description
 ```
 ---
 
-## Update Organization Logo
+## Update organization logo
 
 This endpoint enables you to add or change a verified organization's logo.
 
