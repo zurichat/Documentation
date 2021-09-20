@@ -1,5 +1,6 @@
 ---
-sidebar_position: 2
+slug: /users
+sidebar_position: 3
 title: Users
 ---
 
