@@ -78,3 +78,39 @@ Param | Required | Description
       }
     }
 ```
+---
+
+## Create Organization
+
+This is a request endpoint that creates an organizaion or workspace. It requires the creators email which will need to be a valid email.
+
+Endpoint : `/organizations`
+
+Request Type : `POST`
+
+#### Body Params
+
+Param | Required | Description
+---------|----------|---------
+ creator_email | yes | string
+
+#### Sample Request
+
+```json
+	{
+		"creator_email": "hng@test.com"
+	}
+```
+
+#### Sample Response
+
+```json
+    {
+      "code": 201,
+      "message": "string",
+      "data": {
+        "InsertedID": "6137d69b21d3c78fc9a84bdf"
+        }
+    }
+```
+---
