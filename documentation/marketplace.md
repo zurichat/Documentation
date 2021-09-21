@@ -1,3 +1,7 @@
+# Marketplace Api
+The Marketplace API is a RESTful API that allows you to manage users and your organization account.
+
+
 # Returns a list of plugins on the marketplace
 
  **Request Payloads**
