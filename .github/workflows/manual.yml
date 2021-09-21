@@ -23,7 +23,7 @@ jobs:
           host: ${{ secrets.HOSTNAME }}
           username: ${{ secrets.USERNAME }}
           script: |
-            cd /var/www/documentation
+            cd /var/www/documention
             git pull origin main
             yarn install
             pkill -u $USER node
