@@ -1,0 +1,91 @@
+{
+	"status": 200,
+	"message": "Members retrieved successfully",
+	"data": [
+		{
+			"_id": "6145d3ff285e4a1840207455",
+			"bio": "",
+			"deleted": false,
+			"deleted_at": "0001-01-01T00:00:00Z",
+			"display_name": "",
+			"email": "ejike@gmail.com",
+			"files": null,
+			"first_name": "",
+			"image_url": "",
+			"joined_at": "0001-01-01T00:00:00Z",
+			"last_name": "",
+			"org_id": "6145d3ff285e4a1840207454",
+			"phone": "",
+			"presence": "true",
+			"pronouns": "",
+			"role": "owner",
+			"settings": null,
+			"socials": null,
+			"status": "",
+			"time_zone": "",
+			"user_name": "ejike"
+		},
+		{
+			"_id": "61467c801a5607b13c00bcbf",
+			"bio": "",
+			"deleted": false,
+			"deleted_at": "0001-01-01T00:53:28+00:53",
+			"display_name": "",
+			"email": "tomibami2020@gmail.com",
+			"files": null,
+			"first_name": "",
+			"image_url": "",
+			"joined_at": "2021-09-19T01:55:44.486+02:00",
+			"last_name": "",
+			"org_id": "6145d3ff285e4a1840207454",
+			"phone": "",
+			"presence": "true",
+			"pronouns": "",
+			"role": "member",
+			"settings": {
+				"messages_and_media": {
+					"additional_options": null,
+					"bringemailsintozuri": "",
+					"convert_emoticons_to_emoji": false,
+					"custom": false,
+					"emoji": "",
+					"emoji_as_text": false,
+					"frequently_used_emoji": false,
+					"inline_media_and_links": null,
+					"messages_one_click_reaction": null,
+					"names": "",
+					"show_jumbomoji": false,
+					"theme": ""
+				},
+				"notifications": {
+					"channel_hurdle_notification": false,
+					"email_notifications_for_mentions_and_dm": null,
+					"message_preview_in_each_notification": false,
+					"mute_all_sounds": false,
+					"my_keywords": "",
+					"notification_schedule": "",
+					"notify_me_about": "",
+					"thread_replies_notification": false,
+					"use_different_settings_mobile": "",
+					"when_iam_not_active_on_desktop": ""
+				},
+				"sidebar": {
+					"always_show_in_the_sidebar": null,
+					"list_private_channels_seperately": false,
+					"organize_external_conversations": false,
+					"show_conversations": "",
+					"show_profile_picture_next_to_dm": false,
+					"sidebar_sort": ""
+				},
+				"themes": {
+					"colors": "",
+					"themes": ""
+				}
+			},
+			"socials": null,
+			"status": "",
+			"time_zone": "",
+			"user_name": "tomibami2020"
+		}
+	]
+}
