@@ -258,7 +258,7 @@ The DELETE method is used to remove data from a specified resource
  ### If you get a response `200`, It means successful.
 
 
-```sh
+```json
 {
     "_id": "6137d69b21d3c78fc9a84bdf",
     "name": "Google Drive",
@@ -274,7 +274,7 @@ The DELETE method is used to remove data from a specified resource
  ```
  
  
- ### Response for 4xx and 5xx requires an integer error code and string message. <br>
+ ### Response for 4xx and 5xx requires an integer error code and string message.
   For example
 
 
@@ -292,14 +292,14 @@ The DELETE method is used to remove data from a specified resource
 |      |     |
 | ----------- | ----------- |
 | RESPONSE SCHEMA:  |  application/json |
-| code required | interger <int32>|
+| code required | interger |
 | message required | string |
 | | |
 
 **404** Plugin not found
    RESPONSE SCHEMA:  |  application/json |
 | ----------- | ----------- |
-| code required | interger <int32>|
+| code required | interger |
 | message required | string |
 |||
 
@@ -307,6 +307,6 @@ The DELETE method is used to remove data from a specified resource
   |    |     |
 | ----------- | ----------- |
 | RESPONSE SCHEMA:  |  application/json |
-| code required | interger <int32> |
+| code required | interger  |
 | message required | string |
 |||

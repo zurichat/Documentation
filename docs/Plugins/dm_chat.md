@@ -534,12 +534,12 @@ The Authentication API may return the following HTTP Status Codes:
 
 ---
 
-### **400**  An icorrect client request <br>
+### **400**  An icorrect client request 
 
 ```
 RESPONSE SCHEMA: application/json
 
-code required      integer <int32> 
+code required      integer  
 message required   string
 
  ```
@@ -551,18 +551,18 @@ message required   string
 ```
  RESPONSE SCHEMA:   application/json
 
-code required        integer <int32>
+code required        integer 
 message required     string
 
 
 ```
 
- ### **422** Server unable to process contained information e.g API behavior <br>
+ ### **422** Server unable to process contained information e.g API behavior 
 
 ```
 RESPONSE SCHEMA: application/json
 
-code required      integer <int32> 
+code required      integer  
 message required   string 
 
 ```
@@ -573,7 +573,7 @@ message required   string
 
 RESPONSE SCHEMA:     application/json
 
-code required         integer <int32>
+code required         integer 
 message required      string
 
 ```
