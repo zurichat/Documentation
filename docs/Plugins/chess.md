@@ -357,7 +357,7 @@ Response header
 - GET SIDEBAR INFORMATION
 
 
-## ZURI CHESS DOCUMENTATION - GET GENERAL PLUGIN INFORMATION
+##  GET GENERAL PLUGIN INFORMATION
 
 Documentation for Zuri chess plugin on getting general plugin information
 
