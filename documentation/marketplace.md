@@ -9,9 +9,9 @@ The Marketplace API is a RESTful API that allows you to manage users and your or
    - Header structure(Method, content-Type, link)
    - Parameter Data type
 
-  Response payloads
-    Header Structure(Content-Type of Response, with response Code)
-    DataTypes of each request
+  **Response payloads**
+  -  Header Structure(Content-Type of Response, with response Code)
+   - DataTypes of each request
 
 ### Request Payloads
 
@@ -49,9 +49,9 @@ The Response data from the server will be determined by the **Response Code**
 | 500 | application/json | object |
   |  |  |  |
 
-### Datatypes of Fields in Result
+## Datatypes of Fields in Result
  
-#### For Response Code 200
+### For Response Code 200
 *Note:* The return data type is an instannce of`Array` and an `array of objects`
  | | |
  | ------ | ------- | 
@@ -171,7 +171,7 @@ The Response data from the server will be determined by the Response Code
 
 ### **Response Sample**
 
-_With Response Code 200_
+With Response Code 200
 
 This example returns the  object data
 
@@ -180,11 +180,9 @@ This example returns the  object data
 
 {    
 
-"status": 200,
+status: 200 message: success
 
-    "message": "success",
-
-    "data": {
+    data: {
 
         "id": "613b677d41f5856617552f1e",
 
@@ -228,7 +226,7 @@ This is the endpoint that needs to be called to remove a single plugin from the 
 https://api.zuri.chat/marketplace/plugins/{id}
 Below is how the id should look like:
 
-Id -- 6137d69b21d3c78fc9a84bdf
+*Id:* 6137d69b21d3c78fc9a84bdf
 
 The id is to be placed in a path with the previous link like this
 
