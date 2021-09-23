@@ -1,4 +1,4 @@
-# Create-Workspace Workflow
+# Threads Workflow
 This workflow enables a user of the zurichat app to create a message thread on the app
 
 
