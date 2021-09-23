@@ -1,33 +1,23 @@
 # Website
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+Zuri Chat is an open source slack clone. However, it offers a lot more functionality via a plugin system where each room can be provided by a different plugin provider.
+Our API is organised around using HTTP verbs and REST. Our API accepts and returns JSON formatted payload.
 
-### Installation
 
+### Hosted URL
+
+[https://docs.zuri.chat](https://docs.zuri.chat)
+
+
+### Project Setup & Contribution Guide:
+
+Fork this REPO
+Clone the repo from your account to your local PC
+
+```bash
+git clone https://github.com/YOUR_USERNAME>/documention.git
 ```
-$ yarn
-```
+Make your contribution.
+Make a PR!
 
-### Local Development
 
-```
-$ yarn start
-```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-### Build
-
-```
-$ yarn build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-### Deployment
-
-```
-$ GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
