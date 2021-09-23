@@ -16,7 +16,7 @@ Our API is organised around using HTTP verbs and REST. Our API accepts and retur
 - Clone the repo from your account to your local PC
 
 ```bash
-git clone https://github.com/YOUR_USERNAME>/documention.git
+git clone https://github.com/YOUR_USERNAME/documention.git
 ```
 - Make your contribution.
 - Make a PR!
