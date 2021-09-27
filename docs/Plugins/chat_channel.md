@@ -1,6 +1,6 @@
 ---
 slug: /chat_channels
-sidebar_position: 10
+sidebar_position: 4
 title: Chat Channels Plugin
 ---
 
