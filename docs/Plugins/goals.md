@@ -217,7 +217,7 @@ curl -X 'POST' \
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
-| `GET` | `/goals` | null | null | **org_id** <br> **page** <br> **limit** | `application/json` | The only required field is **org_id**, **page** and **limit** fields are used to paginate all the goals returned. |
+| `GET` | `/goals` | null | null | **org_id**  **page**  **limit** | `application/json` | The only required field is **org_id**, **page** and **limit** fields are used to paginate all the goals returned. |
 
 > ### Code Sample
 
@@ -310,7 +310,7 @@ curl -X 'POST' \
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
-| `GET` | `/goals/single` | null | null | **org_id** <br> **room_id** | `application/json` | Both the **org_id** and **room_id** fields are required|
+| `GET` | `/goals/single` | null | null | **org_id**  **room_id** | `application/json` | Both the **org_id** and **room_id** fields are required|
 
 > ### Code Sample
 
@@ -394,7 +394,7 @@ curl -X 'POST' \
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
-| `PUT` | `/goals/update` | null | null | **org_id** <br> **room_id** | `application/json` | Both the **org_id** and **room_id** fields are required|
+| `PUT` | `/goals/update` | null | null | **org_id**  **room_id** | `application/json` | Both the **org_id** and **room_id** fields are required|
 
 > ### Code Sample
 
@@ -483,7 +483,7 @@ curl -X 'PUT' \
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
-| `DELETE` | `/goals/update` | null | null | **org_id** <br> **goal_id** | `application/json` | Both the **org_id** and **goal_id** fields are required|
+| `DELETE` | `/goals/update` | null | null | **org_id**  **goal_id** | `application/json` | Both the **org_id** and **goal_id** fields are required|
 
 > ### Code Sample
 
@@ -889,7 +889,7 @@ curl -X 'PATCH' \
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
-| `GET` | `/notifications` | null | null | org_id <br> user_id <br> | `application/json` | **org_id** and **user_id** fields are required |
+| `GET` | `/notifications` | null | null | org_id  user_id  | `application/json` | **org_id** and **user_id** fields are required |
 
 > ### Code Sample
 
@@ -985,7 +985,7 @@ curl -X 'GET' \
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
-| `PUT` | `/notifications` | isRead | null | org_id <br> user_id <br> notification_id | `application/json` | **org_id**, **user_id** and **notification_id** fields are required |
+| `PUT` | `/notifications` | isRead | null | org_id  user_id  notification_id | `application/json` | **org_id**, **user_id** and **notification_id** fields are required |
 
 > ### Code Sample
 
@@ -1166,7 +1166,7 @@ curl -X 'GET' \
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
-| `DELETE` | `/notifications` | null | null | org_id <br> user_id <br> notification_id | `application/json` | **org_id**, **user_id** and **notification_id** fields are required |
+| `DELETE` | `/notifications` | null | null | org_id  user_id  notification_id | `application/json` | **org_id**, **user_id** and **notification_id** fields are required |
 
 > ### Code Sample
 
