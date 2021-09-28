@@ -9,7 +9,7 @@ title: To-Do Plugin
 Our API is organised around using HTTP verbs and REST. Our API accepts and returns JSON formatted payload
 
 # Authorization #
-User must be authenticated to use the Api 
+User must be authenticated to use the API 
 
 |  |  |
 | ------ | ------ |
