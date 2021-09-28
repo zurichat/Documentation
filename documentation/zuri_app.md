@@ -106,7 +106,7 @@ At bottom of the screen, you will find the Home screen,
   Send and recieve messages
 
  ## **You Screen**
- The profile picture and username of the user is displayed. Click on the picture and name will take the user to the `edit profile screen`. Users can set [status](#status), [pause notifications](#pause-notification), [set yourself as away](#set-yourself-as-away--active), [saved item](#saved-item), [view profile](#view-profile), notifications and [preferences](#preferences).
+ The profile picture and username of the user is displayed. Click on the picture and name will take the user to the `edit profile screen`. Users can set [status,](#status) [pause notifications,](#pause-notification) [set yourself as away,](#set-yourself-as-away--active) [saved item,](#saved-item) [view profile,](#view-profile) notifications and [preferences.](#preferences)
 
 ### **Edit Profile Screen**
 Users can **;**
