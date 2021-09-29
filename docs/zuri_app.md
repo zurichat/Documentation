@@ -3,7 +3,7 @@ This is a step by step user guide on all the functionalities in the zuri chat ap
 
 ## **Access Account**
  ## `Sign Up` 
-**Creating an account can be done in two ways** <br>
+**Creating an account can be done in two ways** 
 
  ### **Email and password** 
  - The password has to be inputed twice.
@@ -14,7 +14,7 @@ This is a step by step user guide on all the functionalities in the zuri chat ap
   ### **Google** `pending`
   
   ## `Sign In`
-  **A registered email and password is used to access the account** <br> 
+  **A registered email and password is used to access the account** 
   *For forgotten password:* To recover forgotten password the user is required to **;**
   - Input the registered email
   - A 6 digit `OTP` is sent to the registered email.
@@ -26,26 +26,26 @@ This is a step by step user guide on all the functionalities in the zuri chat ap
 
 
 ## **Organization**
-It displays the list of organizations  a user belong to and also the option to `add organizations,` `preferencs,` `help.` <br>
-**Add An Organization** <br>
- This enable the user to **;**  <br>
+It displays the list of organizations  a user belong to and also the option to `add organizations,` `preferencs,` `help.` 
+**Add An Organization** 
+ This enable the user to **;** 
  - **Create a new organization / Create a workplace**
  1. Click on your verified email.
  1. Add the name of your organization.
  1. Add the project name your team is working on.
- 1. Add the email address of team members `or` invite from contacts `or` copy and share your invite link. <br>
- *another email address can be used.* <br>
+ 1. Add the email address of team members `or` invite from contacts `or` copy and share your invite link. 
+ *another email address can be used.* 
 
 
- - **Sign in to another organization or workspace. <br>**
+ - **Sign in to another organization or workspace. **
  1. Click on your verified email
- 1. Enter organization `url.` <br>
-   *another email address can be used.* <br>
+ 1. Enter organization `url.` 
+   *another email address can be used.* 
    
- - **Join another organization / workspace  <br>**
+ - **Join another organization / workspace  **
  1.   Click on your verified email.
- 1. Enter organization `url.` <br>
-  *another email address can be used.* <br>
+ 1. Enter organization `url.` 
+  *another email address can be used.* 
 
   ## **Preferences**
   ### Languages and region 

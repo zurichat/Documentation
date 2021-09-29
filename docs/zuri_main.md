@@ -1,9 +1,29 @@
 # zuri-main-documentation
 
-## Join a workspace
-1. Click on Login
-2. Enter your login details
-3. Select your workspace from the list
+## Create User Account
+To use zuri chat you need to sign up or sign in if you already have an account.
+Follow the steps below to sign up as a new user.
+
+1. Visit the [home page](https://staging.zuri.chat)
+2. Click on 'sign up'
+3. Enter your details in the required fields
+4. Click on submit
+5. Verify your account
+
+## Sign in/Join a workspace
+
+1. Visit the [home page](https://staging.zuri.chat)
+2. Click on Login
+3. Enter your login details
+4. Select your workspace from the list
+
+## Password Recovery
+1. Visit the [home page](https://staging.zuri.chat)
+2. Click on Forget Password
+3. Enter your Email 
+4. Verify your email.
+5. Create new password
+
 
 ## Change profile picture
 1. Login to access your profile.
@@ -15,10 +35,10 @@
 
 
 ## Customize notifications, themes, messages, and media preferences
-The preference session gives lots of control.  
+The preference session gives you lots of control.  
 Here you will be able to select what color you would want. Whether light or dark backgrounds. You will also get the ability to pick any type of theme you want.
  
-Also, you can customize your messages and media. You will be able to select your messages outlook; whether clean or compact. You can also select the way your name will be displayed whether your full name or just your display name. You have additional options regarding how you want your messages to be displayed, if you want 24hrs clock to be displayed or how you want color swatches to be displayed. You can choose the skin tone of the emojis you want. You have in-line media link options i.e how you want images to be downloaded, linking websites also. You also have the option of bringing emails into Zuri chat with a Get a forwarding address button.
+Also, you can customize your messages and media. You will be able to select your messages outlook; either clean or compact.
 
 ### Notifications Preferences
 1. Navigate to the Home page 
@@ -43,3 +63,19 @@ Also, you can customize your messages and media. You will be able to select your
 2. Click on the profile
 3. From the modal select preferences
 4. Select Media from the menu.
+
+### Language Preferences
+1. Navigate to the 'Home Page'
+2. Click the topbar icon.
+3. Navigate to Preferences.
+4. On the Preferences sidebar, click on Language & Region.
+5. In the Language Section, select a language of your choice.
+
+### Activate/Deactivate Spellcheck 
+1. Navigate to the 'Home Page'
+2. Click the topbar icon.
+3. Navigate to Preferences.
+4. On the Preferences sidebar, click on Language & Region.
+5. Click on the checkbox to mark or unmark spellcheck.
+
+
