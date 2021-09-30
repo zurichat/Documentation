@@ -464,7 +464,6 @@ Sample Response
 ]
 ```
 
-[Back to the top](#Getting-Started)
 
 
 # Create a Todo #
