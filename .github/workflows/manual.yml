@@ -26,5 +26,7 @@ jobs:
             cd /var/www/documention
             git pull origin main
             yarn install
-            pkill -u $USER node
-            nohup yarn run start > /dev/null 2>&1&
+            pm2 restart 0
+            
+#pkill -u $USER node
+#nohup yarn run start > /dev/null 2>&1&
