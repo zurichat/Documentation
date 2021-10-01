@@ -19,13 +19,33 @@ team-coelho@zuri.chat
 
 **License:** BSD License
 
+## Endpoints
+
+### /v1/collections/{plugin_id}
+
+#### GET
+##### Summary
+
+Get all data base collections related to plugin
+
+##### Description
+
+```bash
+curl -X GET "{{baseUrl}}/v1/collections/<plugin_id>" -H  "accept: application/json"
+```
+
+#### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 |  |
+
 ### Security
 **Basic**  
 
 |basic|*Basic*|
 |---|---|
 
-### /v1/collections/{plugin_id}
 
 ### GET
 ## Description
@@ -45,22 +65,31 @@ team-coelho@zuri.chat
 ### /v1/collections/{plugin_id}/organizations/{org_id}
 
 #### GET
-##### Description
+##### Summary
 
-##### Parameters
+Get all database collections related to plugin specific to an organisation
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| org_id | path |  | Yes | string |
-| plugin_id | path |  | Yes | string |
+#### Description
 
-##### Responses
+```bash
+curl -X GET "{{baseUrl}}/v1/collections/{{plugin_id}}/organizations/{{org_id}}" -H  "accept: application/json"
+```
+
+#### Responses
 
 | Code | Description |
 | ---- | ----------- |
 | 200 |  |
 
 ### /v1/details
+
+#### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| org_id | path |  | Yes | string |
+| plugin_id | path |  | Yes | string |
+
 
 #### GET
 ##### Description
@@ -79,7 +108,14 @@ team-coelho@zuri.chat
 ### /v1/info
 
 #### GET
+##### Summary
+Get plugin details and developer information
+
 ##### Description
+
+```bash
+curl -X GET "{{baseUrl}}/v1/info" -H  "accept: application/json"
+```
 
 ##### Parameters
 
@@ -95,14 +131,22 @@ team-coelho@zuri.chat
 ### /v1/ping
 
 #### GET
+##### Summary
+
+Get server status
+
 ##### Description
 
-##### Parameters
+```bash
+curl -X GET "{{baseUrl}}/v1/ping" -H  "accept: application/json"
+```
+
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 
-##### Responses
+#### Responses
 
 | Code | Description |
 | ---- | ----------- |
@@ -111,7 +155,15 @@ team-coelho@zuri.chat
 ### /v1/sidebar
 
 #### GET
-##### Description
+##### Summary 
+
+Get dynamic sidebar details for a user in an organisation
+
+#### Description
+
+```bash
+curl -X GET "{{baseUrl}}/v1/sidebar?org=<org_id>&user=<user_id>&token=<token>" -H  "accept: application/json"
+```
 
 ##### Parameters
 
@@ -158,7 +210,9 @@ curl -X GET "{baseUrl}/v1/{org_id}/channels/" -H  "accept: application/json"
 #### POST
 ##### Summary
 
-Create a new channel in the organization
+This creates a channel for a
+particular organization identified by ID and creates corresponding Centrifugo room
+​
 
 ##### Description
 
@@ -169,14 +223,14 @@ curl -X POST "{baseUrl}/v1/{org_id}/channels/"
 -d "{  "name": "channel name",  "owner": "member_id",  "description": "channel description",  "private": false,  "topic": "channel topic"}"
 ```
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | org_id | path |  | Yes | string |
 | data | body |  | Yes | [Channel](#channel) |
 
-##### Responses
+#### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
@@ -198,14 +252,14 @@ Retrieve list of channels a user belongs to
 curl -X GET "{{baseUrl}}/v1/{{org_id}}/channels/users/{{user_id}}/" -H  "accept: application/json"
 ```
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | org_id | path |  | Yes | string |
 | user_id | path |  | Yes | string |
 
-##### Responses
+#### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
@@ -247,7 +301,7 @@ curl -X GET "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/" -H  "accept: ap
 
 Update channel details
 
-##### Description
+#### Description
 
 ```bash
 curl -X PUT "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/"
@@ -256,7 +310,7 @@ curl -X PUT "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/"
 -d "{  "name": "channel name",  "description": "channel description",  "private": false,  "archived": false,  "topic": "channel topic"}"
 ```
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
@@ -264,7 +318,7 @@ curl -X PUT "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/"
 | org_id | path |  | Yes | string |
 | data | body |  | Yes | [ChannelUpdate](#channelupdate) |
 
-##### Responses
+#### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
@@ -276,7 +330,7 @@ curl -X PUT "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/"
 
 Delete a channel
 
-##### Description
+#### Description
 
 This endpoint deletes a channel and its related objects: messages, roles and threads
 
@@ -284,14 +338,14 @@ This endpoint deletes a channel and its related objects: messages, roles and thr
 curl -X DELETE "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/" -H  "accept: application/json"
 ```
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | channel_id | path |  | Yes | string |
 | org_id | path |  | Yes | string |
 
-##### Responses
+#### Responses
 
 | Code | Description |
 | ---- | ----------- |
@@ -316,14 +370,14 @@ Response is split into `channelmessage` and `thread` objects
 curl -X GET "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/media/" -H  "accept: application/json"
 ```
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | channel_id | path |  | Yes | string |
 | org_id | path |  | Yes | string |
 
-##### Responses
+#### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
@@ -337,7 +391,8 @@ curl -X GET "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/media/" -H  "acce
 #### GET
 ##### Summary
 
-Get all members in a channel
+This method gets all members for a
+channel identified by ID
 
 ##### Description
 
@@ -345,14 +400,14 @@ Get all members in a channel
 curl -X GET "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/members/" -H  "accept: application/json"
 ```
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | channel_id | path |  | Yes | string |
 | org_id | path |  | Yes | string |
 
-##### Responses
+#### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
@@ -362,17 +417,21 @@ curl -X GET "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/members/" -H  "ac
 #### POST
 ##### Summary
 
-Add a user to channel
+This method adds one or more users to a channel
 
-##### Description
+#### Description
+
+A JOIN event is published to Centrifugo when users are added to the channel
+
+** Add one user**
 
 ```bash
 curl -X POST "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/members/"
 -H  "accept: application/json"
 -H  "Content-Type: application/json"
--d "{"_id": "string",  
-    "role_id": "string",  
-    "is_admin": false,  
+-d "{"_id": "string",
+    "role_id": "string",
+    "is_admin": false,
     "notifications": {
          "web": "nothing",
          "mobile": "mentions",
@@ -381,8 +440,49 @@ curl -X POST "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/members/"
         }
     }"
 ```
+​
+**Add multiple users**
+​
+```bash
+curl -X POST "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/members/"
+-H  "accept: application/json"
+-H  "Content-Type: application/json"
+-d "[
+        {"_id": "string",
+        "role_id": "string",
+        "is_admin": false,
+        "notifications": {
+            "web": "nothing",
+            "mobile": "mentions",
+            "same_for_mobile": true,
+            "mute": false
+            }
+        },
+        {"_id": "string",
+        "role_id": "string",
+        "is_admin": false,
+        "notifications": {
+            "web": "nothing",
+            "mobile": "mentions",
+            "same_for_mobile": true,
+            "mute": false
+            }
+        },
+        {"_id": "string",
+        "role_id": "string",
+        "is_admin": false,
+        "notifications": {
+            "web": "nothing",
+            "mobile": "mentions",
+            "same_for_mobile": true,
+            "mute": false
+            }
+        },
+        ...
+    ]"
+```
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
@@ -390,7 +490,7 @@ curl -X POST "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/members/"
 | org_id | path |  | Yes | string |
 | data | body |  | Yes | [User](#user) |
 
-##### Responses
+#### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
@@ -425,7 +525,7 @@ curl -X POST "{{baseUrl}}/api/v1/{{org_id}}/channels/{{channel_id}}/members/can_
     }"
 ```
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
@@ -433,7 +533,7 @@ curl -X POST "{{baseUrl}}/api/v1/{{org_id}}/channels/{{channel_id}}/members/can_
 | org_id | path |  | Yes | string |
 | data | body |  | Yes | [User](#user) |
 
-##### Responses
+#### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
@@ -455,7 +555,7 @@ Get details of a channel member
 curl -X GET "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/members/{{member_id}}/" -H  "accept: application/json"
 ```
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
@@ -463,7 +563,7 @@ curl -X GET "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/members/{{member_
 | member_id | path |  | Yes | string |
 | org_id | path |  | Yes | string |
 
-##### Responses
+#### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
@@ -493,7 +593,7 @@ curl -X PUT "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/members/"
     }"
 ```
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
@@ -502,14 +602,14 @@ curl -X PUT "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/members/"
 | org_id | path |  | Yes | string |
 | data | body |  | Yes | [User](#user) |
 
-##### Responses
+#### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | Response | [User](#user) |
 | 404 | Not found |  |
 
-#### DELETE
+### DELETE
 ##### Summary
 
 Remove member from a channel
@@ -520,7 +620,7 @@ Remove member from a channel
 curl -X DELETE "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/members/{{member_id}}/" -H  "accept: application/json"
 ```
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
@@ -528,7 +628,7 @@ curl -X DELETE "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/members/{{memb
 | member_id | path |  | Yes | string |
 | org_id | path |  | Yes | string |
 
-##### Responses
+#### Responses
 
 | Code | Description |
 | ---- | ----------- |
@@ -550,7 +650,7 @@ Retrieve user notification preferences for channel
 curl -X GET "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/members/{{member_id}}/notifications/" -H  "accept: application/json"
 ```
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
@@ -558,7 +658,7 @@ curl -X GET "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/members/{{member_
 | member_id | path |  | Yes | string |
 | org_id | path |  | Yes | string |
 
-##### Responses
+#### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
@@ -584,7 +684,7 @@ curl -X PUT "{{baseUrl}}v1/{{org_id}}/channels/{{channel_id}}/members/{{member_i
     }"
 ```
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
@@ -593,7 +693,7 @@ curl -X PUT "{{baseUrl}}v1/{{org_id}}/channels/{{channel_id}}/members/{{member_i
 | org_id | path |  | Yes | string |
 | data | body |  | Yes | [NotificationsSetting](#notificationssetting) |
 
-##### Responses
+#### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
@@ -614,14 +714,14 @@ Get all the messages sent in a channel.
 curl -X GET "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/messages/" -H  "accept: application/json"
 ```
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | channel_id | path |  | Yes | string |
 | org_id | path |  | Yes | string |
 
-##### Responses
+#### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
@@ -631,7 +731,7 @@ curl -X GET "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/messages/" -H  "a
 #### POST
 ##### Summary
 
-Create a channel message
+Create a channel message and automatically publishes to centrifugo
 
 ##### Description
 
@@ -639,7 +739,7 @@ Create a channel message
 curl -X POST "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/messages/" -H  "accept: application/json"
 ```
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
@@ -647,14 +747,14 @@ curl -X POST "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/messages/" -H  "
 | org_id | path |  | Yes | string |
 | data | body |  | Yes | [ChannelMessage](#channelmessage) |
 
-##### Responses
+#### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 201 | Response | [ChannelMessageUpdate](#channelmessageupdate) |
 | 404 | Error Response | [Error](#error) |
 
-### Channel roles
+## Channel roles
 
 `/v1/{org_id}/channels/{channel_id}/roles/`
 
@@ -669,14 +769,14 @@ Retrieve channel roles
 curl -X GET "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/roles/" -H  "accept: application/json"
 ```
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | channel_id | path |  | Yes | string |
 | org_id | path |  | Yes | string |
 
-##### Responses
+#### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
@@ -704,7 +804,7 @@ curl -X POST "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/roles/"
     }"
 ```
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
@@ -712,11 +812,47 @@ curl -X POST "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/roles/"
 | org_id | path |  | Yes | string |
 | data | body |  | Yes | [Role](#role) |
 
-##### Responses
+#### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 201 | Response | [Role](#role) |
+
+## Search channel messages
+
+`/v1/{org_id}/channels/{channel_id}/search_messages/`
+
+#### POST
+##### Summary
+
+Search channel messages based on content, pinned status, file attachments etc.
+
+##### Description
+
+```bash
+curl -X POST "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/search_messages/"
+-H  "accept: application/json"
+-H  "Content-Type: application/json"
+-d "{
+        "user_id": "string",
+        "content": "string",
+        "has_files": true,
+        "pinned": true
+    }"
+```
+
+#### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| data | body |  | Yes | [ChannelMessageSearch](#channelmessagesearch) |
+
+#### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | Response | [ [ChannelMessageSearchResult](#channelmessagesearchresult) ] |
+| 400 | Error Response | [Error](#error) |
 
 ## Channel socket name
 
@@ -725,7 +861,7 @@ curl -X POST "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/roles/"
 #### GET
 ##### Summary
 
-Retrieve channel centrifugo socket name
+Retrieve Centrifugo socket channel name based on organisation and channel IDs
 
 ##### Description
 
@@ -796,7 +932,7 @@ curl -X POST "{{baseUrl}}/v1/{{org_id}}/messages/{{channelmessage_id}}/threads/?
     }"
 ```
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
@@ -805,7 +941,7 @@ curl -X POST "{{baseUrl}}/v1/{{org_id}}/messages/{{channelmessage_id}}/threads/?
 | data | body |  | Yes | [Thread](#thread) |
 | channel_id | query | Channel ID (ID of channel message to be posted) | Yes | string |
 
-##### Responses
+#### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
@@ -844,7 +980,7 @@ curl -X GET "{{baseUrl}}/v1/{{org_id}}/messages/{{msg_id}}/" -H  "accept: applic
 #### PUT
 ##### Summary
 
-Update message details
+Update message based on ID
 
 ##### Description
 
@@ -858,7 +994,7 @@ curl -X PUT "{{baseUrl}}/v1/{{org_id}}/messages/{{msg_id}}/?user_id={{user_id}}&
     }"
 ```
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
@@ -868,17 +1004,17 @@ curl -X PUT "{{baseUrl}}/v1/{{org_id}}/messages/{{msg_id}}/?user_id={{user_id}}&
 | user_id | query | User ID (owner of message) | Yes | string |
 | channel_id | query | Channel ID (ID of channel message was posted) | Yes | string |
 
-##### Responses
+#### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | Response | [ChannelMessageUpdate](#channelmessageupdate) |
 | 404 | Error Response | [Error](#error) |
 
-#### DELETE
+### DELETE
 ##### Summary
 
-Delete a message
+Delete a message based on Id and organisation
 
 ##### Description
 
@@ -886,7 +1022,7 @@ Delete a message
 curl -X DELETE "{{baseUrl}}/v1/{{org_id}}/messages/{{msg_id}}/?user_id={{user_id}}&channel_id={{channel_id}}" -H  "accept: application/json""
 ```
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
@@ -895,7 +1031,7 @@ curl -X DELETE "{{baseUrl}}/v1/{{org_id}}/messages/{{msg_id}}/?user_id={{user_id
 | user_id | query | User ID (owner of message) | Yes | string |
 | channel_id | query | Channel ID (ID of channel message was posted) | Yes | string |
 
-##### Responses
+#### Responses
 
 | Code | Description |
 | ---- | ----------- |
@@ -917,14 +1053,14 @@ Retrieve message reactions
 curl -X GET "{{baseUrl}}/v1/{{org_id}}/messages/{{msg_id}}/reactions/" -H  "accept: application/json"
 ```
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | msg_id | path |  | Yes | string |
 | org_id | path |  | Yes | string |
 
-##### Responses
+#### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
@@ -944,7 +1080,7 @@ curl -X PUT "{{baseUrl}}/v1/{{org_id}}/messages/{{msg_id}}/reactions/"
 -d "{  "title": "string",  "member_id": "string"}"
 ```
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
@@ -952,13 +1088,13 @@ curl -X PUT "{{baseUrl}}/v1/{{org_id}}/messages/{{msg_id}}/reactions/"
 | org_id | path |  | Yes | string |
 | data | body |  | Yes | [ChannelMessageReactionsUpdate](#channelmessagereactionsupdate) |
 
-##### Responses
+#### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | Reaction updated | [ [ChannelMessageReaction](#channelmessagereaction) ] |
 
-### Role
+## Role
 
 `/v1/{org_id}/roles/{role_id}/`
 
@@ -973,14 +1109,14 @@ Retrieve role details
 curl -X GET "{{baseUrl}}/v1/{{org_id}}/roles/{{role_id}}/" -H  "accept: application/json"
 ```
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | org_id | path |  | Yes | string |
 | role_id | path |  | Yes | string |
 
-##### Responses
+#### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
@@ -1008,7 +1144,7 @@ curl -X PUT "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/roles/"
     }"
 ```
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
@@ -1016,13 +1152,13 @@ curl -X PUT "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/roles/"
 | role_id | path |  | Yes | string |
 | data | body |  | Yes | [Role](#role) |
 
-##### Responses
+#### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | Response | [Role](#role) |
 
-#### DELETE
+### DELETE
 ##### Summary
 
 Delete a role
@@ -1033,14 +1169,14 @@ Delete a role
 curl -X DELETE "{{baseUrl}}/v1/{{org_id}}/roles/{{role_id}}/" -H  "accept: application/json"
 ```
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | org_id | path |  | Yes | string |
 | role_id | path |  | Yes | string |
 
-##### Responses
+#### Responses
 
 | Code | Description |
 | ---- | ----------- |
@@ -1065,7 +1201,7 @@ curl -X PUT "{{baseUrl}}/v1/{{org_id}}/threads/{{thread_id}}/?user_id={{user_id}
 -d "{  "content": "string"}"
 ```
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
@@ -1075,14 +1211,14 @@ curl -X PUT "{{baseUrl}}/v1/{{org_id}}/threads/{{thread_id}}/?user_id={{user_id}
 | user_id | query | User ID (owner of message) | Yes | string |
 | channel_id | query | Channel ID (ID of channel message was posted) | Yes | string |
 
-##### Responses
+#### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | Response | [ThreadUpdate](#threadupdate) |
 | 404 | Error Response | [Error](#error) |
 
-#### DELETE
+### DELETE
 ##### Summary
 
 Delete thread message
