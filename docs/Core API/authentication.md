@@ -5,178 +5,434 @@ title: Authentication
 ---
 
 # Authentication
-The Authentication API enables you to manage all aspects of user identity. It offers endpoints so your users can log in, log out, access APIs, and more.
+The Authentication API is a resource that provide endpoints to authenticate users, recover forgotten password,  authenticates and authorizes a user in Zuri Chat. 
 
 
+# Endpoints
+- POST `/account/request-password-reset-code`
+- POST `/account/verify-account`
+- POST `/auth​/confirm-password`
+- POST `/auth/login`
+- POST `/auth/logout`
+- GET `/auth/logout`
+- POST `/auth/logout/othersessions`
+- POST  `/auth/request-reset-password`
+- GET `/auth/verify-token`
 
+# Account - Reset password
 
-## Login
+POST `/account/request-password-reset-code`
 
-This endpoint is used to sign a user into the application.
+With the user's email, you can request for a code to reset your password
 
-Endpoint : `/auth/login`
+Request URL: `https://api.zuri.chat/account/request-password-reset-code`
 
-Request Type : `POST`
+## Request Body
 
-Request Body Schema: `application/json`
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+email | string | True | user's email
 
+## Sample Request
 
-#### Request Body Params
+```sh
+cURL
 
-Params | Required | Description
-------- | ------- | -------
-email | Yes | String 
-password | Yes | String
-
-#### Sample Request
-
-
-
-```json
-  { 
-
-    "email": "user@example.com",
-    "password": "pa$$word"
-
-  }
+curl -X POST "https://api.zuri.chat/account/request-password-reset-code" 
+     -H "accept: application/json" 
+     -H "Content-Type: application/json" 
+     -d "{\"email\":\"eyi@gmail.com\"}"
 ```
 
+```sh
+JSON 
 
-#### Sample Response
+Content-Type: `application/json`
 
-
-_Content-type:_ `application/json`
-
-
-```json
 {
-  "code": 200,
-  "message": "string",
-  "data": {
-    "session_id": "string",
-    "user": {
-      "id": "613590fd0366b6816a0b75ee",
-      "first_name": "Johnson",
-      "last_name": "Ajayi",
-      "display_name": "samsoft",
-      "email": "hng.user01@gmail.com",
-      "phone": "09067324567",
-      "status": 0,
-      "time_zone": "string",
-      "created_at": "2021-09-06T03:54:37.387Z",
-      "update_at": "1901-01-01T00:00:00.000Z",
-      "token": "l6TVRneU9ESTBNSHhIZDNkQlIwUlplRTVFVFhwYWFsVXlXa1JCZVU5RVVtbFplbHBvVDFSSmVVMTZUbXBPVVQwOWZFQWpod01iU0E2d1FOUkczQlcwaUZDbHVqUnVOVXFFTHk4QUdGMGhMdkgzIiwiZW1haWwiOiJqYjEyQGdtYWlsLmNvbSIsImlkIjoiNjE0MzNmNTZkMDI4NGJjNmE5MjIzM2M1Iiwib3B0aW9ucyI6ey"
-    }
-  }
+  "email": "eyi@gmail.com"
 }
 ```
 
-
----
-
-## Logout
-
-This endpoint is used to sign a user out of the application. The request can be made via either `GET` or `POST`.
-
-Endpoint : `/auth/logout`
-
-Request Type : `GET` or `POST`
-
-
-
-#### Sample Response
-
-_Content-type:_ `application/json`
-
-```json
+## Success Response
+```sh
 {
-  "code": 200,
-  "message": "string"
+  "status": 200,
+  "message": "Password reset code sent",
+  "data": null
 }
 ```
 
----
-## Confirm user password
-
-This endpoint is used to verify a user password.
-
-Endpoint : `/auth/confirm-password`
-
-Request Type : `POST`
-
-Request Body Schema: `application/json`
-
-Authorization : `cookieAuth` or `bearerAuth`
-
-
-#### Request Body Params
-
-Params | Required | Description
-------- | ------- | -------
-email | Yes | String 
-password | Yes | String
-
-#### Sample Request
-
-
-
-```json
-  { 
-
-    "email": "user@example.com",
-    "password": "pa$$word"
-
-  }
+## Error Response
+```sh
+{
+  "status": 400,
+  "message": "User not found, confirm and try again!"
+}
 ```
 
-#### Sample Response
+# Account - Verify User Acount
+POST `/account/verify-account`
 
-_Content-type:_ `application/json`
+Verify a user's account
 
-```json
+Request URL:` https://api.zuri.chat/account/verify-account`
+
+## Request Body
+
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+email | string | True | user's email
+password | string | True | user's password, hence no sharing
+
+## Sample Request
+```sh
+cURL
+
+curl -X POST "https://api.zuri.chat/auth/login"
+     -H "accept: application/json" 
+     -H "Content-Type: application/json" 
+     -d "{\"email\":\"hng.user01@gmail.com\",\"password\":\"password\"}"
+
+```
+
+```sh
+JSON 
+Content-Type: `application/json`
+
+{
+  "email": "hng.user01@gmail.com",
+  "password": "password"
+}
+```
+
+## Sample Response
+
+```sh
 {
   "code": 200,
   "message": "Password confirm successful"
 }
+
+```
+## Error Response
+```sh
+{
+  "status": 400,
+  "message": "bad request"
+}
 ```
 
----
-## Reset user password
-This endpoint is used to reset a user password.
+# Confirm User Password
 
-Endpoint : `/auth/request-reset-password`
+POST `/auth​/confirm-password`
 
-Request Type : `POST`
+Confirm a user's password. Requires `cookieAuth` or `bearerAuth` for authorization in the request header.
 
-Request Body Schema: `application/json`
+Request URL: `"https://api.zuri.chat/auth/confirm-password"`
 
-Authorization : `cookieAuth` or `bearerAuth`
+### Request Body
 
-
-#### Request Body Params
-
-Params | Required | Description
-------- | ------- | -------
-email | Yes | String 
-
-#### Sample Request
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+email | string | True | user's email
+password | string | True | user's password, hence no sharing
 
 
-```json
-  { 
+## Sample Request
+```sh
+cURL
+curl -X POST "https://api.zuri.chat/auth/confirm-password" 
+     -H "accept: application/json" 
+     -H "Content-Type: application/json" 
+     -d "{\"confirm_password\":\"string\",\"password\":\"string\"}"
+```
+```sh
+JSON
+Content-Type: `application/json`
+{
+  "confirm_password": "string",
+  "password": "string"
+}
+```
+## Sample Response
 
-    "email": "user@example.com",
+```sh
+{
+  "code": 200,
+  "data": null,
+  "message": "password confirm successful"
+}
 
-  }
 ```
 
-#### Response
+## Error Response
 
 
-```bash
-  Default If there are no errors, 
-  email for  password reset is sent to the submitted email, 
-  else the interger code error and string message is displayed.
+```sh
+{
+  "status": 400,
+  "message": ""
+}
 ```
 
 
+
+# Login
+
+POST `/auth/login`
+
+Use this endpoint to authenticate a user in the application
+
+Request URL: `https://api.zuri.chat/auth/login`
+
+## Request Body
+
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+email | string | True | user's email
+password | string | True | user's password, hence no sharing
+
+## Sample Request
+```sh
+cURL
+
+curl -X POST "https://api.zuri.chat/auth/login"
+     -H "accept: application/json" 
+     -H "Content-Type: application/json" 
+     -d "{\"email\":\"hng.user01@gmail.com\",\"password\":\"password\"}"
+
+```
+
+```sh
+JSON 
+Content-Type: `application/json`
+
+{
+  "email": "hng.user01@gmail.com",
+  "password": "password"
+}
+```
+
+
+## Sample Response
+
+```sh
+{
+  "code": 200,
+  "data": {
+    "session_id": "string",
+    "user": {
+      "created_at": "2021-09-06 03:54:37.387816",
+      "display_name": "samsoft",
+      "email": "hng.user01@gmail.com",
+      "first_name": "Johnson",
+      "id": "613590fd0366b6816a0b75ee",
+      "last_name": "Ajayi",
+      "phone": "09067324567",
+      "status": 0,
+      "time_zone": "string",
+      "token": "l6TVRneU9ESTBNSHhIZDNkQlIwUlplRTVFVFhwYWFsVXlXa1JCZVU5RVVtbFplbHBvVDFSSmVVMTZUbXBPVVQwOWZFQWpod01iU0E2d1FOUkczQlcwaUZDbHVqUnVOVXFFTHk4QUdGMGhMdkgzIiwiZW1haWwiOiJqYjEyQGdtYWlsLmNvbSIsImlkIjoiNjE0MzNmNTZkMDI4NGJjNmE5MjIzM2M1Iiwib3B0aW9ucyI6ey",
+      "update_at": "0001-01-01 00:00:00"
+    }
+  },
+  "message": "string"
+}
+
+```
+
+## Error Response
+
+```sh
+{
+  "status": 400,
+  "message": "User not found, confirm and try again"
+}
+```
+
+
+# Logout
+POST/GET `/auth/logout`
+
+Use this endpoint to logout a user. You can use either `POST` or `GET` method for your request.
+It does not require parameters.
+
+REQUEST URL: `https://api.zuri.chat/auth/logout`
+
+## Request Header
+Authorization: `cookieAuth` or `bearerAuth`
+
+## Sample Request
+
+```sh
+cURL
+
+curl -X POST "https://api.zuri.chat/auth/logout" -H "accept: application/json"
+```
+
+## Sample Response
+
+```sh
+{
+    "code": 200,
+    "message": "Logged out successfully"
+}
+```
+
+## Error Response
+```sh
+{
+  "status": 401,
+  "message": "unauthorized access"
+}
+```
+
+# Logout user from all sessions
+POST `/auth/logout/othersessions`
+
+Requires `cookieAuth` or `bearerAuth` for authorization to logout a user from all sessions
+
+Request URL: `"https://api.zuri.chat/auth/logout/othersessions"`
+
+## Request Header
+
+Authorization: `cookieAuth` or `bearerAuth`
+
+
+## Request Body
+
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+email | string | True | user's email
+
+##  Sample Request
+```sh
+cURL
+curl -X POST "https://api.zuri.chat/auth/logout/othersessions"
+     -H "accept: application/json" 
+     -H "Content-Type: application/json" 
+     -d "{\"email\":\"string\"}"
+```
+
+```sh
+JSON 
+Content-Type: `application/json`
+{
+  "email": "user@example.com"
+}
+```
+## Sample Response
+```sh
+
+{
+  "code": 200,
+  "message": "Logged out successfully"
+}
+```
+
+## Error Response
+
+```sh
+{
+    "status": "401",
+    "message" : "unauthorized access"
+}
+```
+
+# Reset User  Password
+
+POST  `/auth/request-reset-password`
+
+Requires `cookieAuth` or `bearerAuth` for authorization to reset a user's password.
+
+REQUEST URL: "https://api.zuri.chat/auth/request-reset-password"
+
+## Request Header
+
+Authorization: `cookieAuth` or `bearerAuth`
+
+## Request Body
+
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+email | string | True | user's email
+
+
+##  Sample Request
+```sh
+cURL
+
+curl -X POST "https://api.zuri.chat/auth/request-reset-password"
+     -H "accept: */*" 
+     -H "Content-Type: application/json" 
+     -d "user@example.com"
+```
+
+```sh
+JSON
+Content-Type: `application/json`
+
+{
+  "email": "user@example.com"
+}
+```
+
+## Sample Response
+
+```sh
+
+{
+  "code": 200,
+  "message": ""
+}
+```
+
+## Error response
+
+```sh
+{
+    "status": "401",
+    "message" : ""
+}
+```
+
+# Validate User before access is granted
+
+GET `/auth/verify-token`
+
+Requires `cookieAuth` or `bearerAuth` for authorization to verify a user before access is granted to other resources.
+
+REQUEST URL: `"https://api.zuri.chat/auth/verify-token"`
+
+## Request Header
+
+Authorization: `cookieAuth` or `bearerAuth`
+
+## Sample Request
+```sh
+curl -X GET "https://api.zuri.chat/auth/verify-token" -H "accept: application/json"
+```
+
+## Sample Response
+
+```sh
+{
+  "code": 200,
+  "data": {
+    "is_verified": true,
+    "user": {
+      "created_at": "2021-09-06 03:54:37.387816",
+      "display_name": "samsoft",
+      "email": "hng.user01@gmail.com",
+      "first_name": "Johnson",
+      "id": "613590fd0366b6816a0b75ee",
+      "last_name": "Ajayi",
+      "phone": "09067324567",
+      "status": 0,
+      "time_zone": "string",
+      "update_at": "0001-01-01 00:00:00"
+    }
+  },
+  "message": "string"
+}
+```
