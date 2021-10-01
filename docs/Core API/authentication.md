@@ -14,7 +14,6 @@ The Authentication API is a resource that provide endpoints to authenticate user
 - POST `/auth​/confirm-password`
 - POST `/auth/login`
 - POST `/auth/logout`
-- GET `/auth/logout`
 - POST `/auth/logout/othersessions`
 - POST  `/auth/request-reset-password`
 - GET `/auth/verify-token`
