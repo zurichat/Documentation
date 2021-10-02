@@ -8,11 +8,9 @@ title: Goals Plugin
 
 ## Description
 
-```bash
-title: Goal Plugin API
-description: This list all the apis for goal plugin.
-version: 0.0.1
-```
+list of goals plugin endpoints.
+
+#### version: 0.0.1
 
 ## Base URL
 
@@ -22,7 +20,7 @@ url: https://goals.zuri.chat/api/v1
 
 ## Authorization
 
-Take note, all api's endpoint in this plugin required you authenticated.
+Take note, all API's endpoint in this plugin required you authenticated.
 
 ## Sidebar Endpoint
 
@@ -30,7 +28,7 @@ Take note, all api's endpoint in this plugin required you authenticated.
 
 ### Description
 
-&nbsp; This endpoint return all the sidebar data for a paticular organization.
+This endpoint return all the sidebar data for a paticular organization.
 
 #### Parameters
 
@@ -383,7 +381,7 @@ curl -X 'POST' \
 
 This endpoint update a single goal.
 
-### Parameters
+#### Parameters
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
@@ -471,7 +469,7 @@ curl -X 'PUT' \
 
 This endpoint delete a single goal.
 
-### Parameters
+#### Parameters
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
