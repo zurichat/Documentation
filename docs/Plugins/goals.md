@@ -8,7 +8,7 @@ title: Goals Plugin
 
 ## Description
 
-This list all the apis for goal plugin.
+list of goals plugin endpoints.
 
 #### version: 0.0.1
 
@@ -20,7 +20,7 @@ url: https://goals.zuri.chat/api/v1
 
 ## Authorization
 
-Take note, all api's endpoint in this plugin required you authenticated.
+Take note, all API's endpoint in this plugin required you authenticated.
 
 ## Sidebar Endpoint
 
