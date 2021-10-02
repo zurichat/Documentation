@@ -4,11 +4,11 @@ sidebar_position: 4
 title: Data
 ---
 
-# Data
+##  Data
 
 Plugins and integrations with Zuri Chat is the way to go to empower users interaction in the application. With this resource, plugins can write, read, delete and update data into the database.
 
-# Endpoints
+## Endpoints
 
 - POST `/data/write`
 - PUT `/data/write/`
@@ -17,14 +17,14 @@ Plugins and integrations with Zuri Chat is the way to go to empower users intera
 - POST `/data/delete/`
 
 
-# Write Data
+## Write Data
 POST `/data/write`
 
 A plugin will add new data to the database. `organization_id`, `plugin_id`, `collection_name` must be included in the request. There are no parameters for this endpoint
 
 REQUEST URL: 
 
-## Request Body
+#### Request Body
 
 Name | Data Type | Required | Description
 ------- | ------- | ------- | -------
@@ -36,7 +36,7 @@ organization_ID | string | True | organization ID
 payload | object |True | contains `description` with the actual data to be inserted into the database
 plugin_ID | string | True | the Plugin ID
 
-## Sample Request
+#### Sample Request
 
 ```sh
 cURL 
@@ -66,7 +66,7 @@ Content-Type: `application/json`
 }
 ```
 
-## Sample Response
+#### Sample Response
 ```sh
 {
   "data": {
@@ -78,7 +78,7 @@ Content-Type: `application/json`
 }
 ```
 
-## Error Response
+#### Error Response
 
 You will get an error if one or more of the required fields is missing or incorrect.
 ```sh
@@ -88,7 +88,7 @@ You will get an error if one or more of the required fields is missing or incorr
     }
 ```
 
-# Update data
+## Update data
 
 PUT `/data/write/`
 
@@ -96,7 +96,7 @@ With this endpoint, you can update data as needed for a plugin in a collection i
 
 REQUEST URL:
 
-## Request Body
+#### Request Body
 
 Name | Data Type | Required | Description
 ------- | ------- | ------- | -------
@@ -108,7 +108,7 @@ organization_ID | string | True | the organization ID
 payload | object |True | contains `description` with the actual data to be inserted into the database
 plugin_ID | string | True | the Plugin ID
 
-## Sample Request
+#### Sample Request
 ```sh
 cURL 
 curl -X PUT "https://api.zuri.chat/data/write" 
@@ -137,7 +137,7 @@ Content-Type: `application/json`
 }
 ```
 
-## Sample Response
+#### Sample Response
 ```sh
 {
   "data": {
@@ -149,7 +149,7 @@ Content-Type: `application/json`
 }
 ```
 
-## Error Response
+#### Error Response
 
 You will get an error if one or more of the required fields is missing or incorrect.
 ```sh
@@ -159,7 +159,7 @@ You will get an error if one or more of the required fields is missing or incorr
     }
 ```
 
-# Read Data
+## Read Data
 
 POST `/data/read/`
 
@@ -167,7 +167,7 @@ Read data from the database. Returns the data object that includes the descripti
 
 REQUEST URL: `https://api.zuri.chat/data/read`
 
-## Request Body
+#### Request Body
 Name | Data Type | Required | Description
 ------- | ------- | ------- | -------
 collection_name | string | True | the name of the collection to insert data inside
@@ -176,7 +176,7 @@ object_id | string | False| ID of the inserted data
 organization_ID | string | True | the organization ID
 plugin_ID | string | True | the Plugin ID
 
-## Sample Request 
+##### Sample Request 
 
 ```sh
 cURL 
@@ -203,7 +203,7 @@ Content-Type: `application/json`
 }
 ```
 
-## Sample Response
+#### Sample Response
 ```sh
 {
   "data": [
@@ -214,7 +214,7 @@ Content-Type: `application/json`
 }
 ```
 
-## Error Response
+#### Error Response
 ```sh
  {
     "status":404,
@@ -222,7 +222,7 @@ Content-Type: `application/json`
 }
 ```
 
-# Read Data about a plugin
+## Read Data about a plugin
 
 GET `/data/read/{plugin_id}/{coll_name}/{org_id}`
 
@@ -230,7 +230,7 @@ Get information about a unique plugin from a collection in an organization
 
 REQUEST URL: `https://api.zuri.chat/data/{plugin_id}/{coll_name}/{org_id}`
 
-## Path Parameters
+#### Path Parameters
 
 Name | Data Type | Required | Description
 ------- | ------- | ------- | -------
@@ -238,13 +238,13 @@ Name | Data Type | Required | Description
 {coll_name} | string | True | name of the collection that the plugin belongs
 {org_id} | string | True | organization ID to which the plugin belongs
 
-## Sample Request
+#### Sample Request
 ```sh
 curl -X GET "https://api.zuri.chat/data/read/145/messages/5745" -H "accept: application/json"
 
 ```
 
-## Sample Response
+#### Sample Response
 ```sh
 {
   "data": [
@@ -255,7 +255,7 @@ curl -X GET "https://api.zuri.chat/data/read/145/messages/5745" -H "accept: appl
 }
 ```
 
-## Error Response
+#### Error Response
 ```sh
 { 
     "status":404,
@@ -263,7 +263,7 @@ curl -X GET "https://api.zuri.chat/data/read/145/messages/5745" -H "accept: appl
 }
 ```
 
-# Delete Data
+## Delete Data
 
 POST `/data/delete/`
 
@@ -273,7 +273,7 @@ There are no parameters for this endpoint.
 
 REQUEST URL:
 
-## Request Body
+#### Request Body
 
 Name | Data Type | Required | Description
 ------- | ------- | ------- | -------
@@ -285,7 +285,7 @@ organization_ID | string | True | organization ID
 payload | object |True | contains `description` with the actual data to be inserted into the database
 plugin_ID | string | True | the Plugin ID
 
-## Sample Request
+#### Sample Request
 
 ```sh
 cURL 
@@ -316,7 +316,7 @@ Content-Type: `application/json`
 ```
 
 
-## Sample Response
+#### Sample Response
 ```sh
 {
   "data": {
@@ -327,7 +327,7 @@ Content-Type: `application/json`
 }
 ```
 
-## Error Response
+#### Error Response
 
 You will get an error if one or more of the required fields is missing or incorrect.
 ```sh

@@ -4,37 +4,38 @@ sidebar_position: 6
 title: Plugin
 ---
 
-# Register plugin
-
-This endpoint allows you to register a new plugin.
 
 
-Request Type: `POST`
+## Register plugin
+POST `/plugins/register`
 
-Endpoint: `/plugins/register`
+This endpoint allows you to register a new plugin. You need to be authorized via `cookieAuth` or `bearerAuth` to make this request.
 
-## Request Headers
+REQUEST URL: https://api.zuri.chat/plugins/register
+
+#### Request Headers
     
 Content-Type: `application/json`
 
 Authorization: `cookieAuth` or `bearerAuth`
+ 
+#### Request Body
 
-    
-## Request Body Params
-Params| Description | Required
----------|----------|---------
- description | string | yes
-developer_email | string | yes
-developer_name | string | yes
-install_url | string | yes
-name | string | yes
-sidebar_url | string | yes
-template_url | string | yes
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+description | string | True | describe the new plugin
+developer_email | string | True | email of plugin developer 
+developer_name | string | True | name of plugin developer
+install_url | string | True | url to install the plugin
+name | string | True | name of the plugin
+sidebar_url | string | True | sidebar url
+template_url | string | True | template url
 
-
-## Sample request
+#### Sample request
 
 ```sh
+JSON
+Content-Type: applicaation/json
 {
   "description": "This is my plugin",
   "developer_email": "janedoe@mail.com",
@@ -46,20 +47,9 @@ template_url | string | yes
 }
 ```
 
-## Sample Response
-
-### **200** Plugin successfully registered
-
-```
-RESPONSE SCHEMA: application/json
-
-code required      integer <int32>
-message required   string 
-data required      object
-```
+#### Sample Response
 
 ```sh
-
 {
   "status": 200,
   "message": "success",
@@ -70,20 +60,19 @@ data required      object
 
 ```
 
-### **404** Bad Request 
-
+#### Error Response
 ```sh
 {
   "status": 400,
-  "message": ""
+  "message": "bad request"
 }
 ```
 
-# Tutorial - How to Register a Plugin
+## Tutorial - How to Register a Plugin
 
  To register a new plugin on Zuri Chat, you will pass in your parameters as JSON on the base url:  https://api.zuri.chat/plugins/register
 
-  ## POST Body
+  #### POST Body
 
   - You must set Content-type HTTP header to application/json
   - You must pass in your token as a `bearer` or `cookie` token in the `Authorization` HTTP Header
