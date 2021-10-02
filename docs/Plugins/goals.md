@@ -24,23 +24,21 @@ url: https://goals.zuri.chat/api/v1
 
 Take note, all api's endpoint in this plugin required you authenticated.
 
-<!-- Sidebar Endpoint start from here -->
-
 ## Sidebar Endpoint
 
 ---
 
-> ### Description
+### Description
 
 &nbsp; This endpoint return all the sidebar data for a paticular organization.
 
-> ### Parameters
+#### Parameters
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
 | `GET` | `/sidebar` | null | null | org | `application/json` |  |
 
-> ### Code Sample
+### Code Sample
 
 ```bash
 curl -X 'GET' \
@@ -50,7 +48,7 @@ curl -X 'GET' \
   -H 'Authorization: Bearer {KEY}' \
 ```
 
-> ### Sample Response
+### Sample Response
 
  **Code: 200**
 
@@ -113,25 +111,23 @@ curl -X 'GET' \
 }
 ```
 
-<!-- Goals Endpoint start from here -->
 
 ## Goals Endpoint
 
 ---
-<!-- Create goal endpoint -->
 
-> ### Create Goal
-> ### Description
+### Create Goal
+#### Description
 
-&nbsp; This endpoint Create a brand new goal.
+This endpoint Create a brand new goal.
 
-> ### Parameters
+#### Parameters
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
 | `POST` | `/goals` | ```{"category": "#backend","description": "test goal","start_date": "2020-10-02","due_date": "2020-10-02","goal_type": "annual", "goal_name": "public room"}``` | null | org_id | `application/json` | All the field in the body are **required** |
 
-> ### Code Sample
+### Code Sample
 
 ```bash
 curl -X 'POST' \
@@ -148,7 +144,7 @@ curl -X 'POST' \
 }'
 ```
 
-> ### Sample Response
+### Sample Response
 
  **Code: 200**
 
@@ -206,20 +202,19 @@ curl -X 'POST' \
   message: 'Internal server error'
 }
 ```
-<!-- Get all goals endpoint -->
 
-> ### Get all goal
-> ### Description
+### Get all goal
+### Description
 
-&nbsp; This endpoint get all the goals.
+This endpoint get all the goals.
 
-> ### Parameters
+#### Parameters
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
 | `GET` | `/goals` | null | null | **org_id**  **page**  **limit** | `application/json` | The only required field is **org_id**, **page** and **limit** fields are used to paginate all the goals returned. |
 
-> ### Code Sample
+### Code Sample
 
 ```bash
 curl -X 'POST' \
@@ -236,7 +231,7 @@ curl -X 'POST' \
 }'
 ```
 
-> ### Sample Response
+### Sample Response
 
  **Code: 200**
 
@@ -299,20 +294,19 @@ curl -X 'POST' \
 }
 ```
 
-<!-- Get a single goals endpoint -->
 
-> ### Get a goal
-> ### Description
+### Get a goal
+### Description
 
-&nbsp; This endpoint get a single goal.
+This endpoint get a single goal.
 
-> ### Parameters
+#### Parameters
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
 | `GET` | `/goals/single` | null | null | **org_id**  **room_id** | `application/json` | Both the **org_id** and **room_id** fields are required|
 
-> ### Code Sample
+### Code Sample
 
 ```bash
 curl -X 'POST' \
@@ -322,7 +316,7 @@ curl -X 'POST' \
 }'
 ```
 
-> ### Sample Response
+### Sample Response
 
  **Code: 200**
 
@@ -347,7 +341,7 @@ curl -X 'POST' \
 
 ```
 
- **Code: 400**
+**Code: 400**
 
 ```bash
 {
@@ -356,7 +350,7 @@ curl -X 'POST' \
 }
 ```
 
- **Code: 401**
+**Code: 401**
 
 ```bash
 {
@@ -365,7 +359,7 @@ curl -X 'POST' \
 }
 ```
 
- **Code: 404**
+**Code: 404**
 
 ```bash
 {
@@ -374,7 +368,7 @@ curl -X 'POST' \
 }
 ```
 
- **Code: 500**
+**Code: 500**
 
 ```bash
 {
@@ -383,20 +377,19 @@ curl -X 'POST' \
 }
 ```
 
-<!-- Update a single goals endpoint -->
 
-> ### Update a goal
-> ### Description
+### Update a goal
+### Description
 
-&nbsp; This endpoint update a single goal.
+This endpoint update a single goal.
 
-> ### Parameters
+### Parameters
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
 | `PUT` | `/goals/update` | null | null | **org_id**  **room_id** | `application/json` | Both the **org_id** and **room_id** fields are required|
 
-> ### Code Sample
+### Code Sample
 
 ```bash
 curl -X 'PUT' \
@@ -411,9 +404,9 @@ curl -X 'PUT' \
 }'
 ```
 
-> ### Sample Response
+### Sample Response
 
- **Code: 200**
+**Code: 200**
 
 ```bash
 {
@@ -436,7 +429,7 @@ curl -X 'PUT' \
 
 ```
 
- **Code: 400**
+**Code: 400**
 
 ```bash
 {
@@ -445,7 +438,7 @@ curl -X 'PUT' \
 }
 ```
 
- **Code: 401**
+**Code: 401**
 
 ```bash
 {
@@ -454,7 +447,7 @@ curl -X 'PUT' \
 }
 ```
 
- **Code: 404**
+**Code: 404**
 
 ```bash
 {
@@ -463,7 +456,7 @@ curl -X 'PUT' \
 }
 ```
 
- **Code: 500**
+**Code: 500**
 
 ```bash
 {
@@ -472,20 +465,19 @@ curl -X 'PUT' \
 }
 ```
 
-<!-- Delete a single goals endpoint -->
 
-> ### Delete a goal
-> ### Description
+### Delete a goal
+### Description
 
-&nbsp; This endpoint delete a single goal.
+This endpoint delete a single goal.
 
-> ### Parameters
+### Parameters
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
 | `DELETE` | `/goals/update` | null | null | **org_id**  **goal_id** | `application/json` | Both the **org_id** and **goal_id** fields are required|
 
-> ### Code Sample
+### Code Sample
 
 ```bash
 curl -X 'DELETE' \
@@ -495,9 +487,9 @@ curl -X 'DELETE' \
 }'
 ```
 
-> ### Sample Response
+### Sample Response
 
- **Code: 200**
+**Code: 200**
 
 ```bash
 {
@@ -520,7 +512,7 @@ curl -X 'DELETE' \
 
 ```
 
- **Code: 400**
+**Code: 400**
 
 ```bash
 {
@@ -529,7 +521,7 @@ curl -X 'DELETE' \
 }
 ```
 
- **Code: 401**
+**Code: 401**
 
 ```bash
 {
@@ -543,11 +535,11 @@ curl -X 'DELETE' \
 ```bash
 {
   status: 'fail',
-  message: 'Can not find the requested url on this server'
+  message: 'Can not find the requested url on this sevfrver'
 }
 ```
 
- **Code: 500**
+**Code: 500**
 
 ```bash
 {
@@ -556,25 +548,24 @@ curl -X 'DELETE' \
 }
 ```
 
-<!-- Mission Endpoint start from here -->
 
 ## Mission Endpoint
 
 ---
-<!-- Get a mission endpoint -->
 
-> ### Get a Mission
-> ### Description
 
-&nbsp; This endpoint get a mission.
+### Get a Mission
+### Description
 
-> ### Parameters
+This endpoint get a mission.
+
+#### Parameters
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
 | `GET` | `/mission` | null | organization_id | null | `application/json` | **organization_id** field is required |
 
-> ### Code Sample
+### Code Sample
 
 ```bash
 curl -X 'GET' \
@@ -583,9 +574,9 @@ curl -X 'GET' \
   -H 'Content-Type: application/json' \
 ```
 
-> ### Sample Response
+### Sample Response
 
- **Code: 200**
+**Code: 200**
 
 ```bash
 {
@@ -600,7 +591,7 @@ curl -X 'GET' \
 
 ```
 
- **Code: 400**
+**Code: 400**
 
 ```bash
 {
@@ -618,7 +609,7 @@ curl -X 'GET' \
 }
 ```
 
- **Code: 404**
+**Code: 404**
 
 ```bash
 {
@@ -627,7 +618,7 @@ curl -X 'GET' \
 }
 ```
 
- **Code: 500**
+**Code: 500**
 
 ```bash
 {
@@ -636,20 +627,19 @@ curl -X 'GET' \
 }
 ```
 
-<!-- Update a mission endpoint -->
 
-> ### Update a Mission
-> ### Description
+### Update a Mission
+### Description
 
-&nbsp; This endpoint update a mission.
+This endpoint update a mission.
 
-> ### Parameters
+#### Parameters
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
 | `PUT` | `/mission/update` | mission | organization_id | null | `application/json` | **organization_id** field is required |
 
-> ### Code Sample
+### Code Sample
 
 ```bash
 curl -X 'PUT' \
@@ -661,9 +651,9 @@ curl -X 'PUT' \
     }'
 ```
 
-> ### Sample Response
+### Sample Response
 
- **Code: 200**
+**Code: 200**
 
 ```bash
 {
@@ -678,7 +668,7 @@ curl -X 'PUT' \
 
 ```
 
- **Code: 400**
+**Code: 400**
 
 ```bash
 {
@@ -687,7 +677,7 @@ curl -X 'PUT' \
 }
 ```
 
- **Code: 401**
+**Code: 401**
 
 ```bash
 {
@@ -714,25 +704,25 @@ curl -X 'PUT' \
 }
 ```
 
-<!-- Vision Endpoint start from here -->
+
 
 ## Vision Endpoint
 
 ---
-<!-- Get a vission endpoint -->
 
-> ### Get a Vision
-> ### Description
 
-&nbsp; This endpoint get a vision.
+### Get a Vision
+#### Description
 
-> ### Parameters
+This endpoint get a vision.
+
+#### Parameters
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
 | `GET` | `/vision` | null | organization_id | null | `application/json` | **organization_id** field is required |
 
-> ### Code Sample
+### Code Sample
 
 ```bash
 curl -X 'GET' \
@@ -741,7 +731,7 @@ curl -X 'GET' \
   -H 'Content-Type: application/json' \
 ```
 
-> ### Sample Response
+### Sample Response
 
  **Code: 200**
 
@@ -796,18 +786,18 @@ curl -X 'GET' \
 
 <!-- Update a vision endpoint -->
 
-> ### Update a Vision
-> ### Description
+### Update a Vision
+### Description
 
-&nbsp; This endpoint update a vision.
+This endpoint update a vision.
 
-> ### Parameters
+#### Parameters
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
 | `PATCH` | `/vision` | vision | organization_id | null | `application/json` | **organization_id** field is required |
 
-> ### Code Sample
+### Code Sample
 
 ```bash
 curl -X 'PATCH' \
@@ -819,7 +809,7 @@ curl -X 'PATCH' \
     }'
 ```
 
-> ### Sample Response
+### Sample Response
 
  **Code: 200**
 
@@ -880,19 +870,18 @@ curl -X 'PATCH' \
 
 <!-- Get a notification endpoint -->
 
->
-> ### Get a Notification
-> ### Description
+### Get a Notification
+### Description
 
-&nbsp; This endpoint update all notifications for a specific user.
+This endpoint update all notifications for a specific user.
 
-> ### Parameters
+#### Parameters
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
 | `GET` | `/notifications` | null | null | org_id  user_id  | `application/json` | **org_id** and **user_id** fields are required |
 
-> ### Code Sample
+### Code Sample
 
 ```bash
 curl -X 'GET' \
@@ -901,7 +890,7 @@ curl -X 'GET' \
   -H 'Content-Type: application/json' \
 ```
 
-> ### Sample Response
+### Sample Response
 
  **Code: 200**
 
@@ -977,18 +966,18 @@ curl -X 'GET' \
 
 <!-- Update a notification endpoint -->
 
-> ### Update a Notification
-> ### Description
+### Update a Notification
+### Description
 
-&nbsp; This endpoint update a notification.
+This endpoint update a notification.
 
-> ### Parameters
+### Parameters
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
 | `PUT` | `/notifications` | isRead | null | org_id  user_id  notification_id | `application/json` | **org_id**, **user_id** and **notification_id** fields are required |
 
-> ### Code Sample
+### Code Sample
 
 ```bash
 curl -X 'PUT' \
@@ -1000,7 +989,7 @@ curl -X 'PUT' \
     }'
 ```
 
-> ### Sample Response
+### Sample Response
 
  **Code: 200**
 
@@ -1062,18 +1051,18 @@ curl -X 'PUT' \
 
 <!-- Get all notification endpoint -->
 
-> ### Update all Notification
-> ### Description
+### Update all Notification
+### Description
 
-&nbsp; This endpoint update all notifications for an organization.
+This endpoint update all notifications for an organization.
 
-> ### Parameters
+### Parameters
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
 | `GET` | `/notifications/all` | null | null | org_id  user_id | `application/json` | **org_id** and **user_id** fields are required |
 
-> ### Code Sample
+### Code Sample
 
 ```bash
 curl -X 'PUT' \
@@ -1085,7 +1074,7 @@ curl -X 'PUT' \
     }'
 ```
 
-> ### Sample Response
+### Sample Response
 
  **Code: 200**
 
@@ -1161,18 +1150,18 @@ curl -X 'PUT' \
 
 <!-- Delete notification endpoint -->
 
-> ### Delete a Notification
-> ### Description
+### Delete a Notification
+### Description
 
-&nbsp; This endpoint delete a notification.
+This endpoint delete a notification.
 
-> ### Parameters
+### Parameters
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
 | `DELETE` | `/notifications` | null | null | org_id  user_id  notification_id | `application/json` | **org_id**, **user_id** and **notification_id** fields are required |
 
-> ### Code Sample
+### Code Sample
 
 ```bash
 curl -X 'DELETE' \
@@ -1181,7 +1170,7 @@ curl -X 'DELETE' \
   -H 'Content-Type: application/json' \
 ```
 
-> ### Sample Response
+### Sample Response
 
  **Code: 200**
 
@@ -1243,22 +1232,23 @@ curl -X 'DELETE' \
 
 
 <!-- Create target api -->
+
 ## Target Endpoint
 
 
-> ### Create target endpoint
-> ### Description
+### Create target endpoint
+### Description
 
-You can call by organizationid and goalid. Please note that you&#39;ll need to have the ids prior and they are not by no means generated by this api
+You can call by organizationid and goalid. Please note that you will need to have the ids prior and they are not by no means generated by this api
 
-> ### Parameters
+### Parameters
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
 | `GET` | `/goals/target` | null | null | org_id  goal_id | `application/json` | **org_id** and **goal_id** are required |
 
 
-> ### Code Sample
+### Code Sample
 
 ```bash
 curl -X 'GET' \
@@ -1268,7 +1258,7 @@ curl -X 'GET' \
 }'
 ```
 
-> ### Sample Response
+### Sample Response
 
  **Code: 200**
 ```bash
