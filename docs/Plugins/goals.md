@@ -52,7 +52,7 @@ curl -X 'GET' \
 
 > ### Sample Response
 
-&nbsp;&nbsp; **Code: 200**
+ **Code: 200**
 
 ```bash
 {
@@ -77,7 +77,7 @@ curl -X 'GET' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 400**
+ **Code: 400**
 
 ```bash
 {
@@ -86,7 +86,7 @@ curl -X 'GET' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 401**
+ **Code: 401**
 
 ```bash
 {
@@ -95,7 +95,7 @@ curl -X 'GET' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 404**
+ **Code: 404**
 
 ```bash
 {
@@ -104,7 +104,7 @@ curl -X 'GET' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 500**
+ **Code: 500**
 
 ```bash
 {
@@ -150,7 +150,7 @@ curl -X 'POST' \
 
 > ### Sample Response
 
-&nbsp;&nbsp; **Code: 200**
+ **Code: 200**
 
 ```bash
 {
@@ -171,7 +171,7 @@ curl -X 'POST' \
 
 ```
 
-&nbsp;&nbsp; **Code: 400**
+ **Code: 400**
 
 ```bash
 {
@@ -180,7 +180,7 @@ curl -X 'POST' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 401**
+ **Code: 401**
 
 ```bash
 {
@@ -189,7 +189,7 @@ curl -X 'POST' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 404**
+ **Code: 404**
 
 ```bash
 {
@@ -198,7 +198,7 @@ curl -X 'POST' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 500**
+ **Code: 500**
 
 ```bash
 {
@@ -238,7 +238,7 @@ curl -X 'POST' \
 
 > ### Sample Response
 
-&nbsp;&nbsp; **Code: 200**
+ **Code: 200**
 
 ```bash
 {
@@ -263,7 +263,7 @@ curl -X 'POST' \
 
 ```
 
-&nbsp;&nbsp; **Code: 400**
+ **Code: 400**
 
 ```bash
 {
@@ -272,7 +272,7 @@ curl -X 'POST' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 401**
+ **Code: 401**
 
 ```bash
 {
@@ -281,7 +281,7 @@ curl -X 'POST' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 404**
+ **Code: 404**
 
 ```bash
 {
@@ -290,7 +290,7 @@ curl -X 'POST' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 500**
+ **Code: 500**
 
 ```bash
 {
@@ -324,7 +324,7 @@ curl -X 'POST' \
 
 > ### Sample Response
 
-&nbsp;&nbsp; **Code: 200**
+ **Code: 200**
 
 ```bash
 {
@@ -347,7 +347,7 @@ curl -X 'POST' \
 
 ```
 
-&nbsp;&nbsp; **Code: 400**
+ **Code: 400**
 
 ```bash
 {
@@ -356,7 +356,7 @@ curl -X 'POST' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 401**
+ **Code: 401**
 
 ```bash
 {
@@ -365,7 +365,7 @@ curl -X 'POST' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 404**
+ **Code: 404**
 
 ```bash
 {
@@ -374,7 +374,7 @@ curl -X 'POST' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 500**
+ **Code: 500**
 
 ```bash
 {
@@ -413,7 +413,7 @@ curl -X 'PUT' \
 
 > ### Sample Response
 
-&nbsp;&nbsp; **Code: 200**
+ **Code: 200**
 
 ```bash
 {
@@ -436,7 +436,7 @@ curl -X 'PUT' \
 
 ```
 
-&nbsp;&nbsp; **Code: 400**
+ **Code: 400**
 
 ```bash
 {
@@ -445,7 +445,7 @@ curl -X 'PUT' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 401**
+ **Code: 401**
 
 ```bash
 {
@@ -454,7 +454,7 @@ curl -X 'PUT' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 404**
+ **Code: 404**
 
 ```bash
 {
@@ -463,7 +463,7 @@ curl -X 'PUT' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 500**
+ **Code: 500**
 
 ```bash
 {
@@ -497,7 +497,7 @@ curl -X 'DELETE' \
 
 > ### Sample Response
 
-&nbsp;&nbsp; **Code: 200**
+ **Code: 200**
 
 ```bash
 {
@@ -520,7 +520,7 @@ curl -X 'DELETE' \
 
 ```
 
-&nbsp;&nbsp; **Code: 400**
+ **Code: 400**
 
 ```bash
 {
@@ -529,7 +529,7 @@ curl -X 'DELETE' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 401**
+ **Code: 401**
 
 ```bash
 {
@@ -538,7 +538,7 @@ curl -X 'DELETE' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 404**
+ **Code: 404**
 
 ```bash
 {
@@ -547,7 +547,7 @@ curl -X 'DELETE' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 500**
+ **Code: 500**
 
 ```bash
 {
@@ -585,7 +585,7 @@ curl -X 'GET' \
 
 > ### Sample Response
 
-&nbsp;&nbsp; **Code: 200**
+ **Code: 200**
 
 ```bash
 {
@@ -600,7 +600,7 @@ curl -X 'GET' \
 
 ```
 
-&nbsp;&nbsp; **Code: 400**
+ **Code: 400**
 
 ```bash
 {
@@ -609,7 +609,7 @@ curl -X 'GET' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 401**
+ **Code: 401**
 
 ```bash
 {
@@ -618,7 +618,7 @@ curl -X 'GET' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 404**
+ **Code: 404**
 
 ```bash
 {
@@ -627,7 +627,7 @@ curl -X 'GET' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 500**
+ **Code: 500**
 
 ```bash
 {
@@ -663,7 +663,7 @@ curl -X 'PUT' \
 
 > ### Sample Response
 
-&nbsp;&nbsp; **Code: 200**
+ **Code: 200**
 
 ```bash
 {
@@ -678,7 +678,7 @@ curl -X 'PUT' \
 
 ```
 
-&nbsp;&nbsp; **Code: 400**
+ **Code: 400**
 
 ```bash
 {
@@ -687,7 +687,7 @@ curl -X 'PUT' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 401**
+ **Code: 401**
 
 ```bash
 {
@@ -696,7 +696,7 @@ curl -X 'PUT' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 404**
+ **Code: 404**
 
 ```bash
 {
@@ -705,7 +705,7 @@ curl -X 'PUT' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 500**
+ **Code: 500**
 
 ```bash
 {
@@ -743,7 +743,7 @@ curl -X 'GET' \
 
 > ### Sample Response
 
-&nbsp;&nbsp; **Code: 200**
+ **Code: 200**
 
 ```bash
 {
@@ -758,7 +758,7 @@ curl -X 'GET' \
 
 ```
 
-&nbsp;&nbsp; **Code: 400**
+ **Code: 400**
 
 ```bash
 {
@@ -767,7 +767,7 @@ curl -X 'GET' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 401**
+**Code: 401**
 
 ```bash
 {
@@ -776,7 +776,7 @@ curl -X 'GET' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 404**
+ **Code: 404**
 
 ```bash
 {
@@ -785,7 +785,7 @@ curl -X 'GET' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 500**
+ **Code: 500**
 
 ```bash
 {
@@ -821,7 +821,7 @@ curl -X 'PATCH' \
 
 > ### Sample Response
 
-&nbsp;&nbsp; **Code: 200**
+ **Code: 200**
 
 ```bash
 {
@@ -836,7 +836,7 @@ curl -X 'PATCH' \
 
 ```
 
-&nbsp;&nbsp; **Code: 400**
+ **Code: 400**
 
 ```bash
 {
@@ -845,7 +845,7 @@ curl -X 'PATCH' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 401**
+ **Code: 401**
 
 ```bash
 {
@@ -854,7 +854,7 @@ curl -X 'PATCH' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 404**
+ **Code: 404**
 
 ```bash
 {
@@ -863,7 +863,7 @@ curl -X 'PATCH' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 500**
+ **Code: 500**
 
 ```bash
 {
@@ -890,7 +890,7 @@ curl -X 'PATCH' \
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
-| `GET` | `/notifications` | null | null | org_id <br> user_id <br> | `application/json` | **org_id** and **user_id** fields are required |
+| `GET` | `/notifications` | null | null | org_id  user_id  | `application/json` | **org_id** and **user_id** fields are required |
 
 > ### Code Sample
 
@@ -903,7 +903,7 @@ curl -X 'GET' \
 
 > ### Sample Response
 
-&nbsp;&nbsp; **Code: 200**
+ **Code: 200**
 
 ```bash
 {
@@ -939,7 +939,7 @@ curl -X 'GET' \
 
 ```
 
-&nbsp;&nbsp; **Code: 400**
+**Code: 400**
 
 ```bash
 {
@@ -948,7 +948,7 @@ curl -X 'GET' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 401**
+ **Code: 401**
 
 ```bash
 {
@@ -957,7 +957,7 @@ curl -X 'GET' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 404**
+ **Code: 404**
 
 ```bash
 {
@@ -966,7 +966,7 @@ curl -X 'GET' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 500**
+ **Code: 500**
 
 ```bash
 {
@@ -986,7 +986,7 @@ curl -X 'GET' \
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
-| `PUT` | `/notifications` | isRead | null | org_id <br> user_id <br> notification_id | `application/json` | **org_id**, **user_id** and **notification_id** fields are required |
+| `PUT` | `/notifications` | isRead | null | org_id  user_id  notification_id | `application/json` | **org_id**, **user_id** and **notification_id** fields are required |
 
 > ### Code Sample
 
@@ -1002,7 +1002,7 @@ curl -X 'PUT' \
 
 > ### Sample Response
 
-&nbsp;&nbsp; **Code: 200**
+ **Code: 200**
 
 ```bash
 {
@@ -1024,7 +1024,7 @@ curl -X 'PUT' \
 
 ```
 
-&nbsp;&nbsp; **Code: 400**
+ **Code: 400**
 
 ```bash
 {
@@ -1033,7 +1033,7 @@ curl -X 'PUT' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 401**
+ **Code: 401**
 
 ```bash
 {
@@ -1042,7 +1042,7 @@ curl -X 'PUT' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 404**
+ **Code: 404**
 
 ```bash
 {
@@ -1051,7 +1051,7 @@ curl -X 'PUT' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 500**
+ **Code: 500**
 
 ```bash
 {
@@ -1071,7 +1071,7 @@ curl -X 'PUT' \
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
-| `GET` | `/notifications/all` | null | null | org_id <br> user_id | `application/json` | **org_id** and **user_id** fields are required |
+| `GET` | `/notifications/all` | null | null | org_id  user_id | `application/json` | **org_id** and **user_id** fields are required |
 
 > ### Code Sample
 
@@ -1087,7 +1087,7 @@ curl -X 'PUT' \
 
 > ### Sample Response
 
-&nbsp;&nbsp; **Code: 200**
+ **Code: 200**
 
 ```bash
 {
@@ -1123,7 +1123,7 @@ curl -X 'PUT' \
 
 ```
 
-&nbsp;&nbsp; **Code: 400**
+ **Code: 400**
 
 ```bash
 {
@@ -1132,7 +1132,7 @@ curl -X 'PUT' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 401**
+ **Code: 401**
 
 ```bash
 {
@@ -1141,7 +1141,7 @@ curl -X 'PUT' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 404**
+ **Code: 404**
 
 ```bash
 {
@@ -1150,7 +1150,7 @@ curl -X 'PUT' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 500**
+ **Code: 500**
 
 ```bash
 {
@@ -1170,7 +1170,7 @@ curl -X 'PUT' \
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
-| `DELETE` | `/notifications` | null | null | org_id <br> user_id <br> notification_id | `application/json` | **org_id**, **user_id** and **notification_id** fields are required |
+| `DELETE` | `/notifications` | null | null | org_id  user_id  notification_id | `application/json` | **org_id**, **user_id** and **notification_id** fields are required |
 
 > ### Code Sample
 
@@ -1183,7 +1183,7 @@ curl -X 'DELETE' \
 
 > ### Sample Response
 
-&nbsp;&nbsp; **Code: 200**
+ **Code: 200**
 
 ```bash
 {
@@ -1205,7 +1205,7 @@ curl -X 'DELETE' \
 
 ```
 
-&nbsp;&nbsp; **Code: 400**
+ **Code: 400**
 
 ```bash
 {
@@ -1214,7 +1214,7 @@ curl -X 'DELETE' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 401**
+ **Code: 401**
 
 ```bash
 {
@@ -1223,7 +1223,7 @@ curl -X 'DELETE' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 404**
+ **Code: 404**
 
 ```bash
 {
@@ -1232,7 +1232,7 @@ curl -X 'DELETE' \
 }
 ```
 
-&nbsp;&nbsp; **Code: 500**
+ **Code: 500**
 
 ```bash
 {
@@ -1255,7 +1255,7 @@ You can call by organizationid and goalid. Please note that you&#39;ll need to h
 
 | Method | Endpoint| Body | Parameter | Query | Content Type | Description |
 |-|-|-|-|-|-|-|
-| `GET` | `/goals/target` | null | null | org_id <br> goal_id | `application/json` | **org_id** and **goal_id** are required |
+| `GET` | `/goals/target` | null | null | org_id  goal_id | `application/json` | **org_id** and **goal_id** are required |
 
 
 > ### Code Sample
@@ -1270,7 +1270,7 @@ curl -X 'GET' \
 
 > ### Sample Response
 
-&nbsp;&nbsp; **Code: 200**
+ **Code: 200**
 ```bash
 {
   message: 'success',
@@ -1296,7 +1296,7 @@ type: "numeric"
 }
 ```
 
-&nbsp;&nbsp; **Code: 400**
+ **Code: 400**
 ```bash
 {
   status: 'fail',
@@ -1305,7 +1305,7 @@ type: "numeric"
 }
 ```
 
-&nbsp;&nbsp; **Code: 401**
+ **Code: 401**
 
 ```bash
 {
@@ -1314,7 +1314,7 @@ type: "numeric"
 }
 ```
 
-&nbsp;&nbsp; **Code: 404**
+ **Code: 404**
 
 ```bash
 {
@@ -1323,7 +1323,7 @@ type: "numeric"
 }
 ```
 
-&nbsp;&nbsp; **Code: 500**
+ **Code: 500**
 
 ```bash
 {
