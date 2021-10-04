@@ -3,32 +3,19 @@ slug: /organizations/
 sidebar_position: 1
 title: Organization
 ---
-The Organization API gives access and control for Zuri workspace management.
+The Organization API gives access and control for Zuri workspace management. You can also add plugins to your workspace.
 
-## Using the organization resource
-
-The organization API has various endpoints listed below:
-
-HTTP VERB | RESOURCE ENDPOINT
-------- | -------
- GET | /organizations
- POST | /organizations
- GET | /organizations /`{organization_id}`
- DELETE | /organizations/`{organization_id}`
- PATCH | /organizations /`{organization_id}` /url
- PATCH | /organizations /`{organization_id}` /name
- PATCH | /organizations /`{organization_id}` /logo
- PUT | /organizations /`{organization_id}` /members /`{member_id}`
- DELETE | /organizations /`{organization_id}` /members /`{member_id}`
+## Endpoints
+- POST  `/organizations`
+- GET  `/organizations/{organization_id}`
+- GET `/organizations/url/{workspace_url}`
+- GET  `/organizations`
+- DELETE `organizations/{organization_id}`
+- PATCH /organizations /`{organization_id}` /url
+- PATCH /organizations /`{organization_id}` /name
+- PATCH /organizations /`{organization_id}` /logo
 
 
-Organization-Member Resource also has its endpoints listed below:
-
-HTTP VERB | RESOURCE ENDPOINT
-------- | -------
- GET | /organizations /`{organization_id}` /members
- POST | /organizations /`{organization_id}` /members
- 
 ## Authorization
 
  `cookieAuth` or `bearerAuth`
@@ -36,75 +23,37 @@ HTTP VERB | RESOURCE ENDPOINT
  [Refer to the Authentication Guide](https://docs.zuri.chat/authorization)
 
 ---
-## Retrieve organization
-
-This endpoint is used to fetch an organization using the Organization Id.
-
-Endpoint : `/organizations/{organization_id}`
-
-Request Type : `GET`
-
-#### Path Parameters
-
-Param | Required | Description
----------|----------|---------
- organization_id | yes | string
-
-#### Sample Request
-```bash
-  curl --location --request GET 'https://api.zuri.chat/organizations/6145d3ff285e4a1840207454' \
-  --header 'Content-Type: application/json' \
-  --header 'Authorization: Bearer {KEY}'
-```
-
-#### Sample Response
-
-```json
-    {
-      "status": 200,
-      "message": "organization retrieved successfully",
-      "data": {
-          "_id": "6145d3ff285e4a1840207454",
-          "name": "Zuri Chat",
-          "creator_email": "ejike@gmail.com",
-          "creator_id": "6145d358285e4a184020744f",
-          "plugins": null,
-          "admins": null,
-          "settings": null,
-          "logo_url": "",
-          "workspace_url": "zurichat-vbr2001.zurichat.com",
-          "created_at": "2021-09-18T11:56:47.441936316Z",
-          "updated_at": "0001-01-01T00:00:00Z"
-      }
-    }
-```
----
 
 ## Create organization
+POST `/organizations`
 
-This is a request endpoint that creates an organization or workspace. It requires the creators email which will need to be a valid email.
+This is a request endpoint that creates an organization or workspace. It requires the creator's email as a parameter.
 
-Endpoint : `/organizations`
+REQUEST URL: `https://api.zuri.chat/organizations`
 
-Request Type : `POST`
+#### Request Body
 
-#### Body Params
-
-Param | Required | Description
----------|----------|---------
- creator_email | yes | string
-
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+creator_email| string | True | creator's email for the organization. Must be a valid email.
 #### Sample Request
+```sh
+curl -X POST "https://api.zuri.chat/organizations"
+     -H "accept: application/json" 
+     -H "Content-Type: application/json" -d "{\"creator_email\":\"hng@email.com\"}"
+```
 
-```json
+```sh
+JSON
+Content-Type: application/json
 	{
-		"creator_email": "hng@test.com"
+		"creator_email": "hng@email.com"
 	}
 ```
 
 #### Sample Response
 
-```json
+```sh
     {
       "code": 201,
       "message": "string",
@@ -112,6 +61,14 @@ Param | Required | Description
         "InsertedID": "6137d69b21d3c78fc9a84bdf"
         }
     }
+```
+#### Error Response
+
+```sh
+{
+  "status": "400",
+  "message": "bad request"
+}
 ```
 
 import Tabs from '@theme/Tabs';
@@ -159,93 +116,74 @@ import TabItem from '@theme/TabItem';
 </Tabs>
 
 ---
-## Delete organization
 
-This endpoint allows you to delete an existing organization.
+## Get organization
+GET `/organizations/{organization_id}`
 
-Endpoint : `/organizations`
+Returns an organization identified by `organization_id` from the list of organizations. 
 
-Request Type : `POST`
-
-#### Body Params
-
-Param | Required | Description
----------|----------|---------
- organization_id | yes | string
-
-#### Sample Request
-
-```json
-	{
-		"organization_id": "6137d69b21d3c78fc9a84bdf"
-	}
-```
-
-#### Sample Response
-
-```json
-{
-"code": 200,
-"message": "resource deleted successfully",
-  
-}
-```
----
-
-## Update organization url
-Enables an authenticated organization owner to update the organization's url.
-
-Endpoint : `{organization_id}/url`
-
-Request Type : `PATCH`
-
-#### Path Params
-
-Param | Required | Description
----------|----------|---------
- organization_id | yes | string
-
-#### Body Params
-
-Param | Required | Description
----------|----------|---------
- url | yes | string
-
-#### Sample Request
-
-```json
-	{
-		"url": "https://hngworkspace.zuri.chat"
-	}
-```
-
-#### Sample Response
-
-```json
-{
-"code": 200,
-"message": "resource updated successfully"
-  
-}
-```
-
----
-## Retrieve organization by url
-
-This endpoint is used to retrieve an organization with the given `full` URL.
-
-Endpoint : `/organizations/url/{workspace_url}`
-
-Request Type : `GET`
+REQUEST URL: `https://api.zuri.chat/organizations/{organization_id}`
 
 #### Path Parameters
-
-Param | Required | Description
----------|----------|---------
- workspace_url | yes | string
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+{organization_id} | string | True | Organization ID
 
 #### Sample Request
 ```bash
+  curl --location --request GET 'https://api.zuri.chat/organizations/6145d3ff285e4a1840207454' \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer {KEY}'
+```
+
+#### Sample Response
+
+```sh
+    {
+      "status": 200,
+      "message": "organization retrieved successfully",
+      "data": {
+          "_id": "6145d3ff285e4a1840207454",
+          "name": "Zuri Chat",
+          "creator_email": "ejike@gmail.com",
+          "creator_id": "6145d358285e4a184020744f",
+          "plugins": null,
+          "admins": null,
+          "settings": null,
+          "logo_url": "",
+          "workspace_url": "zurichat-vbr2001.zurichat.com",
+          "created_at": "2021-09-18T11:56:47.441936316Z",
+          "updated_at": "0001-01-01T00:00:00Z"
+      }
+    }
+```
+
+#### Error Response
+
+```sh
+{
+  "status": "401",
+  "message": "unauthorized access"
+}
+```
+---
+
+## Get organization by url
+
+GET `/organizations/url/{workspace_url}`
+
+Returns an organization identified by `workspace_url` as a path parameter.
+
+REQUEST URL: `https://api.zuri.chat/organizations/url//{workspace_url}`
+
+#### Path Parameters
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+workspace_url | string | True | organzation url
+
+
+#### Sample Request
+```sh
   curl --location --request GET 'https://api.zuri.chat/organizations/url/zurichat-vbr2001.zurichat.com' \
   --header 'Content-Type: application/json' \
   --header 'Authorization: Bearer {KEY}'
@@ -253,7 +191,7 @@ Param | Required | Description
 
 #### Sample Response
 
-```json
+```sh
     {
         "status": 200,
         "message": "organization retrieved successfully",
@@ -272,21 +210,351 @@ Param | Required | Description
       }
     }
 ```
+#### Error Response
+```sh
+{
+  "status": "400",
+  "message": "bad request"
+}
+```
 ---
 
-## Fetch organization plugins
+## Get all organizations
+Returns a list of all the organizations.
 
-This endpoint returns a list of plugins from an organization including an empty array if there are no plugins.
+GET `/organizations`
 
-Endpoint : `organizations/{organization_id}/plugins`
+REQUEST URL: `https://api.zuri.chat/organizations`
 
-Request Type : `GET`
+#### Sample Request
+```sh
+curl -X GET "https://api.zuri.chat/organizations" 
+     -H "accept: application/json"
+```
+#### Sample Response
+```sh
+{
+  "code": 200,
+  "data": [
+    {
+      "_id": "6137d69b21d3c78fc9a84bdf",
+      "created_at": "2021-10-03",
+      "creator_email": "hng@email.com",
+      "creator_id": "6137d69b21d3c78fc9a84bdf",
+      "deleted_at": "2021-10-03",
+      "logo_url": "hng.zuri.chat",
+      "name": "HNG",
+      "organization_settings": {
+        "global_settings": {
+          "allow_only_admin_invite": true,
+          "allow_user_add_plugins": true
+        },
+        "plugin_settings": {
+          "chess_plugin": {
+            "allow_in_every_channel": false
+          }
+        }
+      }
+    }
+  ],
+  "message": "string"
+}
+```
+#### Error Response
+```sh
+{
+  "status": "401",
+  "message": "No Authorization or session expired."
+}
+```
+---
+
+## Delete organization
+DELETE `/organizations`
+
+This endpoint allows you to delete an existing organization.
+
+REQUEST URL: `https://api.zuri.chat/organizations`
+
+#### Request Body
+
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+ organization_id | string | True | organization ID
+
+#### Sample Request
+
+```sh
+curl -X DELETE "https://api.zuri.chat/organizations/6137d69b21d3c78fc9a84bdf" 
+     -H "accept: application/json"
+```
+
+```sh
+JSON
+Content-Type: application/json
+	{
+		"organization_id": "6137d69b21d3c78fc9a84bdf"
+	}
+```
+
+#### Sample Response
+
+```sh
+{
+"code": 200,
+"message": "resource deleted successfully",
+  
+}
+```
+#### Error Response
+
+```sh
+{
+  "status": "401",
+  "message": "No Authorization or session expired."
+}
+```
+---
+
+## Update organization url
+PATCH `{organization_id}/url`
+
+Update organization's url as the owner, authorized by `bearerToken`. Requires the `organization_id` as path parameter.
+
+REQUEST URL: `https://api.zuri.chat/{organization_id}/url`
+
 
 #### Path Parameters
 
-Param | Required | Description
----------|----------|---------
- organization_id | yes | string
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+ organization_id | string | True | organization ID
+
+#### Request Body
+
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+url | string | True | new url for the organization
+
+
+#### Sample Request
+```sh
+curl -X PATCH "https://api.zuri.chat/organizations/6137d69b21d3c78fc9a84bdf/url" 
+     -H "accept: application/json" 
+     -H "Content-Type: application/json" 
+     -d "{\"url\":\"https://hngworkspace.zuri.chat\"}"
+```
+
+```sh
+JSON
+Content-Type: application/json
+
+	{
+		"url": "https://hngworkspace.zuri.chat"
+	}
+```
+
+#### Sample Response
+
+```sh
+{
+"code": 200,
+"message": "resource updated successfully"
+  
+}
+```
+#### Error Response
+```sh
+{
+  "status": "401",
+  "message": "No Authorization or session expired."
+}
+```
+
+## Update organization name
+PATCH `organizations/{organization_id}/name`
+
+This endpoint allows you to update an organization's name.
+
+REQUEST URL: `https://api.zuri.chat/organizations/{organization_id}/name`
+
+#### Path Parameters
+
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+ organization_id | string | True | organization ID
+
+#### Request Body
+
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+organization_name | string | True | new name for the organization
+
+#### Sample Request
+```sh
+curl -X PATCH "https://api.zuri.chat/organizations/6137d69b21d3c78fc9a84bdf/name" 
+     -H "accept: application/json" 
+     -H "Content-Type: application/json" 
+     -d "{\"organization_name\":\"hngworkspace\"}"
+```
+
+```sh
+JSON
+Content-Type: application/json
+	{
+		"organization_name": "hngworkspace"
+	}
+```
+
+#### Sample Response
+
+```sh
+{
+  "code": 200,
+  "message": "resource updated successfully"
+}
+```
+#### Error Response
+```sh
+{
+  "status": "400",
+  "message": "bad request"
+}
+```
+
+---
+
+## Update organization logo
+
+PATCH `organizations/{organization_id}/logo`
+
+Update organization's logo.
+
+REQUEST URL: `https://api.zuri.chat/{organization_id}/logo`
+
+
+#### Path Parameters
+
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+ organization_id | string | True | organization ID
+
+#### Request Body
+
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+url | string | True | logo url
+
+#### Sample Request
+
+```sh
+curl -X PATCH "https://api.zuri.chat/organizations/6137d69b21d3c78fc9a84bdf/logo" 
+     -H "accept: application/json" 
+     -H "Content-Type: application/json" 
+     -d "{\"url\":\"https://image.storage/image.png\"}"
+```
+
+```sh
+JSON
+Content-Type: application/json
+	{
+		"url": "https://image.storage/image.png"
+	}
+```
+
+#### Sample Response
+
+```sh
+{
+  "code": "200",
+  "message": "resource updated successfully"
+}
+```
+
+#### Error Response
+```sh
+{
+  "status": "400",
+  "message": "bad request"
+}
+```
+---
+
+## Add plugin to organization
+
+POST  `organizations/{organization_id}/plugins`
+
+Installs (add) a plugin to an organization's workspace identified by `organization_id`.
+
+REQUEST URL: `https://api.zuri.chat/organizations/{organization_id}/plugins`
+
+
+#### Request Body
+
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+plugin_id | string | True | plugin ID
+user_id | string | True | This is the ID of the user adding a plugin to the organization
+
+
+#### Sample Request
+```sh
+cURL
+curl -X POST "https://api.zuri.chat/organizations/6137d69b21d3c78fc9a84bdf/plugins" 
+     -H "accept: application/json" 
+     -H "Content-Type: application/json" 
+     -d "{
+          \"plugin_id\":\"6137d69b21d3c78fc9a84bdf\",
+          \"user_id\":\"6137d69b21d3c78fc9a84bdf\"
+        }"
+```
+
+```sh
+JSON
+Content-Type: application/json
+	{
+    "plugin_id" : "23456784ert67",
+    "user_id" : "6145d358285e4a184020744f"
+	}
+```
+
+#### Sample Response
+
+```sh
+{
+  "code": 201,
+  "message": "string"
+  "data": {
+        "InsertedID": "6137d69b21d3c78fc9a84bdf"
+  } 
+}
+```
+
+#### Error Response
+```sh
+{
+  "status": "401",
+  "message": "No Authorization or session expired."
+}
+```
+---
+
+
+
+
+## Fetch organization plugins
+GET `organizations/{organization_id}/plugins`
+
+This endpoint returns a list of plugins from an organization including an empty array if there are no plugins.
+
+REQUEST URL: `https://api.zuri.chat/organizations/{organization_id}/plugins`
+
+#### Path Parameters
+
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+organization_id | string | True | organization ID
+
 
 #### Sample Request
 ```bash
@@ -297,7 +565,7 @@ Param | Required | Description
 
 #### Sample Response
 
-```json
+```sh
     {
       "status": 200,
       "message": "Plugins Retrived successfully",
@@ -305,121 +573,6 @@ Param | Required | Description
     }
 ```
 ---
-## Add plugin to organization
-
-Installs (add) a plugin to an organization's workspace.
-
-Endpoint : `organizations/{organization_id}/plugins`
-
-Request Type : `POST`
-
-#### Path Parameters
-
-Param | Required | Description
----------|----------|---------
- organization_id | yes | string
 
 
-#### Body Params
-
-Param | Required | Description
----------|----------|---------
- plugin_id | yes | string
- user_id | yes | This is the ID of the user adding a plugin to the organization.
-
-#### Sample Request
-
-```json
-	{
-      "plugin_id" : "23456784ert67",
-    "user_id" : "6145d358285e4a184020744f"
-	}
-```
-
-#### Sample Response
-
-```json
-{
-  "code": 201,
-  "message": "string"
-  "data": {
-        "InsertedID": "6137d69b21d3c78fc9a84bdf"
-  }
-  
-}
-```
----
-## Update organization name
-This endpoint enables you to add or change a verified organization's name.
-
-Endpoint : `organizations/{organization_id}/name`
-
-Request Type : `PATCH`
-
-#### Path Params
-
-Param | Required | Description
----------|----------|---------
- organization_id | yes | string
-
-#### Body Params
-
-Param | Required | Description
----------|----------|---------
- organization_name | yes | string
-
-#### Sample Request
-
-```json
-	{
-		"organization_name": "hngworkspace"
-	}
-```
-
-#### Sample Response
-
-```json
-{
-  "code": 200,
-  "message": "resource updated successfully"
-}
-```
----
-
-## Update organization logo
-
-This endpoint enables you to add or change a verified organization's logo.
-
-Endpoint : `organizations/{organization_id}/logo`
-
-Request Type : `PATCH`
-
-#### Path Params
-
-Param | Required | Description
----------|----------|---------
- organization_id | yes | string
-
-#### Body Params
-
-Param | Required | Description
----------|----------|---------
- url | yes | string
-
-#### Sample Request
-
-```json
-	{
-		"url": "https://image.storage/image.png"
-	}
-```
-
-#### Sample Response
-
-```json
-{
-  "code": 200,
-  "message": "resource updated successfully"
-}
-```
 
