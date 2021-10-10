@@ -1,3 +1,9 @@
+---
+slug: /noticeboard
+sidebar_position: 11
+title: Notice Board Plugin
+---
+
 # Zuri Chat NoticeBoard Plugin Resource 
 This resource contains several endpoints 
 
@@ -126,22 +132,3 @@ curl -X DELETE "{{baseUrl}}/v1/organisation/{{org_id}}/attachfile" -H  "accept: 
 | 204 | |
 | 404| File not found |
 |  |  |
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
