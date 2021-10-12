@@ -490,3 +490,139 @@ Response Examples:
     "message": "data not sent"
 }
 ```
+---
+## TODO  PLUGIN
+---
+**Base url:**
+```
+https://todo.zuri.chat/api/v1
+```
+# Create a Todo #
+This endpoint is used to create a todo
+|  |  |
+| ------ | ------ |
+| Request Type | ``` POST ``` |
+| Endpoint |  ``` /create-todo ``` |
+
+Body Params
+| Param	 | Required | Description |
+| ------ | ------ | ------ |
+| organisation_id |  yes | string |
+| title |  yes | string |
+| user_id |  yes | integer |
+| type |  yes | string |
+
+Sample Request
+```json
+
+      {
+            "organisation_id": "614679ee1a5607b13c00bcb7",
+            "title": "check",
+            "user_id": "123",
+            "type": "todo",
+            
+      }
+
+```
+Sample Response
+```json
+{
+    "status": "success",
+    "type": "Todo",
+    "data": {
+        "_id": "61548df27f0874785c51cb2b",
+        "organisation_id": "614679ee1a5607b13c00bcb7",
+        "title": "check",
+        "user_id": "123",
+        "type": "todo",
+        "channel": "61548df2d76d-check",
+        "tasks": [],
+        "labels": [],
+        "collaborators": [],
+        "created_at": "2021-09-29T16:01:54.882458Z"
+    }
+}
+```
+# Create a Task #
+This endpoint is commonly used to create a task 
+|  |  |
+| ------ | ------ |
+| Request Type | ``` POST ``` |
+| Endpoint |  ``` /add-task ``` |
+
+Body Params
+| Param	 | Required | Description |
+| ------ | ------ | ------ |
+| title |  yes | string |
+| status |  yes | string |
+| description |  no | string |
+Sample Request
+```json
+[
+      {
+            "description": "string",
+            "title": "string",
+            "status": "string"
+      }
+]
+```
+Sample Response
+```json
+[
+      {
+           "status": 200,
+            "message": "Task created",
+            "data": {
+              "_id": "6137a5af52efebbea2739c71"
+            }
+      }
+]
+```
+# Delete a Todo #
+This endpoint is commonly used to delete a todo
+|  |  |
+| ------ | ------ |
+| Request Type | ``` DELETE ``` |
+| Endpoint |  ``` /todo/{todo_id} ``` |
+
+Body Params
+| Param	 | Required | Description |
+| ------ | ------ | ------ |
+| user_id |  yes | string |
+Sample Response
+```json
+[
+      {
+           "status": 200,
+            "message": "Todo Deleted",
+            "data": {
+                "MatchedCount": 1,
+                "ModifiedCount": 1,
+            }
+      }
+]
+```
+# Delete a Task #
+This endpoint is commonly used to delete a task
+|  |  |
+| ------ | ------ |
+| Request Type | ``` DELETE ``` |
+| Endpoint |  ``` /task/{task_id} ``` |
+
+Body Params
+| Param	 | Required | Description |
+| ------ | ------ | ------ |
+| user_id |  yes | string |
+Sample Response
+```json
+[
+      {
+           "status": 200,
+            "message": "Todo Deleted",
+            "data": {
+                "MatchedCount": 1,
+                "ModifiedCount": 1,
+            }
+      }
+]
+```
