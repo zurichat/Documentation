@@ -1311,3 +1311,141 @@ curl -X 'DELETE' \
   message: 'Internal server error'
 }
 ```
+---
+# Sales Plugin 
+---
+```
+Base URL: https://sales.zuri.chat/api/v1/
+```
+## Add users to a room
+Method: Post  
+
+Description: Fetches data from the Zuri core API and adds a user to a room.
+
+Example:
+```
+https://sales.zuri.chat/api/v1/add-to-room/
+```
+
+Request body:
+```
+{
+user:"2345" 
+}
+```
+
+Response:
+```
+{
+  "user": 2345,
+  "room_name": "prospects"
+}
+```
+## Create Deals 
+Method: Post  
+
+Description: Fetches data from the Zuri core API to create a new deal for a prospect.
+
+Example:
+```
+https://sales.zuri.chat/api/v1/prospects/deals/
+```
+
+Request Body:
+```
+
+{
+  "_id": "123abc456def",
+  "name": "John Doe",
+  "deal_stage": "Prospect",
+  "amount": "$123456",
+  "close_date": "dd-mm-yyyy",
+  "description": "Deliver 10, 000 bags of cement"
+}
+```
+Response:
+
+```
+{
+  "status": 200,
+  "message": "success",
+  "data": {
+    "insert_count": 1,
+    "object_id": "614e8de3f31a74e068e4d7fc"
+  }
+}
+```
+## Create Prospects
+
+Method: Post  
+
+Description: Fetches data from the Zuri core API and creates a new prospect.
+
+Example:
+```
+https://sales.zuri.chat/api/v1/prospects/create/
+```
+
+Request Body:
+```
+{
+  "name": "John Doe",
+  "email": "example@mail.com",
+  "phone_number": "+2348012345678",
+  "deal_stage": "proposal"
+}
+```
+Response:
+
+```
+{
+  "status": 200,
+  "message": "success",
+  "data": {
+    "insert_count": 1,
+    "object_id": "614e8de3f31a74e068e4d7fc"
+  }
+}
+```
+## Delete a Particular Deal
+Method: Delete  
+
+Description: Deletes a particular deal from the Zuri Core API.
+
+Example:
+```
+https://sales.zuri.chat/api/v1/deals/delete/{id/}
+```
+
+Response
+```
+{
+  "status": 200,
+  "message": "success",
+  "data": {
+    "deleted_count": 1
+  }
+}
+```
+
+## Delete a Particular Prospect
+Method: Delete  
+
+Description: Deletes a particular prospect from the Zuri Core API.
+
+Example:
+```
+https://sales.zuri.chat/api/v1/prospects/delete/{id/}
+```
+
+Response:
+```
+{
+  "status": 200,
+  "message": "success",
+  "data": {
+    "deleted_count": 1
+  }
+}
+```
+
