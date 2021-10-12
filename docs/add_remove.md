@@ -828,3 +828,67 @@ data required      object
     "message": "member not found"
 }
 ```
+
+---
+
+# NoticeBoard Plugin Resource 
+```
+Base URL: noticeboard.zuri.chat/api/
+```
+
+**POST**
+
+**Summary**
+Adds a new file to that organisation.  
+
+**Description** 
+```
+curl -X POST "{{baseUrl}}/v1/organisation/{{org_id}}/attachfile" -H  "accept: application/json"
+```
+
+**Parameters**
+
+|  |  |  |  |  |
+| ----------- | ----------- | ----------- | ----------- | ----------- | 
+| Name | Located in | Description | Required | Schema  |
+| org_id | path	|  | Yes | string |
+|  |  |  |  |  |
+
+**Responses**
+
+|  |  | 
+| ----------- | ----------- |
+| code | Description |
+| 200 | No file attached |
+| 201 | |
+|  |  |
+
+
+
+**DELETE**
+
+**Summary**
+Delete an attached file from an organisation
+
+**Description**
+```
+curl -X DELETE "{{baseUrl}}/v1/organisation/{{org_id}}/attachfile" -H  "accept: application/json"
+```
+
+
+**Parameters**
+
+|  |  |  |  |  |
+| ----------- | ----------- | ----------- | ----------- | ----------- | 
+| Name | Located in | Description | Required | Schema  |
+| org_id | path	|  | Yes | string |
+|  |  |  |  |  |
+
+**Responses**
+
+|  |  | 
+| ----------- | ----------- |
+| code | Description |
+| 204 | |
+| 404| File not found |
+|  |  |
