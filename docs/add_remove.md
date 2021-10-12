@@ -1,4 +1,4 @@
-### Add/Remove Endpoints For All Plugin
+### Add/Remove Endpoints For All Plugins
 
 ## Brief
 Contains all the add/remove endpoints for plugins
@@ -7,7 +7,9 @@ These are REST APIs written in various programming languages.
 
 Each endpoint is triggered using HTTP verbs and accepts or returns a JSON formatted payload
 
+---
 ## DM CHAT  PLUGIN
+---
 **Base url:**
 ```
 https://dm.zuri.chat/
