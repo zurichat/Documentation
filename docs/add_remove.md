@@ -178,7 +178,253 @@ curl -X DELETE "https://api.zuri.chat/organizations/6137d69b21d3c78fc9a84bdf/mem
 		"message": "resource updated successfully",
 	}
 ```
+## DATA
+## Write Data
+POST `/data/write`
 
+A plugin will add new data to the database. `organization_id`, `plugin_id`, `collection_name` must be included in the request. There are no parameters for this endpoint
+
+REQUEST URL: 
+
+#### Request Body
+
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+bulk_write | boolean | False | the value indicates whether many documents will be written or not
+collection_name | string | True | the name of the collection to insert data inside
+filter | object| False | query to be matched
+object_id | string | False| ID of the inserted data
+organization_ID | string | True | organization ID
+payload | object |True | contains `description` with the actual data to be inserted into the database
+plugin_ID | string | True | the Plugin ID
+
+#### Sample Request
+
+```sh
+cURL 
+curl -X PUT "https://api.zuri.chat/data/write" 
+     -H "accept: application/json" 
+     -H "Content-Type: application/json" 
+     -d "{\"bulk_write\":true,
+         \"collection_name\":\"mycollection\",
+         \"filter\":{},
+         \"object_id\":\"string\",
+         \"organization_id\":\"string\",
+         \"payload\":{},
+         \"plugin_id\":\"string\"}"
+```
+
+```sh
+JSON 
+Content-Type: `application/json`
+{
+ "plugin_id": "xxx",
+ "organization_id": "xxx",
+ "collection_name": "mycollection",
+ "bulk_write": false,
+ "object_id": "xxxx",
+ "filter": {},
+ "payload": {}
+}
+```
+
+#### Sample Response
+```sh
+{
+  "data": {
+    "insert_count": 0,
+    "object_id": "string"
+  },
+  "message": "data inserted successfully",
+  "status": "201"
+}
+```
+
+#### Error Response
+
+You will get an error if one or more of the required fields is missing or incorrect.
+```sh
+{
+    "status":404,
+    "message":"plugin with this id does not exist"
+    }
+```
+## Delete Data
+
+POST `/data/delete/`
+
+Remove data about a plugin from the database. The bulk_delete and filter properties are used to delete multiple records. filter will contain the query to be matched and bulk_delete must be set to true to use this filter property.
+
+There are no parameters for this endpoint.
+
+REQUEST URL:
+
+#### Request Body
+
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+bulk_delete | boolean | False | the value indicates whether many documents will be deleted or not
+collection_name | string | True | the name of the collection to insert data inside
+filter | object| False | query to be matched
+object_id | string | False| ID of the inserted data
+organization_ID | string | True | organization ID
+payload | object |True | contains `description` with the actual data to be inserted into the database
+plugin_ID | string | True | the Plugin ID
+
+#### Sample Request
+
+```sh
+cURL 
+curl -X PUT "https://api.zuri.chat/data/write" 
+     -H "accept: application/json" 
+     -H "Content-Type: application/json" 
+     -d "{\"bulk_delete\":false,
+         \"collection_name\":\"mycollection\",
+         \"filter\":{},
+         \"object_id\":\"string\",
+         \"organization_id\":\"string\",
+         \"payload\":{},
+         \"plugin_id\":\"string\"}"
+```
+
+```sh
+JSON 
+Content-Type: `application/json`
+{
+ "plugin_id": "xxx",
+ "organization_id": "xxx",
+ "collection_name": "mycollection",
+ "bulk_delete": false,
+ "object_id": "xxxx",
+ "filter": {},
+ "payload": {}
+}
+```
+
+
+#### Sample Response
+```sh
+{
+  "data": {
+    "deleted_count": "0"
+  },
+  "message": "data deleted successfully",
+  "status": "200"
+}
+```
+
+#### Error Response
+
+You will get an error if one or more of the required fields is missing or incorrect.
+```sh
+{
+    "status":404,
+    "message":"not found"
+}
+```
+## USERS
+## Create a new user
+POST `/users`
+
+Create a new user account. Accepts a request with a body of email, etc. Returns the user ID.
+
+REQUEST URL: https://api.zuri.chat/users
+
+#### Body Request
+
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+first_name       |  string | True  | user's first name
+| last_name      | string   | True | user's last name
+| phone_number   | string   | True | user's phone number
+| password       | string   | True | password; no sharing
+| email          | string   | True | user's email
+| email_verified | boolean  | False | checks if user's email is verified. Default:`false`
+
+#### Sample Request
+```sh
+curl -X POST "https://api.zuri.chat/users" 
+     -H "accept: application/json" 
+	 -H "Content-Type: application/json" 
+	 -d "{\
+	    	"email\":\"ape@gmail.com\",
+			\"email_verified\":false,
+			\"first_name\":\"ape\",
+			\"last_name\":\"animal\",
+			\"password\":\"Apeanimal\",
+			\"phone_number\":\"09011223456\"
+		}"
+```
+
+```sh
+JSON
+Content-Type: application/json
+{
+  "email": "ape@gmail.com",
+  "email_verified": false,
+  "first_name": "ape",
+  "last_name": "animal",
+  "password": "Apeanimal",
+  "phone_number": "09011223456"
+}
+```
+
+#### Sample Response
+```sh
+{
+  "status": 200,
+  "message": "user created",
+  "data": {
+    "user_id": "615840f887540d8d01ffc88d",
+    "verification_code": "602569"
+  }
+}
+```
+
+#### Error Response
+```sh
+{
+  "message": "bad request",
+  "status": "400"
+}
+```
+## Deactivate user
+DELETE  `/users/{user_id}`
+This endpoint allows you deactivate a user account.
+
+REQUEST URL: https://api.zuri.chat/users/{user_id}
+
+#### Request Headers
+
+Authorization:  `bearerAuth`
+
+
+#### Path Parameters
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+{user_id} | string | True | User ID
+
+#### Sample Request
+```sh
+curl -X DELETE "https://api.zuri.chat/users/32wdf" -H "accept: application/json"
+```
+
+#### Sample Response
+
+```sh
+	{
+		"status": 200,
+		"message": "user deleted successfully",
+		"data": null
+	}
+```
+
+#### Error Response
+```sh
+{
+  "status": 401,
+  "message": "No Authorization or session expired."
+}
 ---
 ## Zuri App
 ---
