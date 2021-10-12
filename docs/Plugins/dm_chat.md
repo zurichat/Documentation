@@ -1344,3 +1344,111 @@ Response Examples:
     "message": "Unauthorized Access"
 }
 ```
+
+
+## Add User to a Room
+
+**Method: PUT**
+
+``Description: It adds a user to a dm room``
+
+**Parameters Needed**
+- Valid organisation id
+- Valid room id
+- Member id
+
+URL:
+```
+https://dm.zuri.chat/api/v1/org/<str:org_id>/rooms/<str:room_id>/add-member/<str:member_id>
+```
+Response Examples:
+
+*Success; returns the status `200`, success message and the count of data matched and modified(room_user_ids)*
+```
+{
+    "status": 200,
+    "messages": "success",
+    "matching document": 1,
+    "modified documemt": 1
+}
+```
+
+*If there is no room or a wrong room*
+```
+{
+    status": 404,
+    "message": "No Room / Invalid Room"
+}
+```
+
+*If same user has been in same room before*
+
+```
+{
+    "status": 406,
+    "message": "Not Acceptable, You can't join a room twice"
+}
+```
+
+
+*Request Error; if a wrong method was used*
+```
+{
+    "status": 405,
+    "message": "Method Not Allowed"
+}
+```
+
+
+## Remove User to a Room
+
+**Method: PUT**
+
+``Description: It removes a user from a dm room``
+
+**Parameters Needed**
+- Valid organisation id
+- Valid room id
+- Member id
+
+URL:
+```
+https://dm.zuri.chat/api/v1/org/<str:org_id>/rooms/<str:room_id>/add-member/<str:member_id>
+```
+Response Examples:
+
+*Success; returns the status `200`, success message and the count of data matched and modified(room_user_ids)*
+```
+{
+    "status": 200,
+    "messages": "success",
+    "matching document": 1,
+    "modified documemt": 1
+}
+```
+
+*If there is no room or a wrong room*
+```
+{
+    status": 404,
+    "message": "No Room / Invalid Room"
+}
+```
+
+*If user is not in the room before*
+
+```
+{
+    "status": 401,
+    "message": "You are not authorised"
+}
+```
+
+
+*Request Error; if a wrong method was used*
+```
+{
+    "status": 405,
+    "message": "Method Not Allowed"
+}
+```
