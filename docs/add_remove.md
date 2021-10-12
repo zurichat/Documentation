@@ -626,3 +626,205 @@ Sample Response
       }
 ]
 ```
+
+---
+## CHANNELS
+---
+**Base url:**
+```
+channels.zuri.chat
+```
+# Create a Channel
+
+ POST /v1/{org_id}/channels/
+
+ This endpoint allows you to create a channel for an organization
+
+Request Type: `POST`
+
+
+Endpoint: `{baseUrl}/v1/{org_id}/channels/`
+
+## Path Parameters
+
+Params| Description | Required
+---------|----------|---------
+ org_id | string | yes
+
+## Request Headers
+    
+Content-Type: `application/json`
+    
+Authorization: `Basic Auth credentials`
+
+## Sample request
+
+How to create a channel
+
+### Request Body Params
+
+Params| Description | Required
+---------|----------|---------
+name | string | yes
+owner| string | yes
+description | string | -
+private| boolean | -
+
+Content-Type: `application/json`
+
+```sh
+{ 
+"name" : "string",
+"owner": "string",
+"description": "string",
+"private": "boolean"
+}
+```
+
+## Sample Response
+
+### **201** Success 
+
+
+
+```
+RESPONSE SCHEMA: application/json
+
+code required      integer <int32>
+message required   string 
+data required      object
+```
+
+```sh
+{ 
+
+"_id": "string",
+"name": "string",
+"description": "string",
+"private" : "boolean",
+"archived": "boolean"
+}
+```
+
+### **404** Not Found 
+
+
+
+```sh
+{
+    "message": "not found",
+    "status": "404"
+}
+```
+# Delete a channel
+
+DELETE /v1/{org_id}/channels/{channel_id}/
+
+This endpoint allows you to delete a channel
+
+Request Type: `GET`
+
+
+Endpoint: `{baseUrl}/v1/{org_id}/channels/{channel_id}/`
+
+## Path Parameters
+
+Params| Description | Required
+---------|----------|---------
+ org_id | string | yes
+ channel_id| string | yes
+
+
+## Request Headers
+    
+Content-Type: `application/json`
+    
+Authorization: `Basic Auth credentials`
+
+ 
+## Sample Response
+
+### **204** Success 
+
+
+
+```
+RESPONSE SCHEMA: application/json
+
+code required      integer <int32>
+message required   string 
+data required      object
+```
+
+```sh
+{
+    "status": "204",
+    "message": "channel deleted"
+}
+```
+
+### **404** Not Found 
+
+
+
+```sh
+{
+    "status": "404",
+    "message": "member not found"
+}
+```
+# Delete a Member from a Channel
+
+ DELETE /v1/{org_id}/channels/{channel_id}/members/{member_id}] 
+
+This endpoint allows you to delete a member from a channel
+
+Request Type: `DELETE`
+
+
+Endpoint: `{baseUrl}/v1/{org_id}/channels/{channel_id}/members/{member_id}`
+
+
+## Path Parameters
+
+Params| Description | Required
+---------|----------|---------
+ org_id | string | yes
+ channel_id| string | yes
+ member_id | string | yes
+
+## Request Headers
+    
+Content-Type: `application/json`
+    
+Authorization: `Basic Auth credentials`
+
+ 
+## Sample Response
+
+### **204** Success 
+
+```
+RESPONSE SCHEMA: application/json
+
+code required      integer <int32>
+message required   string 
+data required      object
+```
+
+```sh
+{
+    "status": "204",
+    "message": "member removed from the channel"
+}
+```
+
+### **404** Not Found 
+
+
+```sh
+{
+    "status": "404",
+    "message": "member not found"
+}
+```
