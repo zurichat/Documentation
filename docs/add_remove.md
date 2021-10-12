@@ -12,10 +12,6 @@ Each endpoint is triggered using HTTP verbs and accepts or returns a JSON format
 ```
 https://dm.zuri.chat/
 ```
-
-
-## ENDPOINTS
-
 ## Create Room
 
 **Method: POST**
@@ -69,12 +65,6 @@ Response Example:
     "message": Bad Request
 }
 ```
-
-
-
----
-## Direct Messaging Endpoints
----
 ## Send Message
 
 **Method: POST**
@@ -266,87 +256,6 @@ Response Examples:
 ```
 
 
-## Update Thread Messages
-
-**Method: PUT**
-
-`Description: Edits a thread message in a room`
-
-URL:
-```
-https://dm.zuri.chat/api/v1/org/{org_id}/rooms/{room_id}/messages/{message_id}/threads/{message_uuid}
-```
-
-Request Body:
-```
-{
-    "sender_id": "61467e13c00bcc181a5607b1",
-    "message_id": "6155a0e7f365e1a927a1ecab",
-    "message": "thread message edit"
-}
-```
-
-Response Examples:
-
-*Thread message edit response*
-```
-{
-    "status": 201,
-    "event": "thread_message_update",
-    "thread_id": "61fe0dc8-2205-11ec-9853-2ff0a732e3ef",
-    "room_id": "614e1606f31ae4d2e274e068",
-    "message_id": "614e1606f374e061ae4d2e28",
-    "thread": True,
-    "data": {
-        "sender_id": "61467e181a50bcc1607b13c0",
-        "message": "thread message edit",
-        "created_at": "2021-09-30T15:41:45.685000Z",
-    },
-    "edited": True,
-}
-```
-
-*Request Error*
-```
-{
-    "status": 400,
-    "message": Bad Request
-}
-```
-
-*Error response; if Id invalid*
-```
-{
-    "status": 400,
-    "message": "Sender_id or message_id invalid"
-}
-```
-
-*Error response; if room, message or thread does not exist*
-```
-{
-    "status": 404,
-    "message": "room, message or thread message not found"
-}
-```
-
-*Error response; if thread message was not updated*
-```
-{
-    "status": 424,
-    "message": "message not updated"
-}
-```
-
-*Error response; if centrifugo connection fails*
-```
-{
-    "status": 424,
-    "message": "centrifugo server not available"
-}
-```
-
-
 ## Delete Message
 
 **Method: DELETE**
@@ -443,11 +352,6 @@ Response Examples:
     "message": "data not sent"
 }
 ```
-
-
-## Bookmarks and Links
----
-
 ## Save Bookmarks
 
 **Method: POST**
@@ -584,7 +488,3 @@ Response Examples:
     "message": "data not sent"
 }
 ```
-
----
-## Members
----
