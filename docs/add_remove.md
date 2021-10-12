@@ -1136,3 +1136,178 @@ This return a json formatted response payload to the client browser display in a
 ```
 
 - message : "Unable to delete game"
+
+---
+# Goals Plugin 
+---
+```
+Base URL: https://goals.zuri.chat/api/v1
+```
+
+### Create Goal
+#### Description
+
+This endpoint Create a brand new goal.
+
+#### Parameters
+
+| Method | Endpoint| Body | Parameter | Query | Content Type | Description |
+|-|-|-|-|-|-|-|
+| `POST` | `/goals` | ```{"category": "#backend","description": "test goal","start_date": "2020-10-02","due_date": "2020-10-02","goal_type": "annual", "goal_name": "public room"}``` | null | org_id | `application/json` | All the field in the body are **required** |
+
+### Code Sample
+
+```bash
+curl -X 'POST' \
+  'https://goals.zuri.chat/api/v1/goals?org_id=6145d099285e4a184020742e' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "category": "#backend",
+  "description": "test goal",
+  "start_date": "2020-10-02",
+  "due_date": "2020-10-02",
+  "goal_type": "annual",
+  "goal_name": "public room"
+}'
+```
+
+### Sample Response
+
+ **Code: 200**
+
+```bash
+{
+  message: "success",
+  status: 200,
+  data: {
+    room_id: "8d9273ef-76c7-4a6d-a4b5-d8e4fad2e60f",
+    isComplete: false,
+    isExpired: false,
+    category: "#backend",
+    description: "test goal",
+    start_date: "2020-10-02",
+    due_date: "2020-10-02",
+    goal_type: "annual",
+    goal_name: "public room"
+  }
+}
+
+```
+
+ **Code: 400**
+
+```bash
+{
+  status: 'fail',
+  message: 'Goal with the title: "public room" and  category: "#backend" already exists on your organization'
+}
+```
+
+ **Code: 401**
+
+```bash
+{
+  status: 'fail',
+  message: 'Unauthorized'
+}
+```
+
+ **Code: 404**
+
+```bash
+{
+  status: 'fail',
+  message: 'Can not find the requested url on this server'
+}
+```
+
+ **Code: 500**
+
+```bash
+{
+  status: 'error',
+  message: 'Internal server error'
+}
+```
+### Delete a goal
+### Description
+
+This endpoint delete a single goal.
+
+#### Parameters
+
+| Method | Endpoint| Body | Parameter | Query | Content Type | Description |
+|-|-|-|-|-|-|-|
+| `DELETE` | `/goals/update` | null | null | **org_id**  **goal_id** | `application/json` | Both the **org_id** and **goal_id** fields are required|
+
+### Code Sample
+
+```bash
+curl -X 'DELETE' \
+  'https://goals.zuri.chat/api/v1/goals?org_id=6145d099285e4a184020742e&goal_id=613fa4a56173056af01b4b26' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+}'
+```
+
+### Sample Response
+
+**Code: 200**
+
+```bash
+{
+  message: "success",
+  status: 200,
+  data: {
+    _id: "613ddbd3e4010959c8dc0c5e",
+    category: "#backend",
+    createdBy: "Depeju",
+    description: "test goal",
+    start_date: "2020-10-02",
+    due_date: "2020-10-02",
+    goal_type: "annual",
+    goal_name: "public room",
+    isComplete: true,
+    isExpired: true,
+    room_id: "b66e5fe5-2c66-413c-b2fc-a38d6ab76330"
+  }
+}
+
+```
+
+**Code: 400**
+
+```bash
+{
+  status: 'fail',
+  message: 'There is no goal of this id attached to this organization id that was found.'
+}
+```
+
+**Code: 401**
+
+```bash
+{
+  status: 'fail',
+  message: 'Unauthorized'
+}
+```
+
+ **Code: 404**
+
+```bash
+{
+  status: 'fail',
+  message: 'Can not find the requested url on this sevfrver'
+}
+```
+
+**Code: 500**
+
+```bash
+{
+  status: 'error',
+  message: 'Internal server error'
+}
+```
