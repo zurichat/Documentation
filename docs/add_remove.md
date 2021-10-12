@@ -1,11 +1,215 @@
 ### Add/Remove Endpoints For All Plugins
 
 ## Brief
-Contains all the add/remove endpoints for plugins
+Contains all the add/remove endpoints/instructions for all teams
 
-These are REST APIs written in various programming languages.
+---
+## Zuri Main
+---
+## Create User Account
+To use zuri chat you need to sign up or sign in if you already have an account.
+Follow the steps below to sign up as a new user.
 
-Each endpoint is triggered using HTTP verbs and accepts or returns a JSON formatted payload
+1. Visit the [home page](https://zuri.chat)
+2. Click on 'sign up'
+3. Enter your details in the required fields
+4. Click on submit
+5. Verify your account
+
+---
+## Zuri Core
+---
+## Create organization
+POST `/organizations`
+
+This is a request endpoint that creates an organization or workspace. It requires the creator's email as a parameter.
+
+REQUEST URL: `https://api.zuri.chat/organizations`
+
+#### Request Body
+
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+creator_email| string | True | creator's email for the organization. Must be a valid email.
+#### Sample Request
+```sh
+curl -X POST "https://api.zuri.chat/organizations"
+     -H "accept: application/json" 
+     -H "Content-Type: application/json" -d "{\"creator_email\":\"hng@email.com\"}"
+```
+
+```sh
+JSON
+Content-Type: application/json
+	{
+		"creator_email": "hng@email.com"
+	}
+```
+
+#### Sample Response
+
+```sh
+    {
+      "code": 201,
+      "message": "string",
+      "data": {
+        "InsertedID": "6137d69b21d3c78fc9a84bdf"
+        }
+    }
+```
+#### Error Response
+
+```sh
+{
+  "status": "400",
+  "message": "bad request"
+}
+```
+## Delete organization
+DELETE `/organizations`
+
+This endpoint allows you to delete an existing organization.
+
+REQUEST URL: `https://api.zuri.chat/organizations`
+
+#### Request Body
+
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+ organization_id | string | True | organization ID
+
+#### Sample Request
+
+```sh
+curl -X DELETE "https://api.zuri.chat/organizations/6137d69b21d3c78fc9a84bdf" 
+     -H "accept: application/json"
+```
+
+```sh
+JSON
+Content-Type: application/json
+	{
+		"organization_id": "6137d69b21d3c78fc9a84bdf"
+	}
+```
+
+#### Sample Response
+
+```sh
+{
+"code": 200,
+"message": "resource deleted successfully",
+  
+}
+```
+#### Error Response
+
+```sh
+{
+  "status": "401",
+  "message": "No Authorization or session expired."
+}
+```
+---
+## Add user to organization
+POST `organizations/{organization_id}/members`
+
+Adds a new user to an organization. This request requires the `organization_id` as a path parameter.
+
+REQUEST URL: `https://api.zuri.chat/organizations/{organization_id}/members`
+#### Path Parameters
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+{organization_id} | string | True | Organization ID
+
+#### Sample Request
+
+```sh
+curl -X POST "https://api.zuri.chat/organizations/6137d69b21d3c78fc9a84bdf/members" 
+     -H "accept: application/json" 
+     -H "Content-Type: application/json" 
+     -d "{\"user_email\":\"user@email.com\"}"
+```
+
+```sh
+JSON
+Content-Type: application/json
+	{
+		"user_id" : "user@email.com"
+	}
+```
+
+#### Sample Response
+
+```sh
+    {
+        "code": 201,
+        "message": "string",
+        "data": {
+            "InsertedID": "6137d69b21d3c78fc9a84bdf"
+        }
+    }
+```
+
+## Deactivate organization 
+DELETE `organizations/{organization_id}/members/{member_id}`
+
+This endpoint will be used to deactivate/remove a user from an organization.
+
+REQUEST URL: `https://api.zuri.chat/organizations/{organization_id}/members/{member_id}`
+
+#### Path Parameters
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+{organization_id} | string | True | Organization ID
+{member_id} | string | True | member ID
+
+#### Sample Request
+```sh
+curl -X DELETE "https://api.zuri.chat/organizations/6137d69b21d3c78fc9a84bdf/members/6137d69b21d3c78fc9a84bdf" 
+-H "accept: application/json"
+```
+
+#### Sample Response
+
+```sh
+	{
+		"status": "200",
+		"message": "resource updated successfully",
+	}
+```
+
+---
+## Zuri App
+---
+## `Sign Up` 
+**Creating an account can be done in two ways** 
+
+ ### **Email and password** 
+ - The password has to be inputed twice.
+ -  Click on the terms and conditions, if everything is okay, tick the checkbox.
+ -  Click on `Create Account`.
+ -   A six digit `OTP` will be sent to your email address, copy and paste the code.
+ -   You will be redirected to the [Sign in screen](#sign-in)
+  ### **Google** `pending`
+
+**Add An Organization** 
+ This enable the user to **;** 
+ - **Create a new organization / Create a workplace**
+ 1. Click on your verified email.
+ 1. Add the name of your organization.
+ 1. Add the project name your team is working on.
+ 1. Add the email address of team members `or` invite from contacts `or` copy and share your invite link. 
+ *another email address can be used.* 
+
+## **Channels:**
+- To add a channel, click on the add channel button. 
+- The user is directed to new channel screen.
+- Add channel name (it must be lowercase and without space).
+- Add channel description.
+- use the toggle button if you want the channel to be private.
+- Then click on the create button.
+- This creates the new channel and adds it to the home screen.
 
 ---
 ## DM CHAT  PLUGIN
