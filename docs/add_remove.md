@@ -830,8 +830,8 @@ data required      object
 ```
 
 ---
-
-# NoticeBoard Plugin Resource 
+# NoticeBoard Plugin 
+---
 ```
 Base URL: noticeboard.zuri.chat/api/
 ```
@@ -892,3 +892,247 @@ curl -X DELETE "{{baseUrl}}/v1/organisation/{{org_id}}/attachfile" -H  "accept: 
 | 204 | |
 | 404| File not found |
 |  |  |
+
+---
+# Chess Plugin 
+---
+```
+Base URL: https://chess.zuri.chat/
+```
+
+## Create Game
+
+<!-- descriptions -->
+
+When this endpoint is used, it Creates a new gaming room, assigns an Id to it and sets the status to started (state = 0).
+
+### How To Use
+
+This is a POST endpoint and it can be tested with a form or through POSTMAN.
+There can not be more than 6 games running concurrently.
+
+Once request is sent to the api endpoint with all neccesary parameters through a FORM or POSTMAN and hit enter. when successful, [onSuccess](#onsuccess) response is return and game created. when an error occur [onError](#onerror) is thrown.
+
+- Guidance Example on the <https://zuri.chat/chess> application :
+  - Once you click on join as player 1, all parameters will be added automatically and on Success, you enter into the game created waiting for opponent
+
+### Features
+
+This involves the baseUrl, body request type, all required and non required parameters, methods and url for this endpoint.
+
+- BaseURL : <https://www.chess.zuri.chat/api/v1>
+- Request Body Schema : application/json
+- General endpoint
+
+| URL          | METHOD | URL PARAMS | DATA PARAMS |
+| ------------ | ------ | ---------- | ----------- |
+| /game/create | POST   | false      | true        |
+
+- PARAMS [URL OR DATA] if true
+
+| NAME      | DATA TYPE | REQUIRED |
+| --------- | --------- | -------- |
+| user_id   | integer   | true     |
+| user_name | string    | true     |
+| image_url | string    | false    |
+
+### Responses
+
+This is the end result send back to the client on successful execution or when an error occur. Below are the response on this two scenarios
+
+#### onSuccess
+
+This return a json formatted response payload to the client browser display in addition to the code.
+
+- code :
+
+  - 2xx -> This success ranges originate from the server, usually from a successful request(200). etc
+
+- payload :
+  - result
+
+```[
+  { object_id: game._id }
+]
+
+```
+
+- message : "New Game Board Created successfully",
+
+#### onError
+
+- code :
+
+  - 4xx -> This error ranges originate from the client, possible from a bad request(403),page not found (404), unauthorized access(402). etc
+
+  - 5xx -> This error ranges originate from the server, possible the server being down(500). etc
+
+- payload :
+  - error
+
+```
+Error object
+
+```
+
+- message_1 : "Unable to create a Game"
+- message_2 : "No free boards right now"
+
+## Join Game
+
+<!-- descriptions -->
+
+When this endpoint is used, its check if an opponent already exist, if not it join as the opponent.
+
+### How To Use
+
+This is a POST endpoint and it Enters a game as the second player.
+This can be tested from the client side in a form or using Postman.
+
+Input the endpoint complete url into postman or form with all necessary parameter , when successful, [onSuccess](#onsuccess) response is display as JSON formatted in the browser. when an error occur [onError](#onerror) is thrown.
+
+- Guidance Example on the <https://zuri.chat/chess> application :
+  - Once the link is open, user choose any six available game in the homepage to play as opponent. On clicked "join as opponent/player 2", the user enters the game and can start playing with the host.
+
+### Features
+
+This involves the baseUrl, body request type, all required and non required parameters, methods and url for this endpoint.
+
+- BaseURL : <https://www.chess.zuri.chat/api/v1>
+- Request Body Schema : application/json
+- General endpoint
+
+| URL   | METHOD | URL PARAMS | DATA PARAMS |
+| ----- | ------ | ---------- | ----------- |
+| /join | POST   | false      | true        |
+
+- PARAMS [URL OR DATA] if true
+
+| NAME      | DATA TYPE | REQUIRED |
+| --------- | --------- | -------- |
+| game_id   | string    | true     |
+| user_id   | integer   | true     |
+| user_name | string    | true     |
+| image_url | string    | false    |
+
+### Responses
+
+This is the end result send back to the client on successful execution or when an error occur. Below are the response on this two scenarios
+
+#### onSuccess
+
+This return a json formatted response payload to the client browser display in addition to the code.
+
+- code :
+
+  - 2xx -> This success ranges originate from the server, usually from a successful request(200). etc
+
+- payload :
+  - result
+
+```
+game_id
+```
+
+- message : "Game join successfully"
+
+#### onError
+
+- code :
+
+  - 4xx -> This error ranges originate from the client, possible from a bad request(403),page not found (404), unauthorized access(402). etc
+
+  - 5xx -> This error ranges originate from the server, possible the server being down(500). etc
+
+- payload :
+  - error
+
+```
+Error object
+
+```
+
+- message_1 : "Unable to join a game"
+- message_2: "opponent already exists"
+- message_3: "Game not found"
+
+## Game delete
+
+<!-- descriptions -->
+
+When this endpoint is used, it deletes a particular game from the database .
+
+### How To Use
+
+<!-- brief description -->
+
+This is a DELETE endpoint and it simple means that your browser e.g chrome, edge, etc can make request (i.e write/send the endpoint in their browser engine) and see the response (i.e the plugin information). You can also use Postman or other API testing platform to make request to the endpoint.
+
+Input the endpoint in the browser, or any API testing platform and hit enter, when successful, [onSuccess](#onsuccess) response is display as JSON formatted in the browser ( or the API testing platform). when an error occur [onError](#onerror) is thrown.
+
+- Guidance Example on the <https://zuri.chat/chess> application :
+
+<!-- description on how to use on our app : leave if not implemented in the FE yet -->
+
+-
+
+### Features
+
+This involves the baseUrl, body request type, all required and non required parameters, methods and url for this endpoint.
+
+- BaseURL : <https://www.chess.zuri.chat/api/v1>
+- Request Body Schema : application/json
+- General endpoint
+
+| URL     | METHOD | URL PARAMS | DATA PARAMS |
+| ------- | ------ | ---------- | ----------- |
+| /delete | DELETE | false      | true        |
+
+- PARAMS[URL OR DATA] if true
+
+| NAME    | DATA TYPE | REQUIRED |
+| ------- | --------- | -------- |
+| game_id | string    | true     |
+
+- complete endpoint url format : <https://www.chess.zuri.chat/api/v1/delete>
+
+### Responses
+
+This is the end result send back to the client on successful execution or when an error occur. Below are the response on this two scenarios
+
+#### onSuccess
+
+This return a json formatted response payload to the client browser display in addition to the code.
+
+- code :
+
+  - 2xx -> This success ranges originate from the server, usually from a successful request(200). etc
+
+- payload :
+  - result
+
+```
+{
+  payload
+}
+```
+
+- message : "game deleted successfully"
+
+#### onError
+
+- code :
+
+  - 4xx -> This error ranges originate from the client, possible from a bad request(403),page not found (404), unauthorized access(402). etc
+
+  - 5xx -> This error ranges originate from the server, possible the server being down(500). etc
+
+- payload :
+  - error
+
+```
+<Error object/>
+
+```
+
+- message : "Unable to delete game"
