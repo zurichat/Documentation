@@ -425,6 +425,47 @@ curl -X DELETE "https://api.zuri.chat/users/32wdf" -H "accept: application/json"
   "status": 401,
   "message": "No Authorization or session expired."
 }
+```
+---
+## MARKETPLACE
+---
+## Delete a plugin
+DELETE `/marketplace/plugins/{id}`
+
+Removes a plugin from the marketplace.
+
+REQUEST URL: https://api.zuri.chat/marketplace/plugins/{id}
+
+#### Path Parameters
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+{id} | string | True | plugin ID
+
+#### Sample Request
+```sh
+curl -X DELETE "https://api.zuri.chat/marketplace/plugins/614117a96173056af01b4cf8"
+     -H "accept: application/json"
+```
+
+#### Sample Response
+```sh
+{
+  "status": 200,
+  "message": "plugin removed",
+  "data": null
+}
+```
+
+#### Error Response
+```sh
+```sh
+{
+  "status": 400,
+  "message": "plugin not found",
+  "data": null
+}
+```
+
 ---
 ## Zuri App
 ---
