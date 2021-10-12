@@ -1363,7 +1363,7 @@ https://dm.zuri.chat/api/v1/org/<str:org_id>/rooms/<str:room_id>/add-member/<str
 ```
 Response Examples:
 
-*Success; returns the status `200`, success message and the count of data matched and modified(room_user_ids)*
+*Success Response*
 ```
 {
     "status": 200,
@@ -1373,7 +1373,7 @@ Response Examples:
 }
 ```
 
-*If there is no room or a wrong room*
+*Wrong/Invalid Room*
 ```
 {
     status": 404,
@@ -1381,7 +1381,7 @@ Response Examples:
 }
 ```
 
-*If same user has been in same room before*
+*Joining same room twice*
 
 ```
 {
@@ -1391,7 +1391,7 @@ Response Examples:
 ```
 
 
-*Request Error; if a wrong method was used*
+*Wrong Method*
 ```
 {
     "status": 405,
@@ -1400,7 +1400,7 @@ Response Examples:
 ```
 
 
-## Remove User to a Room
+## Remove User From a Room
 
 **Method: PUT**
 
@@ -1417,7 +1417,7 @@ https://dm.zuri.chat/api/v1/org/<str:org_id>/rooms/<str:room_id>/add-member/<str
 ```
 Response Examples:
 
-*Success; returns the status `200`, success message and the count of data matched and modified(room_user_ids)*
+*Success Response*
 ```
 {
     "status": 200,
@@ -1427,7 +1427,7 @@ Response Examples:
 }
 ```
 
-*If there is no room or a wrong room*
+*Wrong/Invalid Room*
 ```
 {
     status": 404,
@@ -1435,7 +1435,7 @@ Response Examples:
 }
 ```
 
-*If user is not in the room before*
+*Invalid User*
 
 ```
 {
@@ -1445,7 +1445,7 @@ Response Examples:
 ```
 
 
-*Request Error; if a wrong method was used*
+*Wrong Method*
 ```
 {
     "status": 405,
