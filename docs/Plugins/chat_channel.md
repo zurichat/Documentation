@@ -1,1427 +1,2046 @@
+# API DOCUMENTATION FOR THE ZURI CHAT CHANNELS PLUGIN
+
+## Brief
+
+Contains all the available endpoints for the Zuri Chat Channels plugin as
+compiled By Team Coelho HNGi8.
+
+These are REST APIs written in Python using the Django RESTFramework.
+
+Each endpoint is triggered using HTTP verbs and accepts or returns a JSON
+formatted payload
+
+## Base URL
+
+`https://channels.zuri.chat`
+
+## **ENDPOINTS**
+
 ---
-slug: /chat_channels
-sidebar_position: 4
-title: Chat Channels Plugin
+
 ---
 
+## **Database Collections Related To Plug-in**
 
-# Zuri Chat Channel Plugin Endpoints
+**Method: GET**
 
+`Description: Retrieve all database collections related to plugin`
 
-### Version: API v1
-### Base URL: <https://channels.zuri.chat/api> | <http://127.0.0.1:8000/api>
+URL:
 
-### Terms of service
-<https://www.google.com/policies/terms/>
-
-**Contact information:**  
-team-coelho@zuri.chat  
-
-**License:** BSD License
-
-## Endpoints
-
-### /v1/collections/{plugin_id}
-
-#### GET
-##### Summary
-
-Get all data base collections related to plugin
-
-##### Description
-
-```bash
-curl -X GET "{{baseUrl}}/v1/collections/<plugin_id>" -H  "accept: application/json"
+```
+https://channels.zuri.chat/api/v1/collections/{plugin_id}
 ```
 
-#### Responses
+Responses Examples:
 
-| Code | Description |
-| ---- | ----------- |
-| 200 |  |
+_Success Response_
 
-### Security
-**Basic**  
-
-|basic|*Basic*|
-|---|---|
-
-
-### GET
-## Description
-
-### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| plugin_id | path |  | Yes | string |
-
-##### Responses
-
-| Code | Description |
-| ---- | ----------- |
-| 200 |  |
-
-### /v1/collections/{plugin_id}/organizations/{org_id}
-
-#### GET
-##### Summary
-
-Get all database collections related to plugin specific to an organisation
-
-#### Description
-
-```bash
-curl -X GET "{{baseUrl}}/v1/collections/{{plugin_id}}/organizations/{{org_id}}" -H  "accept: application/json"
+```
+{
+  "status": 200
+}
 ```
 
-#### Responses
+_Error Response_
 
-| Code | Description |
-| ---- | ----------- |
-| 200 |  |
-
-### /v1/details
-
-#### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| org_id | path |  | Yes | string |
-| plugin_id | path |  | Yes | string |
-
-
-#### GET
-##### Description
-
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-
-##### Responses
-
-| Code | Description |
-| ---- | ----------- |
-| 200 |  |
-
-### /v1/info
-
-#### GET
-##### Summary
-Get plugin details and developer information
-
-##### Description
-
-```bash
-curl -X GET "{{baseUrl}}/v1/info" -H  "accept: application/json"
+```
+{
+  "status": 404,
+  "message": "no record found"
+}
 ```
 
-##### Parameters
+## **Database Collection For An Organization**
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+**Method: GET**
 
-##### Responses
+`Description: Get all database collections related to plugin specific to an organisation`
 
-| Code | Description |
-| ---- | ----------- |
-| 200 |  |
+URL:
 
-### /v1/ping
-
-#### GET
-##### Summary
-
-Get server status
-
-##### Description
-
-```bash
-curl -X GET "{{baseUrl}}/v1/ping" -H  "accept: application/json"
+```
+https://channels.zuri.chat/api/v1/collections/{plugin_id}/organizations/{org_id}
 ```
 
-#### Parameters
+Required Fields: **plugin_id, org_id**
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+Response Examples:
 
-#### Responses
+_Success Message_
 
-| Code | Description |
-| ---- | ----------- |
-| 200 |  |
-
-### /v1/sidebar
-
-#### GET
-##### Summary 
-
-Get dynamic sidebar details for a user in an organisation
-
-#### Description
-
-```bash
-curl -X GET "{{baseUrl}}/v1/sidebar?org=<org_id>&user=<user_id>&token=<token>" -H  "accept: application/json"
+```
+{
+    "status": 200
+}
 ```
 
-##### Parameters
+## **Plug-in Details for an Organization**
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| org | query | Organization ID | Yes | string |
-| user | query | User ID | Yes | string |
-| token | query | Token | Yes | string |
+**Method: GET**
 
-##### Responses
+`Description: Retrieve details about the plug-in`
 
-| Code | Description |
-| ---- | ----------- |
-| 200 |  |
+URL:
 
-### Channels
-
-`/v1/{org_id}/channels/`
-
-#### GET
-##### Summary
-
-Get all channels in the organization
-
-##### Description
-
-```bash
-curl -X GET "{baseUrl}/v1/{org_id}/channels/" -H  "accept: application/json"
+```
+ https://channels.zuri.chat/api/v1/details
 ```
 
-##### Parameters
+Response Examples:
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| org_id | path |  | Yes | string |
+_Success Response_
 
-##### Responses
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Response | [ [ChannelGet](#channelget) ] |
-| 404 | Error Response | [Error](#error) |
-
-#### POST
-##### Summary
-
-This creates a channel for a
-particular organization identified by ID and creates corresponding Centrifugo room
-​
-
-##### Description
-
-```bash
-curl -X POST "{baseUrl}/v1/{org_id}/channels/"
--H  "accept: application/json"
--H  "Content-Type: application/json"
--d "{  "name": "channel name",  "owner": "member_id",  "description": "channel description",  "private": false,  "topic": "channel topic"}"
+```
+{
+  "message": "Welcome, to the Channels Plugin",
+  "last_visted": "2021-10-12T04:03:26.907897+00:00",
+  "no_of_times_visted": 38
+}
 ```
 
-#### Parameters
+## **Plug-in Info**
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| org_id | path |  | Yes | string |
-| data | body |  | Yes | [Channel](#channel) |
+**Method: GET**
 
-#### Responses
+`Description: Retrieve plugin details and developer information`
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 201 | Response | [ChannelUpdate](#channelupdate) |
-| 404 | Error Response | [Error](#error) |
+URL:
 
-## User channels
-
-/v1/{org_id}/channels/users/{user_id}/
-
-#### GET
-##### Summary
-
-Retrieve list of channels a user belongs to
-
-##### Description
-
-```bash
-curl -X GET "{{baseUrl}}/v1/{{org_id}}/channels/users/{{user_id}}/" -H  "accept: application/json"
+```
+https://channels/api/v1/info
 ```
 
-#### Parameters
+Response Examples:
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| org_id | path |  | Yes | string |
-| user_id | path |  | Yes | string |
+_Success Response_
 
-#### Responses
+```
+{
+  "message": "Plugin Information Retrieved",
+  "data": {
+    "type": "Plugin Information",
+    "plugin_info": {
+      "name": "Channels Plugin",
+      "description": [
+        "Zuri.chat plugin",
+        "The Channel Plugin is a feature    that helps users create spaces for    conversation and communication on zuri.chat."
+      ]
+    },
+    "scaffold_structure": "Monolith",
+    "team": "HNG 8.0/Team Coelho",
+    "sidebar_url": "https://channels.zuri.chat/api/v1/sidebar",
+    "ping_url": "https://channels.zuri.chat/api/v1/ping",
+    "homepage_url": "https://channels.zuri.chat/"
+  },
+  "success": true
+}
+```
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Response | [ [UserChannelGet](#userchannelget) ] |
-| 204 | User does not belong to any channel |  |
-| 404 | Not found | [Error](#error) |
+## **Ping**
 
-## Channel
+**Method: GET**
+
+`Description: Get server status`
+
+URL:
+
+```
+https://channels.zuri.chat/api/v1/ping
+```
+
+Responses Examples:
+
+_Success Response_
+
+```
+{
+  "success": true
+}
+```
+
+## **Sidebar Info For a User**
+
+**Method: GET**
+
+`Description: Get dynamic sidebar details for a user in an organisation`
+
+URL:
+
+```
+https://channels.zuri.chat/api/v1/sidebar
+```
+
+Required Parameters: **org_id, user_id, token**
+
+Response Examples:
+
+_Success Response_
+
+```
+{
+  "status": 200
+}
+```
+
+## **CHANNELS ENDPOINT**
+
+---
+
+---
+
+## **Get Channels**
+
+**Method: GET**
+
+`Description: Get all channels in the organization`
+
+URL:
+
+```
+https://channels.zuri.chat/v1/{org_id}/channels
+```
+
+Required Parameter : **org_id**
+
+Response Examples:
+
+_Success Response: retrieves all the channels in an organization_
+
+```
+[
+  {
+    "_id": "string",
+    "name": "string",
+    "description": "string",
+    "private": true,
+    "owner": "string",
+    "archived": true,
+    "topic": "string",
+    "users": {
+      "additionalProp1": [
+        {
+          "_id": "string",
+          "role_id": "string",
+          "starred": false,
+          "is_admin": false,
+          "notifications": {
+            "additionalProp1": "string",
+            "additionalProp2": "string",
+            "additionalProp3": "string"
+          }
+        }
+      ],
+      "additionalProp2": [
+        {
+          "_id": "string",
+          "role_id": "string",
+          "starred": false,
+          "is_admin": false,
+          "notifications": {
+            "additionalProp1": "string",
+            "additionalProp2": "string",
+            "additionalProp3": "string"
+          }
+        }
+      ],
+      "additionalProp3": [
+        {
+          "_id": "string",
+          "role_id": "string",
+          "starred": false,
+          "is_admin": false,
+          "notifications": {
+            "additionalProp1": "string",
+            "additionalProp2": "string",
+            "additionalProp3": "string"
+          }
+        }
+      ]
+    },
+    "default": false,
+    "starred": true
+  }
+]
+```
+
+_Error Response_
+
+```
+{
+  "error": {
+    "message": "string",
+    "status": 0
+  }
+}
+```
+
+## **Create Channel**
+
+**Method: POST**
+
+`Description: This creates a channel for a particular organization identified by ID and creates corresponding Centrifugo room.`
+
+Request Body:
+
+```
+{
+  "name": "string",
+  "owner": "string",
+  "description": "string",
+  "private": false,
+  "topic": "string",
+  "default": false
+}
+```
+
+Required Parameters : **org_id, data**
+
+Response Examples:
+
+_Success Response : status 201_
+
+```
+{
+  "_id": "string",
+  "name": "string",
+  "description": "string",
+  "private": true,
+  "archived": true,
+  "topic": "string",
+  "starred": true
+}
+```
+
+_Error Response_
+
+```
+{
+  "error": {
+    "message": "string",
+    "status": 0
+  }
+}
+```
+
+## **User channels**
+
+**Method: GET**
+
+`Description: Retrieve list of channels a user belongs to `
+
+URL:
+
+```
+https://channels.zuri.chat/api/v1/{org_id}/channels/users/{user_id}/
+```
+
+Required Parameters : **org_id, user_id**
+
+Response Examples:
+
+_Success Response: status 200_
+
+```
+[
+  {
+    "_id": "string",
+    "name": "string",
+    "description": "string"
+  }
+]
+```
+
+_Status : 204_
+
+```
+User does not belong to any channel
+```
+
+_Error Response: status : 400_
+
+```
+{
+  "error": {
+    "message": "string",
+    "status": 0
+  }
+}
+```
+
+## **Get Channel Details**
 
 `v1/{org_id}/channels/{channel_id}/`
 
-#### GET
-##### Summary
+**Method: GET**
 
-Get channel details
+`Description: Get channel details`
 
-##### Description
+URL:
 
-```bash
-curl -X GET "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/" -H  "accept: application/json"
+```
+https://channels.zuri.chat/api/v1/{org_id}/channels/{channel_id}/
 ```
 
-##### Parameters
+Required Parameters: **channel_id, org_id**
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| channel_id | path |  | Yes | string |
-| org_id | path |  | Yes | string |
+Response Examples:
 
-##### Responses
+_Success Response: status 200_
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Response | [ChannelGet](#channelget) |
-| 404 | Error Response | [Error](#error) |
-
-#### PUT
-##### Summary
-
-Update channel details
-
-#### Description
-
-```bash
-curl -X PUT "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/"
--H  "accept: application/json"
--H  "Content-Type: application/json"
--d "{  "name": "channel name",  "description": "channel description",  "private": false,  "archived": false,  "topic": "channel topic"}"
+```
+{
+  "_id": "string",
+  "name": "string",
+  "description": "string",
+  "private": true,
+  "owner": "string",
+  "archived": true,
+  "topic": "string",
+  "users": {
+    "additionalProp1": [
+      {
+        "_id": "string",
+        "role_id": "string",
+        "starred": false,
+        "is_admin": false,
+        "notifications": {
+          "additionalProp1": "string",
+          "additionalProp2": "string",
+          "additionalProp3": "string"
+        }
+      }
+    ],
+    "additionalProp2": [
+      {
+        "_id": "string",
+        "role_id": "string",
+        "starred": false,
+        "is_admin": false,
+        "notifications": {
+          "additionalProp1": "string",
+          "additionalProp2": "string",
+          "additionalProp3": "string"
+        }
+      }
+    ],
+    "additionalProp3": [
+      {
+        "_id": "string",
+        "role_id": "string",
+        "starred": false,
+        "is_admin": false,
+        "notifications": {
+          "additionalProp1": "string",
+          "additionalProp2": "string",
+          "additionalProp3": "string"
+        }
+      }
+    ]
+  },
+  "default": false,
+  "starred": true
+}
 ```
 
-#### Parameters
+_Error Response: status 404_
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| channel_id | path |  | Yes | string |
-| org_id | path |  | Yes | string |
-| data | body |  | Yes | [ChannelUpdate](#channelupdate) |
-
-#### Responses
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Response | [ChannelGet](#channelget) |
-| 404 | Error Response | [Error](#error) |
-
-### DELETE
-##### Summary
-
-Delete a channel
-
-#### Description
-
-This endpoint deletes a channel and its related objects: messages, roles and threads
-
-```bash
-curl -X DELETE "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/" -H  "accept: application/json"
+```
+{
+  "error": {
+    "message": "string",
+    "status": 0
+  }
+}
 ```
 
-#### Parameters
+## **Update Channel Details**
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| channel_id | path |  | Yes | string |
-| org_id | path |  | Yes | string |
+**Method: PUT**
 
-#### Responses
+`Description: Update channel details`
 
-| Code | Description |
-| ---- | ----------- |
-| 204 | Channel deleted successfully |
-| 404 | Not found |
+URL:
 
-## Channel media
-
-`/v1/{org_id}/channels/{channel_id}/media/`
-
-#### GET
-##### Summary
-
-Retrieve all media in channel
-
-##### Description
-
-This endpoint retrieves a list of URLs for files/media that have been sen sent in a channel.
-Response is split into `channelmessage` and `thread` objects
-
-```bash
-curl -X GET "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/media/" -H  "accept: application/json"
+```
+https://channels.zuri.chat/api/v1/{org_id}/channels/{channel_id}/
 ```
 
-#### Parameters
+Request Body:
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| channel_id | path |  | Yes | string |
-| org_id | path |  | Yes | string |
-
-#### Responses
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Response | [ChannelAllMedia](#channelallmedia) |
-| 404 | Error Response | [Error](#error) |
-
-## Channel members
-
-`/v1/{org_id}/channels/{channel_id}/members/`
-
-#### GET
-##### Summary
-
-This method gets all members for a
-channel identified by ID
-
-##### Description
-
-```bash
-curl -X GET "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/members/" -H  "accept: application/json"
+```
+{
+  "name": "string",
+  "description": "string",
+  "private": true,
+  "archived": true,
+  "topic": "string",
+  "starred": true
+}
 ```
 
-#### Parameters
+Required Parameters: **channel_id, org_id, data**
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| channel_id | path |  | Yes | string |
-| org_id | path |  | Yes | string |
+Response Examples:
 
-#### Responses
+_Success Response: status 200_
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Response | [ [User](#user) ] |
-| 404 | Not Found |  |
+```
+{
+  "_id": "string",
+  "name": "string",
+  "description": "string",
+  "private": true,
+  "owner": "string",
+  "archived": true,
+  "topic": "string",
+  "users": {
+    "additionalProp1": [
+      {
+        "_id": "string",
+        "role_id": "string",
+        "starred": false,
+        "is_admin": false,
+        "notifications": {
+          "additionalProp1": "string",
+          "additionalProp2": "string",
+          "additionalProp3": "string"
+        }
+      }
+    ],
+    "additionalProp2": [
+      {
+        "_id": "string",
+        "role_id": "string",
+        "starred": false,
+        "is_admin": false,
+        "notifications": {
+          "additionalProp1": "string",
+          "additionalProp2": "string",
+          "additionalProp3": "string"
+        }
+      }
+    ],
+    "additionalProp3": [
+      {
+        "_id": "string",
+        "role_id": "string",
+        "starred": false,
+        "is_admin": false,
+        "notifications": {
+          "additionalProp1": "string",
+          "additionalProp2": "string",
+          "additionalProp3": "string"
+        }
+      }
+    ]
+  },
+  "default": false,
+  "starred": true
+}
+```
 
-#### POST
-##### Summary
+_Error Response: status 404_
 
-This method adds one or more users to a channel
+```
+{
+  "error": {
+    "message": "string",
+    "status": 0
+  }
+}
+```
 
-#### Description
+## **Delete Channel**
 
-A JOIN event is published to Centrifugo when users are added to the channel
+**Method: DELETE**
 
-** Add one user**
+`Description: Deletes a channel and its related objects: messages, roles and threads`
 
-```bash
-curl -X POST "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/members/"
--H  "accept: application/json"
--H  "Content-Type: application/json"
--d "{"_id": "string",
+URL:
+
+```
+https://channels.zuri.chat/api/v1/{org_id}/channels/{channel_id}/
+```
+
+Required Parameters: **channel_id, org_id, user_id**
+
+Response Examples: _Sucess Response: status 204_
+
+```
+Channel deleted successfully
+```
+
+_Error Response: status 404_
+
+```
+Not found
+```
+
+## **Channel Files**
+
+**Method: GET**
+
+`Description: retrieves a list of URLs for files/media that have been sen sent in a channel.`
+
+URL:
+
+```
+https://channels.zuri.chat/api/v1/{org_id}/channels/{channel_id}/files/
+```
+
+Required Parameters: **channel_id, org_id**
+
+Response Examples:
+
+_Success Response: status 200_
+
+```
+{
+  "channelmessage": [
+    {
+      "additionalProp1": "string",
+      "additionalProp2": "string",
+      "additionalProp3": "string"
+    }
+  ],
+  "thread": [
+    {
+      "additionalProp1": "string",
+      "additionalProp2": "string",
+      "additionalProp3": "string"
+    }
+  ]
+}
+```
+
+_Error Response: status 404_
+
+```
+{
+  "error": {
+    "message": "string",
+    "status": 0
+  }
+}
+```
+
+## CHANNEL MEMBER ENDPOINTS
+
+---
+
+---
+
+## **List Channel Members**
+
+**Method: GET**
+
+`Description : retrieves all members of a channel identified by ID`
+
+URL:
+
+```
+https://channels.zuri.chat/api/v1/{org_id}/channels/{channel_id}/members/
+
+```
+
+Required Parameters: **channel_id, org_id**
+
+Response Examples:
+
+_Success Response: status 200_
+
+```
+[
+  {
+    "_id": "string",
     "role_id": "string",
+    "starred": false,
     "is_admin": false,
     "notifications": {
-         "web": "nothing",
-         "mobile": "mentions",
-         "same_for_mobile": true,
-         "mute": false
-        }
-    }"
+      "additionalProp1": "string",
+      "additionalProp2": "string",
+      "additionalProp3": "string"
+    }
+  }
+]
 ```
-​
-**Add multiple users**
-​
-```bash
-curl -X POST "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/members/"
--H  "accept: application/json"
--H  "Content-Type: application/json"
--d "[
-        {"_id": "string",
-        "role_id": "string",
-        "is_admin": false,
-        "notifications": {
-            "web": "nothing",
-            "mobile": "mentions",
-            "same_for_mobile": true,
-            "mute": false
-            }
+
+_Error Response: status 404_
+
+```
+Not found
+```
+
+## **Add Channel Member(s)**
+
+**Method: POST**
+
+`Description: add one or more members to a channel`
+
+URL:
+
+```
+https://channels.zuri.chat/api/v1/{org_id}/channels/{channel_id}/members/
+```
+
+Request Body:
+
+_For Single Member_
+
+```
+{
+  "_id": "string",
+  "role_id": "string",
+  "starred": false,
+  "is_admin": false,
+  "notifications": {
+    "additionalProp1": "string",
+    "additionalProp2": "string",
+    "additionalProp3": "string"
+  }
+}
+```
+
+_For multiple Members_
+
+```
+[
+        {
+          "_id": "string",
+          "role_id": "string",
+          "is_admin": false,
+          "notifications": {
+            "additionalProp1": "string",
+            "additionalProp2": "string",
+            "additionalProp3": "string"
+          }
         },
-        {"_id": "string",
-        "role_id": "string",
-        "is_admin": false,
-        "notifications": {
-            "web": "nothing",
-            "mobile": "mentions",
-            "same_for_mobile": true,
-            "mute": false
-            }
+        {
+          "_id": "string",
+          "role_id": "string",
+          "is_admin": false,
+          "notifications": {
+            "additionalProp1": "string",
+            "additionalProp2": "string",
+            "additionalProp3": "string"
+          }
         },
-        {"_id": "string",
-        "role_id": "string",
-        "is_admin": false,
-        "notifications": {
-            "web": "nothing",
-            "mobile": "mentions",
-            "same_for_mobile": true,
-            "mute": false
-            }
+        {
+          "_id": "string",
+          "role_id": "string",
+          "is_admin": false,
+          "notifications": {
+            "additionalProp1": "string",
+            "additionalProp2": "string",
+            "additionalProp3": "string"
+          }
         },
         ...
     ]"
+
 ```
 
-#### Parameters
+Required Parameters: **channel_id, org_id, data**
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| channel_id | path |  | Yes | string |
-| org_id | path |  | Yes | string |
-| data | body |  | Yes | [User](#user) |
+Response Examples:
 
-#### Responses
+_Success Response: status 201_
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 201 | Response | [User](#user) |
-| 400 | Error Response |  |
-| 404 | Collection Not Found |  |
-
-## Channel user input
-
-`/v1/{org_id}/channels/{channel_id}/members/can_input/`
-
-#### POST
-##### Summary
-
-Check if input is enabled for users
-
-##### Description
-
-This checks if a user input should be disabled or enabled, i.e         should users be able to send messages in the channel or not.
-
-(incomplete doc)
-
-```bash
-curl -X POST "{{baseUrl}}/api/v1/{{org_id}}/channels/{{channel_id}}/members/can_input/"
--H  "accept: application/json"
--H  "Content-Type: application/json"
--d "{
-        "_id": "string",
-        "role_id": "string",
-        "is_admin": false,  
-        "notifications": { }
-    }"
+```
+{
+  "_id": "string",
+  "role_id": "string",
+  "starred": false,
+  "is_admin": false,
+  "notifications": {
+    "additionalProp1": "string",
+    "additionalProp2": "string",
+    "additionalProp3": "string"
+  }
+}
 ```
 
-#### Parameters
+_Status: 204_
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| channel_id | path |  | Yes | string |
-| org_id | path |  | Yes | string |
-| data | body |  | Yes | [User](#user) |
-
-#### Responses
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 201 | Response | [User](#user) |
-| 404 | Collection Not Found |  |
-
-### Channel member
-
-`/v1/{org_id}/channels/{channel_id}/members/{member_id}/`
-
-#### GET
-##### Summary
-
-Get details of a channel member
-
-##### Description
-
-```bash
-curl -X GET "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/members/{{member_id}}/" -H  "accept: application/json"
+```
+Error Response
 ```
 
-#### Parameters
+_Status 404_
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| channel_id | path |  | Yes | string |
-| member_id | path |  | Yes | string |
-| org_id | path |  | Yes | string |
-
-#### Responses
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Response | [User](#user) |
-| 404 | Not Found |  |
-
-#### PUT
-##### Summary
-
-Update channel member details
-
-##### Description
-
-```bash
-curl -X PUT "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/members/"
--H  "accept: application/json"
--H  "Content-Type: application/json"
--d "{"_id": "string",  
-    "role_id": "string",  
-    "is_admin": false,  
-    "notifications": {
-         "web": "nothing",
-         "mobile": "mentions",
-         "same_for_mobile": true,
-         "mute": false
-        }
-    }"
+```
+Collection not found
 ```
 
-#### Parameters
+## **Channel Member input**
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| channel_id | path |  | Yes | string |
-| member_id | path |  | Yes | string |
-| org_id | path |  | Yes | string |
-| data | body |  | Yes | [User](#user) |
+**Method: POST**
 
-#### Responses
+`Description: Check if input is enabled for users`
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Response | [User](#user) |
-| 404 | Not found |  |
+URL:
 
-### DELETE
-##### Summary
-
-Remove member from a channel
-
-##### Description
-
-```bash
-curl -X DELETE "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/members/{{member_id}}/" -H  "accept: application/json"
+```
+https://channels.zuri.chat/api/v1/{org_id}/channels/{channel_id}/members/can_input/
 ```
 
-#### Parameters
+Request Body :
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| channel_id | path |  | Yes | string |
-| member_id | path |  | Yes | string |
-| org_id | path |  | Yes | string |
-
-#### Responses
-
-| Code | Description |
-| ---- | ----------- |
-| 204 | User removed successfully |
-| 404 | Not found |
-
-### User channel notifications
-
-`/v1/{org_id}/channels/{channel_id}/members/{member_id}/notifications/`
-
-#### GET
-##### Summary
-
-Retrieve user notification preferences for channel
-
-##### Description
-
-```bash
-curl -X GET "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/members/{{member_id}}/notifications/" -H  "accept: application/json"
+```
+{
+  "_id": "string",
+  "role_id": "string",
+  "starred": false,
+  "is_admin": false,
+  "notifications": {
+    "additionalProp1": "string",
+    "additionalProp2": "string",
+    "additionalProp3": "string"
+  }
+}
 ```
 
-#### Parameters
+Required Parameters: **channel_id, org_id, data**
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| channel_id | path |  | Yes | string |
-| member_id | path |  | Yes | string |
-| org_id | path |  | Yes | string |
+Response Examples:
 
-#### Responses
+_Success Response: status 201_
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Response | [NotificationsSetting](#notificationssetting) |
-| 404 | Not Found |  |
-
-#### PUT
-##### Summary
-
-Update user notification preferences for a channel
-
-##### Description
-
-```bash
-curl -X PUT "{{baseUrl}}v1/{{org_id}}/channels/{{channel_id}}/members/{{member_id}}/notifications/"
--H  "accept: application/json"
--H  "Content-Type: application/json"
--d "{
-        "web": "all",
-        "mobile": "all",
-        "same_for_mobile": true,  
-        "mute": true
-    }"
+```
+{
+  "_id": "string",
+  "role_id": "string",
+  "starred": false,
+  "is_admin": false,
+  "notifications": {
+    "additionalProp1": "string",
+    "additionalProp2": "string",
+    "additionalProp3": "string"
+  }
+}
 ```
 
-#### Parameters
+_Error Response: status 404_
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| channel_id | path |  | Yes | string |
-| member_id | path |  | Yes | string |
-| org_id | path |  | Yes | string |
-| data | body |  | Yes | [NotificationsSetting](#notificationssetting) |
-
-#### Responses
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Response | [NotificationsSetting](#notificationssetting) |
-
-## Channel messages
-
-`/v1/{{org_id}}/channels/{{channel_id}}/messages/`
-
-#### GET
-##### Summary
-
-Get all the messages sent in a channel.
-
-##### Description
-
-```bash
-curl -X GET "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/messages/" -H  "accept: application/json"
+```
+Collection Not Found
 ```
 
-#### Parameters
+### Get Channel Member Details
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| channel_id | path |  | Yes | string |
-| org_id | path |  | Yes | string |
+**Method: GET**
 
-#### Responses
+`Description: Get details of a channel member`
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Response | [ [ChannelMessageUpdate](#channelmessageupdate) ] |
-| 404 | Error Response | [Error](#error) |
+URL:
 
-#### POST
-##### Summary
+```
+https://channels.zuri.chat/api/v1/{org_id}/channels/{channel_id}/members/{member_id}/
 
-Create a channel message and automatically publishes to centrifugo
-
-##### Description
-
-```bash
-curl -X POST "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/messages/" -H  "accept: application/json"
 ```
 
-#### Parameters
+Required Parameters: **channel_id, member_id, org_id**
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| channel_id | path |  | Yes | string |
-| org_id | path |  | Yes | string |
-| data | body |  | Yes | [ChannelMessage](#channelmessage) |
+Response Examples:
 
-#### Responses
+_Sucess Response: status 200_
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 201 | Response | [ChannelMessageUpdate](#channelmessageupdate) |
-| 404 | Error Response | [Error](#error) |
-
-## Channel roles
-
-`/v1/{org_id}/channels/{channel_id}/roles/`
-
-#### GET
-##### Summary
-
-Retrieve channel roles
-
-##### Description
-
-```bash
-curl -X GET "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/roles/" -H  "accept: application/json"
+```
+{
+  "_id": "string",
+  "role_id": "string",
+  "starred": false,
+  "is_admin": false,
+  "notifications": {
+    "additionalProp1": "string",
+    "additionalProp2": "string",
+    "additionalProp3": "string"
+  }
+}
 ```
 
-#### Parameters
+_Error Response: status 404_
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| channel_id | path |  | Yes | string |
-| org_id | path |  | Yes | string |
+```
+Not found
+```
 
-#### Responses
+## **Update Channel Member Details'**
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Response | [ [Role](#role) ] |
+**Method: PUT**
 
-#### POST
-##### Summary
+`Description: Update channel member details`
 
-Create a channel role
+URL:
 
-##### Description
+```
+https://channels.zuri.chat/api/v1/{org_id}/channels/{channel_id}/members/{member_id}/
+```
 
-```bash
-curl -X POST "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/roles/"
--H  "accept: application/json"
--H  "Content-Type: application/json"
--d "{
-         "name": "string",
-         "permissions": [
-            {
-                 "name": "string",
-                 "description": "string"
+Request Body:
+
+```
+{
+  "_id": "string",
+  "role_id": "string",
+  "starred": false,
+  "is_admin": false,
+  "notifications": {
+    "additionalProp1": "string",
+    "additionalProp2": "string",
+    "additionalProp3": "string"
+  }
+}
+```
+
+Required Parameters: **channel_id, member_id, org_id, data**
+
+Response Examples:
+
+_Success Response: status 200_
+
+```
+{
+  "_id": "string",
+  "role_id": "string",
+  "starred": false,
+  "is_admin": false,
+  "notifications": {
+    "additionalProp1": "string",
+    "additionalProp2": "string",
+    "additionalProp3": "string"
+  }
+}
+```
+
+_Error Response: status 404_
+
+```
+Not found
+```
+
+## **Delete Channel Member**
+
+**Method: DELETE**
+
+`Description: Remove member from a channel`
+
+URL:
+
+```
+https://channels.zuri.chat​/api​/v1​/{org_id}​/channels​/{channel_id}​/members​/{member_id}​/
+```
+
+Required Parameters: **channel_id, member_id, org_id**
+
+Response Examples:
+
+_Success Response: status 204_
+
+```
+User removed successfully
+```
+
+_Error Response: status 404_
+
+```
+Not found
+```
+
+## \*\*USER NOTIFICATION ENDPOINTS
+
+---
+
+---
+
+### **User channel notifications**
+
+**Method: GET**
+
+`Description: Retrieve user notification preferences for channel`
+
+URL:
+
+```
+https://channels.zuri.chat/v1/{org_id}/channels/{channel_id}/members/{member_id}/notifications/
+
+```
+
+Required Parameters: **channel_id, member_id, org_id**
+
+Response Examples:
+
+_Success Response: status 200_
+
+```
+{
+  "web": "all",
+  "mobile": "all",
+  "same_for_mobile": true,
+  "mute": true
+}
+```
+
+_Error Response: status 404_
+
+```
+Not found
+```
+
+## **Update User Notifications**
+
+**Method: PUT**
+
+`Description: Update user notification preferences for a channel`
+
+URL:
+
+```
+​https://channels.zuri.chat/api​/v1​/{org_id}​/channels​/{channel_id}​/members​/{member_id}​/notifications​/
+```
+
+Request Body:
+
+```
+{
+  "web": "all",
+  "mobile": "all",
+  "same_for_mobile": true,
+  "mute": true
+}
+```
+
+Required Parameters: **channel_id, member_id, org_id, data**
+
+Response Examples:
+
+_Success Response: status 200_
+
+```
+{
+  "web": "all",
+  "mobile": "all",
+  "same_for_mobile": true,
+  "mute": true
+}
+```
+
+## \*\*MESSAGE ENDPOINTS
+
+---
+
+---
+
+## **Get Channel messages**
+
+**Method: GET**
+
+`Description: Get all the messages sent in a channel.`
+
+URl:
+
+```
+/v1/{{org_id}}/channels/{{channel_id}}/messages/
+```
+
+Required Parameters: **channel_id, org_id**
+
+Response Examples:
+
+_Success Response: status 200_
+
+```
+[
+  {
+    "_id": "string",
+    "user_id": "string",
+    "channel_id": "string",
+    "can_reply": true,
+    "type": "message",
+    "edited": true,
+    "files": [
+      "string"
+    ],
+    "timestamp": "2021-10-12T07:25:47.597Z",
+    "replies": 0,
+    "has_files": true,
+    "pinned": true,
+    "content": "string",
+    "emojis": [
+      "string"
+    ],
+    "event": {
+      "additionalProp1": "string",
+      "additionalProp2": "string",
+      "additionalProp3": "string"
+    }
+  }
+]
+```
+
+_Error Response: status 404_
+
+```
+{
+  "error": {
+    "message": "string",
+    "status": 0
+  }
+}
+```
+
+## **Create Channel Message**
+
+**Method: POST**
+
+`Description: Create a channel message and automatically publishes to centrifugo`
+
+URL:
+
+```
+https://channels.zuri.chat/api/v1/{org_id}/channels/{channel_id}/messages/
+```
+
+Request Body:
+
+```
+{
+  "user_id": "string",
+  "content": "string",
+  "files": [
+    "string"
+  ],
+  "event": {
+    "additionalProp1": {
+      "action": "string",
+      "recipients": [
+        [
+          {
+            "_id": "string",
+            "role_id": "string",
+            "starred": false,
+            "is_admin": false,
+            "notifications": {
+              "additionalProp1": "string",
+              "additionalProp2": "string",
+              "additionalProp3": "string"
             }
+          }
         ]
-    }"
+      ]
+    },
+    "additionalProp2": {
+      "action": "string",
+      "recipients": [
+        [
+          {
+            "_id": "string",
+            "role_id": "string",
+            "starred": false,
+            "is_admin": false,
+            "notifications": {
+              "additionalProp1": "string",
+              "additionalProp2": "string",
+              "additionalProp3": "string"
+            }
+          }
+        ]
+      ]
+    },
+    "additionalProp3": {
+      "action": "string",
+      "recipients": [
+        [
+          {
+            "_id": "string",
+            "role_id": "string",
+            "starred": false,
+            "is_admin": false,
+            "notifications": {
+              "additionalProp1": "string",
+              "additionalProp2": "string",
+              "additionalProp3": "string"
+            }
+          }
+        ]
+      ]
+    }
+  }
+}
 ```
 
-#### Parameters
+Required Parameters: **channel_id, org_id, data**
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| channel_id | path |  | Yes | string |
-| org_id | path |  | Yes | string |
-| data | body |  | Yes | [Role](#role) |
+Response Examples:
 
-#### Responses
+_Success Response: status 201_
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 201 | Response | [Role](#role) |
+```
+{
+  "_id": "string",
+  "user_id": "string",
+  "channel_id": "string",
+  "can_reply": true,
+  "type": "message",
+  "edited": true,
+  "files": [
+    "string"
+  ],
+  "timestamp": "2021-10-12T07:30:04.134Z",
+  "replies": 0,
+  "has_files": true,
+  "pinned": true,
+  "content": "string",
+  "emojis": [
+    "string"
+  ],
+  "event": {
+    "additionalProp1": "string",
+    "additionalProp2": "string",
+    "additionalProp3": "string"
+  }
+```
 
-## Search channel messages
+_Error Response: status 404_
+
+```
+{
+  "error": {
+    "message": "string",
+    "status": 0
+  }
+}
+```
+
+## **Search channel messages**
 
 `/v1/{org_id}/channels/{channel_id}/search_messages/`
 
-#### POST
-##### Summary
+**Method: POST**
 
-Search channel messages based on content, pinned status, file attachments etc.
+`Description: Search channel messages based on content, pinned status, file attachments etc.`
 
-##### Description
+URL:
 
-```bash
-curl -X POST "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/search_messages/"
--H  "accept: application/json"
--H  "Content-Type: application/json"
--d "{
+```
+https://channels.zuri.chat/api/v1/{org_id}/channels/{channel_id}/search_messages/
+```
+
+Request Body:
+
+```
+{
         "user_id": "string",
         "content": "string",
         "has_files": true,
         "pinned": true
-    }"
+    }
 ```
 
-#### Parameters
+Required Parameters: **channel_id, org_id, data**
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| data | body |  | Yes | [ChannelMessageSearch](#channelmessagesearch) |
+Response Examples:
 
-#### Responses
+_Success Response: status 200_
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Response | [ [ChannelMessageSearchResult](#channelmessagesearchresult) ] |
-| 400 | Error Response | [Error](#error) |
-
-## Channel socket name
-
-`/v1/{org_id}/channels/{channel_id}/socket/`
-
-#### GET
-##### Summary
-
-Retrieve Centrifugo socket channel name based on organisation and channel IDs
-
-##### Description
-
-```bash
-curl -X GET "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/socket/" -H  "accept: application/json"
 ```
-
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| channel_id | path |  | Yes | string |
-| org_id | path |  | Yes | string |
-
-##### Responses
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Response | [Socket](#socket) |
-| 404 | Not found |  |
-
-## Message threads
-
-`/v1/{org_id}/messages/{channelmessage_id}/threads/`
-
-#### GET
-##### Summary
-
-Retrieve all replies to message
-
-##### Description
-
-```bash
-curl -X GET "{{baseUrl}}/v1/{{org_id}}/messages/{{channelmessage_id}}/threads/" -H  "accept: application/json"
-```
-
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| channelmessage_id | path |  | Yes | string |
-| org_id | path |  | Yes | string |
-
-##### Responses
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Response | [ [ThreadUpdate](#threadupdate) ] |
-| 404 | Error Response | [Error](#error) |
-
-#### POST
-##### Summary
-
-Add reply to message
-
-##### Description
-
-```bash
-curl -X POST "{{baseUrl}}/v1/{{org_id}}/messages/{{channelmessage_id}}/threads/?channel_id={{channel_id}}"
--H  "accept: application/json"
--H  "Content-Type: application/json"
--d "{
+[
+  {
+    "result": [
+      {
+        "_id": "string",
         "user_id": "string",
-        "content": "string",
+        "channel_id": "string",
+        "can_reply": true,
+        "type": "message",
+        "edited": true,
         "files": [
-            "string"
-        ]
-    }"
-```
-
-#### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| channelmessage_id | path |  | Yes | string |
-| org_id | path |  | Yes | string |
-| data | body |  | Yes | [Thread](#thread) |
-| channel_id | query | Channel ID (ID of channel message to be posted) | Yes | string |
-
-#### Responses
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 201 | Response | [ThreadUpdate](#threadupdate) |
-| 404 | Error Response | [Error](#error) |
-
-## Message
-
-`/v1/{org_id}/messages/{msg_id}/`
-
-#### GET
-##### Summary
-
-Retrieve message details
-
-##### Description
-
-```bash
-curl -X GET "{{baseUrl}}/v1/{{org_id}}/messages/{{msg_id}}/" -H  "accept: application/json"
-```
-
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| msg_id | path |  | Yes | string |
-| org_id | path |  | Yes | string |
-
-##### Responses
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Response | [ChannelMessageUpdate](#channelmessageupdate) |
-| 404 | Error Response | [Error](#error) |
-
-#### PUT
-##### Summary
-
-Update message based on ID
-
-##### Description
-
-```bash
-curl -X PUT "{{baseUrl}}/v1/{{org_id}}/messages/{{msg_id}}/?user_id={{user_id}}&channel_id={{channel_id}}"
--H  "accept: application/json"
--H  "Content-Type: application/json"
--d "{
+          "string"
+        ],
+        "timestamp": "2021-10-12T07:42:14.530Z",
+        "replies": 0,
+        "has_files": true,
         "pinned": true,
-        "content": "string"
-    }"
+        "content": "string",
+        "emojis": [
+          "string"
+        ],
+        "event": {
+          "additionalProp1": "string",
+          "additionalProp2": "string",
+          "additionalProp3": "string"
+        }
+      }
+    ],
+    "query": {
+      "user_id": "string",
+      "content": "string",
+      "has_files": true,
+      "pinned": true
+    }
+  }
+]
 ```
 
-#### Parameters
+_Error Response: status 400_
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| msg_id | path |  | Yes | string |
-| org_id | path |  | Yes | string |
-| data | body |  | Yes | [ChannelMessageUpdate](#channelmessageupdate) |
-| user_id | query | User ID (owner of message) | Yes | string |
-| channel_id | query | Channel ID (ID of channel message was posted) | Yes | string |
-
-#### Responses
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Response | [ChannelMessageUpdate](#channelmessageupdate) |
-| 404 | Error Response | [Error](#error) |
-
-### DELETE
-##### Summary
-
-Delete a message based on Id and organisation
-
-##### Description
-
-```bash
-curl -X DELETE "{{baseUrl}}/v1/{{org_id}}/messages/{{msg_id}}/?user_id={{user_id}}&channel_id={{channel_id}}" -H  "accept: application/json""
+```
+{
+  "error": {
+    "message": "string",
+    "status": 0
+  }
+}
 ```
 
-#### Parameters
+## Get Message Details
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| msg_id | path |  | Yes | string |
-| org_id | path |  | Yes | string |
-| user_id | query | User ID (owner of message) | Yes | string |
-| channel_id | query | Channel ID (ID of channel message was posted) | Yes | string |
+**Method: GET**
 
-#### Responses
+`Description: Retrieve message details`
 
-| Code | Description |
-| ---- | ----------- |
-| 204 | Message deleted successfully |
-| 404 | Not found |
+URL:
 
-## Message reactions
-
-`/v1/{org_id}/messages/{msg_id}/reactions/`
-
-#### GET
-##### Summary
-
-Retrieve message reactions
-
-##### Description
-
-```bash
-curl -X GET "{{baseUrl}}/v1/{{org_id}}/messages/{{msg_id}}/reactions/" -H  "accept: application/json"
+```
+https://channels.zuri.chat/api/v1/{org_id}/messages/{msg_id}/
 ```
 
-#### Parameters
+Required Parameters: **msg_id, org_id**
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| msg_id | path |  | Yes | string |
-| org_id | path |  | Yes | string |
+Response Examples:
 
-#### Responses
+_Success Response: status 200_
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Successful | [ [ChannelMessageReaction](#channelmessagereaction) ] |
-
-#### PUT
-##### Summary
-
-Update message reactions
-
-##### Description
-
-```bash
-curl -X PUT "{{baseUrl}}/v1/{{org_id}}/messages/{{msg_id}}/reactions/"
--H  "accept: application/json"
--H  "Content-Type: application/json"
--d "{  "title": "string",  "member_id": "string"}"
+```
+{
+  "_id": "string",
+  "user_id": "string",
+  "channel_id": "string",
+  "can_reply": true,
+  "type": "message",
+  "edited": true,
+  "files": [
+    "string"
+  ],
+  "timestamp": "2021-10-12T08:04:03.647Z",
+  "replies": 0,
+  "has_files": true,
+  "pinned": true,
+  "content": "string",
+  "emojis": [
+    "string"
+  ],
+  "event": {
+    "additionalProp1": "string",
+    "additionalProp2": "string",
+    "additionalProp3": "string"
+  }
+}
 ```
 
-#### Parameters
+_Error Response: status 404_
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| msg_id | path |  | Yes | string |
-| org_id | path |  | Yes | string |
-| data | body |  | Yes | [ChannelMessageReactionsUpdate](#channelmessagereactionsupdate) |
-
-#### Responses
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Reaction updated | [ [ChannelMessageReaction](#channelmessagereaction) ] |
-
-## Role
-
-`/v1/{org_id}/roles/{role_id}/`
-
-#### GET
-##### Summary
-
-Retrieve role details
-
-##### Description
-
-```bash
-curl -X GET "{{baseUrl}}/v1/{{org_id}}/roles/{{role_id}}/" -H  "accept: application/json"
+```
+{
+  "error": {
+    "message": "string",
+    "status": 0
+  }
+}
 ```
 
-#### Parameters
+## **Update Message Details**
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| org_id | path |  | Yes | string |
-| role_id | path |  | Yes | string |
+**Method: PUT**
 
-#### Responses
+`Description: Update message based on ID`
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Response | [Role](#role) |
+URL:
 
-#### PUT
-##### Summary
-
-Update role details
-
-##### Description
-
-```bash
-curl -X PUT "{{baseUrl}}/v1/{{org_id}}/channels/{{channel_id}}/roles/"
--H  "accept: application/json"
--H  "Content-Type: application/json"
--d "{
-         "name": "string",
-         "permissions": [
-            {
-                 "name": "string",
-                 "description": "string"
-            }
-        ]
-    }"
+```
+https://channels.zuri.chat/api/v1/{org_id}/messages/{msg_id}/
 ```
 
-#### Parameters
+Request Body:
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| org_id | path |  | Yes | string |
-| role_id | path |  | Yes | string |
-| data | body |  | Yes | [Role](#role) |
-
-#### Responses
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Response | [Role](#role) |
-
-### DELETE
-##### Summary
-
-Delete a role
-
-##### Description
-
-```bash
-curl -X DELETE "{{baseUrl}}/v1/{{org_id}}/roles/{{role_id}}/" -H  "accept: application/json"
+```
+{
+    "pinned": true,
+    "content": "string"
+}
 ```
 
-#### Parameters
+Required Parameters: **msg_id, org-id, user_id, channel_id, data**
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| org_id | path |  | Yes | string |
-| role_id | path |  | Yes | string |
+Response Examples:
 
-#### Responses
+_Success Response: status 200_
 
-| Code | Description |
-| ---- | ----------- |
-| 204 | Role deleted successfully |
-| 404 | Not found |
-
-## Thread message
-
-`/v1/{org_id}/threads/{thread_id}/`
-
-#### PUT
-##### Summary
-
-Update thread message
-
-##### Description
-
-```bash
-curl -X PUT "{{baseUrl}}/v1/{{org_id}}/threads/{{thread_id}}/?user_id={{user_id}}&channel_id={{channel_id}}"
--H  "accept: application/json"
--H  "Content-Type: application/json"
--d "{  "content": "string"}"
+```
+{
+  "_id": "string",
+  "user_id": "string",
+  "channel_id": "string",
+  "can_reply": true,
+  "type": "message",
+  "edited": true,
+  "files": [
+    "string"
+  ],
+  "timestamp": "2021-10-12T07:57:27.138Z",
+  "replies": 0,
+  "has_files": true,
+  "pinned": true,
+  "content": "string",
+  "emojis": [
+    "string"
+  ],
+  "event": {
+    "additionalProp1": "string",
+    "additionalProp2": "string",
+    "additionalProp3": "string"
+  }
+}
 ```
 
-#### Parameters
+_Error Response: status 404_
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| org_id | path |  | Yes | string |
-| thread_id | path |  | Yes | string |
-| data | body |  | Yes | [ThreadUpdate](#threadupdate) |
-| user_id | query | User ID (owner of message) | Yes | string |
-| channel_id | query | Channel ID (ID of channel message was posted) | Yes | string |
-
-#### Responses
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Response | [ThreadUpdate](#threadupdate) |
-| 404 | Error Response | [Error](#error) |
-
-### DELETE
-##### Summary
-
-Delete thread message
-
-##### Description
-
-```bash
-curl -X DELETE "{{baseUrl}}/v1/{{org_id}}/threads/{{thread_id}}/?user_id={{user_id}}&channel_id={{channel_id}}" -H  "accept: application/json"
+```
+{
+  "error": {
+    "message": "string",
+    "status": 0
+  }
+}
 ```
 
-##### Parameters
+## **Delete Message**
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| org_id | path |  | Yes | string |
-| thread_id | path |  | Yes | string |
-| user_id | query | User ID (owner of message) | Yes | string |
-| channel_id | query | Channel ID (ID of channel message was posted) | Yes | string |
+**Method: DELETE**
 
-##### Responses
+`Description: Delete a message based on Id and organisation`
 
-| Code | Description |
-| ---- | ----------- |
-| 204 | Thread message deleted successfully |
+URL:
 
-## Models
+```
+https://channels.zuri.chat/api/v1/{org_id}/messages/{msg_id}/
+```
 
-### User
+Required Parameters: **msg_id, org_id, user_id, channel_id**
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| _id | string | User ID | Yes |
-| role_id | string | Role ID | No |
-| is_admin | boolean | Default: false. True if the member is an admin | No |
-| notifications | object | User's notification preferences | No |
+Response Examples:
 
-### ChannelGet
+_Success Response: status 204_
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| _id | string | Channel ID | No |
-| name | string | Channel name | No |
-| description | string | Channel description | No |
-| private | boolean | Default: false. True if this channel has been set to private. | No |
-| owner | string | Owner (member_id) of the channel | No |
-| archived | boolean | Default: false. True if this channel has been archived. | No |
-| topic | string | Channel topic | No |
-| users | object | List of users in the channel | No |
+```
+Message deleted successfully
+```
 
-### BaseError
+_Error Response: status 404_
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| message | string |  | Yes |
-| status | integer |  | Yes |
+```
+Not found
+```
 
-### Error
+## **Get Message Reactions**
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| error | [BaseError](#baseerror) |  | Yes |
+**Method: GET**
 
-### Channel
+`Description: Retrieve message reactions`
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| name | string | Channel name | Yes |
-| owner | string | Owner (member_id) of the channel | Yes |
-| description | string | Channel description | No |
-| private | boolean | Default: false. True if this channel is set to private. | No |
-| topic | string | Channel topic | No |
+URL:
 
-### ChannelUpdate
+```
+https://channels.zuri.chat/api/v1/{org_id}/messages/{msg_id}/reactions/
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| _id | string | Channel ID | No |
-| name | string | Channel name | No |
-| description | string | Channel description | No |
-| private | boolean | Default: false. True if this channel has been set to private. | No |
-| archived | boolean | Default: false. True if this channel has been archived. | No |
-| topic | string | Channel topic | No |
+```
 
-### UserChannelGet
+Required Parameters: **msg_id, org_id, user_id, channel_id**
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| _id | string | Channel ID | No |
-| name | string | Channel name | No |
-| description | string | Channel description | No |
+Response Examples:
 
-### ChannelAllMedia
+_Success Response: status 200_
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| channelmessage | [ string (uri) ] | List of URLs for all files/media in channelmessage objects | No |
-| thread | [ string (uri) ] | List of URLs for all files/media in thread objects | No |
+```
+[
+  {
+    "title": "string",
+    "count": 0,
+    "users": [
+      "string"
+    ]
+  }
+]
+```
 
-#### NotificationsSetting
+## **Update Message Reaction**
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| web | string | _Enum:_ `"all"`, `"mentions"`, `"nothing"` | Yes |
-| mobile | string | _Enum:_ `"all"`, `"mentions"`, `"nothing"` | Yes |
-| same_for_mobile | boolean | Default: true. False if user has set web client notifications preferences to be different for mobile. | Yes |
-| mute | boolean | Default: true. False if user has muted this channel. | Yes |
+**Method: POST**
 
-### ChannelMessageUpdate
+`Description: Update message reactions`
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| _id | string |  | No |
-| user_id | string |  | No |
-| channel_id | string | Channel UUID | No |
-| can_reply | boolean |  | No |
-| type | string | _Enum:_ `"message"`, `"event"` | No |
-| edited | boolean | Default: false. True if this message has been updated | No |
-| files | [ string ] | List of URLs to files/media in this message | No |
-| timestamp | dateTime |  | No |
-| replies | integer | Number of messages sent as replies to this message (threads) | No |
-| has_files | boolean | Default: false. True if files/media are in this message | No |
-| pinned | boolean | Default: false. True if this message has been pinned to the channel | No |
-| content | string | Body (text) of this message | No |
-| emojis | [ string ] | List of reactions made to this message | No |
-| event | object | Contains the payload, if the 'type' of this object is 'event' | No |
+URL:
 
-### Event
+```
+https://channels.zuri.chat/api/v1/{org_id}/messages/{msg_id}/reactions/
+```
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| action | string |  | Yes |
-| recipients | [ [ [User](#user) ] ] |  | No |
+Request Body:
 
-### ChannelMessage
+```
+{
+    "title": "string",
+    "user_id": "string"
+}
+```
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| user_id | string |  | Yes |
-| content | string | Body (text) of this message | No |
-| files | [ string (uri) ] | List of URLs to files/media in this message | No |
-| event | object | Event payload related to this message | No |
-| timestamp | dateTime |  | No |
+Required Parameters: **msg_id, org_id, user_id, channel_id, data**
 
-### Permission
+Response Examples:
 
-List of permissions for this role
+_Success Response: status 201_
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| name | string |  | Yes |
-| description | string |  | Yes |
+```
+{
+  "title": "string",
+  "user_id": "string"
+}
+```
 
-### Role
+_Error Response: status 404_
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| _id | string | Role ID | No |
-| name | string | Role name | Yes |
-| channel_id | string | Channel ID | No |
-| permissions | [ [Permission](#permission) ] | List of permissions for this role | Yes |
+```
+{
+  "error": {
+    "message": "string",
+    "status": 0
+  }
+}
+```
 
-### Socket
+## **ROLES ENDPOINTS**
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| socket_name | string | Socket name | Yes |
-| channel_id | string | Channel ID | Yes |
+---
 
-### ThreadUpdate
+---
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| _id | string | Thread message ID | No |
-| user_id | string | User ID | No |
-| channelmessage_id | string | Channel message ID | No |
-| channel_id | string | Channel ID | No |
-| content | string | Body (text) of thread message | No |
-| files | [ string (uri) ] | List of URLs to files/media in this thread message | No |
-| has_files | boolean | Default: false. True if a file/media is in this thread message | No |
-| emojis | [ string ] | List of reactions made to this thread message | No |
-| edited | boolean | Default: false. True if this thread message has been edited | No |
-| timestamp | dateTime |  | No |
+## Get Channel Roles
 
-### Thread
+**Method: GET**
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| user_id | string | User ID | Yes |
-| content | string | Body (text) of thread message | No |
-| files | [ string (uri) ] | List of URLs to files/media in this thread message | No |
-| timestamp | dateTime |  | No |
+`Description: Retrieve channel roles`
 
-### ChannelMessageReaction
+URL:
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| title | string | Emoji title | No |
-| count | integer | Number of reactions made with this emoji | No |
-| users | [ string ] | List of users that reacted with this emoji | No |
+```
+https://channels.zuri.chat/api/v1/{org_id}/channels/{channel_id}/roles/
 
-#### ChannelMessageReactionsUpdate
+```
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| title | string | Emoji title | Yes |
-| member_id | string | User ID | Yes |
+Required Parameters: **channel_id, org_id**
+
+Response Examples:
+
+_Success Response: status 200_
+
+```
+[
+  {
+    "_id": "string",
+    "name": "string",
+    "channel_id": "string",
+    "permissions": [
+      {
+        "name": "string",
+        "description": "string"
+      }
+    ]
+  }
+]
+```
+
+## **Create a Channel Role**
+
+**Method: POST**
+
+`Description: Create a channel role`
+
+URL:
+
+```
+https://channels.zuri.chat/api/v1/{org_id}/channels/{channel_id}/roles/
+```
+
+Request Body:
+
+```
+{
+  "name": "string",
+  "permissions": [
+    {
+      "name": "string",
+      "description": "string"
+    }
+  ]
+}
+```
+
+Required Parameters: **channel_id, org_id. data**
+
+Response Examples:
+
+_Success Response: status 201_
+
+```
+{
+  "_id": "string",
+  "name": "string",
+  "channel_id": "string",
+  "permissions": [
+    {
+      "name": "string",
+      "description": "string"
+    }
+  ]
+}
+```
+
+## **Get Role Details**
+
+**Method: GET**
+
+`Description: Retrieve role details`
+
+URL:
+
+```
+https://channels.zuri.chat/api/v1/{org_id}/roles/{role_id}/
+```
+
+Required Parameters: **org_id, role_id**
+
+Response Examples:
+
+_Success Response: status 200_
+
+```
+{
+  "_id": "string",
+  "name": "string",
+  "channel_id": "string",
+  "permissions": [
+    {
+      "name": "string",
+      "description": "string"
+    }
+  ]
+}
+```
+
+## **Update Role Details**
+
+**Method: PUT**
+
+`Description: Update role details`
+
+URL:
+
+```
+https://channels.zuri.chat/api/v1/{org_id}/roles/{role_id}/
+```
+
+Request Body:
+
+```
+{
+  "name": "string",
+  "permissions": [
+    {
+      "name": "string",
+      "description": "string"
+    }
+  ]
+}
+```
+
+Required Parameters: **org_id, role_id, data**
+
+Response Examples:
+
+_Success Response: status 200_
+
+```
+{
+  "_id": "string",
+  "name": "string",
+  "channel_id": "string",
+  "permissions": [
+    {
+      "name": "string",
+      "description": "string"
+    }
+  ]
+}
+```
+
+## **Delete a Role**
+
+**Method: DELETE**
+
+`Description: Delete a role`
+
+URL:
+
+```
+https://channeles.zuri.chat​/api​/v1​/{org_id}​/roles​/{role_id}​/
+```
+
+Required Parameters: **org_id, role_id**
+
+Response Examples:
+
+_Success Response: status 204_
+
+```
+Role deleted successfully
+```
+
+_Error Response: status 404_
+
+```
+Not found
+```
+
+## **THREADS ENDPOINTS**
+
+---
+
+---
+
+## **Get Message Threads**
+
+**Method: GET**
+
+`Description: Retrieve all replies to message`
+
+URL:
+
+```
+https://channels.zuri.chat/api/v1/{org_id}/messages/{channelmessage_id}/threads/
+
+```
+
+Required Parameters: **channelmessage_id, org_id**
+
+Response Examples:
+
+_Success Response: status 200_
+
+```
+[
+  {
+    "_id": "string",
+    "user_id": "string",
+    "channelmessage_id": "string",
+    "channel_id": "string",
+    "content": "string",
+    "files": [
+      "string"
+    ],
+    "has_files": true,
+    "emojis": [
+      "string"
+    ],
+    "edited": true,
+    "timestamp": "2021-10-12T07:53:12.168Z"
+  }
+]
+```
+
+_Error Response: status 404_
+
+```
+{
+  "error": {
+    "message": "string",
+    "status": 0
+  }
+```
+
+## **Create Message Thread**
+
+**Method: POST**
+
+`Description: Add reply to message`
+
+URL:
+
+```
+https://channels.zuri.chat/api/v1/{org_id}/messages/{channelmessage_id}/threads/
+```
+
+Request Body:
+
+```
+{
+    "user_id": "string",
+    "content": "string",
+    "files": [
+        "string"
+    ]
+}
+```
+
+Required Parameters: **channelmessage_id, org_id, channel_id, data**
+
+Response Examples:
+
+_Success Response: status 201_
+
+```
+{
+  "_id": "string",
+  "user_id": "string",
+  "channelmessage_id": "string",
+  "channel_id": "string",
+  "content": "string",
+  "files": [
+    "string"
+  ],
+  "has_files": true,
+  "emojis": [
+    "string"
+  ],
+  "edited": true,
+  "timestamp": "2021-10-12T07:57:27.121Z"
+}
+```
+
+_Error Response: status 404_
+
+```
+{
+  "error": {
+    "message": "string",
+    "status": 0
+  }
+}
+```
+
+## **Update Thread message**
+
+**Method: PUT**
+
+`Description: Update thread message`
+
+URL:
+
+```
+https://channels.zuri.chat/api/v1/{org_id}/threads/{thread_id}/
+
+```
+
+Request Body:
+
+```
+{
+  "content": "string"
+}
+```
+
+Required Parameters: **org_id, thread_id, user_id, channel_id, data**
+
+Response Examples:
+
+_Success Response: status 200_
+
+```
+{
+  "_id": "string",
+  "user_id": "string",
+  "channelmessage_id": "string",
+  "channel_id": "string",
+  "content": "string",
+  "files": [
+    "string"
+  ],
+  "has_files": true,
+  "emojis": [
+    "string"
+  ],
+  "edited": true,
+  "timestamp": "2021-10-12T08:51:48.391Z"
+}
+```
+
+_Error Response: status 404_
+
+```
+{
+  "error": {
+    "message": "string",
+    "status": 0
+  }
+}
+```
+
+## **Update Thread Reaction**
+
+**Method: POST**
+
+`Description: Update thread reactions`
+
+URL:
+
+```
+https://channels.zuri.chat/api/v1/{org_id}/threads/{thread_id}/
+```
+
+Request Body:
+
+```
+{
+    "title": "string",
+    "user_id": "string"
+}
+```
+
+Required Parameters: **thread_id, org_id, user_id, channel_id, data**
+
+Response Examples: _Success Response: status 201_
+
+```
+{
+  "title": "string",
+  "user_id": "string"
+}
+```
+
+_Error Response: status 404_
+
+```
+{
+  "error": {
+    "message": "string",
+    "status": 0
+  }
+}
+```
+
+## **Delete Thread Message**
+
+**Method: DELETE**
+
+`Description: Delete thread message`
+
+URL:
+
+```
+https://channels.zuri.chat/api/v1/{org_id}/threads/{thread_id}/
+```
+
+Required Parameters: **org_id, thread_id, user_id, channel_id**
+
+Response Examples:
+
+_Success Response: status 204_
+
+```
+Thread message deleted successfully
+```
+
+## **SOCKET ENDPOINTS**
+
+---
+
+---
+
+## **Get Channel Socket Name**
+
+**Method: GET**
+
+`Description: Retrieve Centrifugo socket channel name based on organisation and channel IDs`
+
+URL:
+
+```
+https://channels.zuri.chat/api/v1/{org_id}/channels/{channel_id}/socket/
+```
+
+Required Parameters: **channel_id, org_id**
+
+Response Examples:
+
+_Success Response: status 200_
+
+```
+{
+  "socket_name": "string",
+  "channel_id": "string"
+}
+```
+
+_Error Response: status 404_
+
+```
+Not found
+```
+
+## **ROOM ENDPOINT**
+
+---
+
+---
+
+## **Create Room**
+
+**Method: POST**
+
+`Description: Create a room`
+
+URL:
+
+```
+https://channels.zuri.chat/api/v1/{org_id}/rooms/
+```
+
+Request Body:
+
+```
+{
+  "room_name": "string",
+  "room_members_ids": [
+    "string"
+  ],
+  "ord_id": "string",
+  "private": false
+}
+```
+
+Required Parameter: **org_id, data**
+
+Response Examples:
+
+_Success Ressponse: status 201_
+
+```
+{
+  "room_name": "string",
+  "room_members_ids": [
+    "string"
+  ],
+  "ord_id": "string",
+  "private": false
+}
+```
+
+_Error Response: status 404_
+
+```{
+  "error": {
+    "message": "string",
+    "status": 0
+  }
+}
+```
