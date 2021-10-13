@@ -68,7 +68,7 @@ To search, the client makes a Http GET Request to the enpoint as detail above.
 ```
 ### Attributes Description.
 
-The table gives cotext to some of the response attributes.
+The table gives context to some of the response attributes/fields.
 
 | S/N | Attribute                             | Description                                                                               
 | :-- | :------------------------------------ | :----------------------------------------------------------------------- | 
