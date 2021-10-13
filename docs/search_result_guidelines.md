@@ -14,9 +14,9 @@ Here, the ```base_url``` is dependent on the current active plugin. Assumming th
 To search, the client makes a Http GET Request to the enpoint as detail above.  
 
 ### NOTE:
- ```org_id``` is a path parameter for the current orgazation.
- ```member_id``` is a path parameter that holds the user id of the current user.
- ```key``` is the key of the query search
+ ```org_id``` is a path parameter for the current orgazation.\
+ ```member_id``` is a path parameter that holds the user id of the current user.\
+ ```key``` is the key of the query search\
  ```{value}``` is the search query word.
 
 
