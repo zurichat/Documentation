@@ -1,12 +1,28 @@
 ## Guidelines On How To Serve Plugin Based Search Results
 
 
- All searches on Zuri chat are plugin base. Depending on the current active plugin, the current active user search 
- is filtered base on the resources available on that plugin.
+All searches on Zuri chat are plugin base. Depending on the current active plugin, a user search is filtered base on the resources available on the plugin.
+
+URL Construct:  ```{base_url}/{Endpoint}/search?key={value}```
+
+ENDPOINT: ```api/v1/{org_id)/{member_id}/search?```
+
+METHOD: ```GET```
+
+Here, the ```base_url``` is dependent on the current active plugin. Assumming the current active plugin is TODO, the construct will look like so ```https://todo.zuri.chat/api/v1/org/614679ee1a5607b13c00bcb7/members/61570590d56dd3c4d8a9643d/search?```
+
+To search, the client makes a Http GET Request to the enpoint as detail above.  
+
+### NOTE:
+ ```org_id``` is a path parameter for the current orgazation.
+ ```member_id``` is a path parameter that holds the user id of the current user.
+ ```key``` is the key of the query search
+ ```{value}``` is the search query word.
+
+
+ To serve search results, each plugin Backend must return result data in the standerdized format detailed in Sample Response.
  
- To serve search result, each plugin Backend must return their search result in the standerdized format detailed below
- 
- 
+ ### Sample Response
 ```
 {
   "status": "ok",
