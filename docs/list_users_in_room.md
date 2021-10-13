@@ -1,6 +1,21 @@
 # Guidelines on How to List Users in a Room
 To list users in a room (a room can be a channel, a chess game, a todo, a music playlist, DMs, noticeboard, deals and prospects, which has one or more users) you'll need to format your data in this form
 
+
+The endpoint to list users in a room should conform to the listed criterias:
+
+URL construct : `{base_url}/{roomID}/{endpoint}`
+
+Endpoint : `/users/list`
+
+Request Type : `GET`
+
+Authorization : `cookieAuth` or `bearerAuth`
+
+Example url: `todo.zuri.chat/61408b3e009d394a85088ba3/users/list`
+
+
+
 ### Sample Response
 ```sh
 {
@@ -33,4 +48,5 @@ To list users in a room (a room can be a channel, a chess game, a todo, a music 
  - `is_owner` which shows whether or not the user is part of the workspace admins or owners
 
 The **profile** collection contains more details about the user as shown above.
+
 
