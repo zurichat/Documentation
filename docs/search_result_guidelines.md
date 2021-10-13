@@ -1,4 +1,4 @@
-## Guidelines On How To Serve Plugin Based Search Results
+## Guidelines On How To Serve Search Results
 
 
 All searches on Zuri chat are plugin base. Depending on the current active plugin, a user search is filtered base on the resources available on the plugin.
@@ -35,7 +35,6 @@ To search, the client makes a Http GET Request to the enpoint as detail above.
     "last_page": 4
   },
   "query": "eric",
-  "filters": {},
   "plugin": "Chess",
   "data":[
   	      {
@@ -55,8 +54,10 @@ To search, the client makes a Http GET Request to the enpoint as detail above.
 	  "created_at":"",
 	  "url":"resource item redirect url",
 	 
-}
+   },
+
   ],
+  
   "filter_suggestions": {
     "in": [],
     "from": []
@@ -65,31 +66,19 @@ To search, the client makes a Http GET Request to the enpoint as detail above.
 }
 
 ```
-The second attribute in the tree, ```pagination```, should provide pagination details.
+### Attributes Description.
+
+The table gives cotext to some of the response attributes.
 
 | S/N | Attribute                             | Description                                                                               
 | :-- | :------------------------------------ | :----------------------------------------------------------------------- | 
 | 1   | status                                | status message                                                           |
-| 2   | total_count                           | The total count of search result                                         |               |
+| 2   | total_count                           | The total count of search result                                         |               
 | 3   | per_page                              | Number of search items per page                                          |
 | 4   | query                                 | Query value or word                                                      |
-| 5   | filters                               | Any query filter included in search                                      |
-| 6   | plugin                                | Name of active plugin                                                    |
-| 3   | status                                | Your status message                                                      |
-| 3   | status                                | Your status message                                                      |
-| 3   | status                                | Your status message                                                      |
-| 3   | status                                | Your status message                                                      |
-| 3   | status                                | Your status message                                                      |
-| 3   | status                                | Your status message                                                      |
-| 3   | status                                | Your status message                                                      |
-| 3   | status                                | Your status message                                                      |
-| 3   | status                                | Your status message                                                      |
-| 3   | status                                | Your status message                                                      |
-| 3   | status                                | Your status message                                                      |
 
 
-
-
+Depending on the active plugin, some of this attributes/fields are allowed to be empty in response body.
 
 
 
