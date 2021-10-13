@@ -1,4 +1,4 @@
-## Guidelines On How To Serve Search Results
+# Guidelines On How To Serve Search Results
 
 
 All searches on Zuri chat are plugin base. Depending on the current active plugin, a user search is filtered base on the resources available on the plugin.
