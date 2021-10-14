@@ -29,6 +29,11 @@ POST `/organizations`
 
 This is a request endpoint that creates an organization or workspace. It requires the creator's email as a parameter.
 
+
+CREATOR_EMAIL: `hng@email.com`
+
+TYPE: `json`
+
 REQUEST URL: `https://api.zuri.chat/organizations`
 
 #### Request Body
@@ -68,6 +73,13 @@ Content-Type: application/json
 {
   "status": "400",
   "message": "bad request"
+}
+```
+
+```sh
+{
+  "status": "500",
+  "message": "Internal server error"
 }
 ```
 
@@ -117,6 +129,74 @@ import TabItem from '@theme/TabItem';
 
 ---
 
+
+---
+
+## Displays a list of organization
+GET `/organizations/{organization}`
+
+ Retrives and displays a list of organization from the `Workspace URL`
+
+REQUEST URL: `https://api.zuri.chat/organizations/{organization}`
+
+#### Path Parameters
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+{organization} | string | True | Organization ID
+
+
+#### Sample Response
+
+```sh
+    {
+    "status": 200,
+    "message": "organizations retrieved successfully",
+    "data": [
+        {
+            "_id": "61459d8e62688da5302acdb1",
+            "admins": null,
+            "created_at": "2021-09-18T10:04:30.355159318+02:00",
+            "creator_email": "mike@zuri.team",
+            "creator_id": "61459c4c62688da5302acdb0",
+            "logo_url": "https://api.zuri.chat/files/logo/61459d8e62688da5302acdb1/20211012095608_0.gif",
+            "name": "Zuri Chat",
+            "plugins": null,
+            "settings": null,
+            "tokens": 100,
+            "updated_at": "0001-01-01T00:00:00Z",
+            "version": "free",
+            "workspace_url": "zurichat-fsp1856.zurichat.com"
+        },
+     ]
+}
+```
+#### Possible Response
+
+```sh
+{
+  "status": "200",
+  "message": "List of Organization"
+}
+```
+
+#### Error Response
+
+```sh
+{
+  "status": "400",
+  "message": "bad request"
+}
+```
+#### Error Response
+
+```sh
+{
+  "status": "500",
+  "message": "internal server error"
+}
+```
+---
+
 ## Get organization
 GET `/organizations/{organization_id}`
 
@@ -157,15 +237,33 @@ Name | Data Type | Required | Description
       }
     }
 ```
+#### Possible Response
+
+```sh
+{
+  "status": "200",
+  "message": "Organizational detail"
+}
+```
 
 #### Error Response
 
 ```sh
 {
-  "status": "401",
-  "message": "unauthorized access"
+  "status": "400",
+  "message": "bad gateway"
 }
 ```
+#### Error Response
+
+```sh
+{
+  "status": "500",
+  "message": "Internal server error"
+}
+```
+
+
 ---
 
 ## Get organization by url
@@ -210,11 +308,29 @@ workspace_url | string | True | organzation url
       }
     }
 ```
+#### Possible Response
+
+```sh
+{
+  "status": "200",
+  "message": "Organizational detail"
+}
+```
+
 #### Error Response
+
 ```sh
 {
   "status": "400",
-  "message": "bad request"
+  "message": "bad gateway"
+}
+```
+#### Error Response
+
+```sh
+{
+  "status": "500",
+  "message": "Internal server error"
 }
 ```
 ---
@@ -297,12 +413,12 @@ Content-Type: application/json
 	}
 ```
 
-#### Sample Response
+#### Possible Response
 
 ```sh
 {
 "code": 200,
-"message": "resource deleted successfully",
+"message": "no data",
   
 }
 ```
@@ -312,6 +428,22 @@ Content-Type: application/json
 {
   "status": "401",
   "message": "No Authorization or session expired."
+}
+```
+#### Error Response
+
+```sh
+{
+  "status": "400",
+  "message": "bad gateway"
+}
+```
+#### Error Response
+
+```sh
+{
+  "status": "500",
+  "message": "Internal server error"
 }
 ```
 ---
@@ -334,7 +466,7 @@ Name | Data Type | Required | Description
 
 Name | Data Type | Required | Description
 ------- | ------- | ------- | -------
-url | string | True | new url for the organization
+organization_url | string | True | new url for the organization
 
 
 #### Sample Request
@@ -458,24 +590,32 @@ curl -X PATCH "https://api.zuri.chat/organizations/6137d69b21d3c78fc9a84bdf/logo
 JSON
 Content-Type: application/json
 	{
+    "from data"-: "Key:images"
+    "value" : "image file"
 		"url": "https://image.storage/image.png"
 	}
 ```
 
-#### Sample Response
+#### Possible Response
 
 ```sh
 {
   "code": "200",
-  "message": "resource updated successfully"
+  "message": "successful"
 }
 ```
-
 #### Error Response
 ```sh
 {
-  "status": "400",
-  "message": "bad request"
+  "status": "401",
+  "message": "No Authorization or session expired."
+}
+```
+#### Error Response
+```sh
+{
+  "status": "500",
+  "message": "internal server error"
 }
 ```
 ---
@@ -530,6 +670,34 @@ Content-Type: application/json
 }
 ```
 
+#### Possible Response
+
+```sh
+{
+  "status": "200",
+  "message": "added plugin id"
+}
+```
+
+#### Error Response
+
+```sh
+{
+  "status": "400",
+  "message": "invalid plugin"
+  "message": "plugin does not exist"
+  "message": "member does not exist"
+  "message": "plugin already added"
+}
+```
+#### Error Response
+
+```sh
+{
+  "status": "500",
+  "message": "Internal server error"
+}
+```
 #### Error Response
 ```sh
 {
@@ -539,10 +707,7 @@ Content-Type: application/json
 ```
 ---
 
-
-
-
-## Fetch organization plugins
+## Get all plugins in an organization
 GET `organizations/{organization_id}/plugins`
 
 This endpoint returns a list of plugins from an organization including an empty array if there are no plugins.
@@ -567,12 +732,109 @@ organization_id | string | True | organization ID
 
 ```sh
     {
-      "status": 200,
-      "message": "Plugins Retrived successfully",
-      "data": null
+      "code": 200,
+      "data": [
+        InstalledPlugins
+      ]
+      "message": "plugins returned succcessfully"
     }
+```
+#### Error Response
+```sh
+{
+  "status": "400",
+  "message": "organization not found"
+}
+```
+
+---
+
+## Get a particular plugin in an organization
+GET `organizations/{organization_id}/plugins`
+
+This endpoint retrives a particular plugin as requested by the user.
+
+REQUEST URL: `https://api.zuri.chat/organizations/{organization_id}/plugins`
+
+#### Path Parameters
+
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+organization_id | string | True | organization ID
+
+
+#### Sample Request
+```bash
+  curl --location --request GET 'https://api.zuri.chat/organizations/6145d3ff285e4a1840207454/plugins' \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer {KEY}'
+```
+
+#### Sample Response
+
+```sh
+    {
+      "code": 200,
+      "data": [
+        InstalledPlugins
+      ]
+      "message": "plugins returned succcessfully"
+    }
+```
+#### Error Response
+```sh
+{
+  "status": "400",
+  "message": "organization not found"
+  "message": "plugin not found"
+}
 ```
 ---
 
+## Remove a plugin from an organization
+DELETE `organizations/{organization_id}/plugins`
+
+This endpoint removes a particular plugin as requested by the user.
+
+REQUEST URL: `https://api.zuri.chat/organizations/{organization_id}/plugins`
+
+#### Path Parameters
+
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+organization_id/plugins | string | True | organization ID
 
 
+#### Sample Request
+```bash
+  curl --location --request DELETE 'https://api.zuri.chat/organizations/6145d3ff285e4a1840207454/plugins' \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer {KEY}'
+```
+```sh
+JSON
+Content-Type: application/json
+	{
+    "user_id" : "string"
+	}
+```
+
+#### Possible Response
+
+```sh
+    {
+      "code": 200,
+      "data": null
+      "message": "plugins removed succcessfully"
+    }
+```
+#### Error Response
+```sh
+{
+  "status": "400",
+  "message": "organization not found"
+  "message": "plugin not found"
+  "message": "member not found"
+}
+```
+---

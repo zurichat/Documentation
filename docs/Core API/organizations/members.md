@@ -19,7 +19,7 @@ Organization-Members Resource allows an organization to perform bulk actions rel
 - DELETE `organizations/{organization_id}/members/{member_id}`
 
 
-## Add user to organization
+## Create organization member
 POST `organizations/{organization_id}/members`
 
 Adds a new user to an organization. This request requires the `organization_id` as a path parameter.
@@ -44,11 +44,13 @@ curl -X POST "https://api.zuri.chat/organizations/6137d69b21d3c78fc9a84bdf/membe
 JSON
 Content-Type: application/json
 	{
-		"user_id" : "user@email.com"
+    "Type": "json"
+    "user_id" : "user@email.com"
+    "user_email": "example@gmail.com"
 	}
 ```
 
-#### Sample Response
+#### Possible Response
 
 ```sh
     {
@@ -59,6 +61,27 @@ Content-Type: application/json
         }
     }
 ```
+#### Error Response
+```sh
+{
+  "status": "400",
+  "message": "bad request"
+}
+```
+#### Error Response
+```sh
+{
+  "status": "401",
+  "message": "No Authorization or session expired."
+}
+```
+#### Error Response
+```sh
+{
+  "status": "500",
+  "message": "internal server error"
+}
+``` 
 
 
 ## Get organization member
@@ -106,13 +129,42 @@ cURL
         }
     }
 ```
+#### Possible Response
+
+```sh
+    {
+        "code": 200,
+        "message": "members details",
+    }
+```
+#### Error Response
+```sh
+{
+  "status": "400",
+  "message": "bad request"
+}
+```
+#### Error Response
+```sh
+{
+  "status": "401",
+  "message": "No Authorization or session expired."
+}
+```
+#### Error Response
+```sh
+{
+  "status": "500",
+  "message": "internal server error"
+}
+```
 
 
 ## Get organization members
 
 GET `/organizations/{organization_id}/members/`
 
-This endpoint returns a list of members from an organization.
+This endpoint retrives a member detail from an organization.
 
 REQUEST URL: `https://api.zuri.chat//organizations/{organization_id}/members/`
 
@@ -148,6 +200,28 @@ Name | Data Type | Required | Description
     "phone": "string",
     "time_zone": "string",
     "joined_at": "2019-08-24"
+}
+```
+#### Possible Response
+
+```sh
+    {
+        "code": 200,
+        "message": "members details",
+    }
+```
+#### Error Response
+```sh
+{
+  "status": "400",
+  "message": "bad request"
+}
+```
+#### Error Response
+```sh
+{
+  "status": "500",
+  "message": "internal server error"
 }
 ```
 
@@ -186,18 +260,54 @@ JSON
 Content-Type: application/json
 	{
 		"status": "Available"
+    "tag":":ten:"
+    "text":"Hollayyy"
+    "expiry_time": "thirty_mins" 
 	}
 ```
+#### Expiry time options
+```sh
 
-#### Sample Response
+	{
+    "Expiry time options": "dont_clear,thirty_mins,one_hour,four_hours, today, this_week" 
+	}
+```
+#### Available date format
+```sh
 
-```json
+	{
+    "format for available date":"expiry_time":"2006-01-02T15:04:05Z07:00" 
+	}
+```
+#### Possible Response
+
+```sh
+    {
+        "code": 200,
+        "message": "no data"
+    }
+```
+#### Error Response
+```sh
 {
-"code": 200,
-"message": "resource updated successfully"
-  
+  "status": "400",
+  "message": "bad request"
 }
-``` 
+```
+#### Error Response
+```sh
+{
+  "status": "401",
+  "message": "No Authorization or session expired."
+}
+```
+#### Error Response
+```sh
+{
+  "status": "500",
+  "message": "internal server error"
+}
+```
 
 
 ## Update organization member profile picture
@@ -313,6 +423,35 @@ Content-Type: application/json
   
 }
 ``` 
+#### Possible Response
+
+```sh
+    {
+        "code": 200,
+        "message": "no data"
+    }
+```
+#### Error Response
+```sh
+{
+  "status": "400"
+  "message": "bad request"
+}
+```
+#### Error Response
+```sh
+{
+  "status": "401"
+  "message": "No Authorization or session expired."
+}
+```
+#### Error Response
+```sh
+{
+  "status": "500"
+  "message": "internal server error"
+}
+```
 
 
 ## Toggle organization member presence (Away/Active):
@@ -454,17 +593,39 @@ curl -X PATCH "https://api.zuri.chat/organizations/6137d69b21d3c78fc9a84bdf/memb
 -H "accept: application/json"
 ```
 
-#### Sample Response
+
+#### Possible Response
 
 ```sh
+    {
+        "code": 200,
+        "message": "no data"
+    }
+```
+#### Error Response
+```sh
 {
-  "code": "200",
-  "message": "resource updated successfully"
+  "status": "400",
+  "message": "bad request"
 }
 ```
+#### Error Response
+```sh
+{
+  "status": "401",
+  "message": "No Authorization or session expired."
+}
+```
+#### Error Response
+```sh
+{
+  "status": "500",
+  "message": "internal server error"
+}
+``` 
 
 
-## Deactivate organization 
+## Deactivate organization member
 DELETE `organizations/{organization_id}/members/{member_id}`
 
 This endpoint will be used to deactivate/remove a user from an organization.
@@ -483,11 +644,32 @@ curl -X DELETE "https://api.zuri.chat/organizations/6137d69b21d3c78fc9a84bdf/mem
 -H "accept: application/json"
 ```
 
-#### Sample Response
+#### Possible Response
 
 ```sh
-	{
-		"status": "200",
-		"message": "resource updated successfully",
-	}
+    {
+        "code": 20,
+        "message": "member details"
+    }
 ```
+#### Error Response
+```sh
+{
+  "status": "400",
+  "message": "bad request"
+}
+```
+#### Error Response
+```sh
+{
+  "status": "401",
+  "message": "No Authorization or session expired."
+}
+```
+#### Error Response
+```sh
+{
+  "status": "500",
+  "message": "internal server error"
+}
+``` 
