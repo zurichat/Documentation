@@ -144,9 +144,9 @@ Base_URL, as used here, referes to the base url of the plugin that is currently 
 	"status":"ok",
 	"type":"suggestions",
 	"data":{
-		"Joeboy dey come":"Joeboy dey come", 
-		"Amara in the hood":"Amara in the hood", 
-		"Slow Down":"Slow Down",
+		"Joeboy":"Joeboy dey come", 
+		"Amara":"Amara in the hood", 
+		"Slow":"Slow Down",
 	}
 }
 
