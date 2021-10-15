@@ -85,7 +85,7 @@ To search, the client makes a Http GET Request to the enpoint as detail above.
 There are three search entity types; User, Message and Others. The entity to be rendered in the data array of searched_item_object is dependent on the plugin, but the plugin can only render one of the three defined entity types. The schema below gives context to the three entity types.
 
 ```
- - User: 
+ - user: 
      For user entity, the following attribute should be defined
        {
          "_id': "member Id of the user",
@@ -96,7 +96,7 @@ There are three search entity types; User, Message and Others. The entity to be 
          "destination_url": "url to route to profile"
      }
 
-- Message: 
+- message: 
      message entity should follow the schema below
        {
          "_id": "message id"
@@ -108,7 +108,7 @@ There are three search entity types; User, Message and Others. The entity to be 
          "destination_url": "url to route to conversation"
      }
 
-- Others:
+- others:
       {
         "_id" : "id of resource in db",
         "title": "title of resource in db",
@@ -143,13 +143,13 @@ Base_URL, as used here, referes to the base url of the plugin that is currently 
 {
 	"status":"ok",
 	"type":"suggestions",
-	"data":[
-		"Joeboy dey come":"Joeboy dey come", 
-		"Amara in the hood":"Amara in the hood", 
-		"Slow Down":"Slow Down",
-	]
+	"data":{
+		"Joeboy":"Joeboy dey come", 
+		"Amara":"Amara in the hood", 
+		"Slow":"Slow Down",
+	}
 }
 
 ```
-Depedending on the plugin, eaach item in the data array can be a key pair of the same exact word(s), or different word(s). However the case, the value of the pair is to be rendered on the search UI, while the key is to be passed as query params when the suggestion is selected by the user.
+Depedending on the plugin, each item in the data array can be a key pair of the same exact word(s), or different word(s). However the case, the value of the pair is to be rendered on the search UI, while the key is to be passed as query params when the suggestion is selected by the user.
 
