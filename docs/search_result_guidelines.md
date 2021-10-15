@@ -44,10 +44,9 @@ To search, the client makes a Http GET Request to the enpoint as detail above.
   "member_id" : is a path parameter that holds the user id of the current user.
 
 ### Query Parameters
- 1. q: This refers to the a text being searched for.
+ 1. q: This refers to the text being searched for.
  2. filter: This varies for plugins to pluins. For DM it could mean the member id of a user  where the search is streamlined to. For channels it could mean the id of a channel where the search  would be streamlined. For goals it could be a category etc. Also note multiple id can also exist, and the search would be streamlined to those ids.
 
- 
  
  ### Sample Response
  To serve search results, each plugin Backend must return result data in the format detailed below:
@@ -76,30 +75,84 @@ To search, the client makes a Http GET Request to the enpoint as detail above.
 “results”: { 
     “entity”: “entity type, can be ”,
     “data”: [
-	      {“object_of_data_to_match_entity},
-        {“object_of_data_to_match_entity},
+	      {searched_ite_object},
+        {searched_item_object},
       ]
   }
 
 }
 
 ```
-### Attributes Description.
+### Entities.
 
-The table gives cotext to some of the response attributes.
+There are three standared search entity types; User, Message and Others. The entity to be rendered in the data array of searched_item_object is dependent on the plugin, but the plugin can only render one of the three defined entity types. The schema below gives context to the three entity types.
 
-| S/N | Attribute                             | Description                                                                               
-| :-- | :------------------------------------ | :----------------------------------------------------------------------- | 
-| 1   | status                                | status message                                                           |
-| 2   | total_count                           | The total count of search result                                         |               
-| 3   | per_page                              | Number of search items per page                                          |
-| 4   | url                                   | The url to direct users to the searched item when clicked                |
+```
+ - User: 
+     For user entity, the following attribute should be defined
+       {
+         "_id': "member Id of the user",
+         "username":  "username of the user",
+         "email": "email of the user",
+         "images_url": [list of image urls],
+         "created_at": "date time of creation of resource",
+         "destination_url": "url to route to profile"
+     }
 
+- Message: 
+     message entity should follow the schema below
+       {
+         "_id": "message id"
+         "room_name": "name of room where message was sent"
+         "content": "message text"
+         "created_by": "message creator"
+         "images_url": [list of image urls],
+         "created_at": "date and time of creation of resource"
+         "destination_url": "url to route to conversation"
+     }
 
+- Others:
+      {
+        "_id" : "id of resource in db",
+        "title": "title of resource in db",
+        "content": "description text of resource",
+        "created_by": "username of creator of message",
+        "images_url": [list of image urls],
+        "created_at": "date time of creation of resource",
+        "destination_url": "url to route to plugin resource"
+      }
 
-Depending on the active plugin, some of this attributes/fields are allowed to be empty in response body.
+```
 
+### Search Suggestions
+To fetch search suggestion related to an active plugin, the client should make a request as follows;
 
+``` ENDPOINT :  api/v1/search-suggestions/{org_id}/{member_id}  ```
 
+``` URL CONSTRUCT :  {Base_URL}/{Enpoint}?org_id=value&member_id=value ```
 
+``` RREQUEST TYPE : GET ```
+
+Base_URL, as used here, referes to the base url of the plugin that is currently active on zuri chat. An example url construct for fetching search suggestions would look like so;
+
+```
+  https://todo.zuri.chat/api/v1/search-suggestions/614679ee1a5607b13c00bcb7/61570590d56dd3c4d8a9643d
+
+```
+
+### Suggestion Response 
+
+```
+{
+	"status":"ok",
+	"type":"suggestions",
+	"data":[
+		"Joeboy dey come":"Joeboy dey come", 
+		"Amara in the hood":"Amara in the hood", 
+		"Slow Down":"Slow Down",
+	]
+}
+
+```
+Depedending on the plugin, eaach item in the data array can be a key pair of the same exact word(s), or different word(s). However the case, the value of the pair is to be rendered on the search UI, while the key is to be passed as query params when the suggestion is selected by the user.
 
