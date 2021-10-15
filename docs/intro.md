@@ -17,7 +17,7 @@ title: Getting Started
 Understanding everything you need to know to get to work in Zuri Chat.
 
 ### What is Zuri Chat?
-Zuri Chat is a very flexible open source messaging app for organizations connecting members to information they need whenever they need them. Zuri Chat brings people together in an inclusive mmanner easing the unification of teams and transforming communications within organizations.
+Zuri Chat is a very flexible open source messaging app for organizations connecting members to information they need whenever they need them. Zuri Chat brings people together in an inclusive manner easing the unification of teams and transforming communications within organizations.
 
 
 ### How Zuri Chat works
@@ -36,7 +36,7 @@ Some of the core APIs covered in this documentation include:
 * Plugins
 
 ### What is a plugin?
-A plugin is a standalone app provided by different pre-approved plugin providers which you can choose to add to your workspace to boost productivity. There are several plugins avaialable at the Zuri Chat market place. These plugins can easily be installed and configured to suite your workspace needs. Plugins can also be uninstalled anytime.
+A plugin is a standalone app provided by different pre-approved plugin providers which you can choose to add to your workspace to boost productivity. There are several plugins available at the Zuri Chat market place. These plugins can easily be installed and configured to suite your workspace needs. Plugins can also be uninstalled anytime.
 
 Some of the available plugins on Zuri Chat include: 
 <!-- no toc -->
@@ -52,7 +52,7 @@ Some of the available plugins on Zuri Chat include:
 Channels are very fundamental to the Zuri Chat app, bringing the right people together in one place organizing work around a specific common goal.
 
 #### Direct Messages
-Discussions that do not require the attention of the entire team take place here. DMs can be used for conversations that require the attention of a particular team mate or line supervisor or manager.
+Discussions that do not require the attention of the entire team takes place here. DMs can be used for conversations that require the attention of a particular team mate or line supervisor or manager.
 
 #### Music Plugin
 With Zuri Chat, the music plugin lets you enter into a room and enjoy some good music and also share music with colleagues without disrupting the workflow or having to go outside the app.
