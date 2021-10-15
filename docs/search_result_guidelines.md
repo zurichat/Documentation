@@ -1,20 +1,17 @@
 # Guidelines On How To Serve Search Results
 
 
-All searches on Zuri chat are plugin base. Depending on the current active plugin, a user search is filtered base on the resources available on the plugin. All plugins providing a search endpoint are to ensure conformity to the following specifications:
+All searches on Zuri chat are plugin base. Depending on the current active plugin, a user search is filtered base on the resources available on the plugin. 
+Plugins providing a search endpoint are to ensure conformity to the following specifications:
 
-URL Construct:  
-    ```  {base_url}/api/v1/search/{org_id)/{member_id} 
-    ```
+```
+URL Construct: {base_url}/api/v1/search/{org_id)/{member_id} 
+   
+ENDPOINT: api/v1/search/{org_id}/{member_id}?key=value&filter=value&org_id={value}&member_id={value}  
+   
+REQUEST TYPE: GET 
 
-ENDPOINT: 
-    ```  api/v1/search/{org_id}/{member_id}?key=value&filter=value&org_id={value}&member_id={value}  
-    ```
-
-REQUEST TYPE:
-    ```  GET  
-    ```
-
+```
 
 Depending on the active plugin, the base_url switches with respect to the active plugin url. Assumming the current active plugin is TODO, the url construct will look like so:
 
@@ -22,7 +19,7 @@ Depending on the active plugin, the base_url switches with respect to the active
 https://todo.zuri.chat/api/v1/search/614679ee1a5607b13c00bcb7/61570590d56dd3c4d8a9643d?q=eric&filter=234five$org_id=33344&member_id=value 
 ```
 
-Other Examples are:
+Other Examples:
 ```
     Channels Plugin:
     https://channels.zuri.chat/api/v1/search/614679ee1a5607b13c00bcb7/61570590d56dd3c4d8a9643d?q=hello&filter=announccementpage=1
@@ -49,7 +46,7 @@ To search, the client makes a Http GET Request to the enpoint as detail above.
 
  
  ### Sample Response
- To serve search results, each plugin Backend must return result data in the format detailed below:
+ To serve search results, the Backend of each plugin must return result data in the format below:
 
 ```
 {
@@ -85,7 +82,7 @@ To search, the client makes a Http GET Request to the enpoint as detail above.
 ```
 ### Entities.
 
-There are three standared search entity types; User, Message and Others. The entity to be rendered in the data array of searched_item_object is dependent on the plugin, but the plugin can only render one of the three defined entity types. The schema below gives context to the three entity types.
+There are three search entity types; User, Message and Others. The entity to be rendered in the data array of searched_item_object is dependent on the plugin, but the plugin can only render one of the three defined entity types. The schema below gives context to the three entity types.
 
 ```
  - User: 
