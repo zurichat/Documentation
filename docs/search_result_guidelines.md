@@ -1,73 +1,86 @@
 # Guidelines On How To Serve Search Results
 
 
-All searches on Zuri chat are plugin base. Depending on the current active plugin, a user search is filtered base on the resources available on the plugin.
+All searches on Zuri chat are plugin base. Depending on the current active plugin, a user search is filtered base on the resources available on the plugin. All plugins providing a search endpoint are to ensure conformity to the following specifications:
 
-URL Construct:  ```{base_url}/{Endpoint}?key={value}&filter={value}```
+URL Construct:  
+    ```  {base_url}/api/v1/search/{org_id)/{member_id} 
+    ```
 
-ENDPOINT: ```api/v1/search/{org_id}/{member_id}?key=value&filter=value```
+ENDPOINT: 
+    ```  api/v1/search/{org_id}/{member_id}?key=value&filter=value&org_id={value}&member_id={value}  
+    ```
 
-Request Type: ```GET```
+REQUEST TYPE:
+    ```  GET  
+    ```
 
-Here, the ```base_url``` is dependent on the current active plugin. Assumming the current active plugin is TODO, the construct will look like so ```https://todo.zuri.chat/api/v1/search/614679ee1a5607b13c00bcb7/61570590d56dd3c4d8a9643d?key=mark```
+
+Depending on the active plugin, the base_url switches with respect to the active plugin url. Assumming the current active plugin is TODO, the url construct will look like so:
+
+```  
+https://todo.zuri.chat/api/v1/search/614679ee1a5607b13c00bcb7/61570590d56dd3c4d8a9643d?q=eric&filter=234five$org_id=33344&member_id=value 
+```
+
+Other Examples are:
+```
+    Channels Plugin:
+    https://channels.zuri.chat/api/v1/search/614679ee1a5607b13c00bcb7/61570590d56dd3c4d8a9643d?q=hello&filter=announccementpage=1
+ 
+    DM Plugin:
+    https://dm.zuri.chat/api/v1/search/614679ee1a5607b13c00bcb7/61570590d56dd3c4d8a9643d?q=hi&filter=431&page=2
+ 
+    Goals
+    https://goals.chat/api/v1/search/614679ee1a5607b13c00bcb7/61570590d56dd3c4d8a9643d?q=Debug&filter=431&page=3
+
+```
 
 To search, the client makes a Http GET Request to the enpoint as detail above.  
 
-### NOTE:
- ```org_id``` is a path parameter for the current orgazation.
+### Path Parameters:
 
- ```member_id``` is a path parameter that holds the user id of the current user.
+  “org_id” : is a path parameter holding the current orgazation.
 
- ```key value``` is the search query word
+  "member_id" : is a path parameter that holds the user id of the current user.
+
+### Query Parameters
+ 1. q: This refers to the a text being searched for.
+ 2. filter: This varies for plugins to pluins. For DM it could mean the member id of a user  where the search is streamlined to. For channels it could mean the id of a channel where the search  would be streamlined. For goals it could be a category etc. Also note multiple id can also exist, and the search would be streamlined to those ids.
+
  
- ```filter value``` is the fllter value.
-
-
- To serve search results, each plugin Backend must return result data in the standerdized format detailed in Sample Response.
  
  ### Sample Response
+ To serve search results, each plugin Backend must return result data in the format detailed below:
+
 ```
 {
-  "status": "ok",
+  "status": "ok", 
+  “title”:”search title”,
+  “description”: ”descrption of searched result”,
   "pagination": {
-    "total_count": 4,
-    "current_page": 1,
-    "per_page": 20,
-    "page_count": 4,
-    "first_page": 1,
-    "last_page": 4
+    "total_results": 20,   
+    "page_size": 20, 
+    "current_page": 1,      
+    "first_page": 1,    
+    "last_page": 4 ,
+    “next”: <url to next page>,
+    “previous”: <url to previous page>
   },
-  "query": "mark",
-  "plugin": "Chess",
-  "data":[
-  	      {
-	  "title":"name of resource item",
-	  "email":"can be empty if it doesn't apply",
-	  "description":"",
-    "content":"",
-	  "image_url":"if any",
-	  "created_at":"",
-	  "url":"resource item redirect url",
-	
-   },
-	   {
-	  "title":"name of resource item",
-	  "email":"can be empty if it doesn't apply",
-	  "description":"",
-    "content":"",
-	  "image_url":"if any",
-	  "created_at":"",
-	  "url":"resource item redirect url",
-	 
-   },
 
-  ],
-  
-  "filter_suggestions": {
-    "in": [],
-    "from": []
-  },
-  
+ “search_parameters”: {
+  	“query”: ”text being searched for”,
+  	“filters”: [list of attributes used to filter],
+	  “plugin”: ”name of current active pluin”
+},
+
+“results”: { 
+    “entity”: “entity type, can be ”,
+    “data”: [
+	      {“object_of_data_to_match_entity},
+        {“object_of_data_to_match_entity},
+      ]
+  }
+
 }
 
 ```
