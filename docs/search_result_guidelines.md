@@ -80,8 +80,8 @@ To accommodate some plugins whose routing setup can not catch org_id and member_
 “results”: { 
     “entity”: “entity type, can be ”,
     “data”: [
-	        {searched_ite_object},
-       	  {searched_item_object},
+	   {searched_ite_object},
+       	   {searched_item_object},
        ]
   }
 
