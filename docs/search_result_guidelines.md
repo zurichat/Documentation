@@ -43,6 +43,7 @@ To search, the client makes a Http GET Request to the enpoint as detail above.
 ### Query Parameters
  1. q: This refers to the text being searched for.
  2. filter: This varies for plugins to pluins. For DM it could mean the member id of a user  where the search is streamlined to. For channels it could mean the id of a channel where the search  would be streamlined. For goals it could be a category etc. Also note multiple id can also exist, and the search would be streamlined to those ids.
+ 3. page: this takes an integer which represents the page number to show a page in the paginated response.
 
  
  ### Sample Response
@@ -99,13 +100,15 @@ There are three search entity types; User, Message and Others. The entity to be 
 - message: 
      message entity should follow the schema below
        {
-         "_id": "message id"
-         "room_name": "name of room where message was sent"
-         "content": "message text"
-         "created_by": "message creator"
+         "_id": "message id",
+         "room_name": "name of room where message was sent",
+	 "profile_picture":"profle picture of message creator",
+	 "member_id":"member_id of message creator",
+         "content": "message text",
+         "created_by": "message creator",
          "images_url": [list of image urls],
-         "created_at": "date and time of creation of resource"
-         "destination_url": "url to route to conversation"
+         "created_at": "date and time of creation of resource",
+         "destination_url": "url to route to conversation",
      }
 
 - others:
@@ -151,5 +154,5 @@ Base_URL, as used here, referes to the base url of the plugin that is currently 
 }
 
 ```
-Depedending on the plugin, each item in the data array can be a key pair of the same exact word(s), or different word(s). However the case, the value of the pair is to be rendered on the search UI, while the key is to be passed as query params when the suggestion is selected by the user.
+Depedending on the plugin, each item in the data array can be a key pair of the same exact word(s), or different word(s). However the case, the value of the pair is to be rendered on the search UI, while the key is to be passed as a filter in the query params when the suggestion is selected by the user.
 
