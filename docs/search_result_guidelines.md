@@ -49,7 +49,7 @@ To search, the client makes a Http GET Request to the enpoint as detail above.
  ### Sample Response
  To serve search results, the Backend of each plugin must return result data in the format below:
 
-```
+```json
 {
   "status": "ok", 
   “title”:”search title”,
@@ -63,13 +63,17 @@ To search, the client makes a Http GET Request to the enpoint as detail above.
     “next”: <url to next page>,
     “previous”: <url to previous page>
   },
+```
 
+```sh
  “search_parameters”: {
   	“query”: ”text being searched for”,
   	“filters”: [list of attributes used to filter],
 	  “plugin”: ”name of current active pluin”
 },
+```
 
+```sh
 “results”: { 
     “entity”: “entity type, can be ”,
     “data”: [
@@ -77,10 +81,9 @@ To search, the client makes a Http GET Request to the enpoint as detail above.
         {searched_item_object},
       ]
   }
-
 }
-
 ```
+
 ### Entities.
 
 There are three search entity types; User, Message and Others. The entity to be rendered in the data array of searched_item_object is dependent on the plugin, but the plugin can only render one of the three defined entity types. The schema below gives context to the three entity types.
@@ -88,22 +91,25 @@ There are three search entity types; User, Message and Others. The entity to be 
 ```
  - user: 
      For user entity, the following attribute should be defined
+     ```json
        {
-         "_id': "member Id of the user",
+         "_id": "member Id of the user",
          "username":  "username of the user",
          "email": "email of the user",
          "images_url": [list of image urls],
          "created_at": "date time of creation of resource",
          "destination_url": "url to route to profile"
      }
+     ```
 
 - message: 
      message entity should follow the schema below
+     ```json
        {
          "_id": "message id",
          "room_name": "name of room where message was sent",
-	 "profile_picture":"profle picture of message creator",
-	 "member_id":"member_id of message creator",
+         "profile_picture":"profle picture of message creator",
+         "member_id":"member_id of message creator",
          "content": "message text",
          "created_by": "message creator",
          "images_url": [list of image urls],
@@ -112,6 +118,7 @@ There are three search entity types; User, Message and Others. The entity to be 
      }
 
 - others:
+```json
       {
         "_id" : "id of resource in db",
         "title": "title of resource in db",
@@ -135,14 +142,14 @@ To fetch search suggestion related to an active plugin, the client should make a
 
 Base_URL, as used here, referes to the base url of the plugin that is currently active on zuri chat. An example url construct for fetching search suggestions would look like so;
 
-```
+```json
   https://todo.zuri.chat/api/v1/search-suggestions/614679ee1a5607b13c00bcb7/61570590d56dd3c4d8a9643d
 
 ```
 
 ### Suggestion Response 
 
-```
+```json
 {
 	"status":"ok",
 	"type":"suggestions",
