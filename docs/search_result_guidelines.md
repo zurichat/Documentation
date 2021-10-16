@@ -7,7 +7,7 @@ Plugins providing a search endpoint are to ensure conformity to the following sp
 ```
 URL Construct: {base_url}/api/v1/search/{org_id)/{member_id} 
    
-ENDPOINT: api/v1/search/{org_id}/{member_id}?key=value&filter=value&org_id={value}&member_id={value}  
+ENDPOINT: api/v1/search/{org_id}/{member_id}  
    
 REQUEST TYPE: GET 
 
@@ -16,7 +16,7 @@ REQUEST TYPE: GET
 Depending on the active plugin, the base_url switches with respect to the active plugin url. Assumming the current active plugin is TODO, the url construct will look like so:
 
 ```  
-https://todo.zuri.chat/api/v1/search/614679ee1a5607b13c00bcb7/61570590d56dd3c4d8a9643d?q=eric&filter=234five$org_id=33344&member_id=value 
+https://todo.zuri.chat/api/v1/search/614679ee1a5607b13c00bcb7/61570590d56dd3c4d8a9643d?q=eric&filter=234five$org_id=33344&member_id=value$page=2 
 ```
 
 Other Examples:
@@ -43,6 +43,7 @@ To search, the client makes a Http GET Request to the enpoint as detail above.
 ### Query Parameters
  1. q: This refers to the text being searched for.
  2. filter: This varies for plugins to pluins. For DM it could mean the member id of a user  where the search is streamlined to. For channels it could mean the id of a channel where the search  would be streamlined. For goals it could be a category etc. Also note multiple id can also exist, and the search would be streamlined to those ids.
+ 3. page: this holds an integer representation of the current page in the pagination response.
 
  
  ### Sample Response
@@ -123,12 +124,14 @@ There are three search entity types; User, Message and Others. The entity to be 
 
 ### Search Suggestions
 To fetch search suggestion related to an active plugin, the client should make a request as follows;
+```
+ENDPOINT :  api/v1/search-suggestions/{org_id}/{member_id}
 
-``` ENDPOINT :  api/v1/search-suggestions/{org_id}/{member_id}  ```
+URL CONSTRUCT :  {Base_URL}/{Enpoint}?org_id=value&member_id=value 
 
-``` URL CONSTRUCT :  {Base_URL}/{Enpoint}?org_id=value&member_id=value ```
+RREQUEST TYPE : GET
 
-``` RREQUEST TYPE : GET ```
+```
 
 Base_URL, as used here, referes to the base url of the plugin that is currently active on zuri chat. An example url construct for fetching search suggestions would look like so;
 
