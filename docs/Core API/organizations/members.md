@@ -45,7 +45,6 @@ JSON
 Content-Type: application/json
 	{
     "Type": "json"
-    "user_id" : "user@email.com"
     "user_email": "example@gmail.com"
 	}
 ```
