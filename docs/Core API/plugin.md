@@ -132,3 +132,105 @@ Code| Description
  400 | Bad request e.g developer_email is missing
 401 | Access token is missing or invalid 
 500 | Internal server error
+
+
+## Plugin Communication with Zuri Core API
+
+To facilitate communication with the zuri core, zuri core provides a sync_request_url that allows a plugin to be pinged each time there is new data to be written.
+
+PATCH `/plugins/{PLUGIN_ID}`
+
+This endpoint would allow you to update the plugin sync_request_url. The sync_request url accepts a post request with no data.
+
+REQUEST URL: https://api.zuri.chat/plugins/{PLUGIN_ID}
+
+#### Request Headers
+    
+Content-Type: `application/json`
+ 
+#### Request Body
+
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+sync_request_url | string | True | provide a ping endpoint for Zuri Core updates
+
+#### Sample request
+
+```sh
+JSON
+Content-Type: applicaation/json
+{
+  "sync_request_url": "https://plugin.zuri.chat/api/v1/sync"
+}
+```
+
+#### Sample Response
+
+```sh
+{
+  "status": 200,
+  "message": "Updated plugin successfully",
+  "data": null
+}
+
+```
+
+### Synchronizing your database
+
+On a successful post request to the endpoint provided, it is expected that you make a GET request to `https://api.zuri.chat/marketplace/plugins/{plugin_id}` to obtain the queue data. This queue data has the format shown below:
+
+```sh
+"queue": [{
+    "id": 63,
+    "event": "enter_organization",
+    "message": {
+        "member_id": "616ab35313b7d802d5027702",
+        "organization_id": "616986c5fbc5b28d42170c64"
+        }
+    },
+    {
+    "id": 64
+    "event": "leave_organization",
+    "message": {
+        "member_id": "616ab35313b7d802d5027702",
+        "organization_id": "616986c5fbc5b28d42170c64"
+        }
+    }]
+```
+
+The possible events available for now are `enter_organization` and `leave_organization`. It is expected that these events propose he changes to be made to the plugins databases.
+After the plugin has pulled this data and updated their local database, it will be expected that the plugin send a PATCH request to `https://api.zuri.chat/plugins/{PLUGIN_ID}/sync` with the id of the last element in the queue so the queue data can be updated. A sample request is shown below:
+
+REQUEST URL: https://api.zuri.chat/plugins/{PLUGIN_ID}/sync
+
+#### Request Headers
+    
+Content-Type: `application/json`
+ 
+#### Request Body
+
+Name | Data Type | Required | Description
+------- | ------- | ------- | -------
+id| Integer |True | The id of the last element in the queue
+
+#### Sample request
+
+```sh
+JSON
+Content-Type: applicaation/json
+{
+  "id": 20
+}
+```
+
+#### Sample Response
+
+```sh
+{
+  "status": 200,
+  "message": "Synchronization updated successfully.",
+  "data": null
+}
+
+```
+After this requestis completed Zuri core and eachn plugin are both completely in sync.
