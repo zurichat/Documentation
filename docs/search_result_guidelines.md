@@ -35,15 +35,22 @@ Other Examples:
 To search, the client makes a Http GET Request to the enpoint as detail above.  
 
 ### Path Parameters:
-
+```
   “org_id” : is a path parameter holding the current orgazation.
 
   "member_id" : is a path parameter that holds the user id of the current user.
-
+```
 ### Query Parameters
  1. q: This refers to the text being searched for.
  2. filter: This varies for plugins to pluins. For DM it could mean the member id of a user  where the search is streamlined to. For channels it could mean the id of a channel where the search  would be streamlined. For goals it could be a category etc. Also note multiple id can also exist, and the search would be streamlined to those ids.
  3. page: this holds an integer representation of the current page in the pagination response.
+
+To accommodate some plugins whose routing setup can not catch org_id and member_id as part of path parameters, org_id and member_id should also be passed as query params. Hence, a complete url construct with all params will look like the example below
+
+```
+ https://chess.zuri.chat/api/v1/search/614679ee1a5607b13c00bcb7/61570590d56dd3c4d8a9643d?q=eric&filter=234five$org_id=614679ee1a5607b13c00bcb7&member_id=61570590d56dd3c4d8a9643d$page=2
+
+```
 
  
  ### Sample Response
@@ -74,8 +81,8 @@ To search, the client makes a Http GET Request to the enpoint as detail above.
     “entity”: “entity type, can be ”,
     “data”: [
 	      {searched_ite_object},
-        {searched_item_object},
-      ]
+       	      {searched_item_object},
+       ]
   }
 
 }
@@ -85,9 +92,10 @@ To search, the client makes a Http GET Request to the enpoint as detail above.
 
 There are three search entity types; User, Message and Others. The entity to be rendered in the data array of searched_item_object is dependent on the plugin, but the plugin can only render one of the three defined entity types. The schema below gives context to the three entity types.
 
-```
- - User: 
-     For user entity, the following attribute should be defined
+
+ - User entity should have it attribute defined as below.
+ 
+ ``` 
        {
          "_id': "member Id of the user",
          "username":  "username of the user",
@@ -96,9 +104,12 @@ There are three search entity types; User, Message and Others. The entity to be 
          "created_at": "date time of creation of resource",
          "destination_url": "url to route to profile"
      }
+     
+ ``` 
 
-- Message: 
-     message entity should follow the schema below
+- Message entity should follow the schema below
+
+```
        {
          "_id": "message id"
          "room_name": "name of room where message was sent"
@@ -108,8 +119,12 @@ There are three search entity types; User, Message and Others. The entity to be 
          "created_at": "date and time of creation of resource"
          "destination_url": "url to route to conversation"
      }
+     
+```
 
 - Others:
+
+```
       {
         "_id" : "id of resource in db",
         "title": "title of resource in db",
