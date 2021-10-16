@@ -44,7 +44,6 @@ curl -X POST "https://api.zuri.chat/organizations/6137d69b21d3c78fc9a84bdf/membe
 JSON
 Content-Type: application/json
 	{
-    "Type": "json"
     "user_email": "example@gmail.com"
 	}
 ```
