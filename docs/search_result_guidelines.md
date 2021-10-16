@@ -88,9 +88,9 @@ To search, the client makes a Http GET Request to the enpoint as detail above.
 
 There are three search entity types; User, Message and Others. The entity to be rendered in the data array of searched_item_object is dependent on the plugin, but the plugin can only render one of the three defined entity types. The schema below gives context to the three entity types.
 
-```
  - user: 
      For user entity, the following attribute should be defined
+
      ```json
        {
          "_id": "member Id of the user",
@@ -99,7 +99,7 @@ There are three search entity types; User, Message and Others. The entity to be 
          "images_url": [list of image urls],
          "created_at": "date time of creation of resource",
          "destination_url": "url to route to profile"
-     }
+         }
      ```
 
 - message: 
@@ -118,8 +118,9 @@ There are three search entity types; User, Message and Others. The entity to be 
      }
 
 - others:
+  
 ```json
-      {
+     {
         "_id" : "id of resource in db",
         "title": "title of resource in db",
         "content": "description text of resource",
