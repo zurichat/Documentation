@@ -1,9 +1,9 @@
 ---
 slug: long-blog-post
-title: Long Blog Post
-authors: endi
-tags: [hello, docusaurus]
+title: Zuri Token
+authors: dav
+tags: [hello, Zuri]
 ---
 
-This will be used for workflow documentation
+## Zuri Token Introduction
 
