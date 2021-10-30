@@ -138,6 +138,8 @@ If you love the vision of this project and would love to contribute to the growt
 -
 
 ## How do I get into the Zuri WorkSpace?
+The ZuriChat WorkSpace is where all contributors meet, join specific plugin channel, get necessary informations, stay updated and many more.
+To be a contributor of ZuriChat, it is very important, if not neccessary to join the ZuriChat WorkSpace. To join the workspace, kindly click this [link](https://join.slack.com/t/zurichat/shared_invite/zt-xsr2n0ci-iO~N8lqlZKnc3wPLRUkr0w)
 
 ## What do I tend to gain as a contributor
 There are various things to gain here at ZuriChat, example;
