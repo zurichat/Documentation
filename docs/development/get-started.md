@@ -38,6 +38,9 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 - ReactJS
 - NodeJS
 **Linting Tools**
+- ESLint(Backend)
+- ESLint(Frontend)
+- Husky (Pre-commit)
 **Docs**
 
 ### Company Files Plugin
@@ -52,6 +55,9 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 - ReactJS
 - NodeJS
 **Linting Tools**
+- Eslint(Backend)
+- Prettier (Frontend)
+- Husky (Pre-commit)
 **Docs**
 
 ### Noticeboard Plugin
@@ -59,9 +65,12 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 - ReactJS
 - Python(Django)
 **Linting Tools**
+- ESLint (Frontend)
+- Pylint (Backend )
+- Husky (Pre-Commit)
 **Docs**
 
-### Music (YouTube music video)
+### Music (YouTube music video) Plugin
 **Stacks**
 - ReactJS
 - Python(Django)
@@ -71,11 +80,14 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 - flake8 and black (Backend)
 **Docs**
 
-### Company Sales 
+### Company Sales Plugin
 **Stacks**
 - ReactJS
 - Python(Django)
 **Linting Tools**
+- Eslint (Frontend)
+- Pylint (Pre-commit) 
+- Flake8 and Black (Backend)
 **Docs**
 
 ### Todo Plugin
