@@ -13,23 +13,125 @@ ZuriChat is a large project with lots of functionlalities and for a fast and eff
 A plugin is a segment or section of the ZuriChat that tends to serve a specific function to the project at large. There are various plugins in Zurichat, and each plugin has it's technologies used in developing and building, and also have specific linting tools and docs for starting and getting it running locally for easy contribution.
 
 ## ZuriChat Plugins
-- Mobile (Mobile and Desktop)
-- Zuri Api (DM, Channels, Architecture)
-- Chess
-- Company Files
-- Company Goals 
-- Noticeboard
-- Music (YouTube music video)
-- Company Sales 
-- Todo
-- Deadlines
-- Duty Shift 
-- Expenses 
-- Tools 
-- Whiteboard 
+
+### Zuri Main
+**Stacks**
+- REACT
+
+
+### Mobile (Mobile and Desktop)
+**Stacks**
+**Linting Tools**
+**Docs**
+
+### Zuri Api (DM, Channels, Architecture)
+**Stacks**
+- GoLANG
+- Python(Django)
+- ReactJS
+**Linting Tools**
+**Docs**
+
+### Chess Plugin
+**Stacks**
+- ReactJS
+- NodeJS
+**Linting Tools**
+**Docs**
+
+### Company Files Plugin
+**Stacks**
+- ReactJS
+- NodeJS
+**Linting Tools**
+**Docs**
+
+### Company Goals Plugin
+**Stacks**
+- ReactJS
+- NodeJS
+**Linting Tools**
+**Docs**
+
+### Noticeboard Plugin
+**Stacks**
+- ReactJS
+- Python(Django)
+**Linting Tools**
+**Docs**
+
+### Music (YouTube music video)
+**Stacks**
+- ReactJS
+- Python(Django)
+**Linting Tools**
+**Docs**
+
+### Company Sales 
+**Stacks**
+- ReactJS
+- Python(Django)
+**Linting Tools**
+**Docs**
+
+### Todo Plugin
+**Stacks**
+- VueJS
+- PHP(Laravel)
+**Linting Tools**
+**Docs**
+
+### Deadlines Plugin
+**Stacks**
+- ReactJS
+- NodeJS
+**Linting Tools**
+**Docs**
+
+### Duty Shift Plugin
+**Stacks**
+- Javascript
+- C#(.NET)
+**Linting Tools**
+**Docs**
+
+### Expenses Plugin
+**Stacks**
+- PHP(Laravel)
+**Linting Tools**
+**Docs**
+
+### Tools Plugin
+**Stacks**
+- ReactJS
+- NodeJS
+**Linting Tools**
+**Docs**
+
+### Whiteboard Plugin
+**Stacks**
+- Konva
+- React-Konva
+**Linting Tools**
+**Docs**
+
+### Contribution Tracker Plugin
+**Stacks**
+- VueJS
+- NodeJS
+**Linting Tools**
+**Docs**
+
+
 
 ## Do you want to contribute?
 If you love the vision of this project and would love to contribute to the growth and development, you have to join the ZuriChat workspace and pick a plugin of your choice.
+
+## General Contributing and Pull Request Rules
+- 
+- 
+- 
+-
 
 ## How do I get into the Zuri WorkSpace?
 
