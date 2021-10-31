@@ -48,6 +48,8 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 - ReactJS
 - NodeJS
 **Linting Tools**
+- Eslint 
+- Husky
 **Docs**
 
 ### Company Goals Plugin
@@ -95,6 +97,9 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 - VueJS
 - PHP(Laravel)
 **Linting Tools**
+- PHP code Smiter and PHP Stan (Backend)
+- Eslint Airbnb (Frontend) 
+- Husky (Pre-commit)
 **Docs**
 
 ### Deadlines Plugin
