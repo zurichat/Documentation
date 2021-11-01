@@ -14,25 +14,42 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 
 ## ZuriChat Plugins
 
-- ### Zuri Main
+- ### [Zuri Main](https://github.com/zurichat/zc_main)
 #### Stacks:
-- REACT
+- ReactJS
+- NodeJS
 #### Linting Tools:
 - ESLint 
 - Prettier
 - Husky (Pre-Commit)
-
 <!-- **Docs** -->
 
-- ### Mobile (Mobile and Desktop)
+- ### [Zuri Desktop](https://github.com/zurichat/zc_desktop_flutter)
 #### Stacks:
 - Flutter
 #### Linting Tools:
 <!-- **Docs** -->
 
-- ### Zuri Api (DM, Channels, Architecture)
+- ### [Zuri Mobile]
+- [Android](https://github.com/zurichat/zc_app)
+- [IOS](https://github.com/zurichat/zc_app_iOS)
+#### Stacks:
+- Flutter (Dart)
+- Swift
+#### Linting Tools:
+<!-- **Docs** -->
+
+- ### [Zuri Api (Architecture, Core)](https://github.com/zurichat/zc_core)
 #### Stacks:
 - GoLANG
+#### Linting Tools:
+<!-- **Docs** -->
+
+- ### Direct Messaging and Channels Plugin
+- [Direct Messaging](https://github.com/zurichat/zc_plugin_dm)
+- [Channels](https://github.com/zurichat/zc_plugin_channels)
+- [ZC Messaging](https://github.com/zurichat/zc_messaging)
+#### Stacks:
 - Python(Django)
 - ReactJS
 #### Linting Tools:
@@ -41,9 +58,9 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
  - Flake
  - Black 
  - Isort
-<!-- **Docs** -->
+ <!-- **Docs** -->
 
-- ### Chess Plugin
+- ### [Chess Plugin](https://github.com/zurichat/zc_plugin_chessboard)
 #### Stacks:
 - ReactJS
 - NodeJS
@@ -53,7 +70,7 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 - Husky (Pre-commit)
 <!-- **Docs** -->
 
-- ### Company Files Plugin
+- ### [Company Files Plugin](https://github.com/zurichat/zc_plugin_company_files)
 - **Stacks:**
 - ReactJS
 - NodeJS
@@ -62,7 +79,7 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 - Husky
 <!-- **Docs** -->
 
-- ### Company Goals Plugin
+- ### [Company Goals Plugin](https://github.com/zurichat/zc_plugin_company_goals)
 - **Stacks:**
 - ReactJS
 - NodeJS
@@ -72,7 +89,7 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 - Husky (Pre-commit)
 <!-- **Docs** -->
 
-- ### Noticeboard Plugin
+- ### [Noticeboard Plugin](https://github.com/zurichat/zc_plugin_noticeboard)
 - **Stacks:**
 - ReactJS
 - Python(Django)
@@ -82,7 +99,7 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 - Husky (Pre-Commit)
 <!-- **Docs** -->
 
-- ### Music (YouTube music video) Plugin
+- ### [Music (YouTube music video) Plugin](https://github.com/zurichat/zc_plugin_youtube_music_video)
 - **Stacks:**
 - ReactJS
 - Python(Django)
@@ -92,7 +109,7 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 - flake8 and black (Backend)
 <!-- **Docs** -->
 
-- ### Company Sales Plugin
+- ### [Company Sales Plugin](https://github.com/zurichat/zc_plugin_company_sales_prospect)
 - **Stacks:**
 - ReactJS
 - Python(Django)
@@ -102,7 +119,7 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 - Flake8 and Black (Backend)
 <!-- **Docs** -->
 
-- ### Todo Plugin
+- ### [Todo Plugin](https://github.com/zurichat/zc_plugin_todo)
 - **Stacks:**
 - VueJS
 - PHP(Laravel)
@@ -112,34 +129,37 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 - Husky (Pre-commit)
 <!-- **Docs** -->
 
-- ### Deadlines Plugin
+- ### [Deadlines Plugin](https://github.com/zurichat/zc_plugin_deadlines)
 - **Stacks:**
 - ReactJS
 - NodeJS
 - **Linting Tools:**
+- Eslint (Frontend)
+- Pylint (Pre-commit) 
+- Flake8 and Black (Backend)
 <!-- **Docs** -->
 
-- ### Duty Shift Plugin
+- ### [Duty Shift Plugin](https://github.com/zurichat/zc_plugin_duty_shift)
 - **Stacks:**
-- Javascript
-- C#(.NET)
+- Python(Django)
+- ReactJS
 - **Linting Tools:**
 <!-- **Docs** -->
 
-- ### Expenses Plugin
+- ### [Expenses Plugin](https://github.com/zurichat/zc_plugin_expenses)
 - **Stacks:**
 - PHP(Laravel)
 - **Linting Tools:**
 <!-- **Docs** -->
 
-- ### Tools Plugin
+- ### [Tools Plugin](https://github.com/zurichat/zc_plugin_tools)
 - **Stacks:**
 - ReactJS
 - NodeJS
 - **Linting Tools:**
 <!-- **Docs** -->
 
-- ### Whiteboard Plugin
+- ### [Whiteboard Plugin](https://github.com/zurichat/zc_plugin_whiteboard)
 - **Stacks:**
 - Konva
 - React-Konva
@@ -149,7 +169,7 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 - Husky (Pre-Commit)
 <!-- **Docs** -->
 
-- ### Contribution Tracker Plugin
+- ### [Contribution Tracker Plugin](https://github.com/zurichat/zc_plugin_contribution-tracker)
 - **Stacks:**
 - VueJS
 - NodeJS
