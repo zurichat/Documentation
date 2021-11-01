@@ -15,23 +15,23 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 ## ZuriChat Plugins
 
 - ### Zuri Main
-**Stacks**
+- **Stacks:**
 - REACT
-**Linting Tools**
+- **Linting Tools:**
 <!-- **Docs** -->
 
-### Mobile (Mobile and Desktop)
-**Stacks**
+- ### Mobile (Mobile and Desktop)
+- **Stacks:**
 - Flutter
-**Linting Tools**
+- **Linting Tools:**
 <!-- **Docs** -->
 
-### Zuri Api (DM, Channels, Architecture)
-**Stacks**
+- ### Zuri Api (DM, Channels, Architecture)
+- **Stacks:**
 - GoLANG
 - Python(Django)
 - ReactJS
-**Linting Tools**
+**Linting Tools:**
  - ESLint
  - Pylint 
  - Flake
@@ -39,117 +39,117 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
  - Isort
 <!-- **Docs** -->
 
-### Chess Plugin
-**Stacks**
+- ### Chess Plugin
+- **Stacks:**
 - ReactJS
 - NodeJS
-**Linting Tools**
+- **Linting Tools:**
 - ESLint(Backend)
 - ESLint(Frontend)
 - Husky (Pre-commit)
 <!-- **Docs** -->
 
-### Company Files Plugin
-**Stacks**
+- ### Company Files Plugin
+- **Stacks:**
 - ReactJS
 - NodeJS
-**Linting Tools**
+- **Linting Tools:**
 - Eslint 
 - Husky
 <!-- **Docs** -->
 
-### Company Goals Plugin
-**Stacks**
+- ### Company Goals Plugin
+- **Stacks:**
 - ReactJS
 - NodeJS
-**Linting Tools**
+- **Linting Tools:**
 - Eslint(Backend)
 - Prettier (Frontend)
 - Husky (Pre-commit)
 <!-- **Docs** -->
 
-### Noticeboard Plugin
-**Stacks**
+- ### Noticeboard Plugin
+- **Stacks:**
 - ReactJS
 - Python(Django)
-**Linting Tools**
+- **Linting Tools:**
 - ESLint (Frontend)
 - Pylint (Backend )
 - Husky (Pre-Commit)
 <!-- **Docs** -->
 
-### Music (YouTube music video) Plugin
-**Stacks**
+- ### Music (YouTube music video) Plugin
+- **Stacks:**
 - ReactJS
 - Python(Django)
-**Linting Tools**
+- **Linting Tools:**
 - Eslint (Frontend)
 - pylint (pre-commit)
 - flake8 and black (Backend)
 <!-- **Docs** -->
 
-### Company Sales Plugin
-**Stacks**
+- ### Company Sales Plugin
+- **Stacks:**
 - ReactJS
 - Python(Django)
-**Linting Tools**
+- **Linting Tools:**
 - Eslint (Frontend)
 - Pylint (Pre-commit) 
 - Flake8 and Black (Backend)
 <!-- **Docs** -->
 
-### Todo Plugin
-**Stacks**
+- ### Todo Plugin
+- **Stacks:**
 - VueJS
 - PHP(Laravel)
-**Linting Tools**
+- **Linting Tools:**
 - PHP code Smiter and PHP Stan (Backend)
 - Eslint Airbnb (Frontend) 
 - Husky (Pre-commit)
 <!-- **Docs** -->
 
-### Deadlines Plugin
-**Stacks**
+- ### Deadlines Plugin
+- **Stacks:**
 - ReactJS
 - NodeJS
-**Linting Tools**
+- **Linting Tools:**
 <!-- **Docs** -->
 
-### Duty Shift Plugin
-**Stacks**
+- ### Duty Shift Plugin
+- **Stacks:**
 - Javascript
 - C#(.NET)
-**Linting Tools**
+- **Linting Tools:**
 <!-- **Docs** -->
 
-### Expenses Plugin
-**Stacks**
+- ### Expenses Plugin
+- **Stacks:**
 - PHP(Laravel)
-**Linting Tools**
+- **Linting Tools:**
 <!-- **Docs** -->
 
-### Tools Plugin
-**Stacks**
+- ### Tools Plugin
+- **Stacks:**
 - ReactJS
 - NodeJS
-**Linting Tools**
+- **Linting Tools:**
 <!-- **Docs** -->
 
-### Whiteboard Plugin
-**Stacks**
+- ### Whiteboard Plugin
+- **Stacks:**
 - Konva
 - React-Konva
-**Linting Tools**
+- **Linting Tools:**
 - ESLint (Backend)
 - ESLint (Frontend)
 - Husky (Pre-Commit)
 <!-- **Docs** -->
 
-### Contribution Tracker Plugin
-**Stacks**
+- ### Contribution Tracker Plugin
+- **Stacks:**
 - VueJS
 - NodeJS
-**Linting Tools**<br>
+- **Linting Tools:**
 <!-- **Docs** -->
 
 
