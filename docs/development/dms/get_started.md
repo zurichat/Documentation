@@ -20,17 +20,37 @@ This is a direct message (DM) plugin created to give the users of Zuri chat the 
 
 ### Installing Dependencies
 
+#### Frontend
 1. Ensure nodejs and git are installed in your machine `node -v && git --version`. If they are not installed, you can follow the guide [here](#setting-up-for-windowslinuxmac) to install.
 2. Change directory into the new clone using: `cd dmreactplugin` and `cd dmspa`
 3. Install all packages and dependencies using `yarn install`
 
+#### Backend
+1. Change directory into the new cloned folder: `cd zc_plugin_dm/backend`
+2. Set up your virtual environment by running: `pip install pipenv`
+3. Install required modules by running: `pipenv install -r requirements.txt`
+4. Set an enviroment by creating a .env file and add the following conifg vars:
+ 
+  `SECRET_KEY=Averyrandomstringthatwillbehardforanyonetoguessevenyou`
+
+  `DEBUG=True`
+  
+  `EMAIL_HOST_USER=`
+  
+  `EMAIL_HOST_PASSWORD=`
+  
+4. Save the file
 
 ### Running The App Locally
 
+#### Frontend
 1. Run build script to get bundled react file using: `yarn build`
 2. Now run server in development mode using:  `yarn start` on both directories
 3. Visit `http://localhost:9000/` or `http://localhost:9000/dm`
 
+#### Backend
+1. Navigate to the backend folder: `cd zc_plugin_dm/backend `
+2. To test development environment, run using: `python manage.py runserver`
 
 ### Contribution Guide
 
@@ -47,6 +67,7 @@ This is a direct message (DM) plugin created to give the users of Zuri chat the 
 
 ### PR Guide
 
+1. Always check the status of files to be committed using: `git status`
 1. The task/purpose of your PR should be clearly stated in its description.
 2. Do not touch files beyond the scope of your PR. Fix errors and ensure they are functioning properly before making a PR. **Do not** touch anything beyond your task.
 3. If someone else's file/task is preventing yours from running or functioning properly, notify them and communicate properly before making amendments and ensure it doesn't break anything.
@@ -92,6 +113,7 @@ This is a direct message (DM) plugin created to give the users of Zuri chat the 
 | :--------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ---------------------------------------------------------------- |
 | -bash: git: command not found<br></br>'git' is not recognized as an internal or external command, operable program, or batch file. | Git is not installed.  | Install git. See guide [here.](#setting-up-for-windowslinuxmac)  |
 | 'yarn' is not recognized as an internal or external command, operable program or batch file.                                       | yarn is not installed. | Install yarn. See guide [here.](#setting-up-for-windowslinuxmac) |
+| 'python' is not recognized as an internal or external command                           | python executable file is not found in the environment variables. | Add the executable to the environment variables. See guide [here.](https://www.educative.io/edpresso/err-python-is-not-recognized-as-an-internal-or-external-command) |
 
 ### Contact
 
