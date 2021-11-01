@@ -18,12 +18,13 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 **Stacks**
 - REACT
 **Linting Tools**
-**Docs**
+<!-- **Docs** -->
 
 ### Mobile (Mobile and Desktop)
 **Stacks**
+- Flutter
 **Linting Tools**
-**Docs**
+<!-- **Docs** -->
 
 ### Zuri Api (DM, Channels, Architecture)
 **Stacks**
@@ -31,7 +32,12 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 - Python(Django)
 - ReactJS
 **Linting Tools**
-**Docs**
+ - ESLint
+ - Pylint 
+ - Flake
+ - Black 
+ - Isort
+<!-- **Docs** -->
 
 ### Chess Plugin
 **Stacks**
@@ -41,7 +47,7 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 - ESLint(Backend)
 - ESLint(Frontend)
 - Husky (Pre-commit)
-**Docs**
+<!-- **Docs** -->
 
 ### Company Files Plugin
 **Stacks**
@@ -50,7 +56,7 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 **Linting Tools**
 - Eslint 
 - Husky
-**Docs**
+<!-- **Docs** -->
 
 ### Company Goals Plugin
 **Stacks**
@@ -60,7 +66,7 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 - Eslint(Backend)
 - Prettier (Frontend)
 - Husky (Pre-commit)
-**Docs**
+<!-- **Docs** -->
 
 ### Noticeboard Plugin
 **Stacks**
@@ -70,7 +76,7 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 - ESLint (Frontend)
 - Pylint (Backend )
 - Husky (Pre-Commit)
-**Docs**
+<!-- **Docs** -->
 
 ### Music (YouTube music video) Plugin
 **Stacks**
@@ -80,7 +86,7 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 - Eslint (Frontend)
 - pylint (pre-commit)
 - flake8 and black (Backend)
-**Docs**
+<!-- **Docs** -->
 
 ### Company Sales Plugin
 **Stacks**
@@ -90,7 +96,7 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 - Eslint (Frontend)
 - Pylint (Pre-commit) 
 - Flake8 and Black (Backend)
-**Docs**
+<!-- **Docs** -->
 
 ### Todo Plugin
 **Stacks**
@@ -100,59 +106,67 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 - PHP code Smiter and PHP Stan (Backend)
 - Eslint Airbnb (Frontend) 
 - Husky (Pre-commit)
-**Docs**
+<!-- **Docs** -->
 
 ### Deadlines Plugin
 **Stacks**
 - ReactJS
 - NodeJS
 **Linting Tools**
-**Docs**
+<!-- **Docs** -->
 
 ### Duty Shift Plugin
 **Stacks**
 - Javascript
 - C#(.NET)
 **Linting Tools**
-**Docs**
+<!-- **Docs** -->
 
 ### Expenses Plugin
 **Stacks**
 - PHP(Laravel)
 **Linting Tools**
-**Docs**
+<!-- **Docs** -->
 
 ### Tools Plugin
 **Stacks**
 - ReactJS
 - NodeJS
 **Linting Tools**
-**Docs**
+<!-- **Docs** -->
 
 ### Whiteboard Plugin
 **Stacks**
 - Konva
 - React-Konva
 **Linting Tools**
-**Docs**
+- ESLint (Backend)
+- ESLint (Frontend)
+- Husky (Pre-Commit)
+<!-- **Docs** -->
 
 ### Contribution Tracker Plugin
 **Stacks**
 - VueJS
 - NodeJS
 **Linting Tools**
-**Docs**
+<!-- **Docs** -->
 
 
 
 ## Do you want to contribute?
 If you love the vision of this project and would love to contribute to the growth and development, you have to join the ZuriChat workspace and pick a plugin of your choice.
 
-## General Contributing and Pull Request Rules
-- 
-- 
-- 
--
+## General Contribution and Pull Request Guideline
+- PR should clearly state its purpose in the description
+- PR should only touch files within its scope (don’t correct comment typos or change variable names in another file). Fix only what is needed to make things work.
+- Lint your files before making PRs as much as possible
+- Always pull and merge into the latest upstream dev branch before making PRs to avoid merge conflicts.
+- There will be two approvals before each PR is merged. In order to distribute the workload and avoid delays, each team is encouraged to have at least 2 PR approvers, and 2 PR mergers. The approvers don’t have to have merge access, but must approve before the merger can merge.
+PR mergers can also approve.
+- PRs introducing new functionality should come with test coverage.
+- Your PRs must follow the respective guidelines
+
 
 ## How do I get into the Zuri WorkSpace?
 The ZuriChat WorkSpace is where all contributors meet, join specific plugin channel, get necessary informations, stay updated and many more.
