@@ -15,9 +15,9 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 ## ZuriChat Plugins
 
 - ### Zuri Main
-- **Stacks:**
+- #### Stacks:
 - REACT
-- **Linting Tools:**
+- #### Linting Tools:
 <!-- **Docs** -->
 
 - ### Mobile (Mobile and Desktop)
@@ -31,7 +31,7 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 - GoLANG
 - Python(Django)
 - ReactJS
-**Linting Tools:**
+- **Linting Tools:**
  - ESLint
  - Pylint 
  - Flake
