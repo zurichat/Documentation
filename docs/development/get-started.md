@@ -14,7 +14,7 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 
 ## ZuriChat Plugins
 
-### Zuri Main
+- ### Zuri Main
 **Stacks**
 - REACT
 **Linting Tools**
@@ -149,7 +149,7 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 **Stacks**
 - VueJS
 - NodeJS
-**Linting Tools**
+**Linting Tools**<br>
 <!-- **Docs** -->
 
 
