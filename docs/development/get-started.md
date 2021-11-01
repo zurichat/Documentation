@@ -18,20 +18,24 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 #### Stacks:
 - REACT
 #### Linting Tools:
+- ESLint 
+- Prettier
+- Husky (Pre-Commit)
+
 <!-- **Docs** -->
 
 - ### Mobile (Mobile and Desktop)
-- **Stacks:**
+#### Stacks:
 - Flutter
-- **Linting Tools:**
+#### Linting Tools:
 <!-- **Docs** -->
 
 - ### Zuri Api (DM, Channels, Architecture)
-- **Stacks:**
+#### Stacks:
 - GoLANG
 - Python(Django)
 - ReactJS
-- **Linting Tools:**
+#### Linting Tools:
  - ESLint
  - Pylint 
  - Flake
@@ -40,10 +44,10 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 <!-- **Docs** -->
 
 - ### Chess Plugin
-- **Stacks:**
+#### Stacks:
 - ReactJS
 - NodeJS
-- **Linting Tools:**
+#### Linting Tools:
 - ESLint(Backend)
 - ESLint(Frontend)
 - Husky (Pre-commit)
