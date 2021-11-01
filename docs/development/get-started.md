@@ -15,9 +15,9 @@ A plugin is a segment or section of the ZuriChat that tends to serve a specific 
 ## ZuriChat Plugins
 
 - ### Zuri Main
-- #### Stacks:
+#### Stacks:
 - REACT
-- #### Linting Tools:
+#### Linting Tools:
 <!-- **Docs** -->
 
 - ### Mobile (Mobile and Desktop)
