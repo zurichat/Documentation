@@ -4,7 +4,7 @@
 
 # DOWNLOADING ZURI CHAT DESKTOP CLIENT
 
-- go to the url [Zuri Chat Download](https://zuri.chat/downloads)
+- Go to the url [Zuri Chat Download](https://zuri.chat/downloads)
 - Navigate to the Zuri Chat Desktop
 - Click on any of the download button to download for your operating system.
   
