@@ -3,40 +3,42 @@
 ZuriChat is a collaboration hub that brings the right people and tools together to get work done. From Fortune 100 companies to corner markets, millions of people around the world use ZuriChat to connect their teams, unify their systems, and drive their business forward.
 
 ## `Goals`
-- Provide a platform for team colaboration
-- Make colaboration easy and seamless
-- Make modern workplace fun
-- A user friendly app for colaboration
-  
+Zuri Chat is a DAO set up with the intent of creating a flexible and extensible communication platform for groups.
+
+Zuri Chat is like Slack, but rather than being built like an application, it’s built as a platform where first-class apps are added to the platform, and can extend the functionality in a myriad of ways.
+
+The idea was conceived during a large-scale coder training program - and because it had more than 300 active, co-owning developers, it was decided that it should be built as a distributed autonomous organisation.
+
+
 ## `Requirements`
-- DM,Chats and Channels should be working
+- DM, Chats and Channels should be working
 - All plugins should be functional
 - Users should be able to create and join workspaces
 - Users should be able to add and remove plugins seamlessly
   
 ## `Open Questions`
-- How do we manage system updates across teams
-- How can the app support multiple languages and regions
-- How the we serve companies who aren't tech savy
+- How do we manage system updates across teams ?
+- How can the app support multiple languages and regions ?
+- How do we serve companies who aren't tech-savvy ?
 
 ## `Approach`
-- We will work with team leads of other departments to ensure we update with thier works and vice versa?
-- We will build flutter dektop app to support multiple languages and time zones?
-- We will build a very user friendly app to carter for non tech savy sompanies?
+- We are working with team leads of other departments to ensure we update with their works and vice versa?
+- We are building flutter-desktop app to support multiple languages and time zones?
+- We are building a very user-friendly app to carter for non-tech-savvy companies?
 
 ## `Measuring Impact`
-- We will periodically send out surveys to our customers to rate our services, evaluate thier satisfaction and identify thier problems while using the app
-- We will work with the support team, getting feedback from the customers
+- We are periodically sending out surveys to our customers to rate our services, evaluate their satisfaction and identify their problems while using the app
+- We are working with the support team, getting feedback from the customers
 
 ## `Security and Privacy`
-- Users wil be asked to provide a password during registerion, which wil be used for logins also
-- The app will send an OTP to the user email for confirmation, upon confirmation users can use the app with the password
-- Users are advice to keep thier password safe and itb should be difficult to predict
-- Users are advice to change thier passwords periodically
+- Users are  asked to provide a password during registration, which will be used to login 
+- The app sends an OTP to the user email for confirmation, upon confirmation users can use the app with the password
+- Users are advised to keep their password safe and it should be difficult to predict
+- Users are advised to change their passwords periodically
 - To protect user data, we will include encryptions and firewalls
   
 ## `Milestones`
-The alpha version of the app will be realeased by 15th of November 2021
+The alpha version of the app will be released by the 15th of November 2021
 
 ## `Features`
 - Onboarding
@@ -60,17 +62,16 @@ The alpha version of the app will be realeased by 15th of November 2021
   - Create/delete channels
   - Make a channel private/public
   - Reactivate/Deactivate users in an organization
-- ###` Plugins`
+- ### `Plugins`
   - Channels
   - Direct Messages
   - Music Plugin
   - Chess plugins
   - Todo plugins
 - ### `Market Place`
-  - Get all plugins from marketplace
+  - Get all plugins from the marketplace
   - Get plugins details
-  - Delete yoyr plugin from marketplace
-
+  - Delete your plugin from the marketplace
 - ### `Blog`
   - Create a blog post
   - Read a blog post
