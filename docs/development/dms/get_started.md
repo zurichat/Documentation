@@ -26,7 +26,7 @@ This is a direct message (DM) plugin created to give the users of Zuri chat the 
 3. Install all packages and dependencies using `yarn install`
 
 #### Backend
-1. Change directory into the new cloned folder: `cd zc_plugin_dm/backend`
+1. Change directory into the new cloned folder: `cd zc_plugin_dm`
 2. Set up your virtual environment by running: `pip install pipenv`
 3. Install required modules by running: `pipenv install -r requirements.txt`
 4. Set an enviroment by creating a .env file and add the following conifg vars:
@@ -49,7 +49,7 @@ This is a direct message (DM) plugin created to give the users of Zuri chat the 
 3. Visit `http://localhost:9000/` or `http://localhost:9000/dm`
 
 #### Backend
-1. Navigate to the backend folder: `cd zc_plugin_dm/backend `
+1. Navigate to the backend folder: `cd zc_plugin_dm `
 2. To test development environment, run using: `python manage.py runserver`
 
 ### Contribution Guide
