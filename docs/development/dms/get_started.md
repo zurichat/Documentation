@@ -49,8 +49,10 @@ This is a direct message (DM) plugin created to give the users of Zuri chat the 
 3. Visit `http://localhost:9000/` or `http://localhost:9000/dm`
 
 #### Backend
-1. Navigate to the backend folder: `cd zc_plugin_dm `
-2. To test development environment, run using: `python manage.py runserver`
+1. Navigate to folder: `cd zc_plugin_dm `
+2. To test development environment for backend, run `python manage.py runserver` in the project root folder
+3. Do not apply migrations. Ignore the command line prompt to migrate the app
+4. Visit http://127.0.0.1:8000/ to see endpoints.
 
 ### Contribution Guide
 
