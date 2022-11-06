@@ -1,4 +1,4 @@
-# Create-Workspace Workflow
+# Create Workspace Workflow
 This workflow enables a user of the zurichat app to create a workspace on the app
 
 **Name of Endpoint Consumed**

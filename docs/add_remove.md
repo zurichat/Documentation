@@ -1,4 +1,4 @@
-### Add/Remove Endpoints For All Plugins
+# Add/Remove Endpoints For All Plugins
 
 ## Brief
 Contains all the add/remove endpoints/instructions for all teams
