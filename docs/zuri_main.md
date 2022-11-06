@@ -1,4 +1,4 @@
-# zuri-main-documentation
+# Zuri Main Documentation
 
 ## Create User Account
 To use zuri chat you need to sign up or sign in if you already have an account.
