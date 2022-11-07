@@ -55,7 +55,6 @@ const darkCodeTheme = require("prism-react-renderer/themes/palenight");
 							position: "left",
 							label: "Docs",
 						},
-						{ to: "/blog", label: "Help", position: "left" },
 						{
 							href: "https://github.com/zurichat/documention",
 							label: "GitHub",
