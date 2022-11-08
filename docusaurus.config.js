@@ -26,12 +26,6 @@ const darkCodeTheme = require("prism-react-renderer/themes/palenight");
 						// Please change this to your repo.
 						editUrl: "https://github.com/zurichat/documention/",
 					},
-					blog: {
-						showReadingTime: true,
-						// Please change this to your repo.
-						editUrl:
-							"https://github.com/zurichat/documention/tree/main/blog/",
-					},
 					theme: {
 						customCss: require.resolve("./src/css/custom.css"),
 					},
@@ -55,7 +49,6 @@ const darkCodeTheme = require("prism-react-renderer/themes/palenight");
 							position: "left",
 							label: "Docs",
 						},
-						{ to: "/blog", label: "Help", position: "left" },
 						{
 							href: "https://github.com/zurichat/documention",
 							label: "GitHub",
@@ -95,10 +88,6 @@ const darkCodeTheme = require("prism-react-renderer/themes/palenight");
 						{
 							title: "More",
 							items: [
-								{
-									label: "Blog",
-									to: "/blog",
-								},
 								{
 									label: "GitHub",
 									href: "https://github.com/facebook/docusaurus",
