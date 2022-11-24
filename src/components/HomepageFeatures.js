@@ -75,7 +75,6 @@ const FeatureList = [
 function Feature({ Svg, title, description, url }) {
   return (
     <Link className={styles.card__container} to={url}>
-      {/* <div className={styles.card__container}> */}
       <div className={styles.svg__container}>
         <Svg className={styles.featureSvg} role="img" />
       </div>
@@ -83,7 +82,6 @@ function Feature({ Svg, title, description, url }) {
         <h3>{title}</h3>
         <p>{description}</p>
       </div>
-      {/* </div> */}
     </Link>
   );
 }

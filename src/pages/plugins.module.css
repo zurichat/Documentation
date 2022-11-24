@@ -1,0 +1,259 @@
+p {
+  margin: 0 !important;
+  font-family: "Segoe UI";
+}
+
+.hide {
+  display: block;
+}
+
+.show {
+  display: none;
+}
+
+.primary {
+  color: #00b87c;
+}
+
+.bordered {
+  border: 1px dotted;
+}
+
+.page {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.startedcontainer {
+  display: flex;
+  flex-direction: column;
+  padding: 60px 0;
+  border-top: 1px solid rgba(0, 184, 124, 0.15);
+  border-bottom: 1px solid rgba(0, 184, 124, 0.15);
+  align-items: center;
+  gap: 24px;
+}
+
+.buttoncontainer {
+  display: flex;
+  gap: 24px;
+  flex-basis: 45%;
+}
+
+.buttonpadding {
+  padding: 9px;
+  width: 100%;
+  background: #fcfcfc;
+  border: 0.3px solid #0a0909;
+  border-radius: 3px;
+}
+
+.buttonstyle {
+  display: flex;
+  gap: 7px;
+  cursor: pointer;
+}
+
+.cardsection {
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 48px;
+  padding-bottom: 23px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.parentinput {
+  display: flex;
+  justify-content: center;
+}
+
+.inputsearchcontainer {
+  display: flex;
+  gap: 8px;
+  flex-basis: 55%;
+}
+
+.input {
+  padding: 14px 16px;
+  width: 100%;
+}
+
+.searchbutton {
+  padding: 12px 18px;
+  cursor: pointer;
+}
+
+.buttonlogo {
+  flex-shrink: 0;
+}
+
+.gridcontainer {
+  display: grid;
+  transition: all 500ms;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row-gap: 52px;
+  grid-column-gap: 24px;
+  height: auto;
+}
+
+@font-face {
+  font-family: "Segoe UI";
+  src: url(/font/segoeui.ttf);
+}
+
+.desc {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: #98a2b3;
+}
+
+.titletext {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 22px;
+  color: #1d1c1d;
+}
+
+.cardheading {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: #98a2b3;
+}
+
+.getstarted {
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 22px;
+  color: #00b87c;
+}
+
+.buttontxt {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  white-space: no-wrap;
+}
+
+.cardstyle {
+  padding: 28px 32px;
+  height: 199px;
+  background: #fcfcfc;
+  border: 0.2px solid rgba(176, 175, 176, 0.4);
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px;
+  transition: all 0.3s ease-in-out;
+}
+
+.cardstyle:hover {
+  box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px;
+  transform: translate3d(0px, -1px, 0px);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1023px) {
+  .hide {
+    display: none;
+  }
+
+  .show {
+    display: block;
+  }
+
+  .startedcontainer {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    border-top: 1px solid rgba(0, 184, 124, 0.15);
+    border-bottom: 1px solid rgba(0, 184, 124, 0.15);
+    align-items: center;
+    gap: 24px;
+  }
+
+  .inputsearchcontainer {
+    display: flex;
+    gap: 8px;
+    flex-basis: 80%;
+  }
+
+  .gridcontainer {
+    display: grid;
+    transition: all 500ms;
+    grid-template-columns: repeat(1, 1fr);
+    grid-row-gap: 52px;
+    grid-column-gap: 24px;
+    height: auto;
+  }
+  .cardsection {
+    padding: 24px 8px 8px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .desc {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 22px;
+    color: #98a2b3;
+  }
+
+  .titletext {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+    color: #1d1c1d;
+  }
+
+  .buttontxt {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .buttoncontainer {
+    display: flex;
+    gap: 24px;
+    flex-basis: 70%;
+  }
+}
+
+@media screen and (min-width: 587px) and (max-width: 1022px) {
+  .gridcontainer {
+    display: grid;
+    transition: all 500ms;
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-row-gap: 52px;
+    grid-column-gap: 24px;
+    height: auto;
+  }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1022px) {
+  .buttoncontainer {
+    display: flex;
+    gap: 24px;
+    flex-basis: 80%;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 1022px) {
+  .inputsearchcontainer {
+    display: flex;
+    gap: 8px;
+    flex-basis: 90%;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 600px) {
+  .buttoncontainer {
+    display: flex;
+    gap: 24px;
+    flex-basis: 100% !important;
+  }
+}
