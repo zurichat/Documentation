@@ -235,7 +235,9 @@ const Plugins = () => {
             Understanding everything you need to know to get to work in Zuri
             Chat.
           </p>
-          <div style={{ width: "100%", justifyContent: "center" }}>
+          <div
+            style={{ display: "flex", width: "100%", justifyContent: "center" }}
+          >
             <div className={styles.buttoncontainer}>
               <button className={styles.buttonpadding}>
                 <div
