@@ -1,30 +1,33 @@
 ---
-slug: /marketplace
 sidebar_position: 5
+slug: /core-api/marketplace
 title: Marketplace
 ---
-
 
 The Marketplace resource allows you add, delete and get information about plugins in the marketplace, which can be installed by users in their organizations.
 
 ## Endpoints
+
 - GET `/marketplace/plugins`
 - GET `/marketplace/plugins/{id}`
 - DELETE `/marketplace/plugins/{id}`
 
 ## Get all plugins in the marketplace
+
 GET `/marketplace/plugins`
 Returns a list of avalaible plugins that can be integrated into your organization. There are no parameters for this request.
 
 REQUEST URL: https://api.zuri.chat/marketplace/plugins
 
 #### Sample Request
+
 ```sh
-curl -X GET "https://api.zuri.chat/marketplace/plugins" 
+curl -X GET "https://api.zuri.chat/marketplace/plugins"
      -H "accept: application/json"
 ```
 
 #### Sample Response
+
 ```sh
 {
   "status": 200,
@@ -111,6 +114,7 @@ curl -X GET "https://api.zuri.chat/marketplace/plugins"
 ```
 
 #### Error Message
+
 ```sh
 {
   "code": "404",
@@ -118,7 +122,7 @@ curl -X GET "https://api.zuri.chat/marketplace/plugins"
 }
 ```
 
-## Get a plugin details 
+## Get a plugin details
 
 GET `/marketplace/plugins/{id}`
 
@@ -127,17 +131,20 @@ Returns unique details about a plugin in the market. Requires the `id` parameter
 REQUEST URL: https://api.zuri.chat/marketplace/plugins/{id}
 
 #### Path Parameters
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-{id} | string | True | plugin ID
+
+| Name | Data Type | Required | Description |
+| ---- | --------- | -------- | ----------- |
+| {id} | string    | True     | plugin ID   |
 
 #### Sample Request
+
 ```sh
-curl -X GET "https://api.zuri.chat/marketplace/plugins/614105b66173056af01b4cca" 
+curl -X GET "https://api.zuri.chat/marketplace/plugins/614105b66173056af01b4cca"
      -H "accept: application/json"
 ```
 
 #### Sample Response
+
 ```sh
 {
   "status": 200,
@@ -165,6 +172,7 @@ curl -X GET "https://api.zuri.chat/marketplace/plugins/614105b66173056af01b4cca"
 ```
 
 #### Error Response
+
 ```sh
 {
   "code": "400",
@@ -172,23 +180,8 @@ curl -X GET "https://api.zuri.chat/marketplace/plugins/614105b66173056af01b4cca"
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Delete a plugin
+
 DELETE `/marketplace/plugins/{id}`
 
 Removes a plugin from the marketplace.
@@ -196,17 +189,20 @@ Removes a plugin from the marketplace.
 REQUEST URL: https://api.zuri.chat/marketplace/plugins/{id}
 
 #### Path Parameters
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-{id} | string | True | plugin ID
+
+| Name | Data Type | Required | Description |
+| ---- | --------- | -------- | ----------- |
+| {id} | string    | True     | plugin ID   |
 
 #### Sample Request
+
 ```sh
 curl -X DELETE "https://api.zuri.chat/marketplace/plugins/614117a96173056af01b4cf8"
      -H "accept: application/json"
 ```
 
 #### Sample Response
+
 ```sh
 {
   "status": 200,
@@ -216,13 +212,12 @@ curl -X DELETE "https://api.zuri.chat/marketplace/plugins/614117a96173056af01b4c
 ```
 
 #### Error Response
-```sh
+
+````sh
 ```sh
 {
   "status": 400,
   "message": "plugin not found",
   "data": null
 }
-```
-
-
+````

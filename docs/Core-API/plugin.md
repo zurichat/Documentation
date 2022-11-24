@@ -1,12 +1,11 @@
 ---
-slug: /plugin
 sidebar_position: 6
+slug: /core-api/plugin
 title: Plugin
 ---
 
-
-
 ## Register plugin
+
 POST `/plugins/register`
 
 This endpoint allows you to register a new plugin. You need to be authorized via `cookieAuth` or `bearerAuth` to make this request.
@@ -14,22 +13,22 @@ This endpoint allows you to register a new plugin. You need to be authorized via
 REQUEST URL: https://api.zuri.chat/plugins/register
 
 #### Request Headers
-    
+
 Content-Type: `application/json`
 
 Authorization: `cookieAuth` or `bearerAuth`
- 
+
 #### Request Body
 
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-description | string | True | describe the new plugin
-developer_email | string | True | email of plugin developer 
-developer_name | string | True | name of plugin developer
-install_url | string | True | url to install the plugin
-name | string | True | name of the plugin
-sidebar_url | string | True | sidebar url
-template_url | string | True | template url
+| Name            | Data Type | Required | Description               |
+| --------------- | --------- | -------- | ------------------------- |
+| description     | string    | True     | describe the new plugin   |
+| developer_email | string    | True     | email of plugin developer |
+| developer_name  | string    | True     | name of plugin developer  |
+| install_url     | string    | True     | url to install the plugin |
+| name            | string    | True     | name of the plugin        |
+| sidebar_url     | string    | True     | sidebar url               |
+| template_url    | string    | True     | template url              |
 
 #### Sample request
 
@@ -61,6 +60,7 @@ Content-Type: applicaation/json
 ```
 
 #### Error Response
+
 ```sh
 {
   "status": 400,
@@ -70,15 +70,14 @@ Content-Type: applicaation/json
 
 ## Tutorial - How to Register a Plugin
 
- To register a new plugin on Zuri Chat, you will pass in your parameters as JSON on the base url:  https://api.zuri.chat/plugins/register
+To register a new plugin on Zuri Chat, you will pass in your parameters as JSON on the base url: https://api.zuri.chat/plugins/register
 
-  #### POST Body
+#### POST Body
 
-  - You must set Content-type HTTP header to application/json
-  - You must pass in your token as a `bearer` or `cookie` token in the `Authorization` HTTP Header
+- You must set Content-type HTTP header to application/json
+- You must pass in your token as a `bearer` or `cookie` token in the `Authorization` HTTP Header
 
-
- Here is how to send a POST request to register a new plugin with a JSON body
+Here is how to send a POST request to register a new plugin with a JSON body
 
 ```
   POST api.zuri.chat/plugins/register
@@ -98,9 +97,9 @@ Content-Type: applicaation/json
 Here's how to register a plugin with cURL:
 
 ```
-curl -X POST "https://api.zuri.chat/plugins/register" 
--H "accept: application/json" 
--H "Content-Type: application/json" 
+curl -X POST "https://api.zuri.chat/plugins/register"
+-H "accept: application/json"
+-H "Content-Type: application/json"
 -d "{
   \"description\":\"This is my plugin\",
   \"developer_email\":\"janedoe@mail.com\",
@@ -127,12 +126,11 @@ Response
 
 ## Likely Errors
 
-Code| Description 
----------|----------
- 400 | Bad request e.g developer_email is missing
-401 | Access token is missing or invalid 
-500 | Internal server error
-
+| Code | Description                                |
+| ---- | ------------------------------------------ |
+| 400  | Bad request e.g developer_email is missing |
+| 401  | Access token is missing or invalid         |
+| 500  | Internal server error                      |
 
 ## Plugin Communication with Zuri Core API
 
@@ -145,14 +143,14 @@ This endpoint would allow you to update the plugin sync_request_url. The sync_re
 REQUEST URL: https://api.zuri.chat/plugins/{PLUGIN_ID}
 
 #### Request Headers
-    
+
 Content-Type: `application/json`
- 
+
 #### Request Body
 
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-sync_request_url | string | True | provide a ping endpoint for Zuri Core updates
+| Name             | Data Type | Required | Description                                   |
+| ---------------- | --------- | -------- | --------------------------------------------- |
+| sync_request_url | string    | True     | provide a ping endpoint for Zuri Core updates |
 
 #### Sample request
 
@@ -204,14 +202,14 @@ After the plugin has pulled this data and updated their local database, it will 
 REQUEST URL: https://api.zuri.chat/plugins/{PLUGIN_ID}/sync
 
 #### Request Headers
-    
+
 Content-Type: `application/json`
- 
+
 #### Request Body
 
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-id| Integer |True | The id of the last element in the queue
+| Name | Data Type | Required | Description                             |
+| ---- | --------- | -------- | --------------------------------------- |
+| id   | Integer   | True     | The id of the last element in the queue |
 
 #### Sample request
 
@@ -233,4 +231,5 @@ Content-Type: applicaation/json
 }
 
 ```
+
 After this requestis completed Zuri core and eachn plugin are both completely in sync.
