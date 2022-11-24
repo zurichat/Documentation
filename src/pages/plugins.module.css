@@ -254,6 +254,6 @@ p {
   .buttoncontainer {
     display: flex;
     gap: 24px;
-    flex-basis: 100%;
+    flex-basis: 100% !important;
   }
 }
