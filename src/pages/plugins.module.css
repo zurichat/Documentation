@@ -228,7 +228,7 @@ p {
   .gridcontainer {
     display: grid;
     transition: all 500ms;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr) !important;
     grid-row-gap: 52px;
     grid-column-gap: 24px;
     height: auto;
