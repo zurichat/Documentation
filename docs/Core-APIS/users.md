@@ -1,13 +1,13 @@
 ---
-slug: /users
 sidebar_position: 3
+slug: /core-api/users
 title: Users
 ---
-
 
 The Users Resource allows you to create a new user account, update user's details, retrieve user's details, get all users in an organization and more.
 
 ## Endpoints
+
 - POST `/users`
 - GET `/users/{user_id}`
 - GET `/users`
@@ -17,11 +17,12 @@ The Users Resource allows you to create a new user account, update user's detail
 
 ## Authentication
 
-A valid authentication token must be included in all the requests for the `User` resource except `Post /users`  as follows:
+A valid authentication token must be included in all the requests for the `User` resource except `Post /users` as follows:
 
 In the Authorization Header: add `Authorization: Bearer {KEY}`
 
 ## Create a new user
+
 POST `/users`
 
 Create a new user account. Accepts a request with a body of email, etc. Returns the user ID.
@@ -30,20 +31,21 @@ REQUEST URL: https://api.zuri.chat/users
 
 #### Body Request
 
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-first_name       |  string | True  | user's first name
-| last_name      | string   | True | user's last name
-| phone_number   | string   | True | user's phone number
-| password       | string   | True | password; no sharing
-| email          | string   | True | user's email
-| email_verified | boolean  | False | checks if user's email is verified. Default:`false`
+| Name           | Data Type | Required | Description                                         |
+| -------------- | --------- | -------- | --------------------------------------------------- |
+| first_name     | string    | True     | user's first name                                   |
+| last_name      | string    | True     | user's last name                                    |
+| phone_number   | string    | True     | user's phone number                                 |
+| password       | string    | True     | password; no sharing                                |
+| email          | string    | True     | user's email                                        |
+| email_verified | boolean   | False    | checks if user's email is verified. Default:`false` |
 
 #### Sample Request
+
 ```sh
-curl -X POST "https://api.zuri.chat/users" 
-     -H "accept: application/json" 
-	 -H "Content-Type: application/json" 
+curl -X POST "https://api.zuri.chat/users"
+     -H "accept: application/json"
+	 -H "Content-Type: application/json"
 	 -d "{\
 	    	"email\":\"ape@gmail.com\",
 			\"email_verified\":false,
@@ -68,6 +70,7 @@ Content-Type: application/json
 ```
 
 #### Sample Response
+
 ```sh
 {
   "status": 200,
@@ -80,6 +83,7 @@ Content-Type: application/json
 ```
 
 #### Error Response
+
 ```sh
 {
   "message": "bad request",
@@ -88,6 +92,7 @@ Content-Type: application/json
 ```
 
 ## Get information about a user
+
 GET `/users/{user_id}`
 
 Get all details of a user, identified by `user_id`
@@ -99,17 +104,20 @@ REQUEST URL:https://api.zuri.chat/users/{user_id}
 Authorization: `cookieAuth` or `bearerAuth`
 
 #### Path Parameters
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-{user_id} | string | True | User ID
+
+| Name      | Data Type | Required | Description |
+| --------- | --------- | -------- | ----------- |
+| {user_id} | string    | True     | User ID     |
 
 #### Sample Request
+
 ```sh
-curl -X GET "https://api.zuri.chat/users/615840f887540d8d01ffc88d" 
+curl -X GET "https://api.zuri.chat/users/615840f887540d8d01ffc88d"
      -H "accept: application/json"
 ```
 
 #### Sample Response
+
 ```sh
 {
   "created_at": "2021-09-07 11:22:06.932180",
@@ -144,20 +152,20 @@ curl -X GET "https://api.zuri.chat/users/615840f887540d8d01ffc88d"
 }
 ```
 
-
-
 ## Get all users
+
 GET `/users`
 
-Returns a list of all users. 
+Returns a list of all users.
 
 REQUEST URL: https://api.zuri.chat/users
 
 #### Request Headers
 
-Authorization:  `bearerAuth`
+Authorization: `bearerAuth`
 
 #### Sample Request
+
 ```sh
 
 curl --location --request GET 'https://api.zuri.chat/users' \
@@ -207,43 +215,40 @@ curl --location --request GET 'https://api.zuri.chat/users' \
 }
 ```
 
-
-
 ## Update user details
 
 PATCH `/users/{user_id}`
 
 This endpoint allows you update some existing user fields like first name, last name and others. Returns an updated user details.
-REQUEST URL: 
+REQUEST URL:
 
 #### Request Headers
 
-Authorization:  `bearerAuth`
+Authorization: `bearerAuth`
 
 #### Path Parameters
 
-Parameter | Required | Description
----------|----------|---------
- user_id | yes | string
-
+| Parameter | Required | Description |
+| --------- | -------- | ----------- |
+| user_id   | yes      | string      |
 
 #### Request Body
 
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-first_name       |  string | True  | user's first name
-| last_name      | string   | True | user's last name
-| phone_number   | string   | True | user's phone number
-| password       | string   | True | password; no sharing
-| email          | string   | True | user's email
-| email_verified | boolean  | False | checks if user's email is verified. Default:`false`
-
+| Name           | Data Type | Required | Description                                         |
+| -------------- | --------- | -------- | --------------------------------------------------- |
+| first_name     | string    | True     | user's first name                                   |
+| last_name      | string    | True     | user's last name                                    |
+| phone_number   | string    | True     | user's phone number                                 |
+| password       | string    | True     | password; no sharing                                |
+| email          | string    | True     | user's email                                        |
+| email_verified | boolean   | False    | checks if user's email is verified. Default:`false` |
 
 #### Sample Request
+
 ```sh
-curl -X PATCH "https://api.zuri.chat/users/615840f887540d8d01ffc88d" 
-     -H "accept: application/json" 
-	 -H "Content-Type: application/json" 
+curl -X PATCH "https://api.zuri.chat/users/615840f887540d8d01ffc88d"
+     -H "accept: application/json"
+	 -H "Content-Type: application/json"
 	 -d "{\
 	    	"email\":\"ape@gmail.com\",
 			\"email_verified\":false,
@@ -253,7 +258,6 @@ curl -X PATCH "https://api.zuri.chat/users/615840f887540d8d01ffc88d"
 			\"phone_number\":\"09011223456\"
 		}"
 ```
-
 
 ```sh
 PATCH https://api.zuri.chat/users/615840f887540d8d01ffc88d
@@ -268,7 +272,6 @@ Content-Type: application/json
   "phone_number": "09011223456"
 }
 ```
-
 
 #### Sample Response
 
@@ -294,8 +297,8 @@ Content-Type: application/json
 }
 ```
 
-
 ## Get user organizations
+
 GET `/users/{email}/organizations`
 
 This endpoint returns all organizations a user belongs to.
@@ -303,20 +306,23 @@ This endpoint returns all organizations a user belongs to.
 REQUEST URL: https://api.zuri.chat/users/{email}/organizations
 
 #### Request Headers
-Authorization:  `bearerAuth`
+
+Authorization: `bearerAuth`
 
 #### Path Parameters
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-{user_id} | string | True | User ID
+
+| Name      | Data Type | Required | Description |
+| --------- | --------- | -------- | ----------- |
+| {user_id} | string    | True     | User ID     |
 
 #### Sample Request
+
 ```sh
 curl -X GET "https://api.zuri.chat/users/ape%40gmail.com/organizations" -H "accept: application/json"
 ```
 
-
 #### Sample Response
+
 ```sh
 {
   "data": {
@@ -335,24 +341,25 @@ curl -X GET "https://api.zuri.chat/users/ape%40gmail.com/organizations" -H "acce
 }
 ```
 
-
 ## Deactivate user
-DELETE  `/users/{user_id}`
+
+DELETE `/users/{user_id}`
 This endpoint allows you deactivate a user account.
 
 REQUEST URL: https://api.zuri.chat/users/{user_id}
 
 #### Request Headers
 
-Authorization:  `bearerAuth`
-
+Authorization: `bearerAuth`
 
 #### Path Parameters
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-{user_id} | string | True | User ID
+
+| Name      | Data Type | Required | Description |
+| --------- | --------- | -------- | ----------- |
+| {user_id} | string    | True     | User ID     |
 
 #### Sample Request
+
 ```sh
 curl -X DELETE "https://api.zuri.chat/users/32wdf" -H "accept: application/json"
 ```
@@ -368,6 +375,7 @@ curl -X DELETE "https://api.zuri.chat/users/32wdf" -H "accept: application/json"
 ```
 
 #### Error Response
+
 ```sh
 {
   "status": 401,

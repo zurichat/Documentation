@@ -114,3 +114,7 @@ Firstly in `/frontend/rootApp/`<br/>
 <br/>
 If you need to contact anyone regarding issues you are facing as regards this repository, contact any of this people on the zuri-chat workspace(slack) **@ALASHI , @Khadeeejah , @Josephchinedu**
 ​
+</MDXLayout>
+
+)
+};

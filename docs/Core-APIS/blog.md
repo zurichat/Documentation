@@ -1,8 +1,7 @@
 ---
-slug: /ZuriBlog
+slug: /core-api/ZuriBlog
 sidebar_position: 7
 title: Zuri Blog
-
 ---
 
 The Blog Resource return information about Zuri Chat's Blog.
@@ -10,10 +9,11 @@ The Blog Resource return information about Zuri Chat's Blog.
 You can create a new blog post, subscribe to zuri mail, make comment on a blog post and other endpoints available.
 
 ## Endpoints
+
 - POST `/posts`
 - GET `/posts/{post_id}/`
 - GET `/posts`
-- DELETE `/posts/{post_id}` 
+- DELETE `/posts/{post_id}`
 - PUT `/posts/{post_id}`
 - POST `/posts/{post_id}/comments`
 - GET `/posts/{post_id}/comments`
@@ -24,27 +24,28 @@ You can create a new blog post, subscribe to zuri mail, make comment on a blog p
 
 POST `/posts`
 
-Create a new blog post 
+Create a new blog post
 
 REQUEST URL: `https://api.zuri.chat/posts`
 
 #### Request Body
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-author | string | True | name of the person writing the  blog post
-content | string | True | content of the blog post
-image_url | string | True | link to an image describing the blog post
-socials | string | True | social media account
-tags | string | True | adds the blog post to a collection
-title | string | True | title of the blog post
+
+| Name      | Data Type | Required | Description                               |
+| --------- | --------- | -------- | ----------------------------------------- |
+| author    | string    | True     | name of the person writing the blog post  |
+| content   | string    | True     | content of the blog post                  |
+| image_url | string    | True     | link to an image describing the blog post |
+| socials   | string    | True     | social media account                      |
+| tags      | string    | True     | adds the blog post to a collection        |
+| title     | string    | True     | title of the blog post                    |
 
 #### Sample Request
 
 ```sh
 
-curl -X POST "https://api.zuri.chat/posts" 
-     -H "accept: application/json" 
-     -H "Content-Type: application/json" 
+curl -X POST "https://api.zuri.chat/posts"
+     -H "accept: application/json"
+     -H "Content-Type: application/json"
      -d "{
          \"author\":\"David Oluwatobi\",
          \"content\":\"One of the pros of HNG internship is that it teaches you to adapt fast....\",\"image_url\":\"string\",
@@ -85,6 +86,7 @@ Content-Type: `application/json`
 ```
 
 #### Error Response
+
 ```sh
 {
   "code": "400",
@@ -94,6 +96,7 @@ Content-Type: `application/json`
 ```
 
 ## Read a particular blog post
+
 GET `/posts/{post_id}/`
 
 You can read the contents of a blog post, identified by `post_id`. Returns an array containing details on the blog post.
@@ -101,19 +104,21 @@ You can read the contents of a blog post, identified by `post_id`. Returns an ar
 REQUEST URL: `https://api.zuri.chat/posts/{post_id}/`
 
 #### Path Parameters
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-{post_id} string | True | identifies the blog you want read
+
+| Name             | Data Type | Required                          | Description |
+| ---------------- | --------- | --------------------------------- | ----------- |
+| {post_id} string | True      | identifies the blog you want read |
 
 #### Sample Request
 
 ```sh
 cURL
-curl -X GET "https://api.zuri.chat/posts/6137d69b21d3c78fc9a84bdf" 
+curl -X GET "https://api.zuri.chat/posts/6137d69b21d3c78fc9a84bdf"
      -H "accept: application/json"
 ```
 
 #### Sample Response
+
 ```sh
 [
   {
@@ -132,6 +137,7 @@ curl -X GET "https://api.zuri.chat/posts/6137d69b21d3c78fc9a84bdf"
 ```
 
 #### Error Response
+
 ```sh
 
 {
@@ -143,21 +149,24 @@ curl -X GET "https://api.zuri.chat/posts/6137d69b21d3c78fc9a84bdf"
 ```
 
 ## Read all blog posts
+
 GET `/posts`
 
-Returns an array of all blog posts on Zuri Chat.  There are no parameters for this request.
+Returns an array of all blog posts on Zuri Chat. There are no parameters for this request.
 
 REQUEST URL: https://api.zuri.chat/posts
 
 #### Sample Request
+
 ```sh
 cURL
-curl -X GET "https://api.zuri.chat/posts" 
+curl -X GET "https://api.zuri.chat/posts"
      -H "accept: application/json"
 
 ```
 
 #### Sample Response
+
 ```sh
 {
   "status": 200,
@@ -246,9 +255,9 @@ curl -X GET "https://api.zuri.chat/posts"
 }
 ```
 
-
 ## Delete a blog post
-DELETE `/posts/{post_id}` 
+
+DELETE `/posts/{post_id}`
 
 Delete a blog post on Zuri Chat. You must provide the `post_id` of the post to be deleted
 
@@ -256,17 +265,19 @@ REQUEST URL: https://api.zuri.chat/posts/{post_id}
 
 #### Path Parameters
 
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-{post_id} string | True | identifies the blog to be deleted
+| Name             | Data Type | Required                          | Description |
+| ---------------- | --------- | --------------------------------- | ----------- |
+| {post_id} string | True      | identifies the blog to be deleted |
 
 #### Sample Request
+
 ```sh
-curl -X DELETE "https://api.zuri.chat/posts/6137d69b21d3c78fc9a84bdf" 
+curl -X DELETE "https://api.zuri.chat/posts/6137d69b21d3c78fc9a84bdf"
      -H "accept: application/json"
 ```
 
 #### Sample Response
+
 ```sh
 {
   "status": "200",
@@ -285,6 +296,7 @@ curl -X DELETE "https://api.zuri.chat/posts/6137d69b21d3c78fc9a84bdf"
 ```
 
 ## Update a blog post
+
 PUT `/posts/{post_id}`
 
 Update an exisiting blog on Zuri Chat with this endpoint.
@@ -292,26 +304,28 @@ Update an exisiting blog on Zuri Chat with this endpoint.
 REQUEST URL: https://api.zuri.chat/posts/{post_id}
 
 #### Path Parameters
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-{post_id} string | True | identifies the blog to be updated
+
+| Name             | Data Type | Required                          | Description |
+| ---------------- | --------- | --------------------------------- | ----------- |
+| {post_id} string | True      | identifies the blog to be updated |
 
 #### Request Body
 
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-author | string | True | name of the person writing the  blog post
-content | string | True | content of the blog post
-image_url | string | True | link to an image describing the blog post
-socials | string | True | social media account
-tags | string | True | adds the blog post to a collection
-title | string | True | title of the blog post
+| Name      | Data Type | Required | Description                               |
+| --------- | --------- | -------- | ----------------------------------------- |
+| author    | string    | True     | name of the person writing the blog post  |
+| content   | string    | True     | content of the blog post                  |
+| image_url | string    | True     | link to an image describing the blog post |
+| socials   | string    | True     | social media account                      |
+| tags      | string    | True     | adds the blog post to a collection        |
+| title     | string    | True     | title of the blog post                    |
 
 #### Sample Request
+
 ```sh
-curl -X PUT "https://api.zuri.chat/posts/6137d69b21d3c78fc9a84bdf" 
-     -H "accept: application/json" 
-     -H "Content-Type: application/json" 
+curl -X PUT "https://api.zuri.chat/posts/6137d69b21d3c78fc9a84bdf"
+     -H "accept: application/json"
+     -H "Content-Type: application/json"
      -d "{
          \"author\":\"David Oluwatobi\",
          \"content\":\"One of the pros of HNG internship is that it teaches you to adapt fast....\",\"image_url\":\"string\",
@@ -320,7 +334,6 @@ curl -X PUT "https://api.zuri.chat/posts/6137d69b21d3c78fc9a84bdf"
          \"title\":\"The pros and cons of HNG internship\"
         }"
 ```
-
 
 ```sh
 JSON
@@ -336,6 +349,7 @@ Content-Type : application/json
 ```
 
 #### Sample Response
+
 ```sh
 {
   "code": "200",
@@ -345,6 +359,7 @@ Content-Type : application/json
 ```
 
 #### Error Response
+
 ```sh
 {
   "code": "404",
@@ -354,6 +369,7 @@ Content-Type : application/json
 ```
 
 ## Comment on a blog post
+
 POST `/posts/{post_id}/comments`
 
 Add a comment to a unique blog post. For this request, you need the `post_id`
@@ -362,22 +378,24 @@ REQUEST URL: https://api.zuri.chat/posts/{post_id}/comments
 
 #### Path Parameters
 
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-{post_id} string | True | identifies the blog post which a comment will be added
+| Name             | Data Type | Required                                               | Description |
+| ---------------- | --------- | ------------------------------------------------------ | ----------- |
+| {post_id} string | True      | identifies the blog post which a comment will be added |
 
 #### Request Body
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-comment_at | date | True | Date-Time format at which the comment was made
-comment_author | string | name of the user adding a comment
-comment_author | string | content of the comment
+
+| Name           | Data Type | Required                          | Description                                    |
+| -------------- | --------- | --------------------------------- | ---------------------------------------------- |
+| comment_at     | date      | True                              | Date-Time format at which the comment was made |
+| comment_author | string    | name of the user adding a comment |
+| comment_author | string    | content of the comment            |
 
 #### Sample Request
+
 ```sh
 cURL
-curl -X POST "https://api.zuri.chat/posts/6137d69b21d3c78fc9a84bdf/comments" 
-     -H "accept: application/json" -H "Content-Type: application/json" 
+curl -X POST "https://api.zuri.chat/posts/6137d69b21d3c78fc9a84bdf/comments"
+     -H "accept: application/json" -H "Content-Type: application/json"
      -d "{
          \"comment_at\":\"25 August 2021. 10:42:05\",
          \"comment_author\":\"David Oluwatobi\",
@@ -394,7 +412,9 @@ Content-Type: application/json
   "comment_content": "HNG builds an excellent spirit in you..."
 }
 ```
+
 #### Sample Response
+
 ```sh
 {
   "code": "200",
@@ -414,25 +434,28 @@ Content-Type: application/json
 ```
 
 ## Read all comments of a blog post
+
 GET `/posts/{post_id}/comments`
 
-Returns an array of all comments associated with a single blog post. 
+Returns an array of all comments associated with a single blog post.
 
 REQUEST URL: https://api.zuri.chat/posts/{post_id}/comments
 
 #### Path Parameters
 
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-{post_id} string | True | identifies the blog post which a comment will be added
+| Name             | Data Type | Required                                               | Description |
+| ---------------- | --------- | ------------------------------------------------------ | ----------- |
+| {post_id} string | True      | identifies the blog post which a comment will be added |
 
 #### Sample Request
+
 ```sh
-curl -X GET "https://api.zuri.chat/posts/6137d69b21d3c78fc9a84bdf/comments" 
+curl -X GET "https://api.zuri.chat/posts/6137d69b21d3c78fc9a84bdf/comments"
      -H "accept: application/json"
 ```
 
 #### Sample Response
+
 ```sh
 {
   "author": "David Oluwatobi",
@@ -448,6 +471,7 @@ curl -X GET "https://api.zuri.chat/posts/6137d69b21d3c78fc9a84bdf/comments"
 ```
 
 #### Error Response
+
 ```sh
 {
   "status": 404,
@@ -456,6 +480,7 @@ curl -X GET "https://api.zuri.chat/posts/6137d69b21d3c78fc9a84bdf/comments"
 ```
 
 ## Like/Unlike a blog posr
+
 PATCH `/posts/{post_id}/like/{user_id}`
 
 Allows you like or unlike a blog post as a registered user in Zuri Chat. For the request, you will provide `post_id` and `user_id` as parameters.
@@ -464,19 +489,20 @@ REQUEST URL: https://api.zuri.chat/posts{post_id}/like/{user_id}
 
 #### Path Parameters
 
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-{post_id} string | True | identifies the blog post which a comment will be added
-{user_id} | string | True | identifies the unique user in Zuri Chat liking/unliking a post.
-
+| Name             | Data Type | Required                                               | Description                                                     |
+| ---------------- | --------- | ------------------------------------------------------ | --------------------------------------------------------------- |
+| {post_id} string | True      | identifies the blog post which a comment will be added |
+| {user_id}        | string    | True                                                   | identifies the unique user in Zuri Chat liking/unliking a post. |
 
 #### Sample Request
+
 ```sh
-curl -X PATCH "https://api.zuri.chat/posts/6137d69b21d3c78fc9a84bdf/like/6137d69b21d3c78fc9a84bdf" 
+curl -X PATCH "https://api.zuri.chat/posts/6137d69b21d3c78fc9a84bdf/like/6137d69b21d3c78fc9a84bdf"
      -H "accept: application/json"
 ```
 
 #### Sample Response
+
 ```sh
 {
   "status": "200",
@@ -485,6 +511,7 @@ curl -X PATCH "https://api.zuri.chat/posts/6137d69b21d3c78fc9a84bdf/like/6137d69
 ```
 
 #### Error Response
+
 ```sh
 {
   "status": "400",
@@ -501,20 +528,22 @@ Allows you subscribe to Zuri mail, get regular updates on Zuri Chat. You need a 
 REQUEST URL: https://api.zuri.chat/posts/mail
 
 #### Request Body
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-email | string | True | email address you will receive updates on
 
+| Name  | Data Type | Required | Description                               |
+| ----- | --------- | -------- | ----------------------------------------- |
+| email | string    | True     | email address you will receive updates on |
 
 #### Sample Request
+
 ```sh
 cURL
-curl -X POST "https://api.zuri.chat/posts/mail" 
-     -H "accept: application/json" 
-     -H "Content-Type: application/json" 
+curl -X POST "https://api.zuri.chat/posts/mail"
+     -H "accept: application/json"
+     -H "Content-Type: application/json"
      -d "{\"email\":\"subscriber@gmail.com\"
     }"
 ```
+
 ```sh
 JSON
 Content-Type: application/json
@@ -525,6 +554,7 @@ Content-Type: application/json
 ```
 
 #### Sample Response
+
 ```sh
 {
   "status": "200",
@@ -533,13 +563,10 @@ Content-Type: application/json
 ```
 
 #### Error Response
+
 ```sh
 {
   "status": "400",
   "message": "you already subscribed"
 }
 ```
-
-
-
-

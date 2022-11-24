@@ -1,13 +1,12 @@
 ---
-slug: /authentication
 sidebar_position: 1
+slug: /core-api/authentication
 title: Authentication
 ---
 
 The Authentication API enables you to manage and access Zuri core resources. It offers endpoints so users can log in, log out, access APIs, and more.
 
 The API supports two identity protocols: **JWT Token** and **Session**.
-
 
 ### Base URL
 
@@ -20,15 +19,15 @@ There are two ways to authenticate
 - JWT Token
 - Session
 
-
 ## Endpoints
+
 - POST `/account/request-password-reset-code`
 - POST `/account/verify-account`
 - POST `/auth​/confirm-password`
 - POST `/auth/login`
 - POST `/auth/logout`
 - POST `/auth/logout/othersessions`
-- POST  `/auth/request-reset-password`
+- POST `/auth/request-reset-password`
 - GET `/auth/verify-token`
 - GET `/auth/social-login/{Provider}/{access_token}`
 - POST `/account/verify-reset-password`
@@ -43,23 +42,23 @@ Request URL: `https://api.zuri.chat/account/request-password-reset-code`
 
 #### Request Body
 
-Name | Required | Description
-------- | ------- | -------
-email | True | user email address
+| Name  | Required | Description        |
+| ----- | -------- | ------------------ |
+| email | True     | user email address |
 
 #### Sample Request
 
 ```sh
 cURL
 
-curl -X POST "https://api.zuri.chat/account/request-password-reset-code" 
-     -H "accept: application/json" 
-     -H "Content-Type: application/json" 
+curl -X POST "https://api.zuri.chat/account/request-password-reset-code"
+     -H "accept: application/json"
+     -H "Content-Type: application/json"
      -d "{\"email\":\"eyi@gmail.com\"}"
 ```
 
 ```sh
-JSON 
+JSON
 
 Content-Type: `application/json`
 
@@ -69,6 +68,7 @@ Content-Type: `application/json`
 ```
 
 #### Sample Response
+
 ```json
 {
   "status": 200,
@@ -78,6 +78,7 @@ Content-Type: `application/json`
 ```
 
 #### Error Response
+
 ```sh
 {
   "status": 400,
@@ -86,6 +87,7 @@ Content-Type: `application/json`
 ```
 
 ## Verify User Account
+
 POST `/account/verify-account`
 
 This API handles user email confirmation, this API is called after user registration. Accept POST request method.
@@ -94,24 +96,25 @@ Request URL:` https://api.zuri.chat/account/verify-account`
 
 #### Request Body
 
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-email | string | True | user's email
-password | string | True | user's password, hence no sharing
+| Name     | Data Type | Required | Description                       |
+| -------- | --------- | -------- | --------------------------------- |
+| email    | string    | True     | user's email                      |
+| password | string    | True     | user's password, hence no sharing |
 
 #### Sample Request
+
 ```sh
 cURL
 
 curl -X POST "https://api.zuri.chat/auth/login"
-     -H "accept: application/json" 
-     -H "Content-Type: application/json" 
+     -H "accept: application/json"
+     -H "Content-Type: application/json"
      -d "{\"email\":\"hng.user01@gmail.com\",\"password\":\"password\"}"
 
 ```
 
 ```sh
-JSON 
+JSON
 Content-Type: `application/json`
 
 {
@@ -131,6 +134,7 @@ Content-Type: `application/json`
 ```
 
 #### Error Response
+
 ```sh
 {
   "status": 400,
@@ -148,18 +152,18 @@ Request URL: `"https://api.zuri.chat/auth/confirm-password"`
 
 #### Request Body
 
-Parameter | Required | Description
-------- | ------- | -------
-password | True | User password
-confirm_password | True | User confirm password
-
+| Parameter        | Required | Description           |
+| ---------------- | -------- | --------------------- |
+| password         | True     | User password         |
+| confirm_password | True     | User confirm password |
 
 #### Sample Request
+
 ```sh
 cURL
-curl -X POST "https://api.zuri.chat/auth/confirm-password" 
-     -H "accept: application/json" 
-     -H "Content-Type: application/json" 
+curl -X POST "https://api.zuri.chat/auth/confirm-password"
+     -H "accept: application/json"
+     -H "Content-Type: application/json"
      -d "{\"confirm_password\":\"string\",\"password\":\"string\"}"
 ```
 
@@ -171,6 +175,7 @@ Content-Type: `application/json`
   "password": "string"
 }
 ```
+
 #### Sample Response
 
 ```sh
@@ -184,15 +189,12 @@ Content-Type: `application/json`
 
 #### Error Response
 
-
 ```sh
 {
   "status": 400,
   "message": ""
 }
 ```
-
-
 
 ## Login
 
@@ -204,24 +206,25 @@ Request URL: `https://api.zuri.chat/auth/login`
 
 #### Request Body
 
-Parameter |  Required | Description
-------- |  ------- | -------
-email |  True | Valid user email address
-password |  True | User password
+| Parameter | Required | Description              |
+| --------- | -------- | ------------------------ |
+| email     | True     | Valid user email address |
+| password  | True     | User password            |
 
 #### Sample Request
+
 ```sh
 cURL
 
 curl -X POST "https://api.zuri.chat/auth/login"
-     -H "accept: application/json" 
-     -H "Content-Type: application/json" 
+     -H "accept: application/json"
+     -H "Content-Type: application/json"
      -d "{\"email\":\"hng.user01@gmail.com\",\"password\":\"password\"}"
 
 ```
 
 ```sh
-JSON 
+JSON
 Content-Type: `application/json`
 
 {
@@ -230,31 +233,29 @@ Content-Type: `application/json`
 }
 ```
 
-
 #### Sample Response
 
 ```json
 {
-    "status": 200,
-    "message": "login successful",
-    "data": {
-        "session_id": "616022964f2104d6ab206419",
-        "user": {
-            "id": "6156387c5a1ecabe7f31af35",
-            "first_name": "Abiona",
-            "last_name": "Quadrat A. ",
-            "display_name": "",
-            "email": "quadratadewemi@gmail.com",
-            "phone": "+2347062349012",
-            "status": 0,
-            "time_zone": "Africa/Lagos",
-            "created_at": "2021-09-30T22:21:48.163347861Z",
-            "updated_at": "0001-01-01T00:00:00Z",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb29raWUiOiJNVFl6TkRFeU56ZzROWHhIZDNkQlIwUlplRTVxUVhsTmFtc3lUa2RaZVUxVVFUQmFSRnBvV1dwSmQwNXFVWGhQVVQwOWZLNUszWWdxbUxjWjNlcjRRLXNzMERudGN4XzBxbTg1OGJiQVVjZ2hvMW0xIiwiZW1haWwiOiJhZGV3ZW1pbW9hYmlvbmFAeWFob28uY29tIiwiaWQiOiI2MTYwMjI5NjRmMjEwNGQ2YWIyMDY0MTkiLCJvcHRpb25zIjp7IlBhdGgiOiIvIiwiRG9tYWluIjoiIiwiTWF4QWdlIjo3OTQxMzI3ODU2LCJTZWN1cmUiOmZhbHNlLCJIdHRwT25seSI6ZmFsc2UsIlNhbWVTaXRlIjowfSwic2Vzc2lvbl9uYW1lIjoiZjY4MjJhZjk0ZTI5YmExMTJiZTMxMGQzYWY0NWQ1YzcifQ.6TI0frwwaC-o_0xZt7wEHGCy-dBihGB9yL3N8th3btE"
-        }
+  "status": 200,
+  "message": "login successful",
+  "data": {
+    "session_id": "616022964f2104d6ab206419",
+    "user": {
+      "id": "6156387c5a1ecabe7f31af35",
+      "first_name": "Abiona",
+      "last_name": "Quadrat A. ",
+      "display_name": "",
+      "email": "quadratadewemi@gmail.com",
+      "phone": "+2347062349012",
+      "status": 0,
+      "time_zone": "Africa/Lagos",
+      "created_at": "2021-09-30T22:21:48.163347861Z",
+      "updated_at": "0001-01-01T00:00:00Z",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb29raWUiOiJNVFl6TkRFeU56ZzROWHhIZDNkQlIwUlplRTVxUVhsTmFtc3lUa2RaZVUxVVFUQmFSRnBvV1dwSmQwNXFVWGhQVVQwOWZLNUszWWdxbUxjWjNlcjRRLXNzMERudGN4XzBxbTg1OGJiQVVjZ2hvMW0xIiwiZW1haWwiOiJhZGV3ZW1pbW9hYmlvbmFAeWFob28uY29tIiwiaWQiOiI2MTYwMjI5NjRmMjEwNGQ2YWIyMDY0MTkiLCJvcHRpb25zIjp7IlBhdGgiOiIvIiwiRG9tYWluIjoiIiwiTWF4QWdlIjo3OTQxMzI3ODU2LCJTZWN1cmUiOmZhbHNlLCJIdHRwT25seSI6ZmFsc2UsIlNhbWVTaXRlIjowfSwic2Vzc2lvbl9uYW1lIjoiZjY4MjJhZjk0ZTI5YmExMTJiZTMxMGQzYWY0NWQ1YzcifQ.6TI0frwwaC-o_0xZt7wEHGCy-dBihGB9yL3N8th3btE"
     }
+  }
 }
-
 ```
 
 #### Error Response
@@ -266,8 +267,8 @@ Content-Type: `application/json`
 }
 ```
 
-
 ## Logout
+
 POST/GET `/auth/logout`
 
 ### Logout User Session
@@ -278,6 +279,7 @@ It does not require parameters.
 REQUEST URL: `https://api.zuri.chat/auth/logout`
 
 #### Request Header
+
 Authorization: `cookieAuth` or `bearerAuth`
 
 #### Sample Request
@@ -298,6 +300,7 @@ curl -X POST "https://api.zuri.chat/auth/logout" -H "accept: application/json"
 ```
 
 #### Error Response
+
 ```sh
 {
   "status": 401,
@@ -319,31 +322,33 @@ Request URL: `"https://api.zuri.chat/auth/logout/othersessions"`
 
 Authorization: `cookieAuth` or `bearerAuth`
 
-
 #### Request Body
 
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-email | string | True | user's email
+| Name  | Data Type | Required | Description  |
+| ----- | --------- | -------- | ------------ |
+| email | string    | True     | user's email |
 
-####  Sample Request
+#### Sample Request
+
 ```sh
 cURL
 curl -X POST "https://api.zuri.chat/auth/logout/othersessions"
-     -H "accept: application/json" 
-     -H "Content-Type: application/json" 
+     -H "accept: application/json"
+     -H "Content-Type: application/json"
      -d "{\"email\":\"string\"}"
 ```
 
 ```sh
-JSON 
+JSON
 Content-Type: `application/json`
 
 {
   "email": "user@example.com"
 }
 ```
+
 #### Sample Response
+
 ```sh
 
 {
@@ -361,9 +366,9 @@ Content-Type: `application/json`
 }
 ```
 
-## Reset User  Password
+## Reset User Password
 
-POST  `/auth/request-reset-password`
+POST `/auth/request-reset-password`
 
 Requires `cookieAuth` or `bearerAuth` for authorization to reset a user's password.
 
@@ -375,18 +380,18 @@ Authorization: `cookieAuth` or `bearerAuth`
 
 #### Request Body
 
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-email | string | True | user's email
+| Name  | Data Type | Required | Description  |
+| ----- | --------- | -------- | ------------ |
+| email | string    | True     | user's email |
 
+#### Sample Request
 
-####  Sample Request
 ```sh
 cURL
 
 curl -X POST "https://api.zuri.chat/auth/request-reset-password"
-     -H "accept: */*" 
-     -H "Content-Type: application/json" 
+     -H "accept: */*"
+     -H "Content-Type: application/json"
      -d "user@example.com"
 ```
 
@@ -433,6 +438,7 @@ REQUEST URL: `"https://api.zuri.chat/auth/verify-token"`
 Authorization: `cookieAuth` or `bearerAuth`
 
 #### Sample Request
+
 ```sh
 curl -X GET "https://api.zuri.chat/auth/verify-token" -H "accept: application/json"
 ```
@@ -461,13 +467,13 @@ curl -X GET "https://api.zuri.chat/auth/verify-token" -H "accept: application/js
 }
 
 ```
+
 ### Social Login
 
 This endpoint handles social login for both Facebook and Google. To use this endpoint, you need to specify the provider name and access token gotten from the provider. it'll return status code 200 and access token
 
 Request Method: GET
 GET `/auth/social-login/{Provider}/{access_token}`
-
 
 ### Verify Reset Password
 
@@ -478,11 +484,12 @@ POST `/account/verify-reset-password`
 
 #### Request Body
 
-Parameter | Required | Description
-------- | ------- | -------
-code | True | Verification code sent to user email address
+| Parameter | Required | Description                                  |
+| --------- | -------- | -------------------------------------------- |
+| code      | True     | Verification code sent to user email address |
 
 #### Sample Response
+
 ```json
 {
   "status": 200,
@@ -502,17 +509,17 @@ POST `/account/update-password/{verification_code:[0-9]+}`
 
 #### Request Body
 
-Parameter | Required | Description
-------- | ------- | -------
-password | True | 
-confrim_password | True
+| Parameter        | Required | Description |
+| ---------------- | -------- | ----------- |
+| password         | True     |
+| confrim_password | True     |
 
 #### Sample Response
+
 ```json
 {
   "status": 200,
   "message": "Password update successful",
   "data": null
-
 }
 ```
