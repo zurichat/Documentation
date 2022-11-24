@@ -56,7 +56,7 @@ const FeatureList = [
         needs.
       </>
     ),
-    url: "/docs/development",
+    url: "/category/development",
   },
   {
     title: "Guidelines",
