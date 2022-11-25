@@ -138,7 +138,7 @@ p {
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
-  white-space: no-wrap;
+  white-space: nowrap !important;
   text-decoration: none;
 }
 
@@ -173,7 +173,7 @@ p {
   .startedcontainer {
     display: flex;
     flex-direction: column;
-    padding: 8px;
+    padding: 24px 8px 8px 8px;
     border-top: 1px solid rgba(0, 184, 124, 0.15);
     border-bottom: 1px solid rgba(0, 184, 124, 0.15);
     align-items: center;
@@ -218,13 +218,13 @@ p {
 
   .buttontxt {
     font-weight: 600;
-    font-size: 12px;
+    font-size: 10px !important;
     line-height: 16px;
   }
 
   .buttoncontainer {
     display: flex;
-    gap: 24px;
+    gap: 10px;
     flex-basis: 70%;
   }
 }
