@@ -28,6 +28,25 @@
 .card__container:visited {
   text-decoration: none;
   color: #616061;
+  transition: all 0.3s ease-in;
+}
+
+@media (hover: hover) and (any-pointer: fine) {
+  .card__container:hover,
+  .card__container:active {
+    box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px;
+    transform: translate3d(0px, -1px, 0px);
+    cursor: pointer;
+  }
+}
+
+@media (hover: hover) and (any-pointer: coarse) {
+  .card__container:hover,
+  .card__container:active {
+    box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px;
+    transform: translate3d(0px, -1px, 0px);
+    cursor: pointer;
+  }
 }
 
 .card__container:nth-child(2) {

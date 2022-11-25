@@ -16,6 +16,8 @@ import PhotoLogo from "@site/static/img/photo.svg";
 import ExpensesLogo from "@site/static/img/expenses.svg";
 import CalenderLogo from "@site/static/img/calender.svg";
 
+import Link from "@docusaurus/Link";
+
 const recommmendedplugins = [
   {
     image: (
@@ -23,7 +25,17 @@ const recommmendedplugins = [
         <ChannelsLogo title="Docusaurus Logo" className="logo" />
       </>
     ),
+    text: (
+      <>
+        {" "}
+        Bring the right people <br />
+        together in one space <br />
+        organizing work around a <br />
+        specific common goal. <br />
+      </>
+    ),
     title: "Channels",
+    link: "/plugins/channels",
   },
   {
     image: (
@@ -31,7 +43,15 @@ const recommmendedplugins = [
         <TodoLogo />
       </>
     ),
+    text: (
+      <>
+        {" "}
+        Helps you stay organized and <br />
+        work together in a single space <br />
+      </>
+    ),
     title: "Todo",
+    link: "/plugins/todo",
   },
   {
     image: (
@@ -39,7 +59,15 @@ const recommmendedplugins = [
         <MusicLogo />
       </>
     ),
+    text: (
+      <>
+        {" "}
+        Bring your music organized <br />
+        in a single space <br />
+      </>
+    ),
     title: "Music",
+    link: "/plugins/music",
   },
   {
     image: (
@@ -47,7 +75,15 @@ const recommmendedplugins = [
         <FilesLogo />
       </>
     ),
+    text: (
+      <>
+        {" "}
+        Access your file in a single <br />
+        space <br />
+      </>
+    ),
     title: "Files",
+    link: "/category/file-plugin",
   },
   {
     image: (
@@ -55,7 +91,15 @@ const recommmendedplugins = [
         <ChessLogo />
       </>
     ),
+    text: (
+      <>
+        {" "}
+        Play chess with friends <br />
+        and colleague in a single space <br />
+      </>
+    ),
     title: "Chess",
+    link: "/plugins/chess",
   },
   {
     image: (
@@ -64,6 +108,14 @@ const recommmendedplugins = [
       </>
     ),
     title: "Direct Messages",
+    link: "/plugins/dm_chat",
+    text: (
+      <>
+        {" "}
+        Connect with the colleagues <br />
+        in organization to get task done <br />
+      </>
+    ),
   },
 ];
 
@@ -74,13 +126,13 @@ const recentplugins = [
         <BlackboardLogo />
       </>
     ),
-    title: " Blackboard",
+    title: " Noticeboard",
     description: (
       <>
-        see sales for your company <br />
-        (integrated with Stripe)
+        see urgent notice from <br /> your company
       </>
     ),
+    link: "/plugins/noticeboard",
   },
   {
     image: (
@@ -95,6 +147,7 @@ const recentplugins = [
         <br /> servers
       </>
     ),
+    link: "/plugins",
   },
   {
     image: (
@@ -106,9 +159,9 @@ const recentplugins = [
     description: (
       <>
         see sales for your company <br />
-        (integrated with Stripe)
       </>
     ),
+    link: "/plugins/sales",
   },
   {
     image: (
@@ -116,8 +169,14 @@ const recentplugins = [
         <PhotoLogo />
       </>
     ),
-    title: " Photo Share ",
-    description: <>Present your screens</>,
+    title: " Goals ",
+    description: (
+      <>
+        Help your organization meet <br />
+        there goals
+      </>
+    ),
+    link: "/plugins/goals",
   },
   {
     image: (
@@ -128,10 +187,11 @@ const recentplugins = [
     title: " Expenses ",
     description: (
       <>
-        see notifications about your
-        <br /> servers
+        Track organization operating
+        <br /> cost
       </>
     ),
+    link: "/plugins/expenses",
   },
   {
     image: (
@@ -140,10 +200,10 @@ const recentplugins = [
       </>
     ),
     title: " Calender ",
+    link: "/plugins/calendar",
     description: (
       <>
-        see sales for your company <br />
-        (integrated with Stripe)
+        Plan activities better for <br /> your team
       </>
     ),
   },
@@ -152,7 +212,7 @@ const recentplugins = [
 const RecommendCards = () => {
   return recommmendedplugins.map((plugin, index) => {
     return (
-      <div className={styles.cardstyle} key={index}>
+      <Link to={plugin.link} className={styles.cardstyle} key={index}>
         <div
           style={{
             display: "flex",
@@ -184,14 +244,10 @@ const RecommendCards = () => {
             }}
           >
             <p className={styles.titletext}>{plugin.title}</p>
-            <p className={styles.desc}>
-              Bring the right people <br />
-              together in one place <br />
-              organizing work around a<br /> specific common goal.
-            </p>
+            <p className={styles.desc}>{plugin.text}</p>
           </div>
         </div>
-      </div>
+      </Link>
     );
   });
 };
@@ -199,7 +255,7 @@ const RecommendCards = () => {
 const RecentCard = () => {
   return recentplugins.map((plugin, index) => {
     return (
-      <div className={styles.cardstyle} key={index}>
+      <Link to={plugin.link} className={styles.cardstyle} key={index}>
         <div
           style={{
             display: "flex",
@@ -220,7 +276,7 @@ const RecentCard = () => {
             <p className={styles.desc}>{plugin.description}</p>
           </div>
         </div>
-      </div>
+      </Link>
     );
   });
 };
@@ -247,7 +303,12 @@ const Plugins = () => {
                   className={styles.buttonstyle}
                 >
                   <BulbLogo className={styles.buttonlogo} />
-                  <p className={styles.buttontxt}>Learn more about Plugins</p>
+                  <Link
+                    to="/plug-in/how-to-build-a-plugin"
+                    className={styles.buttontxt}
+                  >
+                    Learn more about Plugins
+                  </Link>
                 </div>
               </button>
               <button className={styles.buttonpadding}>
@@ -261,7 +322,12 @@ const Plugins = () => {
                   <div className={styles.buttonlogo}>
                     <DocLogo />
                   </div>
-                  <p className={styles.buttontxt}>Documentation</p>
+                  <Link
+                    to="/development/zuri-documentation"
+                    className={styles.buttontxt}
+                  >
+                    Documentation
+                  </Link>
                 </div>
               </button>
             </div>

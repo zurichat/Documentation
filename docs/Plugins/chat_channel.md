@@ -1,4 +1,10 @@
-# API DOCUMENTATION FOR THE ZURI CHAT CHANNELS PLUGIN
+---
+sidebar_position: 3
+slug: /plug-in/chat_channel
+title: Channel Plugin
+---
+
+# API Documentation For The Zuri Chat Channels Plugin
 
 ## Brief
 

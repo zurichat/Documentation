@@ -1,12 +1,19 @@
+# Add and Remove Plugin Endpoint
+
 ### Add/Remove Endpoints For All Plugins
 
 ## Brief
+
 Contains all the add/remove endpoints/instructions for all teams
 
 ---
+
 ## Zuri Main
+
 ---
+
 ## Create User Account
+
 To use zuri chat you need to sign up or sign in if you already have an account.
 Follow the steps below to sign up as a new user.
 
@@ -17,9 +24,13 @@ Follow the steps below to sign up as a new user.
 5. Verify your account
 
 ---
+
 ## Zuri Core
+
 ---
+
 ## Create organization
+
 POST `/organizations`
 
 This is a request endpoint that creates an organization or workspace. It requires the creator's email as a parameter.
@@ -28,13 +39,15 @@ REQUEST URL: `https://api.zuri.chat/organizations`
 
 #### Request Body
 
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-creator_email| string | True | creator's email for the organization. Must be a valid email.
+| Name          | Data Type | Required | Description                                                  |
+| ------------- | --------- | -------- | ------------------------------------------------------------ |
+| creator_email | string    | True     | creator's email for the organization. Must be a valid email. |
+
 #### Sample Request
+
 ```sh
 curl -X POST "https://api.zuri.chat/organizations"
-     -H "accept: application/json" 
+     -H "accept: application/json"
      -H "Content-Type: application/json" -d "{\"creator_email\":\"hng@email.com\"}"
 ```
 
@@ -57,6 +70,7 @@ Content-Type: application/json
         }
     }
 ```
+
 #### Error Response
 
 ```sh
@@ -65,7 +79,9 @@ Content-Type: application/json
   "message": "bad request"
 }
 ```
+
 ## Delete organization
+
 DELETE `/organizations`
 
 This endpoint allows you to delete an existing organization.
@@ -74,14 +90,14 @@ REQUEST URL: `https://api.zuri.chat/organizations`
 
 #### Request Body
 
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
- organization_id | string | True | organization ID
+| Name            | Data Type | Required | Description     |
+| --------------- | --------- | -------- | --------------- |
+| organization_id | string    | True     | organization ID |
 
 #### Sample Request
 
 ```sh
-curl -X DELETE "https://api.zuri.chat/organizations/6137d69b21d3c78fc9a84bdf" 
+curl -X DELETE "https://api.zuri.chat/organizations/6137d69b21d3c78fc9a84bdf"
      -H "accept: application/json"
 ```
 
@@ -99,9 +115,10 @@ Content-Type: application/json
 {
 "code": 200,
 "message": "resource deleted successfully",
-  
+
 }
 ```
+
 #### Error Response
 
 ```sh
@@ -110,24 +127,29 @@ Content-Type: application/json
   "message": "No Authorization or session expired."
 }
 ```
+
 ---
+
 ## Add user to organization
+
 POST `organizations/{organization_id}/members`
 
 Adds a new user to an organization. This request requires the `organization_id` as a path parameter.
 
 REQUEST URL: `https://api.zuri.chat/organizations/{organization_id}/members`
+
 #### Path Parameters
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-{organization_id} | string | True | Organization ID
+
+| Name              | Data Type | Required | Description     |
+| ----------------- | --------- | -------- | --------------- |
+| {organization_id} | string    | True     | Organization ID |
 
 #### Sample Request
 
 ```sh
-curl -X POST "https://api.zuri.chat/organizations/6137d69b21d3c78fc9a84bdf/members" 
-     -H "accept: application/json" 
-     -H "Content-Type: application/json" 
+curl -X POST "https://api.zuri.chat/organizations/6137d69b21d3c78fc9a84bdf/members"
+     -H "accept: application/json"
+     -H "Content-Type: application/json"
      -d "{\"user_email\":\"user@email.com\"}"
 ```
 
@@ -151,7 +173,8 @@ Content-Type: application/json
     }
 ```
 
-## Deactivate organization 
+## Deactivate organization
+
 DELETE `organizations/{organization_id}/members/{member_id}`
 
 This endpoint will be used to deactivate/remove a user from an organization.
@@ -159,14 +182,16 @@ This endpoint will be used to deactivate/remove a user from an organization.
 REQUEST URL: `https://api.zuri.chat/organizations/{organization_id}/members/{member_id}`
 
 #### Path Parameters
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-{organization_id} | string | True | Organization ID
-{member_id} | string | True | member ID
+
+| Name              | Data Type | Required | Description     |
+| ----------------- | --------- | -------- | --------------- |
+| {organization_id} | string    | True     | Organization ID |
+| {member_id}       | string    | True     | member ID       |
 
 #### Sample Request
+
 ```sh
-curl -X DELETE "https://api.zuri.chat/organizations/6137d69b21d3c78fc9a84bdf/members/6137d69b21d3c78fc9a84bdf" 
+curl -X DELETE "https://api.zuri.chat/organizations/6137d69b21d3c78fc9a84bdf/members/6137d69b21d3c78fc9a84bdf"
 -H "accept: application/json"
 ```
 
@@ -178,33 +203,36 @@ curl -X DELETE "https://api.zuri.chat/organizations/6137d69b21d3c78fc9a84bdf/mem
 		"message": "resource updated successfully",
 	}
 ```
+
 ## DATA
+
 ## Write Data
+
 POST `/data/write`
 
 A plugin will add new data to the database. `organization_id`, `plugin_id`, `collection_name` must be included in the request. There are no parameters for this endpoint
 
-REQUEST URL: 
+REQUEST URL:
 
 #### Request Body
 
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-bulk_write | boolean | False | the value indicates whether many documents will be written or not
-collection_name | string | True | the name of the collection to insert data inside
-filter | object| False | query to be matched
-object_id | string | False| ID of the inserted data
-organization_ID | string | True | organization ID
-payload | object |True | contains `description` with the actual data to be inserted into the database
-plugin_ID | string | True | the Plugin ID
+| Name            | Data Type | Required | Description                                                                  |
+| --------------- | --------- | -------- | ---------------------------------------------------------------------------- |
+| bulk_write      | boolean   | False    | the value indicates whether many documents will be written or not            |
+| collection_name | string    | True     | the name of the collection to insert data inside                             |
+| filter          | object    | False    | query to be matched                                                          |
+| object_id       | string    | False    | ID of the inserted data                                                      |
+| organization_ID | string    | True     | organization ID                                                              |
+| payload         | object    | True     | contains `description` with the actual data to be inserted into the database |
+| plugin_ID       | string    | True     | the Plugin ID                                                                |
 
 #### Sample Request
 
 ```sh
-cURL 
-curl -X PUT "https://api.zuri.chat/data/write" 
-     -H "accept: application/json" 
-     -H "Content-Type: application/json" 
+cURL
+curl -X PUT "https://api.zuri.chat/data/write"
+     -H "accept: application/json"
+     -H "Content-Type: application/json"
      -d "{\"bulk_write\":true,
          \"collection_name\":\"mycollection\",
          \"filter\":{},
@@ -215,7 +243,7 @@ curl -X PUT "https://api.zuri.chat/data/write"
 ```
 
 ```sh
-JSON 
+JSON
 Content-Type: `application/json`
 {
  "plugin_id": "xxx",
@@ -229,6 +257,7 @@ Content-Type: `application/json`
 ```
 
 #### Sample Response
+
 ```sh
 {
   "data": {
@@ -243,12 +272,14 @@ Content-Type: `application/json`
 #### Error Response
 
 You will get an error if one or more of the required fields is missing or incorrect.
+
 ```sh
 {
     "status":404,
     "message":"plugin with this id does not exist"
     }
 ```
+
 ## Delete Data
 
 POST `/data/delete/`
@@ -261,23 +292,23 @@ REQUEST URL:
 
 #### Request Body
 
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-bulk_delete | boolean | False | the value indicates whether many documents will be deleted or not
-collection_name | string | True | the name of the collection to insert data inside
-filter | object| False | query to be matched
-object_id | string | False| ID of the inserted data
-organization_ID | string | True | organization ID
-payload | object |True | contains `description` with the actual data to be inserted into the database
-plugin_ID | string | True | the Plugin ID
+| Name            | Data Type | Required | Description                                                                  |
+| --------------- | --------- | -------- | ---------------------------------------------------------------------------- |
+| bulk_delete     | boolean   | False    | the value indicates whether many documents will be deleted or not            |
+| collection_name | string    | True     | the name of the collection to insert data inside                             |
+| filter          | object    | False    | query to be matched                                                          |
+| object_id       | string    | False    | ID of the inserted data                                                      |
+| organization_ID | string    | True     | organization ID                                                              |
+| payload         | object    | True     | contains `description` with the actual data to be inserted into the database |
+| plugin_ID       | string    | True     | the Plugin ID                                                                |
 
 #### Sample Request
 
 ```sh
-cURL 
-curl -X PUT "https://api.zuri.chat/data/write" 
-     -H "accept: application/json" 
-     -H "Content-Type: application/json" 
+cURL
+curl -X PUT "https://api.zuri.chat/data/write"
+     -H "accept: application/json"
+     -H "Content-Type: application/json"
      -d "{\"bulk_delete\":false,
          \"collection_name\":\"mycollection\",
          \"filter\":{},
@@ -288,7 +319,7 @@ curl -X PUT "https://api.zuri.chat/data/write"
 ```
 
 ```sh
-JSON 
+JSON
 Content-Type: `application/json`
 {
  "plugin_id": "xxx",
@@ -301,8 +332,8 @@ Content-Type: `application/json`
 }
 ```
 
-
 #### Sample Response
+
 ```sh
 {
   "data": {
@@ -316,14 +347,18 @@ Content-Type: `application/json`
 #### Error Response
 
 You will get an error if one or more of the required fields is missing or incorrect.
+
 ```sh
 {
     "status":404,
     "message":"not found"
 }
 ```
+
 ## USERS
+
 ## Create a new user
+
 POST `/users`
 
 Create a new user account. Accepts a request with a body of email, etc. Returns the user ID.
@@ -332,20 +367,21 @@ REQUEST URL: https://api.zuri.chat/users
 
 #### Body Request
 
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-first_name       |  string | True  | user's first name
-| last_name      | string   | True | user's last name
-| phone_number   | string   | True | user's phone number
-| password       | string   | True | password; no sharing
-| email          | string   | True | user's email
-| email_verified | boolean  | False | checks if user's email is verified. Default:`false`
+| Name           | Data Type | Required | Description                                         |
+| -------------- | --------- | -------- | --------------------------------------------------- |
+| first_name     | string    | True     | user's first name                                   |
+| last_name      | string    | True     | user's last name                                    |
+| phone_number   | string    | True     | user's phone number                                 |
+| password       | string    | True     | password; no sharing                                |
+| email          | string    | True     | user's email                                        |
+| email_verified | boolean   | False    | checks if user's email is verified. Default:`false` |
 
 #### Sample Request
+
 ```sh
-curl -X POST "https://api.zuri.chat/users" 
-     -H "accept: application/json" 
-	 -H "Content-Type: application/json" 
+curl -X POST "https://api.zuri.chat/users"
+     -H "accept: application/json"
+	 -H "Content-Type: application/json"
 	 -d "{\
 	    	"email\":\"ape@gmail.com\",
 			\"email_verified\":false,
@@ -370,6 +406,7 @@ Content-Type: application/json
 ```
 
 #### Sample Response
+
 ```sh
 {
   "status": 200,
@@ -382,29 +419,33 @@ Content-Type: application/json
 ```
 
 #### Error Response
+
 ```sh
 {
   "message": "bad request",
   "status": "400"
 }
 ```
+
 ## Deactivate user
-DELETE  `/users/{user_id}`
+
+DELETE `/users/{user_id}`
 This endpoint allows you deactivate a user account.
 
 REQUEST URL: https://api.zuri.chat/users/{user_id}
 
 #### Request Headers
 
-Authorization:  `bearerAuth`
-
+Authorization: `bearerAuth`
 
 #### Path Parameters
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-{user_id} | string | True | User ID
+
+| Name      | Data Type | Required | Description |
+| --------- | --------- | -------- | ----------- |
+| {user_id} | string    | True     | User ID     |
 
 #### Sample Request
+
 ```sh
 curl -X DELETE "https://api.zuri.chat/users/32wdf" -H "accept: application/json"
 ```
@@ -420,16 +461,22 @@ curl -X DELETE "https://api.zuri.chat/users/32wdf" -H "accept: application/json"
 ```
 
 #### Error Response
+
 ```sh
 {
   "status": 401,
   "message": "No Authorization or session expired."
 }
 ```
+
 ---
+
 ## MARKETPLACE
+
 ---
+
 ## Delete a plugin
+
 DELETE `/marketplace/plugins/{id}`
 
 Removes a plugin from the marketplace.
@@ -437,17 +484,20 @@ Removes a plugin from the marketplace.
 REQUEST URL: https://api.zuri.chat/marketplace/plugins/{id}
 
 #### Path Parameters
-Name | Data Type | Required | Description
-------- | ------- | ------- | -------
-{id} | string | True | plugin ID
+
+| Name | Data Type | Required | Description |
+| ---- | --------- | -------- | ----------- |
+| {id} | string    | True     | plugin ID   |
 
 #### Sample Request
+
 ```sh
 curl -X DELETE "https://api.zuri.chat/marketplace/plugins/614117a96173056af01b4cf8"
      -H "accept: application/json"
 ```
 
 #### Sample Response
+
 ```sh
 {
   "status": 200,
@@ -457,40 +507,50 @@ curl -X DELETE "https://api.zuri.chat/marketplace/plugins/614117a96173056af01b4c
 ```
 
 #### Error Response
-```sh
+
+````sh
 ```sh
 {
   "status": 400,
   "message": "plugin not found",
   "data": null
 }
-```
+````
 
 ---
+
 ## Zuri App
+
 ---
-## `Sign Up` 
-**Creating an account can be done in two ways** 
 
- ### **Email and password** 
- - The password has to be inputed twice.
- -  Click on the terms and conditions, if everything is okay, tick the checkbox.
- -  Click on `Create Account`.
- -   A six digit `OTP` will be sent to your email address, copy and paste the code.
- -   You will be redirected to the [Sign in screen](#sign-in)
-  ### **Google** `pending`
+## `Sign Up`
 
-**Add An Organization** 
- This enable the user to **;** 
- - **Create a new organization / Create a workplace**
- 1. Click on your verified email.
- 1. Add the name of your organization.
- 1. Add the project name your team is working on.
- 1. Add the email address of team members `or` invite from contacts `or` copy and share your invite link. 
- *another email address can be used.* 
+**Creating an account can be done in two ways**
+
+### **Email and password**
+
+- The password has to be inputed twice.
+- Click on the terms and conditions, if everything is okay, tick the checkbox.
+- Click on `Create Account`.
+- A six digit `OTP` will be sent to your email address, copy and paste the code.
+- You will be redirected to the [Sign in screen](#sign-in)
+
+### **Google** `pending`
+
+**Add An Organization**
+This enable the user to **;**
+
+- **Create a new organization / Create a workplace**
+
+1.  Click on your verified email.
+1.  Add the name of your organization.
+1.  Add the project name your team is working on.
+1.  Add the email address of team members `or` invite from contacts `or` copy and share your invite link.
+    _another email address can be used._
 
 ## **Channels:**
-- To add a channel, click on the add channel button. 
+
+- To add a channel, click on the add channel button.
 - The user is directed to new channel screen.
 - Add channel name (it must be lowercase and without space).
 - Add channel description.
@@ -499,19 +559,25 @@ curl -X DELETE "https://api.zuri.chat/marketplace/plugins/614117a96173056af01b4c
 - This creates the new channel and adds it to the home screen.
 
 ---
-## DM CHAT  PLUGIN
+
+## DM CHAT PLUGIN
+
 ---
+
 **Base url:**
+
 ```
 https://dm.zuri.chat/
 ```
+
 ## Create Room
 
 **Method: POST**
 
-``Description: Creates a new room between users``
+`Description: Creates a new room between users`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/room
 ```
@@ -536,7 +602,8 @@ Request Body:
 
 Response Example:
 
-*If room already exists between users the Id is returned*
+_If room already exists between users the Id is returned_
+
 ```
 {
     "status": 200,
@@ -544,33 +611,40 @@ Response Example:
 }
 ```
 
-*If no room exists between the users a new room is created and the Id returned*
+_If no room exists between the users a new room is created and the Id returned_
+
 ```
 {
     "status": 201,
     "room_id": "614e74e08de3f31a68e4d7fc"
 }
 ```
-*Request Error*
+
+_Request Error_
+
 ```
 {
     "status": 400,
     "message": Bad Request
 }
 ```
+
 ## Send Message
 
 **Method: POST**
 
-``Description: Sends messages to users in a room``
+`Description: Sends messages to users in a room`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/rooms/{room_id}/messages
 ```
+
 Request Body:
 
-*Required Fields: **sender_id**, **room_id**, **message***
+\*Required Fields: **sender_id**, **room_id**, **message\***
+
 ```
 {
   "sender_id": "61467e5fc00bcc41a5607b13",
@@ -610,7 +684,8 @@ Request Body:
 
 Response Examples:
 
-*Message success response*
+_Message success response_
+
 ```
 {
     "status": 201,
@@ -625,7 +700,8 @@ Response Examples:
 }
 ```
 
-*Error response; if sender not in the room*
+_Error response; if sender not in the room_
+
 ```
 {
     "status": 400,
@@ -633,7 +709,8 @@ Response Examples:
 }
 ```
 
-*Error response; if room does not exist*
+_Error response; if room does not exist_
+
 ```
 {
     "status": 400,
@@ -641,7 +718,8 @@ Response Examples:
 }
 ```
 
-*Request Error*
+_Request Error_
+
 ```
 {
     "status": 400,
@@ -649,7 +727,8 @@ Response Examples:
 }
 ```
 
-*Error response; if message was not sent*
+_Error response; if message was not sent_
+
 ```
 {
     "status": 424,
@@ -657,14 +736,14 @@ Response Examples:
 }
 ```
 
-*Error response; if centrifugo connection fails*
+_Error response; if centrifugo connection fails_
+
 ```
 {
     "status": 424,
     "message": "centrifugo server not available"
 }
 ```
-
 
 ## Send Thread Messages
 
@@ -673,12 +752,15 @@ Response Examples:
 `Description: Sends messages as threads in room`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/rooms/{room_id}/messages/{message_id}/threads
 ```
+
 Request Body:
 
-*Required Fields: **sender_id**, **message_id**, **message***
+\*Required Fields: **sender_id**, **message_id**, **message\***
+
 ```
 {
   "message_id": "6155a0e6be7f31a9275a1eca",
@@ -691,7 +773,8 @@ Request Body:
 
 Response Examples:
 
-*Thread message success response*
+_Thread message success response_
+
 ```
 {
     "status": 201,
@@ -708,7 +791,8 @@ Response Examples:
 }
 ```
 
-*Request Error*
+_Request Error_
+
 ```
 {
     "status": 400,
@@ -716,7 +800,8 @@ Response Examples:
 }
 ```
 
-*Error response; if sender not in the room*
+_Error response; if sender not in the room_
+
 ```
 {
     "status": 404,
@@ -724,7 +809,8 @@ Response Examples:
 }
 ```
 
-*Error response; if room does not exist*
+_Error response; if room does not exist_
+
 ```
 {
     "status": 404,
@@ -732,7 +818,8 @@ Response Examples:
 }
 ```
 
-*Error response; if thread message was not sent*
+_Error response; if thread message was not sent_
+
 ```
 {
     "status": 424,
@@ -740,14 +827,14 @@ Response Examples:
 }
 ```
 
-*Error response; if centrifugo connection fails*
+_Error response; if centrifugo connection fails_
+
 ```
 {
     "status": 424,
     "message": "centrifugo server not available"
 }
 ```
-
 
 ## Delete Message
 
@@ -756,13 +843,15 @@ Response Examples:
 `Description: Deletes messages in rooms`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/rooms/{room_id}/messages/{message_id}/message
 ```
 
 Response Examples:
 
-*Success*
+_Success_
+
 ```
 {
     "status": 200,
@@ -770,7 +859,8 @@ Response Examples:
 }
 ```
 
-*Request Error*
+_Request Error_
+
 ```
 {
     "status": 400,
@@ -778,7 +868,8 @@ Response Examples:
 }
 ```
 
-*Error response*
+_Error response_
+
 ```
 {
     "status": 404,
@@ -793,11 +884,13 @@ Response Examples:
 `Description: Creates new message emoji reactions`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/rooms/{room_id}/messages/{message_id}/reactions
 ```
 
 Request Body:
+
 ```
 {
   "message_id": "6155a0e6be7f31a9275a1eca",
@@ -814,7 +907,8 @@ Request Body:
 
 Response Examples:
 
-*Success; 201 created response*
+_Success; 201 created response_
+
 ```
 {
     "status": "success",
@@ -830,7 +924,8 @@ Response Examples:
 }
 ```
 
-*Error Response*
+_Error Response_
+
 ```
 {
     "status": 404,
@@ -838,13 +933,15 @@ Response Examples:
 }
 ```
 
-*Error Response*
+_Error Response_
+
 ```
 {
     "status": 424,
     "message": "data not sent"
 }
 ```
+
 ## Save Bookmarks
 
 **Method: POST**
@@ -852,11 +949,13 @@ Response Examples:
 `Description: Saves links as bookmarks in rooms`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/rooms/{room_id}/new-bookmark
 ```
 
 Request Body:
+
 ```
 {
   "link": "https://dm.zuri.chat/docs/v1/",
@@ -867,7 +966,8 @@ Request Body:
 
 Response Examples:
 
-*Success; 200 status response*
+_Success; 200 status response_
+
 ```
 {
   "link": "https://dm.zuri.chat/docs/v1/",
@@ -876,15 +976,14 @@ Response Examples:
 }
 ```
 
-*Error Response*
+_Error Response_
+
 ```
 {
     "status": 400,
     "message": "Bad Request"
 }
 ```
-
-
 
 ## Delete Bookmarks
 
@@ -893,20 +992,23 @@ Response Examples:
 `Description: Deletes bookmarks in rooms`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/rooms/{room_id}/bookmark
 ```
 
 Response Examples:
 
-*Success*
+_Success_
+
 ```
 {
     "status": 200
 }
 ```
 
-*Error Response*
+_Error Response_
+
 ```
 {
     "status": 400,
@@ -914,7 +1016,8 @@ Response Examples:
 }
 ```
 
-*Error Response*
+_Error Response_
+
 ```
 {
     "status": 404,
@@ -929,11 +1032,13 @@ Response Examples:
 `Description: Sends media files in rooms (authorization is required)`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/rooms/{room_id}/messagemedia
 ```
 
-Request Body: *to be entered as a form data*
+Request Body: _to be entered as a form data_
+
 ```
 {
     "file": "file.jpg"
@@ -942,7 +1047,8 @@ Request Body: *to be entered as a form data*
 
 Response Examples:
 
-*Success*
+_Success_
+
 ```
 {
     "status": 201,
@@ -950,7 +1056,8 @@ Response Examples:
 }
 ```
 
-*No content*
+_No content_
+
 ```
 {
     "status": 204,
@@ -958,7 +1065,8 @@ Response Examples:
 }
 ```
 
-*Error Response: Bad Request*
+_Error Response: Bad Request_
+
 ```
 {
     "status": 400,
@@ -966,7 +1074,8 @@ Response Examples:
 }
 ```
 
-*Error Response*
+_Error Response_
+
 ```
 {
     "status": 404,
@@ -974,178 +1083,201 @@ Response Examples:
 }
 ```
 
-*Error Response*
+_Error Response_
+
 ```
 {
     "status": 424,
     "message": "data not sent"
 }
 ```
+
 ---
-## TODO  PLUGIN
+
+## TODO PLUGIN
+
 ---
+
 **Base url:**
+
 ```
 https://todo.zuri.chat/api/v1
 ```
-# Create a Todo #
+
+# Create a Todo
+
 This endpoint is used to create a todo
-|  |  |
+| | |
 | ------ | ------ |
-| Request Type | ``` POST ``` |
-| Endpoint |  ``` /create-todo ``` |
+| Request Type | `POST` |
+| Endpoint | `/create-todo` |
 
 Body Params
-| Param	 | Required | Description |
+| Param | Required | Description |
 | ------ | ------ | ------ |
-| organisation_id |  yes | string |
-| title |  yes | string |
-| user_id |  yes | integer |
-| type |  yes | string |
+| organisation_id | yes | string |
+| title | yes | string |
+| user_id | yes | integer |
+| type | yes | string |
 
 Sample Request
-```json
 
-      {
-            "organisation_id": "614679ee1a5607b13c00bcb7",
-            "title": "check",
-            "user_id": "123",
-            "type": "todo",
-            
-      }
-
-```
-Sample Response
 ```json
 {
-    "status": "success",
-    "type": "Todo",
-    "data": {
-        "_id": "61548df27f0874785c51cb2b",
-        "organisation_id": "614679ee1a5607b13c00bcb7",
-        "title": "check",
-        "user_id": "123",
-        "type": "todo",
-        "channel": "61548df2d76d-check",
-        "tasks": [],
-        "labels": [],
-        "collaborators": [],
-        "created_at": "2021-09-29T16:01:54.882458Z"
-    }
+  "organisation_id": "614679ee1a5607b13c00bcb7",
+  "title": "check",
+  "user_id": "123",
+  "type": "todo"
 }
 ```
-# Create a Task #
-This endpoint is commonly used to create a task 
-|  |  |
+
+Sample Response
+
+```json
+{
+  "status": "success",
+  "type": "Todo",
+  "data": {
+    "_id": "61548df27f0874785c51cb2b",
+    "organisation_id": "614679ee1a5607b13c00bcb7",
+    "title": "check",
+    "user_id": "123",
+    "type": "todo",
+    "channel": "61548df2d76d-check",
+    "tasks": [],
+    "labels": [],
+    "collaborators": [],
+    "created_at": "2021-09-29T16:01:54.882458Z"
+  }
+}
+```
+
+# Create a Task
+
+This endpoint is commonly used to create a task
+| | |
 | ------ | ------ |
-| Request Type | ``` POST ``` |
-| Endpoint |  ``` /add-task ``` |
+| Request Type | `POST` |
+| Endpoint | `/add-task` |
 
 Body Params
-| Param	 | Required | Description |
+| Param | Required | Description |
 | ------ | ------ | ------ |
-| title |  yes | string |
-| status |  yes | string |
-| description |  no | string |
+| title | yes | string |
+| status | yes | string |
+| description | no | string |
 Sample Request
+
 ```json
 [
-      {
-            "description": "string",
-            "title": "string",
-            "status": "string"
-      }
+  {
+    "description": "string",
+    "title": "string",
+    "status": "string"
+  }
 ]
 ```
+
 Sample Response
+
 ```json
 [
-      {
-           "status": 200,
-            "message": "Task created",
-            "data": {
-              "_id": "6137a5af52efebbea2739c71"
-            }
-      }
+  {
+    "status": 200,
+    "message": "Task created",
+    "data": {
+      "_id": "6137a5af52efebbea2739c71"
+    }
+  }
 ]
 ```
-# Delete a Todo #
+
+# Delete a Todo
+
 This endpoint is commonly used to delete a todo
-|  |  |
+| | |
 | ------ | ------ |
-| Request Type | ``` DELETE ``` |
-| Endpoint |  ``` /todo/{todo_id} ``` |
+| Request Type | `DELETE` |
+| Endpoint | `/todo/{todo_id}` |
 
 Body Params
-| Param	 | Required | Description |
+| Param | Required | Description |
 | ------ | ------ | ------ |
-| user_id |  yes | string |
+| user_id | yes | string |
 Sample Response
+
 ```json
 [
-      {
-           "status": 200,
-            "message": "Todo Deleted",
-            "data": {
-                "MatchedCount": 1,
-                "ModifiedCount": 1,
-            }
-      }
+  {
+    "status": 200,
+    "message": "Todo Deleted",
+    "data": {
+      "MatchedCount": 1,
+      "ModifiedCount": 1
+    }
+  }
 ]
 ```
-# Delete a Task #
+
+# Delete a Task
+
 This endpoint is commonly used to delete a task
-|  |  |
+| | |
 | ------ | ------ |
-| Request Type | ``` DELETE ``` |
-| Endpoint |  ``` /task/{task_id} ``` |
+| Request Type | `DELETE` |
+| Endpoint | `/task/{task_id}` |
 
 Body Params
-| Param	 | Required | Description |
+| Param | Required | Description |
 | ------ | ------ | ------ |
-| user_id |  yes | string |
+| user_id | yes | string |
 Sample Response
+
 ```json
 [
-      {
-           "status": 200,
-            "message": "Todo Deleted",
-            "data": {
-                "MatchedCount": 1,
-                "ModifiedCount": 1,
-            }
-      }
+  {
+    "status": 200,
+    "message": "Todo Deleted",
+    "data": {
+      "MatchedCount": 1,
+      "ModifiedCount": 1
+    }
+  }
 ]
 ```
 
 ---
+
 ## CHANNELS
+
 ---
+
 **Base url:**
+
 ```
 channels.zuri.chat
 ```
+
 # Create a Channel
 
- POST /v1/{org_id}/channels/
+POST /v1/{org_id}/channels/
 
- This endpoint allows you to create a channel for an organization
+This endpoint allows you to create a channel for an organization
 
 Request Type: `POST`
-
 
 Endpoint: `{baseUrl}/v1/{org_id}/channels/`
 
 ## Path Parameters
 
-Params| Description | Required
----------|----------|---------
- org_id | string | yes
+| Params | Description | Required |
+| ------ | ----------- | -------- |
+| org_id | string      | yes      |
 
 ## Request Headers
-    
+
 Content-Type: `application/json`
-    
+
 Authorization: `Basic Auth credentials`
 
 ## Sample request
@@ -1154,17 +1286,17 @@ How to create a channel
 
 ### Request Body Params
 
-Params| Description | Required
----------|----------|---------
-name | string | yes
-owner| string | yes
-description | string | -
-private| boolean | -
+| Params      | Description | Required |
+| ----------- | ----------- | -------- |
+| name        | string      | yes      |
+| owner       | string      | yes      |
+| description | string      | -        |
+| private     | boolean     | -        |
 
 Content-Type: `application/json`
 
 ```sh
-{ 
+{
 "name" : "string",
 "owner": "string",
 "description": "string",
@@ -1174,20 +1306,18 @@ Content-Type: `application/json`
 
 ## Sample Response
 
-### **201** Success 
-
-
+### **201** Success
 
 ```
 RESPONSE SCHEMA: application/json
 
 code required      integer <int32>
-message required   string 
+message required   string
 data required      object
 ```
 
 ```sh
-{ 
+{
 
 "_id": "string",
 "name": "string",
@@ -1197,9 +1327,7 @@ data required      object
 }
 ```
 
-### **404** Not Found 
-
-
+### **404** Not Found
 
 ```sh
 {
@@ -1207,6 +1335,7 @@ data required      object
     "status": "404"
 }
 ```
+
 # Delete a channel
 
 DELETE /v1/{org_id}/channels/{channel_id}/
@@ -1215,35 +1344,30 @@ This endpoint allows you to delete a channel
 
 Request Type: `GET`
 
-
 Endpoint: `{baseUrl}/v1/{org_id}/channels/{channel_id}/`
 
 ## Path Parameters
 
-Params| Description | Required
----------|----------|---------
- org_id | string | yes
- channel_id| string | yes
-
+| Params     | Description | Required |
+| ---------- | ----------- | -------- |
+| org_id     | string      | yes      |
+| channel_id | string      | yes      |
 
 ## Request Headers
-    
+
 Content-Type: `application/json`
-    
+
 Authorization: `Basic Auth credentials`
 
- 
 ## Sample Response
 
-### **204** Success 
-
-
+### **204** Success
 
 ```
 RESPONSE SCHEMA: application/json
 
 code required      integer <int32>
-message required   string 
+message required   string
 data required      object
 ```
 
@@ -1254,9 +1378,7 @@ data required      object
 }
 ```
 
-### **404** Not Found 
-
-
+### **404** Not Found
 
 ```sh
 {
@@ -1264,42 +1386,40 @@ data required      object
     "message": "member not found"
 }
 ```
+
 # Delete a Member from a Channel
 
- DELETE /v1/{org_id}/channels/{channel_id}/members/{member_id}] 
+DELETE /v1/{org_id}/channels/{channel_id}/members/{member_id}]
 
 This endpoint allows you to delete a member from a channel
 
 Request Type: `DELETE`
 
-
 Endpoint: `{baseUrl}/v1/{org_id}/channels/{channel_id}/members/{member_id}`
-
 
 ## Path Parameters
 
-Params| Description | Required
----------|----------|---------
- org_id | string | yes
- channel_id| string | yes
- member_id | string | yes
+| Params     | Description | Required |
+| ---------- | ----------- | -------- |
+| org_id     | string      | yes      |
+| channel_id | string      | yes      |
+| member_id  | string      | yes      |
 
 ## Request Headers
-    
+
 Content-Type: `application/json`
-    
+
 Authorization: `Basic Auth credentials`
 
- 
 ## Sample Response
 
-### **204** Success 
+### **204** Success
 
 ```
 RESPONSE SCHEMA: application/json
 
 code required      integer <int32>
-message required   string 
+message required   string
 data required      object
 ```
 
@@ -1310,8 +1430,7 @@ data required      object
 }
 ```
 
-### **404** Not Found 
-
+### **404** Not Found
 
 ```sh
 {
@@ -1321,8 +1440,11 @@ data required      object
 ```
 
 ---
-# NoticeBoard Plugin 
+
+# NoticeBoard Plugin
+
 ---
+
 ```
 Base URL: noticeboard.zuri.chat/api/
 ```
@@ -1330,31 +1452,30 @@ Base URL: noticeboard.zuri.chat/api/
 **POST**
 
 **Summary**
-Adds a new file to that organisation.  
+Adds a new file to that organisation.
 
-**Description** 
+**Description**
+
 ```
 curl -X POST "{{baseUrl}}/v1/organisation/{{org_id}}/attachfile" -H  "accept: application/json"
 ```
 
 **Parameters**
 
-|  |  |  |  |  |
-| ----------- | ----------- | ----------- | ----------- | ----------- | 
-| Name | Located in | Description | Required | Schema  |
-| org_id | path	|  | Yes | string |
-|  |  |  |  |  |
+|        |            |             |          |        |
+| ------ | ---------- | ----------- | -------- | ------ |
+| Name   | Located in | Description | Required | Schema |
+| org_id | path       |             | Yes      | string |
+|        |            |             |          |        |
 
 **Responses**
 
-|  |  | 
-| ----------- | ----------- |
-| code | Description |
-| 200 | No file attached |
-| 201 | |
-|  |  |
-
-
+|      |                  |
+| ---- | ---------------- |
+| code | Description      |
+| 200  | No file attached |
+| 201  |                  |
+|      |                  |
 
 **DELETE**
 
@@ -1362,31 +1483,34 @@ curl -X POST "{{baseUrl}}/v1/organisation/{{org_id}}/attachfile" -H  "accept: ap
 Delete an attached file from an organisation
 
 **Description**
+
 ```
 curl -X DELETE "{{baseUrl}}/v1/organisation/{{org_id}}/attachfile" -H  "accept: application/json"
 ```
 
-
 **Parameters**
 
-|  |  |  |  |  |
-| ----------- | ----------- | ----------- | ----------- | ----------- | 
-| Name | Located in | Description | Required | Schema  |
-| org_id | path	|  | Yes | string |
-|  |  |  |  |  |
+|        |            |             |          |        |
+| ------ | ---------- | ----------- | -------- | ------ |
+| Name   | Located in | Description | Required | Schema |
+| org_id | path       |             | Yes      | string |
+|        |            |             |          |        |
 
 **Responses**
 
-|  |  | 
-| ----------- | ----------- |
-| code | Description |
-| 204 | |
-| 404| File not found |
-|  |  |
+|      |                |
+| ---- | -------------- |
+| code | Description    |
+| 204  |                |
+| 404  | File not found |
+|      |                |
 
 ---
-# Chess Plugin 
+
+# Chess Plugin
+
 ---
+
 ```
 Base URL: https://chess.zuri.chat/
 ```
@@ -1629,22 +1753,26 @@ This return a json formatted response payload to the client browser display in a
 - message : "Unable to delete game"
 
 ---
-# Goals Plugin 
+
+# Goals Plugin
+
 ---
+
 ```
 Base URL: https://goals.zuri.chat/api/v1
 ```
 
 ### Create Goal
+
 #### Description
 
 This endpoint Create a brand new goal.
 
 #### Parameters
 
-| Method | Endpoint| Body | Parameter | Query | Content Type | Description |
-|-|-|-|-|-|-|-|
-| `POST` | `/goals` | ```{"category": "#backend","description": "test goal","start_date": "2020-10-02","due_date": "2020-10-02","goal_type": "annual", "goal_name": "public room"}``` | null | org_id | `application/json` | All the field in the body are **required** |
+| Method | Endpoint | Body                                                                                                                                                        | Parameter | Query  | Content Type       | Description                                |
+| ------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ------ | ------------------ | ------------------------------------------ |
+| `POST` | `/goals` | `{"category": "#backend","description": "test goal","start_date": "2020-10-02","due_date": "2020-10-02","goal_type": "annual", "goal_name": "public room"}` | null      | org_id | `application/json` | All the field in the body are **required** |
 
 ### Code Sample
 
@@ -1665,7 +1793,7 @@ curl -X 'POST' \
 
 ### Sample Response
 
- **Code: 200**
+**Code: 200**
 
 ```bash
 {
@@ -1686,7 +1814,7 @@ curl -X 'POST' \
 
 ```
 
- **Code: 400**
+**Code: 400**
 
 ```bash
 {
@@ -1695,7 +1823,7 @@ curl -X 'POST' \
 }
 ```
 
- **Code: 401**
+**Code: 401**
 
 ```bash
 {
@@ -1704,7 +1832,7 @@ curl -X 'POST' \
 }
 ```
 
- **Code: 404**
+**Code: 404**
 
 ```bash
 {
@@ -1713,7 +1841,7 @@ curl -X 'POST' \
 }
 ```
 
- **Code: 500**
+**Code: 500**
 
 ```bash
 {
@@ -1721,16 +1849,18 @@ curl -X 'POST' \
   message: 'Internal server error'
 }
 ```
+
 ### Delete a goal
+
 ### Description
 
 This endpoint delete a single goal.
 
 #### Parameters
 
-| Method | Endpoint| Body | Parameter | Query | Content Type | Description |
-|-|-|-|-|-|-|-|
-| `DELETE` | `/goals/update` | null | null | **org_id**  **goal_id** | `application/json` | Both the **org_id** and **goal_id** fields are required|
+| Method   | Endpoint        | Body | Parameter | Query                  | Content Type       | Description                                             |
+| -------- | --------------- | ---- | --------- | ---------------------- | ------------------ | ------------------------------------------------------- |
+| `DELETE` | `/goals/update` | null | null      | **org_id** **goal_id** | `application/json` | Both the **org_id** and **goal_id** fields are required |
 
 ### Code Sample
 
@@ -1785,7 +1915,7 @@ curl -X 'DELETE' \
 }
 ```
 
- **Code: 404**
+**Code: 404**
 
 ```bash
 {
@@ -1802,47 +1932,60 @@ curl -X 'DELETE' \
   message: 'Internal server error'
 }
 ```
+
 ---
-# Sales Plugin 
+
+# Sales Plugin
+
 ---
+
 ```
 Base URL: https://sales.zuri.chat/api/v1/
 ```
+
 ## Add users to a room
-Method: Post  
+
+Method: Post
 
 Description: Fetches data from the Zuri core API and adds a user to a room.
 
 Example:
+
 ```
 https://sales.zuri.chat/api/v1/add-to-room/
 ```
 
 Request body:
+
 ```
 {
-user:"2345" 
+user:"2345"
 }
 ```
 
 Response:
+
 ```
 {
   "user": 2345,
   "room_name": "prospects"
 }
 ```
-## Create Deals 
-Method: Post  
+
+## Create Deals
+
+Method: Post
 
 Description: Fetches data from the Zuri core API to create a new deal for a prospect.
 
 Example:
+
 ```
 https://sales.zuri.chat/api/v1/prospects/deals/
 ```
 
 Request Body:
+
 ```
 
 {
@@ -1854,6 +1997,7 @@ Request Body:
   "description": "Deliver 10, 000 bags of cement"
 }
 ```
+
 Response:
 
 ```
@@ -1866,18 +2010,21 @@ Response:
   }
 }
 ```
+
 ## Create Prospects
 
-Method: Post  
+Method: Post
 
 Description: Fetches data from the Zuri core API and creates a new prospect.
 
 Example:
+
 ```
 https://sales.zuri.chat/api/v1/prospects/create/
 ```
 
 Request Body:
+
 ```
 {
   "name": "John Doe",
@@ -1886,6 +2033,7 @@ Request Body:
   "deal_stage": "proposal"
 }
 ```
+
 Response:
 
 ```
@@ -1898,17 +2046,21 @@ Response:
   }
 }
 ```
+
 ## Delete a Particular Deal
-Method: Delete  
+
+Method: Delete
 
 Description: Deletes a particular deal from the Zuri Core API.
 
 Example:
+
 ```
 https://sales.zuri.chat/api/v1/deals/delete/{id/}
 ```
 
 Response
+
 ```
 {
   "status": 200,
@@ -1920,16 +2072,19 @@ Response
 ```
 
 ## Delete a Particular Prospect
-Method: Delete  
+
+Method: Delete
 
 Description: Deletes a particular prospect from the Zuri Core API.
 
 Example:
+
 ```
 https://sales.zuri.chat/api/v1/prospects/delete/{id/}
 ```
 
 Response:
+
 ```
 {
   "status": 200,
@@ -1939,4 +2094,3 @@ Response:
   }
 }
 ```
-

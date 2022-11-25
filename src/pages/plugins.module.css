@@ -133,14 +133,17 @@ p {
   color: #00b87c;
 }
 
-.buttontxt {
+.buttontxt:link,
+.buttontxt:visited {
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
   white-space: no-wrap;
+  text-decoration: none;
 }
 
-.cardstyle {
+.cardstyle:link,
+.cardstyle:visited {
   padding: 28px 32px;
   height: 199px;
   background: #fcfcfc;
@@ -148,9 +151,11 @@ p {
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px;
   transition: all 0.3s ease-in-out;
+  text-decoration: none;
 }
 
-.cardstyle:hover {
+.cardstyle:hover,
+.cardstyle:active {
   box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px;
   transform: translate3d(0px, -1px, 0px);
   cursor: pointer;
