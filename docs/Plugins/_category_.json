@@ -1,4 +1,9 @@
 {
-  "label": "Plugins",
-  "position": 4
+  "label": "Plug-ins",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "title": "PLUG-INS",
+    "description": "Zuri Chat Plug-ins"
+  }
 }

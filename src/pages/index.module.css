@@ -3,14 +3,92 @@
  * and scoped locally.
  */
 
-.heroBanner {
-  padding: 4rem 0;
+.heroHeader {
+  padding: 64px 25px;
   text-align: center;
   position: relative;
   overflow: hidden;
+  background-color: #00b87c;
 }
 
-@media screen and (max-width: 966px) {
+.bottom__left {
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+}
+
+/* .top__right {
+  position: absolute;
+  top: -30px;
+  right: 250px;
+  z-index: 99999;
+} */
+
+.bottom__right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.hero__title {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 22px;
+  color: #ffffff;
+}
+
+.search__form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: center;
+  height: 45px;
+}
+
+.input {
+  width: 371px;
+  height: 100%;
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  background-color: transparent;
+  outline: none;
+  font-size: 16px;
+  padding-left: 2px;
+  color: #fff;
+}
+
+.search__btn {
+  width: 84px;
+  height: 100%;
+  background: #fea162;
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #fff;
+}
+
+.tagline {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  color: #ffffff;
+  padding-bottom: 30px;
+}
+
+.container__box {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+@media screen and (max-width: 996px) {
   .heroBanner {
     padding: 2rem;
   }
@@ -20,4 +98,74 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 1149px) {
+  .bottom__left {
+    width: 140px;
+  }
+
+  .bottom__right {
+    width: 140px;
+  }
+}
+
+@media (max-width: 965px) {
+  .bottom__left {
+    display: none;
+  }
+
+  .bottom__right {
+    display: none;
+  }
+
+  .hero__title {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 682px) {
+  .hero__title {
+    font-size: 28px;
+  }
+
+  .tagline {
+    font-size: 14px;
+  }
+
+  .input {
+    width: 300px;
+  }
+
+  .search__btn {
+    width: 64px;
+    font-size: 14px;
+  }
+
+  .heroHeader {
+    padding-bottom: 28px;
+  }
+}
+
+@media (max-width: 539px) {
+  .tagline {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 375px) {
+  .hero__title {
+    font-size: 24px;
+  }
+
+  .tagline {
+    font-size: 14px;
+  }
+}
+
+.cardstyle:active,
+.cardstyle:hover {
+  box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px;
+  transform: translate3d(0px, -1px, 0px);
+  cursor: pointer;
 }

@@ -1,11 +1,12 @@
 ---
-slug: /noticeboard
-sidebar_position: 11
+slug: /plugins/noticeboard
+sidebar_position: 10
 title: Notice Board Plugin
 ---
 
-# Zuri Chat NoticeBoard Plugin Resource 
-This resource contains several endpoints 
+# Zuri Chat NoticeBoard Plugin Resource
+
+This resource contains several endpoints
 
 Zuri Chat is an open source slack clone. However, it offers a lot more functionality via a plugin system where each room can be provided by a different plugin provider.
 
@@ -13,16 +14,17 @@ Zuri Chat is an open source slack clone. However, it offers a lot more functiona
 Base URL: noticeboard.zuri.chat/api/
 ```
 
-
 ## Install Endpoint
 
 **Summary**
 This endpoint is called when an organisation wants to install the Noticeboard plugin for their workspace.
 
 ### Endpoint path
+
 ```
 GET  {{baseurl}}/v1/install
 ```
+
 **Description**
 
 ```
@@ -31,8 +33,9 @@ curl -X GET "{{baseurl}}/v1/install" -H  "accept: application/json"
 
 **Responses**
 
-**200 
+**200
 Response Description: success**
+
 ```
 Response body
 {
@@ -47,63 +50,62 @@ Response body
 ```
 /v1​/organisation​/{org_id}​/attachfile
 ```
+
 **GET**
 
 **Summary**
 Retrieve all attached files in an organisation.This endpoint uses form data the file must be passed in with the key "file"
 
-**Description** 
+**Description**
+
 ```
 curl -X GET "{{baseUrl}}/v1//organisation/{org_id}/attachfile" -H  "accept: application/json"
 ```
 
 **Parameters**
 
-|  |  |  |  |  |
-| ----------- | ----------- | ----------- | ----------- | ----------- | 
-| Name | Located in | Description | Required | Schema  |
-| org_id | path	|  | Yes | string |
-|  |  |  |  |  |
+|        |            |             |          |        |
+| ------ | ---------- | ----------- | -------- | ------ |
+| Name   | Located in | Description | Required | Schema |
+| org_id | path       |             | Yes      | string |
+|        |            |             |          |        |
 
 **Responses**
 
-
-|  |  | 
-| ----------- | ----------- |
-| code | Description |
-| 200 | |
-| 500 | Internal Server Error |
-|  |  |
-
+|      |                       |
+| ---- | --------------------- |
+| code | Description           |
+| 200  |                       |
+| 500  | Internal Server Error |
+|      |                       |
 
 **POST**
 
 **Summary**
-Adds a new file to that organisation.  
+Adds a new file to that organisation.
 
-**Description** 
+**Description**
+
 ```
 curl -X POST "{{baseUrl}}/v1/organisation/{{org_id}}/attachfile" -H  "accept: application/json"
 ```
 
 **Parameters**
 
-|  |  |  |  |  |
-| ----------- | ----------- | ----------- | ----------- | ----------- | 
-| Name | Located in | Description | Required | Schema  |
-| org_id | path	|  | Yes | string |
-|  |  |  |  |  |
+|        |            |             |          |        |
+| ------ | ---------- | ----------- | -------- | ------ |
+| Name   | Located in | Description | Required | Schema |
+| org_id | path       |             | Yes      | string |
+|        |            |             |          |        |
 
 **Responses**
 
-|  |  | 
-| ----------- | ----------- |
-| code | Description |
-| 200 | No file attached |
-| 201 | |
-|  |  |
-
-
+|      |                  |
+| ---- | ---------------- |
+| code | Description      |
+| 200  | No file attached |
+| 201  |                  |
+|      |                  |
 
 **DELETE**
 
@@ -111,24 +113,24 @@ curl -X POST "{{baseUrl}}/v1/organisation/{{org_id}}/attachfile" -H  "accept: ap
 Delete an attached file from an organisation
 
 **Description**
+
 ```
 curl -X DELETE "{{baseUrl}}/v1/organisation/{{org_id}}/attachfile" -H  "accept: application/json"
 ```
 
-
 **Parameters**
 
-|  |  |  |  |  |
-| ----------- | ----------- | ----------- | ----------- | ----------- | 
-| Name | Located in | Description | Required | Schema  |
-| org_id | path	|  | Yes | string |
-|  |  |  |  |  |
+|        |            |             |          |        |
+| ------ | ---------- | ----------- | -------- | ------ |
+| Name   | Located in | Description | Required | Schema |
+| org_id | path       |             | Yes      | string |
+|        |            |             |          |        |
 
 **Responses**
 
-|  |  | 
-| ----------- | ----------- |
-| code | Description |
-| 204 | |
-| 404| File not found |
-|  |  |
+|      |                |
+| ---- | -------------- |
+| code | Description    |
+| 204  |                |
+| 404  | File not found |
+|      |                |

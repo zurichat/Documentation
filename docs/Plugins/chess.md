@@ -1,6 +1,6 @@
 ---
-slug: /chess
-sidebar_position: 3
+slug: /plugins/chess
+sidebar_position: 8
 title: Chess Plugin
 ---
 
