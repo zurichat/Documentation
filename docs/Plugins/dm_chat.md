@@ -1,12 +1,13 @@
 ---
-slug: /dm_chat
-sidebar_position: 10
+slug: /plugins/dm_chat
+sidebar_position: 9
 title: DM Chat Plugin
 ---
 
 # API DOCUMENTATION FOR THE ZURI CHAT DIRECT MESSAGING PLUGIN
 
 ## Brief
+
 Contains all the available endpoints for the Zuri Chat DM plugin as compiled By Team Orpheus HNGi8.
 
 These are REST APIs written in Python using the Django RESTFramework.
@@ -14,35 +15,40 @@ These are REST APIs written in Python using the Django RESTFramework.
 Each endpoint is triggered using HTTP verbs and accepts or returns a JSON formatted payload
 
 ## Base URL
+
 ```
 https://dm.zuri.chat/
 ```
 
-
 ## ENDPOINTS
+
 ---
+
 ## Ping
 
 **Method: GET**
 
-``Description: Makes a simple call to the server to determine a valid connection``
+`Description: Makes a simple call to the server to determine a valid connection`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/ping
 ```
 
-
 Response Examples:
 
-*Success*
+_Success_
+
 ```
 {
     "status": 200,
     "server": true
 }
 ```
-*Server Error*
+
+_Server Error_
+
 ```
 {
     "status": 500,
@@ -51,16 +57,19 @@ Response Examples:
 ```
 
 ---
+
 ## Room Endpoints
----  
+
+---
 
 ## Create Room
 
 **Method: POST**
 
-``Description: Creates a new room between users``
+`Description: Creates a new room between users`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/room
 ```
@@ -85,7 +94,8 @@ Request Body:
 
 Response Example:
 
-*If room already exists between users the Id is returned*
+_If room already exists between users the Id is returned_
+
 ```
 {
     "status": 200,
@@ -93,14 +103,17 @@ Response Example:
 }
 ```
 
-*If no room exists between the users a new room is created and the Id returned*
+_If no room exists between the users a new room is created and the Id returned_
+
 ```
 {
     "status": 201,
     "room_id": "614e74e08de3f31a68e4d7fc"
 }
 ```
-*Request Error*
+
+_Request Error_
+
 ```
 {
     "status": 400,
@@ -108,20 +121,22 @@ Response Example:
 }
 ```
 
-
 ## User Rooms
 
 **Method: GET**
 
-``Description: Retrieves all rooms linked to a user``
+`Description: Retrieves all rooms linked to a user`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/users/{user_id}/rooms
 ```
+
 Response Examples:
 
-*Success; returns the rooms available to the user*
+_Success; returns the rooms available to the user_
+
 ```
 {
     "status": 200,
@@ -141,7 +156,8 @@ Response Examples:
 }
 ```
 
-*If no room exists for that user*
+_If no room exists for that user_
+
 ```
 {
     "status": 204,
@@ -149,7 +165,8 @@ Response Examples:
 }
 ```
 
-*Request Error; if a wrong method was used*
+_Request Error; if a wrong method was used_
+
 ```
 {
     "status": 400,
@@ -161,16 +178,18 @@ Response Examples:
 
 **Method: GET**
 
-``Description: Retrieves all the information about a room``
+`Description: Retrieves all the information about a room`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/rooms/{room_id}/info
 ```
 
 Response Examples:
 
-*Success; returns the information about a room*
+_Success; returns the information about a room_
+
 ```
 {
     "room_id": "614e160068e4d2e26f31a74e",
@@ -185,7 +204,8 @@ Response Examples:
 }
 ```
 
-*Error response; if such room does not exist*
+_Error response; if such room does not exist_
+
 ```
 {
     "status": 404,
@@ -193,29 +213,37 @@ Response Examples:
 }
 ```
 
-*Request Error*
+_Request Error_
+
 ```
 {
     "status": 400,
     "message": Bad Request
 }
 ```
+
 ---
+
 ## Direct Messaging Endpoints
+
 ---
+
 ## Send Message
 
 **Method: POST**
 
-``Description: Sends messages to users in a room``
+`Description: Sends messages to users in a room`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/rooms/{room_id}/messages
 ```
+
 Request Body:
 
-*Required Fields: **sender_id**, **room_id**, **message***
+\*Required Fields: **sender_id**, **room_id**, **message\***
+
 ```
 {
   "sender_id": "61467e5fc00bcc41a5607b13",
@@ -255,7 +283,8 @@ Request Body:
 
 Response Examples:
 
-*Message success response*
+_Message success response_
+
 ```
 {
     "status": 201,
@@ -270,7 +299,8 @@ Response Examples:
 }
 ```
 
-*Error response; if sender not in the room*
+_Error response; if sender not in the room_
+
 ```
 {
     "status": 400,
@@ -278,7 +308,8 @@ Response Examples:
 }
 ```
 
-*Error response; if room does not exist*
+_Error response; if room does not exist_
+
 ```
 {
     "status": 400,
@@ -286,7 +317,8 @@ Response Examples:
 }
 ```
 
-*Request Error*
+_Request Error_
+
 ```
 {
     "status": 400,
@@ -294,7 +326,8 @@ Response Examples:
 }
 ```
 
-*Error response; if message was not sent*
+_Error response; if message was not sent_
+
 ```
 {
     "status": 424,
@@ -302,7 +335,8 @@ Response Examples:
 }
 ```
 
-*Error response; if centrifugo connection fails*
+_Error response; if centrifugo connection fails_
+
 ```
 {
     "status": 424,
@@ -314,15 +348,18 @@ Response Examples:
 
 **Method: GET**
 
-``Description: Retrieves all messages in a room``
+`Description: Retrieves all messages in a room`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/rooms/{room_id}/messages
 ```
+
 Response Examples:
 
-*Success response*
+_Success response_
+
 ```
 {
     "status": 200,
@@ -369,7 +406,8 @@ Response Examples:
 }
 ```
 
-*Response; if message is not in the room*
+_Response; if message is not in the room_
+
 ```
 {
     "status": 204,
@@ -377,7 +415,8 @@ Response Examples:
 }
 ```
 
-*Request Error*
+_Request Error_
+
 ```
 {
     "status": 400,
@@ -385,7 +424,8 @@ Response Examples:
 }
 ```
 
-*Error response; if room does not exist*
+_Error response; if room does not exist_
+
 ```
 {
     "status": 404,
@@ -400,12 +440,15 @@ Response Examples:
 `Description: Sends messages as threads in room`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/rooms/{room_id}/messages/{message_id}/threads
 ```
+
 Request Body:
 
-*Required Fields: **sender_id**, **message_id**, **message***
+\*Required Fields: **sender_id**, **message_id**, **message\***
+
 ```
 {
   "message_id": "6155a0e6be7f31a9275a1eca",
@@ -418,7 +461,8 @@ Request Body:
 
 Response Examples:
 
-*Thread message success response*
+_Thread message success response_
+
 ```
 {
     "status": 201,
@@ -435,7 +479,8 @@ Response Examples:
 }
 ```
 
-*Request Error*
+_Request Error_
+
 ```
 {
     "status": 400,
@@ -443,7 +488,8 @@ Response Examples:
 }
 ```
 
-*Error response; if sender not in the room*
+_Error response; if sender not in the room_
+
 ```
 {
     "status": 404,
@@ -451,7 +497,8 @@ Response Examples:
 }
 ```
 
-*Error response; if room does not exist*
+_Error response; if room does not exist_
+
 ```
 {
     "status": 404,
@@ -459,7 +506,8 @@ Response Examples:
 }
 ```
 
-*Error response; if thread message was not sent*
+_Error response; if thread message was not sent_
+
 ```
 {
     "status": 424,
@@ -467,14 +515,14 @@ Response Examples:
 }
 ```
 
-*Error response; if centrifugo connection fails*
+_Error response; if centrifugo connection fails_
+
 ```
 {
     "status": 424,
     "message": "centrifugo server not available"
 }
 ```
-
 
 ## Get Thread Messages
 
@@ -483,13 +531,15 @@ Response Examples:
 `Description: Retrieves thread messages in rooms`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/rooms/{room_id}/messages/{message_id}/threads
 ```
 
 Response Examples:
 
-*Status 200 Response*
+_Status 200 Response_
+
 ```
 [
     {
@@ -509,7 +559,8 @@ Response Examples:
 ]
 ```
 
-*Request Error*
+_Request Error_
+
 ```
 {
     "status": 400,
@@ -517,7 +568,8 @@ Response Examples:
 }
 ```
 
-*Error response*
+_Error response_
+
 ```
 {
     "status": 404,
@@ -525,7 +577,8 @@ Response Examples:
 }
 ```
 
-*Error response; if room does not exist*
+_Error response; if room does not exist_
+
 ```
 {
     "status": 404,
@@ -540,11 +593,13 @@ Response Examples:
 `Description: Edits a thread message in a room`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/rooms/{room_id}/messages/{message_id}/threads/{message_uuid}
 ```
 
 Request Body:
+
 ```
 {
     "sender_id": "61467e13c00bcc181a5607b1",
@@ -555,7 +610,8 @@ Request Body:
 
 Response Examples:
 
-*Thread message edit response*
+_Thread message edit response_
+
 ```
 {
     "status": 201,
@@ -573,7 +629,8 @@ Response Examples:
 }
 ```
 
-*Request Error*
+_Request Error_
+
 ```
 {
     "status": 400,
@@ -581,7 +638,8 @@ Response Examples:
 }
 ```
 
-*Error response; if Id invalid*
+_Error response; if Id invalid_
+
 ```
 {
     "status": 400,
@@ -589,7 +647,8 @@ Response Examples:
 }
 ```
 
-*Error response; if room, message or thread does not exist*
+_Error response; if room, message or thread does not exist_
+
 ```
 {
     "status": 404,
@@ -597,7 +656,8 @@ Response Examples:
 }
 ```
 
-*Error response; if thread message was not updated*
+_Error response; if thread message was not updated_
+
 ```
 {
     "status": 424,
@@ -605,14 +665,14 @@ Response Examples:
 }
 ```
 
-*Error response; if centrifugo connection fails*
+_Error response; if centrifugo connection fails_
+
 ```
 {
     "status": 424,
     "message": "centrifugo server not available"
 }
 ```
-
 
 ## Delete Message
 
@@ -621,13 +681,15 @@ Response Examples:
 `Description: Deletes messages in rooms`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/rooms/{room_id}/messages/{message_id}/message
 ```
 
 Response Examples:
 
-*Success*
+_Success_
+
 ```
 {
     "status": 200,
@@ -635,7 +697,8 @@ Response Examples:
 }
 ```
 
-*Request Error*
+_Request Error_
+
 ```
 {
     "status": 400,
@@ -643,14 +706,14 @@ Response Examples:
 }
 ```
 
-*Error response*
+_Error response_
+
 ```
 {
     "status": 404,
     "message": "message not found"
 }
 ```
-
 
 ## Search Messages
 
@@ -659,13 +722,15 @@ Response Examples:
 `Description: Searches through messages in a room using keyword query params`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/users/{user_id}/messages/search?keyword=required
 ```
 
 Response Example:
 
-*Success: status 200*
+_Success: status 200_
+
 ```
 {
     "count": 2,
@@ -696,14 +761,14 @@ Response Example:
 }
 ```
 
-*Error Response*
+_Error Response_
+
 ```
 {
     "status": 404,
     "message": "user not in any DM room"
 }
 ```
-
 
 ## Mark or Unmark Messages
 
@@ -712,13 +777,15 @@ Response Example:
 `Description: Marks a message as read or unread`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/messages/{message_id}/read
 ```
 
 Response Examples:
 
-*Success; Read*
+_Success; Read_
+
 ```
 {
     "status": 200,
@@ -726,7 +793,8 @@ Response Examples:
 }
 ```
 
-*Success; Unread*
+_Success; Unread_
+
 ```
 {
     "status": 200,
@@ -734,7 +802,8 @@ Response Examples:
 }
 ```
 
-*Request Error*
+_Request Error_
+
 ```
 {
     "status": 400,
@@ -742,7 +811,8 @@ Response Examples:
 }
 ```
 
-*Server Error*
+_Server Error_
+
 ```
 {
     "status": 503,
@@ -757,13 +827,15 @@ Response Examples:
 `Description: Pins and unpins messages in rooms`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/messages/{message_id}/pin
 ```
 
 Response Examples:
 
-*Success; Pinned*
+_Success; Pinned_
+
 ```
 {
     "status": 201
@@ -773,7 +845,8 @@ Response Examples:
 }
 ```
 
-*Success; Unpinned*
+_Success; Unpinned_
+
 ```
 {
     "status": 201
@@ -783,7 +856,8 @@ Response Examples:
 }
 ```
 
-*Error response*
+_Error response_
+
 ```
 {
     "status": 404,
@@ -791,14 +865,14 @@ Response Examples:
 }
 ```
 
-*Server Error*
+_Server Error_
+
 ```
 {
     "status": 503,
     "message": "Service unavailable"
 }
 ```
-
 
 ## Schedule Messages
 
@@ -807,11 +881,13 @@ Response Examples:
 `Description: Schedules messages in rooms`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/rooms/{room_id}/schedule-message
 ```
 
 Request Body:
+
 ```
 {
     "sender_id": "614e1606f31a74e068e4d2e2",
@@ -823,7 +899,8 @@ Request Body:
 
 Response Examples:
 
-*Success*
+_Success_
+
 ```
 {
     "status": 201,
@@ -831,14 +908,14 @@ Response Examples:
 }
 ```
 
-*Error Response*
+_Error Response_
+
 ```
 {
     "status": 400,
     "message": "Bad Request"
 }
 ```
-
 
 ## Message Reactions
 
@@ -847,11 +924,13 @@ Response Examples:
 `Description: Creates new message emoji reactions`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/rooms/{room_id}/messages/{message_id}/reactions
 ```
 
 Request Body:
+
 ```
 {
   "message_id": "6155a0e6be7f31a9275a1eca",
@@ -868,7 +947,8 @@ Request Body:
 
 Response Examples:
 
-*Success; 201 created response*
+_Success; 201 created response_
+
 ```
 {
     "status": "success",
@@ -884,7 +964,8 @@ Response Examples:
 }
 ```
 
-*Error Response*
+_Error Response_
+
 ```
 {
     "status": 404,
@@ -892,14 +973,14 @@ Response Examples:
 }
 ```
 
-*Error Response*
+_Error Response_
+
 ```
 {
     "status": 424,
     "message": "data not sent"
 }
 ```
-
 
 ## Get Message Reactions
 
@@ -908,13 +989,15 @@ Response Examples:
 `Description: Retrieves all the reactions to a message`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/rooms/{room_id}/messages/{message_id}/reactions
 ```
 
 Response Examples:
 
-*Success*
+_Success_
+
 ```
 {
   "status": 200,
@@ -939,7 +1022,8 @@ Response Examples:
 }
 ```
 
-*Error Response*
+_Error Response_
+
 ```
 {
     "status": 404,
@@ -947,7 +1031,8 @@ Response Examples:
 }
 ```
 
-*Error Response*
+_Error Response_
+
 ```
 {
     "status": 424,
@@ -956,7 +1041,9 @@ Response Examples:
 ```
 
 ---
+
 ## Bookmarks and Links
+
 ---
 
 ## Save Bookmarks
@@ -966,11 +1053,13 @@ Response Examples:
 `Description: Saves links as bookmarks in rooms`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/rooms/{room_id}/new-bookmark
 ```
 
 Request Body:
+
 ```
 {
   "link": "https://dm.zuri.chat/docs/v1/",
@@ -981,7 +1070,8 @@ Request Body:
 
 Response Examples:
 
-*Success; 200 status response*
+_Success; 200 status response_
+
 ```
 {
   "link": "https://dm.zuri.chat/docs/v1/",
@@ -990,14 +1080,14 @@ Response Examples:
 }
 ```
 
-*Error Response*
+_Error Response_
+
 ```
 {
     "status": 400,
     "message": "Bad Request"
 }
 ```
-
 
 ## Get Bookmarks
 
@@ -1006,20 +1096,23 @@ Response Examples:
 `Description: Retrieves all bookmarks in rooms`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/rooms/{room_id}/bookmarks
 ```
 
 Response Examples:
 
-*Success; 200 status response*
+_Success; 200 status response_
+
 ```
 {
     "name": "dm plugin docs"
 }
 ```
 
-*Error Response*
+_Error Response_
+
 ```
 {
     "status": 400,
@@ -1027,14 +1120,14 @@ Response Examples:
 }
 ```
 
-*Error Response*
+_Error Response_
+
 ```
 {
     "status": 404,
     "message": "bookmark not found"
 }
 ```
-
 
 ## Delete Bookmarks
 
@@ -1043,20 +1136,23 @@ Response Examples:
 `Description: Deletes bookmarks in rooms`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/rooms/{room_id}/bookmark
 ```
 
 Response Examples:
 
-*Success*
+_Success_
+
 ```
 {
     "status": 200
 }
 ```
 
-*Error Response*
+_Error Response_
+
 ```
 {
     "status": 400,
@@ -1064,7 +1160,8 @@ Response Examples:
 }
 ```
 
-*Error Response*
+_Error Response_
+
 ```
 {
     "status": 404,
@@ -1079,13 +1176,15 @@ Response Examples:
 `Description: Retrieves the link to a message`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/messages/{message_id}/link
 ```
 
 Response Examples:
 
-*Success; status 200*
+_Success; status 200_
+
 ```
 {
   "room_id": "6144e068e4d2ee1606f31a72",
@@ -1094,14 +1193,14 @@ Response Examples:
 }
 ```
 
-*Error Response*
+_Error Response_
+
 ```
 {
     "status": 404,
     "message": "message not found"
 }
 ```
-
 
 ## Get Links
 
@@ -1110,13 +1209,15 @@ Response Examples:
 `Description: Retrieves all links in a room`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/rooms/{room_id}/links
 ```
 
 Response Examples:
 
-*Success; status 200*
+_Success; status 200_
+
 ```
 {
   "links": ["https://dm.zuri.chat/getmessage/614e1068e606f34d21a74ee2/6155aecaa1f31be70e65a927",
@@ -1125,7 +1226,8 @@ Response Examples:
 }
 ```
 
-*Error Response*
+_Error Response_
+
 ```
 {
     "status": 404,
@@ -1134,7 +1236,9 @@ Response Examples:
 ```
 
 ---
+
 ## Message Media
+
 ---
 
 ## Send Files
@@ -1144,11 +1248,13 @@ Response Examples:
 `Description: Sends media files in rooms (authorization is required)`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/rooms/{room_id}/messagemedia
 ```
 
-Request Body: *to be entered as a form data*
+Request Body: _to be entered as a form data_
+
 ```
 {
     "file": "file.jpg"
@@ -1157,7 +1263,8 @@ Request Body: *to be entered as a form data*
 
 Response Examples:
 
-*Success*
+_Success_
+
 ```
 {
     "status": 201,
@@ -1165,7 +1272,8 @@ Response Examples:
 }
 ```
 
-*No content*
+_No content_
+
 ```
 {
     "status": 204,
@@ -1173,7 +1281,8 @@ Response Examples:
 }
 ```
 
-*Error Response: Bad Request*
+_Error Response: Bad Request_
+
 ```
 {
     "status": 400,
@@ -1181,7 +1290,8 @@ Response Examples:
 }
 ```
 
-*Error Response*
+_Error Response_
+
 ```
 {
     "status": 404,
@@ -1189,7 +1299,8 @@ Response Examples:
 }
 ```
 
-*Error Response*
+_Error Response_
+
 ```
 {
     "status": 424,
@@ -1198,7 +1309,9 @@ Response Examples:
 ```
 
 ---
+
 ## Members
+
 ---
 
 ## Get Organization Members
@@ -1208,13 +1321,15 @@ Response Examples:
 D`escription: Retrieves all members in an organization (requires authorization)`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/members
 ```
 
 Response Examples:
 
-*Success; status 200*
+_Success; status 200_
+
 ```
 {
     "status": 200,
@@ -1284,7 +1399,8 @@ Response Examples:
         },
 ```
 
-*Error Response*
+_Error Response_
+
 ```
 {
     "status": 400,
@@ -1292,14 +1408,14 @@ Response Examples:
 }
 ```
 
-*Error Response*
+_Error Response_
+
 ```
 {
     "status": 401,
     "message": "Unauthorized Access"
 }
 ```
-
 
 ## Get User Profile Details
 
@@ -1308,13 +1424,15 @@ Response Examples:
 `Description: Retrieves the user details of a member in an organization (requires authorization)`
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/{org_id}/members/{member_id}/profile
 ```
 
 Response Examples:
 
-*Success; status 200*
+_Success; status 200_
+
 ```
 {
     "bio": "Medic and Tech Intern at HNGi8",
@@ -1329,7 +1447,8 @@ Response Examples:
 }
 ```
 
-*Error Response*
+_Error Response_
+
 ```
 {
     "status": 400,
@@ -1337,7 +1456,8 @@ Response Examples:
 }
 ```
 
-*Error Response*
+_Error Response_
+
 ```
 {
     "status": 401,
@@ -1345,25 +1465,28 @@ Response Examples:
 }
 ```
 
-
 ## Add User to a Room
 
 **Method: PUT**
 
-``Description: It adds a user to a dm room``
+`Description: It adds a user to a dm room`
 
 **Parameters Needed**
+
 - Valid organisation id
 - Valid room id
 - Member id
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/<str:org_id>/rooms/<str:room_id>/add-member/<str:member_id>
 ```
+
 Response Examples:
 
-*Success Response*
+_Success Response_
+
 ```
 {
     "status": 200,
@@ -1373,7 +1496,8 @@ Response Examples:
 }
 ```
 
-*Wrong/Invalid Room*
+_Wrong/Invalid Room_
+
 ```
 {
     status": 404,
@@ -1381,7 +1505,7 @@ Response Examples:
 }
 ```
 
-*Joining same room twice*
+_Joining same room twice_
 
 ```
 {
@@ -1390,8 +1514,8 @@ Response Examples:
 }
 ```
 
+_Wrong Method_
 
-*Wrong Method*
 ```
 {
     "status": 405,
@@ -1399,25 +1523,28 @@ Response Examples:
 }
 ```
 
-
 ## Remove User From a Room
 
 **Method: PUT**
 
-``Description: It removes a user from a dm room``
+`Description: It removes a user from a dm room`
 
 **Parameters Needed**
+
 - Valid organisation id
 - Valid room id
 - Member id
 
 URL:
+
 ```
 https://dm.zuri.chat/api/v1/org/<str:org_id>/rooms/<str:room_id>/add-member/<str:member_id>
 ```
+
 Response Examples:
 
-*Success Response*
+_Success Response_
+
 ```
 {
     "status": 200,
@@ -1427,7 +1554,8 @@ Response Examples:
 }
 ```
 
-*Wrong/Invalid Room*
+_Wrong/Invalid Room_
+
 ```
 {
     status": 404,
@@ -1435,7 +1563,7 @@ Response Examples:
 }
 ```
 
-*Invalid User*
+_Invalid User_
 
 ```
 {
@@ -1444,8 +1572,8 @@ Response Examples:
 }
 ```
 
+_Wrong Method_
 
-*Wrong Method*
 ```
 {
     "status": 405,

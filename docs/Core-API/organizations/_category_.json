@@ -1,0 +1,9 @@
+{
+  "label": "Organizations",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "title": "Organizations Overview",
+    "description": "APIs for Organizations"
+  }
+}
