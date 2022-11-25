@@ -58,3 +58,9 @@
 .margin {
   margin: 100px auto;
 }
+
+@media (max-width: 996px) {
+  .navbar__brand {
+    display: none;
+  }
+}

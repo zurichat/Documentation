@@ -1,35 +1,41 @@
 ---
-slug: /sales
-sidebar_position: 9
+slug: /plugins/sales
+sidebar_position: 11
 title: Sales Plugin
 ---
 
 # Sales Endpoints
 
 # Getting Started
+
 Our API is organised around using HTTP verbs and REST. Our API accepts and returns JSON formatted payload
 
 # Authorization
+
 User must be authenticated to use the API
-## Base URL:   
+
+## Base URL:
+
 ```
 https://sales.zuri.chat/api/v1/
 ```
-# Prospects
 
+# Prospects
 
 ## Create Prospects
 
-Method: Post  
+Method: Post
 
 Description: Fetches data from the Zuri core API and creates a new prospect.
 
 Example:
+
 ```
 https://sales.zuri.chat/api/v1/prospects/create/
 ```
 
 Request Body:
+
 ```
 {
   "name": "John Doe",
@@ -38,6 +44,7 @@ Request Body:
   "deal_stage": "proposal"
 }
 ```
+
 Response:
 
 ```
@@ -53,14 +60,16 @@ Response:
 
 ## Getting a List Of Prospects
 
-Method: Get  
+Method: Get
 
 Description: Fetches data from the Zuri core API and displays the list of all prospects.
 
 Example:
+
 ```
 https://sales.zuri.chat/api/v1/prospects/
 ```
+
 Sample Response:
 
 ```
@@ -80,27 +89,30 @@ Sample Response:
 ```
 
 ## Getting a Particular Prospect
-Method: Get  
+
+Method: Get
 
 Description: Fetches data from the Zuri core API and displays the details of one prospect.
 
 Example:
+
 ```
 https://sales.zuri.chat/api/v1/prospects/{id}/
 ```
 
-
 Sample Request:
+
 ```
 https://sales.zuri.chat/api/v1/prospects/614e8de3f31a74e068e4d7fc
 ```
 
 Response:
+
 ```
 {
   "status": 200,
   "message": "success",
-  "data": 
+  "data":
     {
     "_id": "123abc456def",
     "name": "John Doe",
@@ -112,16 +124,19 @@ Response:
 ```
 
 ## Updating a Particular Prospect
-Method: Put  
+
+Method: Put
 
 Description: Fetches data from the Zuri core API and updates the details of a particular prospect.
 
 Example:
+
 ```
 https://sales.zuri.chat/api/v1/prospects/update/{id/}
 ```
 
 Request body:
+
 ```
 {
     "_id": "123abc456def",
@@ -145,18 +160,20 @@ Response:
 }
 ```
 
-
 ## Delete a Particular Prospect
-Method: Delete  
+
+Method: Delete
 
 Description: Deletes a particular prospect from the Zuri Core API.
 
 Example:
+
 ```
 https://sales.zuri.chat/api/v1/prospects/delete/{id/}
 ```
 
 Response:
+
 ```
 {
   "status": 200,
@@ -167,20 +184,22 @@ Response:
 }
 ```
 
-
 # Deals
 
-## Create Deals 
-Method: Post  
+## Create Deals
+
+Method: Post
 
 Description: Fetches data from the Zuri core API to create a new deal for a prospect.
 
 Example:
+
 ```
 https://sales.zuri.chat/api/v1/prospects/deals/
 ```
 
 Request Body:
+
 ```
 
 {
@@ -192,6 +211,7 @@ Request Body:
   "description": "Deliver 10, 000 bags of cement"
 }
 ```
+
 Response:
 
 ```
@@ -207,7 +227,7 @@ Response:
 
 ## Getting a List Of Deals
 
-Method: Get  
+Method: Get
 
 Description: Fetches data from the Zuri core API and displays the list of deals.
 
@@ -216,6 +236,7 @@ Example:
 ```
 https://sales.zuri.chat/api/v1/deals/
 ```
+
 Response:
 
 ```
@@ -237,7 +258,7 @@ Response:
 
 ## Getting a Particular Deal
 
-Method: Get  
+Method: Get
 
 Description: Fetches data from the Zuri core API and displays the details of a particular deal.
 
@@ -248,16 +269,18 @@ https://sales.zuri.chat/api/v1/deals/{id}/
 ```
 
 Sample Request:
+
 ```
 https://sales.zuri.chat/api/v1/deals/614e8de3f31a74e068e4d7fc
 ```
 
 Response:
+
 ```
 {
   "status": 200,
   "message": "success",
-  "data": 
+  "data":
     {
     "_id": "123abc456def",
     "name": "John Doe",
@@ -271,7 +294,7 @@ Response:
 
 ## Updating a Particular Deal
 
-Method: Put  
+Method: Put
 
 Description: Fetches data from the Zuri core API and updates the details of a particular deal.
 
@@ -281,8 +304,8 @@ Example:
 https://sales.zuri.chat/api/v1/deals/update/{id/}
 ```
 
-
 Request body:
+
 ```
 {
     ""_id": "123abc456def",
@@ -307,18 +330,20 @@ Response:
 }
 ```
 
-
 ## Delete a Particular Deal
-Method: Delete  
+
+Method: Delete
 
 Description: Deletes a particular deal from the Zuri Core API.
 
 Example:
+
 ```
 https://sales.zuri.chat/api/v1/deals/delete/{id/}
 ```
 
 Response
+
 ```
 {
   "status": 200,
@@ -332,23 +357,27 @@ Response
 # Rooms
 
 ## Add users to a room
-Method: Post  
+
+Method: Post
 
 Description: Fetches data from the Zuri core API and adds a user to a room.
 
 Example:
+
 ```
 https://sales.zuri.chat/api/v1/add-to-room/
 ```
 
 Request body:
+
 ```
 {
-user:"2345" 
+user:"2345"
 }
 ```
 
 Response:
+
 ```
 {
   "user": 2345,
@@ -356,10 +385,9 @@ Response:
 }
 ```
 
-
-
 ## Getting a list of rooms
-Method: Get  
+
+Method: Get
 
 Description: Fetches data from the Zuri core API and displays the list of rooms available to a user.
 
@@ -390,14 +418,14 @@ Response:
     }
 ```
 
-
-
 ## Sidebar
-Method: Get  
+
+Method: Get
 
 Description: Fetches data from the Zuri core API and displays a sidebar containing all rooms available to the user.
 
 Example:
+
 ```
 https://sales.zuri.chat/api/v1/sidebar/
 ```

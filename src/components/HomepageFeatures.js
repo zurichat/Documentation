@@ -14,7 +14,7 @@ const FeatureList = [
         needs.
       </>
     ),
-    url: "/docs/overview",
+    url: "/intro",
   },
   {
     title: "Plugins",
@@ -68,7 +68,7 @@ const FeatureList = [
         needs.
       </>
     ),
-    url: "/docs/guidelines",
+    url: "/category/guidelines",
   },
 ];
 

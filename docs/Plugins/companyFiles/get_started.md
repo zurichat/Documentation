@@ -1,7 +1,7 @@
 ---
-slug: /files-doc
+slug: /plugins/files-doc
 sidebar_position: 1
-title: Zuri Chat Company Files Plugin
+title: Files Plugin
 ---
 
 ## GETTING STARTED
