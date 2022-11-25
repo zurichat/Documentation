@@ -173,7 +173,7 @@ const recentplugins = [
     description: (
       <>
         Help your organization meet <br />
-        there goals
+        their goals
       </>
     ),
     link: "/plugins/goals",
